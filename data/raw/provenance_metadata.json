@@ -1,0 +1,23 @@
+{
+  "timestamp_utc": "2026-09-19 11:03:38",
+  "datasets": {
+    "kaggle_ad_conversions": {
+      "filename": "KAG_conversion_data.csv",
+      "path": "data\\raw\\KAG_conversion_data.csv",
+      "size_bytes": 60522,
+      "sha256": "2ee88488b5229562e8814b08e95e09e675aa939f69fc16f124eefe2bfdfa7cf8",
+      "publisher": "Kaggle / Anonymous Ad Network",
+      "license": "Public Domain / CC0 equivalent open benchmark",
+      "description": "Anonymized social media advertising campaign data across 3 campaigns (916, 936, 1178) with 1,143 ad records."
+    },
+    "uci_consumer_behavior": {
+      "filename": "online_shoppers_intention.csv",
+      "path": "data\\raw\\online_shoppers_intention.csv",
+      "size_bytes": 1062237,
+      "sha256": "16c44b48955125b2adc0b37c526f3e190d0689a3193a41e65da9b210cc5d7af1",
+      "publisher": "UCI Machine Learning Repository (C. Okan Sakar, Yomi Kastro)",
+      "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+      "description": "UCI Online Shoppers Purchasing Intention dataset with 12,330 e-commerce sessions and conversion outcomes."
+    }
+  }
+}

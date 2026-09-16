@@ -1,0 +1,17 @@
+# Core Data & Numerical Analysis
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+
+# Database & SQL
+SQLAlchemy>=2.0.0
+
+# Excel Dashboard Generation
+openpyxl>=3.1.0
+
+# HTTP & Data Acquisition
+requests>=2.31.0
+
+# Testing & Code Quality
+pytest>=7.4.0
+pytest-cov>=4.1.0
