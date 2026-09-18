@@ -1,0 +1,4 @@
+visitor_type,total_sessions,transactions,purchase_rate,avg_page_value,avg_bounce_rate,avg_exit_rate,avg_product_duration_sec
+New_Visitor,1694,422,0.2491,10.77,0.0053,0.0207,636.4
+Other,85,16,0.1882,18.19,0.0386,0.0633,570.4
+Returning_Visitor,10551,1470,0.1393,5.01,0.0248,0.0465,1289.4

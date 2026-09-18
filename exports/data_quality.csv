@@ -1,0 +1,12 @@
+dataset,check_category,check_name,flagged_count,status,severity,details
+Dataset A (Ad Campaigns),Completeness,Missing Values Check,0,PASSED,CRITICAL,"Missing values across critical columns: {'ad_id': 0, 'xyz_campaign_id': 0, 'impressions': 0, 'clicks': 0, 'spent': 0, 'total_conversion': 0, 'approved_conversion': 0}"
+Dataset A (Ad Campaigns),Uniqueness,Duplicate Ad IDs,0,PASSED,CRITICAL,Found 0 duplicate ad_id records.
+Dataset A (Ad Campaigns),Range / Validity,Negative Metric Values,0,PASSED,CRITICAL,"Negative rows: impressions=0, clicks=0, spent=0"
+Dataset A (Ad Campaigns),Funnel Logic,Clicks Exceed Impressions,0,PASSED,CRITICAL,Records where clicks > impressions (physically impossible): 0
+Dataset A (Ad Campaigns),Business Logic,Approved Exceeds Total Conversion,0,PASSED,CRITICAL,Records where approved_conversion > total_conversion: 0
+Dataset A (Ad Campaigns),Efficiency / Hygiene,Zero-Click Spend Ads,0,PASSED,WARNING,0 ads spent positive budget ($0.00) without generating a single click.
+Dataset A (Ad Campaigns),Delivery,Zero Impression Ads,0,PASSED,INFO,Ads with zero impressions: 0
+Dataset A (Ad Campaigns),Statistical Reliability,Low-Sample Ad Records (< 10 Clicks),593,FLAGGED,WARNING,"593 of 1143 records (51.9%) have <10 clicks, requiring ratio-of-sums aggregation to prevent noise."
+Dataset B (UCI Consumer Behavior),Completeness,Missing Revenue Labels,29,FLAGGED,WARNING,29 records have NULL Revenue. Filtered out before behavioral analysis.
+Dataset B (UCI Consumer Behavior),Range / Validity,Negative Session Durations,0,PASSED,CRITICAL,0 records with negative duration values.
+Dataset B (UCI Consumer Behavior),Range / Validity,"Bounce / Exit Rate Boundaries [0, 1]",0,PASSED,CRITICAL,"0 records with bounce or exit rate outside [0, 1]."

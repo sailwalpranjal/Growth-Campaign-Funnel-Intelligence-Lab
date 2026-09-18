@@ -1,0 +1,12 @@
+metric,available,exact_formula,reason
+Impressions,Yes,SUM(Impressions),Directly recorded ad impression volume.
+Clicks,Yes,SUM(Clicks),Directly recorded ad clicks.
+Spend,Yes,SUM(Spent),Directly recorded ad media expenditure.
+CTR,Yes,SUM(Clicks) / SUM(Impressions),Real top-of-funnel creative engagement rate.
+CPC,Yes,SUM(Spent) / SUM(Clicks),Real media auction cost efficiency per click.
+CPM,Yes,(SUM(Spent) / SUM(Impressions)) * 1000,Real baseline media inventory pricing.
+Cost per Approved Conversion,Yes,SUM(Spent) / SUM(Approved_Conversion),Real cost per verified end conversion.
+CAC (Customer Acquisition Cost),No (Unsupported),N/A,"Lacks full marketing spend, blended organic acquisition, agency fees, and downstream retention."
+ROAS (Return on Ad Spend),No (Unsupported),N/A,No monetary transaction revenue exists in the ad dataset. Creating fake revenue violates analytical integrity.
+Mobile App Installs,No (Unavailable),N/A,Web conversion tracking dataset; does not track SDK install attribution.
+User Login / Retention,No (Unavailable),N/A,No user authentication or post-install cohort logs in public advertising dataset.
