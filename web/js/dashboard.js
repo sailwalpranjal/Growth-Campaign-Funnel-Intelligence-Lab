@@ -18,6 +18,9 @@
 // Global State
 let DASHBOARD_DATA = null;
 let waterfallChartInst = null;
+let waterfallDonutChartInst = null;
+let strategicRadarChartInst = null;
+let audienceDemographicMatrixChartInst = null;
 let appFunnelChartInst = null;
 let ltvCacPaybackChartInst = null;
 let audienceBubbleChartInst = null;
@@ -82,13 +85,23 @@ function switchTab(tabId) {
 
   // Trigger chart resizes on tab switch
   setTimeout(() => {
-    if (tabId === 'waterfall' && waterfallChartInst) waterfallChartInst.resize();
+    if (tabId === 'overview' && strategicRadarChartInst) strategicRadarChartInst.resize();
+    if (tabId === 'waterfall') {
+      if (waterfallChartInst) waterfallChartInst.resize();
+      if (waterfallDonutChartInst) waterfallDonutChartInst.resize();
+    }
+    if (tabId === 'funnel') {
+      renderInteractiveFunnelCanvas(currentFunnelCamp);
+    }
     if (tabId === 'standardization' && mixAdjustmentChartInst) mixAdjustmentChartInst.resize();
     if (tabId === 'simulator') {
       if (appFunnelChartInst) appFunnelChartInst.resize();
       if (ltvCacPaybackChartInst) ltvCacPaybackChartInst.resize();
     }
-    if (tabId === 'audience' && audienceBubbleChartInst) audienceBubbleChartInst.resize();
+    if (tabId === 'audience') {
+      if (audienceBubbleChartInst) audienceBubbleChartInst.resize();
+      if (audienceDemographicMatrixChartInst) audienceDemographicMatrixChartInst.resize();
+    }
     if (tabId === 'ab-lab') drawBellCurves();
     if (tabId === 'consumer') {
       if (consumerCohortChartInst) consumerCohortChartInst.resize();
@@ -140,15 +153,23 @@ async function initDashboard() {
 
   // Render all modules
   renderScorecard();
+  renderStrategicRadarChart();
   renderWaterfallChart();
+  renderWaterfallDonutChart();
   setFunnelView(1178);
+  renderInteractiveFunnelCanvas(1178);
   renderMixAdjustmentChart();
   initAppSimulator();
   renderAudienceBubbleChart();
+  renderAudienceDemographicMatrix();
   calculateLiveAB();
   renderConsumerCharts();
   renderExperiments('all');
   renderQualityAuditTerminal();
+
+  window.addEventListener('resize', () => {
+    if (currentFunnelCamp) renderInteractiveFunnelCanvas(currentFunnelCamp);
+  });
   
   if (DASHBOARD_DATA && DASHBOARD_DATA.growth_os) {
     renderGrowthOS();
@@ -259,6 +280,91 @@ function renderScorecard() {
       <td class="px-4 py-3 text-right font-bold ${row.cost_per_approved_conv > 50 ? 'text-brandRose' : 'text-brandEmerald'}">$${row.cost_per_approved_conv.toFixed(2)}</td>
     `;
     tbody.appendChild(tr);
+  });
+}
+
+function renderStrategicRadarChart() {
+  const canvas = document.getElementById('strategicRadarChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  if (strategicRadarChartInst) strategicRadarChartInst.destroy();
+
+  strategicRadarChartInst = new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: [
+        'CPM Economy (Lower Cost)',
+        'Creative CTR Resonance',
+        'Post-Click Conv Velocity',
+        'Spend Scale Index',
+        'Lead Approval Rate'
+      ],
+      datasets: [
+        {
+          label: 'Campaign 916 (Pilot)',
+          data: [62, 88, 95, 8, 89],
+          borderColor: '#38BDF8',
+          backgroundColor: 'rgba(56, 189, 248, 0.18)',
+          borderWidth: 2,
+          pointBackgroundColor: '#38BDF8',
+          pointBorderColor: '#fff',
+          pointHoverRadius: 6
+        },
+        {
+          label: 'Campaign 936 (Baseline)',
+          data: [70, 82, 91, 35, 94],
+          borderColor: '#10B981',
+          backgroundColor: 'rgba(16, 185, 129, 0.22)',
+          borderWidth: 2,
+          pointBackgroundColor: '#10B981',
+          pointBorderColor: '#fff',
+          pointHoverRadius: 6
+        },
+        {
+          label: 'Campaign 1178 (Scaled)',
+          data: [92, 59, 24, 99, 91],
+          borderColor: '#F43F5E',
+          backgroundColor: 'rgba(244, 63, 94, 0.2)',
+          borderWidth: 2,
+          pointBackgroundColor: '#F43F5E',
+          pointBorderColor: '#fff',
+          pointHoverRadius: 6
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: {
+        duration: 1200,
+        easing: 'easeOutQuart'
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `${ctx.dataset.label}: ${ctx.raw} / 100 Index`
+          }
+        }
+      },
+      scales: {
+        r: {
+          angleLines: { color: 'rgba(255, 255, 255, 0.08)' },
+          grid: { color: 'rgba(255, 255, 255, 0.06)' },
+          pointLabels: {
+            color: '#94A3B8',
+            font: { size: 10, family: "'JetBrains Mono', monospace" }
+          },
+          ticks: {
+            display: false,
+            stepSize: 20
+          },
+          suggestedMin: 0,
+          suggestedMax: 100
+        }
+      }
+    }
   });
 }
 
@@ -386,6 +492,58 @@ function renderWaterfallChart() {
           ticks: { callback: v => '$' + v }
         },
         x: { grid: { display: false } }
+      }
+    }
+  });
+}
+
+function renderWaterfallDonutChart() {
+  const canvas = document.getElementById('waterfallDonutChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  if (waterfallDonutChartInst) waterfallDonutChartInst.destroy();
+
+  waterfallDonutChartInst = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [
+        'Post-Click Conv Collapse (+$47.10)',
+        'CTR Resonance Decay (+$4.66)',
+        'CPM Economy of Scale (-$3.74)'
+      ],
+      datasets: [{
+        data: [47.10, 4.66, 3.74],
+        backgroundColor: [
+          'rgba(244, 63, 94, 0.85)',
+          'rgba(245, 158, 11, 0.85)',
+          'rgba(16, 185, 129, 0.85)'
+        ],
+        borderColor: ['#FB7185', '#FBBF24', '#34D399'],
+        borderWidth: 2,
+        hoverOffset: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '72%',
+      animation: {
+        animateRotate: true,
+        duration: 1200,
+        easing: 'easeOutQuart'
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: function(ctx) {
+              const val = ctx.raw;
+              const pct = ctx.dataIndex === 0 ? '98.1%' : (ctx.dataIndex === 1 ? '9.7%' : '-7.8% Offset');
+              return `${ctx.label}: $${val.toFixed(2)} (${pct})`;
+            }
+          }
+        }
       }
     }
   });
@@ -628,7 +786,19 @@ function setFunnelView(campId) {
     btn1178.className = 'px-3.5 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all';
   }
 
+  const leakBadge = document.getElementById('funnel-leakage-badge');
+  if (leakBadge) {
+    if (campId === 1178) {
+      leakBadge.innerText = '92.6% Leakage at Stage 2 → 3 (33,484 Bounced)';
+      leakBadge.className = 'text-brandRose font-bold';
+    } else {
+      leakBadge.innerText = '72.9% Leakage at Stage 2 → 3 (1,447 Bounced)';
+      leakBadge.className = 'text-brandCyan font-bold';
+    }
+  }
+
   renderFunnelSteps();
+  renderInteractiveFunnelCanvas(campId);
 }
 
 function renderFunnelSteps() {
@@ -748,6 +918,118 @@ function renderFunnelSteps() {
       </div>
     </div>
   `;
+}
+
+function renderInteractiveFunnelCanvas(campId = currentFunnelCamp) {
+  const canvas = document.getElementById('funnelFlowCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  
+  if (rect.width === 0 || rect.height === 0) return;
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+  ctx.scale(dpr, dpr);
+  
+  const W = rect.width;
+  const H = rect.height;
+  ctx.clearRect(0, 0, W, H);
+
+  const is1178 = campId === 1178;
+  const h1 = H * 0.72;
+  const h2 = is1178 ? H * 0.38 : H * 0.48;
+  const h3 = is1178 ? H * 0.14 : H * 0.28;
+  const h4 = is1178 ? H * 0.08 : H * 0.16;
+
+  const yCenter = H * 0.44;
+  
+  const x1_start = 12, x1_end = W * 0.23;
+  const x2_start = W * 0.28, x2_end = W * 0.50;
+  const x3_start = W * 0.55, x3_end = W * 0.77;
+  const x4_start = W * 0.82, x4_end = W - 12;
+
+  function drawSegment(xa, ya_top, ya_bot, xb, yb_top, yb_bot, colorA, colorB) {
+    const grad = ctx.createLinearGradient(xa, 0, xb, 0);
+    grad.addColorStop(0, colorA);
+    grad.addColorStop(1, colorB);
+    
+    ctx.beginPath();
+    ctx.moveTo(xa, ya_top);
+    ctx.bezierCurveTo((xa + xb) / 2, ya_top, (xa + xb) / 2, yb_top, xb, yb_top);
+    ctx.lineTo(xb, yb_bot);
+    ctx.bezierCurveTo((xa + xb) / 2, yb_bot, (xa + xb) / 2, ya_bot, xa, ya_bot);
+    ctx.closePath();
+    
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Draw Segment 1 (Impressions)
+  drawSegment(x1_start, yCenter - h1/2, yCenter + h1/2, x1_end, yCenter - h1/2, yCenter + h1/2, 'rgba(100, 116, 139, 0.4)', 'rgba(56, 189, 248, 0.5)');
+
+  // Connect 1 -> 2
+  drawSegment(x1_end, yCenter - h1/2, yCenter + h1/2, x2_start, yCenter - h2/2, yCenter + h2/2, 'rgba(56, 189, 248, 0.5)', 'rgba(14, 165, 233, 0.7)');
+
+  // Segment 2 (Clicks)
+  drawSegment(x2_start, yCenter - h2/2, yCenter + h2/2, x2_end, yCenter - h2/2, yCenter + h2/2, 'rgba(14, 165, 233, 0.7)', 'rgba(14, 165, 233, 0.8)');
+
+  // Connect 2 -> 3 (THE LEAKAGE)
+  const leakColor = is1178 ? 'rgba(244, 63, 94, 0.85)' : 'rgba(245, 158, 11, 0.75)';
+  drawSegment(x2_end, yCenter - h2/2, yCenter + h2/2, x3_start, yCenter - h3/2, yCenter + h3/2, 'rgba(14, 165, 233, 0.8)', leakColor);
+
+  // Segment 3 (Enquiries)
+  drawSegment(x3_start, yCenter - h3/2, yCenter + h3/2, x3_end, yCenter - h3/2, yCenter + h3/2, leakColor, 'rgba(245, 158, 11, 0.8)');
+
+  // Connect 3 -> 4
+  drawSegment(x3_end, yCenter - h3/2, yCenter + h3/2, x4_start, yCenter - h4/2, yCenter + h4/2, 'rgba(245, 158, 11, 0.8)', 'rgba(16, 185, 129, 0.85)');
+
+  // Segment 4 (Approved)
+  drawSegment(x4_start, yCenter - h4/2, yCenter + h4/2, x4_end, yCenter - h4/2, yCenter + h4/2, 'rgba(16, 185, 129, 0.85)', 'rgba(52, 211, 153, 0.95)');
+
+  // Labels & Values inside/above funnel
+  ctx.font = "bold 10px 'JetBrains Mono', monospace";
+  ctx.textAlign = 'center';
+
+  ctx.fillStyle = '#CBD5E1';
+  ctx.fillText(is1178 ? '204.8M Imp' : '8.1M Imp', (x1_start + x1_end) / 2, yCenter - h1/2 - 6);
+
+  ctx.fillStyle = '#38BDF8';
+  ctx.fillText(is1178 ? '36,068 Clicks' : '1,984 Clicks', (x2_start + x2_end) / 2, yCenter - h2/2 - 6);
+
+  ctx.fillStyle = is1178 ? '#FB7185' : '#FBBF24';
+  ctx.fillText(is1178 ? '2,669 Leads' : '537 Leads', (x3_start + x3_end) / 2, yCenter - h3/2 - 6);
+
+  ctx.fillStyle = '#34D399';
+  ctx.fillText(is1178 ? '872 Appr' : '183 Appr', (x4_start + x4_end) / 2, yCenter - h4/2 - 6);
+
+  // Leakage indicator arrow
+  if (is1178) {
+    const leakX = (x2_end + x3_start) / 2;
+    ctx.strokeStyle = '#F43F5E';
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath();
+    ctx.moveTo(leakX, yCenter + 6);
+    ctx.lineTo(leakX, H - 14);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    
+    ctx.fillStyle = '#F43F5E';
+    ctx.beginPath();
+    ctx.moveTo(leakX, H - 10);
+    ctx.lineTo(leakX - 4, H - 16);
+    ctx.lineTo(leakX + 4, H - 16);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.font = "bold 9px 'JetBrains Mono', monospace";
+    ctx.fillStyle = '#FB7185';
+    ctx.fillText('▼ 33,484 Bounced (-92.6%)', leakX, H - 2);
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -1119,6 +1401,155 @@ function renderAudienceBubbleChart() {
   });
 }
 
+function renderAudienceDemographicMatrix() {
+  const canvas = document.getElementById('audienceDemographicMatrixChart');
+  if (!canvas || !DASHBOARD_DATA) return;
+  const ctx = canvas.getContext('2d');
+
+  const rawSegments = DASHBOARD_DATA.audience_segments || [];
+  const ageLabels = ['30-34', '35-39', '40-44', '45-49'];
+  
+  const maleCosts = [];
+  const femaleCosts = [];
+  const maleCRs = [];
+  const femaleCRs = [];
+
+  ageLabels.forEach(age => {
+    const m = rawSegments.find(s => s.age === age && s.gender === 'M');
+    const f = rawSegments.find(s => s.age === age && s.gender === 'F');
+
+    const mCost = m && m.cost_per_approved ? Number(m.cost_per_approved.toFixed(2)) : 0;
+    const fCost = f && f.cost_per_approved ? Number(f.cost_per_approved.toFixed(2)) : 0;
+    maleCosts.push(mCost);
+    femaleCosts.push(fCost);
+
+    const mCR = (m && m.clicks && m.approved) ? Number(((m.approved / m.clicks) * 100).toFixed(2)) : 0;
+    const fCR = (f && f.clicks && f.approved) ? Number(((f.approved / f.clicks) * 100).toFixed(2)) : 0;
+    maleCRs.push(mCR);
+    femaleCRs.push(fCR);
+  });
+
+  if (audienceDemographicMatrixChartInst) {
+    audienceDemographicMatrixChartInst.destroy();
+  }
+
+  audienceDemographicMatrixChartInst = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ageLabels.map(a => `Age ${a}`),
+      datasets: [
+        {
+          label: 'Male Cost / Approved ($)',
+          data: maleCosts,
+          backgroundColor: 'rgba(6, 182, 212, 0.75)',
+          borderColor: '#06B6D4',
+          borderWidth: 1.5,
+          borderRadius: 6,
+          yAxisID: 'y'
+        },
+        {
+          label: 'Female Cost / Approved ($)',
+          data: femaleCosts,
+          backgroundColor: 'rgba(244, 63, 94, 0.75)',
+          borderColor: '#F43F5E',
+          borderWidth: 1.5,
+          borderRadius: 6,
+          yAxisID: 'y'
+        },
+        {
+          label: 'Male Conv. Rate (%)',
+          data: maleCRs,
+          type: 'line',
+          borderColor: '#38BDF8',
+          backgroundColor: '#38BDF8',
+          pointBackgroundColor: '#38BDF8',
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          borderWidth: 2,
+          borderDash: [4, 4],
+          yAxisID: 'y1'
+        },
+        {
+          label: 'Female Conv. Rate (%)',
+          data: femaleCRs,
+          type: 'line',
+          borderColor: '#FB7185',
+          backgroundColor: '#FB7185',
+          pointBackgroundColor: '#FB7185',
+          pointRadius: 4,
+          pointHoverRadius: 6,
+          borderWidth: 2,
+          borderDash: [4, 4],
+          yAxisID: 'y1'
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            color: '#94A3B8',
+            font: { family: 'JetBrains Mono', size: 10 },
+            boxWidth: 12
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(15, 23, 42, 0.95)',
+          borderColor: 'rgba(255, 255, 255, 0.1)',
+          borderWidth: 1,
+          titleFont: { family: 'JetBrains Mono', weight: 'bold' },
+          bodyFont: { family: 'JetBrains Mono', size: 11 },
+          callbacks: {
+            label: function(context) {
+              if (context.dataset.yAxisID === 'y1') {
+                return ` ${context.dataset.label}: ${context.raw}%`;
+              }
+              return ` ${context.dataset.label}: $${context.raw}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+          ticks: { color: '#94A3B8', font: { family: 'JetBrains Mono', size: 11 } }
+        },
+        y: {
+          type: 'linear',
+          display: true,
+          position: 'left',
+          title: { display: true, text: 'Cost per Approved ($)', color: '#94A3B8', font: { family: 'JetBrains Mono', size: 10 } },
+          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+          ticks: {
+            color: '#94A3B8',
+            font: { family: 'JetBrains Mono' },
+            callback: v => '$' + v
+          }
+        },
+        y1: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          title: { display: true, text: 'Conv. Rate (%)', color: '#94A3B8', font: { family: 'JetBrains Mono', size: 10 } },
+          grid: { drawOnChartArea: false },
+          ticks: {
+            color: '#94A3B8',
+            font: { family: 'JetBrains Mono' },
+            callback: v => v + '%'
+          }
+        }
+      }
+    }
+  });
+}
+
 // -----------------------------------------------------------------------------
 // 8. TAB 7: LIVE A/B TESTING LAB (BELL CURVES & LASER CROSSHAIR)
 // -----------------------------------------------------------------------------
@@ -1463,13 +1894,14 @@ function renderConsumerCharts() {
 // 10. TAB 10: ICE GROWTH ROADMAP
 // -----------------------------------------------------------------------------
 function filterExperiments(filter) {
-  ['all', 'p0', 'p1'].forEach(id => {
+  const filterIds = ['all', 'p0', 'p1', 'running', 'analysis', 'planned', 'idea'];
+  filterIds.forEach(id => {
     const btn = document.getElementById(`exp-filter-${id}`);
     if (btn) {
       if (id === filter.toLowerCase()) {
-        btn.className = 'px-3 py-1.5 rounded-lg bg-brandIndigo text-white font-semibold';
+        btn.className = 'exp-filter-btn active px-3 py-1.5 rounded-lg bg-brandIndigo text-white font-semibold text-center whitespace-nowrap';
       } else {
-        btn.className = 'px-3 py-1.5 rounded-lg text-slate-400 hover:text-white';
+        btn.className = 'exp-filter-btn px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white text-center whitespace-nowrap';
       }
     }
   });
@@ -1484,34 +1916,150 @@ function renderExperiments(filter = 'all') {
 
   const experiments = DASHBOARD_DATA.experiments || [];
   const filtered = experiments.filter(e => {
-    if (filter === 'P0') return e.priority.includes('P0');
-    if (filter === 'P1') return e.priority.includes('P1');
+    const prio = (e.priority || '').toLowerCase();
+    const st = (e.status || '').toLowerCase();
+    const f = filter.toLowerCase();
+
+    if (f === 'all') return true;
+    if (f === 'p0') return prio.includes('p0');
+    if (f === 'p1') return prio.includes('p1');
+    if (f === 'running') return st === 'running';
+    if (f === 'analysis') return st === 'analysis';
+    if (f === 'planned') return st === 'planned';
+    if (f === 'idea') return st === 'idea';
     return true;
   });
 
   filtered.forEach(exp => {
     const card = document.createElement('div');
-    card.className = 'p-5 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col justify-between space-y-3 hover:border-indigo-500/40 transition-all';
+    card.className = 'p-5 rounded-xl bg-slate-950/70 border border-white/10 flex flex-col justify-between space-y-3.5 hover:border-brandCyan/40 hover:bg-slate-900/60 transition-all cursor-pointer group shadow-lg';
+    card.onclick = () => openExperimentModal(exp.experiment_id);
+
+    // Status badge styling
+    let statusClass = 'bg-slate-800 text-slate-300 border border-slate-700';
+    const st = (exp.status || '').toLowerCase();
+    if (st === 'running') {
+      statusClass = 'bg-emerald-950/80 text-emerald-400 border border-emerald-700 animate-pulse';
+    } else if (st === 'analysis') {
+      statusClass = 'bg-amber-950/80 text-amber-300 border border-amber-700';
+    } else if (st === 'planned') {
+      statusClass = 'bg-sky-950/80 text-sky-300 border border-sky-700';
+    } else if (st === 'idea') {
+      statusClass = 'bg-purple-950/80 text-purple-300 border border-purple-700';
+    }
+
     card.innerHTML = `
       <div>
-        <div class="flex justify-between items-start">
-          <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold ${exp.priority.includes('P0') ? 'bg-rose-950 text-rose-300 border border-rose-800' : 'bg-sky-950 text-sky-300 border border-sky-800'}">
-            ${exp.priority}
-          </span>
-          <span class="text-xs font-mono font-bold text-brandEmerald">ICE: ${exp.ice_score.toFixed(2)}</span>
+        <div class="flex justify-between items-center">
+          <div class="flex items-center gap-1.5">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold ${exp.priority && exp.priority.includes('P0') ? 'bg-rose-950/80 text-rose-300 border border-rose-800' : 'bg-sky-950/80 text-sky-300 border border-sky-800'}">
+              ${exp.priority ? exp.priority.split(' ')[0] : 'P0'}
+            </span>
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold ${statusClass}">
+              ${exp.status || 'Planned'}
+            </span>
+            <span class="text-[10px] font-mono text-slate-500">${exp.experiment_id}</span>
+          </div>
+          <span class="text-xs font-mono font-bold text-brandEmerald">ICE: ${exp.ice_score ? exp.ice_score.toFixed(2) : 'N/A'}</span>
         </div>
-        <h4 class="font-bold text-sm text-white mt-2.5">${exp.title}</h4>
-        <p class="text-xs text-slate-400 mt-1 leading-relaxed">${exp.hypothesis}</p>
+        <h4 class="font-bold text-sm text-white mt-2.5 group-hover:text-brandCyan transition-colors">${exp.title}</h4>
+        <p class="text-xs text-slate-400 mt-1.5 leading-relaxed line-clamp-2">${exp.problem || exp.hypothesis}</p>
       </div>
 
       <div class="space-y-1.5 text-[11px] font-mono border-t border-white/5 pt-3 text-slate-300">
-        <div class="flex justify-between"><span class="text-slate-500">Primary KPI:</span><span class="text-brandCyan font-bold">${exp.primary_kpi}</span></div>
-        <div class="flex justify-between"><span class="text-slate-500">Guardrail:</span><span class="text-brandAmber">${exp.guardrail}</span></div>
+        <div class="flex justify-between"><span class="text-slate-500">Channel / Owner:</span><span class="text-brandCyan font-medium">${exp.channel || 'Paid Ads'} &bull; ${exp.owner ? exp.owner.split(' ')[0] : 'Growth'}</span></div>
+        <div class="flex justify-between"><span class="text-slate-500">Primary KPI:</span><span class="text-emerald-400 font-bold">${exp.primary_metric || exp.primary_kpi}</span></div>
+        <div class="flex justify-between items-center pt-1">
+          <span class="text-[10px] text-slate-500">MDE: ${exp.mde || '+25%'}</span>
+          <span class="text-[10px] font-semibold text-brandIndigo group-hover:underline flex items-center gap-1">Inspect 21 Fields &rarr;</span>
+        </div>
       </div>
     `;
     grid.appendChild(card);
   });
 }
+
+function openExperimentModal(expId) {
+  if (!DASHBOARD_DATA || !DASHBOARD_DATA.experiments) return;
+  const exp = DASHBOARD_DATA.experiments.find(e => e.experiment_id === expId);
+  if (!exp) return;
+
+  const modal = document.getElementById('experiment-modal');
+  if (!modal) return;
+
+  const pBadge = document.getElementById('modal-priority-badge');
+  if (pBadge) {
+    pBadge.textContent = exp.priority || 'P0';
+    pBadge.className = `px-2 py-0.5 rounded text-[10px] font-mono font-bold ${(exp.priority || '').includes('P0') ? 'bg-rose-950 text-rose-300 border border-rose-800' : 'bg-sky-950 text-sky-300 border border-sky-800'}`;
+  }
+
+  const sBadge = document.getElementById('modal-status-badge');
+  if (sBadge) {
+    sBadge.textContent = exp.status || 'Planned';
+    const st = (exp.status || '').toLowerCase();
+    let sClass = 'bg-slate-800 text-slate-300 border border-slate-700';
+    if (st === 'running') sClass = 'bg-emerald-950 text-emerald-300 border border-emerald-700';
+    else if (st === 'analysis') sClass = 'bg-amber-950 text-amber-300 border border-amber-700';
+    else if (st === 'planned') sClass = 'bg-sky-950 text-sky-300 border border-sky-700';
+    else if (st === 'idea') sClass = 'bg-purple-950 text-purple-300 border border-purple-700';
+    sBadge.className = `px-2 py-0.5 rounded text-[10px] font-mono font-bold ${sClass}`;
+  }
+
+  const setTxt = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val || 'N/A';
+  };
+
+  setTxt('modal-exp-id', exp.experiment_id);
+  setTxt('modal-title', exp.title);
+  setTxt('modal-owner', exp.owner || 'Growth Team');
+  setTxt('modal-channel', exp.channel || 'Paid Ads');
+  setTxt('modal-segment', exp.segment || exp.target_audience);
+  setTxt('modal-mde', exp.mde || '25%');
+  setTxt('modal-sample', exp.required_sample ? Number(exp.required_sample).toLocaleString() : '11,369');
+  setTxt('modal-problem', exp.problem || exp.observed_evidence);
+  setTxt('modal-hypothesis', exp.hypothesis);
+  setTxt('modal-control', exp.control);
+  setTxt('modal-variant', exp.variant);
+  setTxt('modal-guardrail', exp.guardrail);
+  setTxt('modal-learning', exp.learning || exp.expected_learning);
+  setTxt('modal-next-action', exp.next_action || exp.decision || 'Awaiting evaluation');
+  
+  const datesEl = document.getElementById('modal-dates');
+  if (datesEl) {
+    datesEl.innerHTML = `${exp.start_date || '2026-09-15'} &rarr; ${exp.end_date || '2026-09-29'}`;
+  }
+
+  const iceEl = document.getElementById('modal-ice-score');
+  if (iceEl) {
+    iceEl.textContent = `ICE Score: ${exp.ice_score ? exp.ice_score.toFixed(2) : '8.67'} (I:${exp.impact_score || 9} C:${exp.evidence_score || 9} E:${exp.ease_score || 8})`;
+  }
+
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+}
+
+function closeExperimentModal() {
+  const modal = document.getElementById('experiment-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+  }
+}
+
+// Global modal dismiss listeners
+document.addEventListener('DOMContentLoaded', () => {
+  const modalEl = document.getElementById('experiment-modal');
+  if (modalEl) {
+    modalEl.addEventListener('click', (e) => {
+      if (e.target === modalEl) closeExperimentModal();
+    });
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeExperimentModal();
+});
 
 // -----------------------------------------------------------------------------
 // 11. TAB 11: QUALITY AUDIT RETRO TERMINAL

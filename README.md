@@ -135,9 +135,9 @@ e:\Growth Campaign & Funnel Intelligence Lab\
 ├── render.yaml                  # Render Blueprint: pip install + uvicorn
 │
 ├── web/                         # Source of truth for frontend
-│   ├── index.html               # 1300+ line dark-mode analytics UI
-│   ├── js/dashboard.js          # 1700+ line Chart.js + Canvas controller
-│   └── data/dashboard_data.json # 15-key analytical payload
+│   ├── index.html               # 1800+ line dark-mode analytics UI (16 interactive tabs)
+│   ├── js/dashboard.js          # 2400+ line Chart.js + Canvas controller (interactive HUDs, radar, donut, modal)
+│   └── data/dashboard_data.json # 15-key analytical payload with 21-field Experiment OS
 │
 ├── backend/
 │   ├── main.py                  # FastAPI: 8 endpoints (scorecard, decomposition,
