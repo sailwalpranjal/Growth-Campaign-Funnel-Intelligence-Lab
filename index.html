@@ -180,7 +180,12 @@
 
       <!-- RESPONSIVE TOUCH-FRIENDLY TABS -->
       <div class="tab-nav-container flex space-x-1.5 overflow-x-auto py-2 border-t border-white/5 text-xs font-medium">
-        <button onclick="switchTab('overview')" id="tab-btn-overview" class="tab-pill active px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+                <button onclick="switchTab('command-center')" id="tab-btn-command-center" class="tab-pill active px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+          <span>Command Center</span>
+        </button>
+
+        <button onclick="switchTab('overview')" id="tab-btn-overview" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
           <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
           <span>1. Overview</span>
         </button>
@@ -240,6 +245,11 @@
           <span>Market Intel</span>
         </button>
 
+                <button onclick="switchTab('metric-dict')" id="tab-btn-metric-dict" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="book-marked" class="w-3.5 h-3.5"></i>
+          <span>Metrics</span>
+        </button>
+
         <button onclick="switchTab('quality')" id="tab-btn-quality" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
           <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
           <span>11. Audit Daemon</span>
@@ -259,7 +269,182 @@
     <!-- =================================================================== -->
     <!-- TAB 1: EXECUTIVE OVERVIEW                                          -->
     <!-- =================================================================== -->
-    <section id="tab-overview" class="tab-content space-y-4 sm:space-y-6">
+    
+    <!-- =================================================================== -->
+    <!-- TAB 0: COMMAND CENTER                                              -->
+    <!-- =================================================================== -->
+    <section id="tab-command-center" class="tab-content space-y-4 sm:space-y-6">
+      <!-- EXECUTIVE QUESTION HEADER -->
+      <div class="designer-card rounded-2xl p-4 sm:p-6 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-950/40 via-transparent to-violet-950/30 pointer-events-none"></div>
+        <div class="relative z-10">
+          <div class="flex items-center space-x-2 text-brandIndigo text-[11px] font-mono font-semibold uppercase tracking-wider mb-2">
+            <i data-lucide="zap" class="w-3.5 h-3.5"></i>
+            <span>Growth Command Center</span>
+            <span class="ml-auto text-slate-500 font-normal normal-case">Khatabook Growth Intelligence Platform</span>
+          </div>
+          <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">What should the growth team focus on right now?</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1 max-w-3xl">A single-screen answer to seven questions every Growth Manager needs at the start of each week. Every number links to a detailed diagnostic tab.</p>
+        </div>
+      </div>
+
+      <!-- 7 EXECUTIVE QUESTIONS: 2-column grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+
+        <!-- Q1: What changed? -->
+        <div class="designer-card rounded-xl p-4 sm:p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-md bg-indigo-950 border border-indigo-700/50 flex items-center justify-center text-[10px] font-mono font-bold text-indigo-300">Q1</span>
+            <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider">What changed?</span>
+          </div>
+          <p class="text-sm text-white font-semibold leading-snug">Scaling spend 19x caused cost per approved conversion to surge 4x (+303.7%).</p>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Campaign 936 ($ 2,893) delivered approved conversions at $15.81 each. Campaign 1178 ($55,662) delivered the same outcome at $63.83 — a $48 per-unit cost explosion despite 19x more spend.</p>
+          <button onclick="switchTab('waterfall')" class="mt-3 text-xs text-brandIndigo hover:text-white font-semibold flex items-center gap-1 transition-colors">
+            <i data-lucide="arrow-right" class="w-3 h-3"></i> Inspect 3-Factor Waterfall
+          </button>
+        </div>
+
+        <!-- Q2: Why did it change? -->
+        <div class="designer-card rounded-xl p-4 sm:p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-md bg-cyan-950 border border-cyan-700/50 flex items-center justify-center text-[10px] font-mono font-bold text-cyan-300">Q2</span>
+            <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Why did it change?</span>
+          </div>
+          <p class="text-sm text-white font-semibold leading-snug">98.1% of the cost surge came from post-click conversion collapse — not from media buying.</p>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">CPM actually improved 23.6% at scale (cheaper inventory). CTR decay added minor cost pressure (+$9.7%). The real culprit: post-click approved conversion rate fell 73.8% (9.22% → 2.42%), accounting for $47.10 of the $48.02 gap. Direct standardization confirms this persists even under identical audience weighting.</p>
+          <button onclick="switchTab('standardization')" class="mt-3 text-xs text-brandCyan hover:text-white font-semibold flex items-center gap-1 transition-colors">
+            <i data-lucide="arrow-right" class="w-3 h-3"></i> View Mix Standardization
+          </button>
+        </div>
+
+        <!-- Q3: Where is the biggest opportunity? -->
+        <div class="designer-card rounded-xl p-4 sm:p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-md bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-[10px] font-mono font-bold text-emerald-300">Q3</span>
+            <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider">Where is the biggest opportunity?</span>
+          </div>
+          <p class="text-sm text-white font-semibold leading-snug">Post-click form conversion is the primary lever. 92.6% of Campaign 1178 clicks never submit an enquiry.</p>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">If click-to-enquiry rate recovers from 7.4% to even half of Campaign 936's 27.1%, the blended cost per approved conversion would fall materially without increasing ad spend. This is the P0 experiment opportunity — ICE score 8.67.</p>
+          <button onclick="switchTab('funnel')" class="mt-3 text-xs text-brandEmerald hover:text-white font-semibold flex items-center gap-1 transition-colors">
+            <i data-lucide="arrow-right" class="w-3 h-3"></i> Inspect Funnel Drop-off
+          </button>
+        </div>
+
+        <!-- Q4: What experiments are running / planned? -->
+        <div class="designer-card rounded-xl p-4 sm:p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-md bg-violet-950 border border-violet-700/50 flex items-center justify-center text-[10px] font-mono font-bold text-violet-300">Q4</span>
+            <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider">What should we test next?</span>
+          </div>
+          <p class="text-sm text-white font-semibold leading-snug">Three P0 experiments are ready to run, all derived from real data anomalies.</p>
+          <div class="mt-2 space-y-1.5">
+            <div class="flex items-start gap-2 text-xs">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0"></span>
+              <span class="text-slate-300"><strong class="text-white">EXP-001</strong> Ad creative value prop realignment (ICE 8.67)</span>
+            </div>
+            <div class="flex items-start gap-2 text-xs">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0"></span>
+              <span class="text-slate-300"><strong class="text-white">EXP-002</strong> Post-click landing form friction reduction (ICE 8.00)</span>
+            </div>
+            <div class="flex items-start gap-2 text-xs">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0"></span>
+              <span class="text-slate-300"><strong class="text-white">EXP-003</strong> Budget reallocation to stable segments (ICE 8.67)</span>
+            </div>
+          </div>
+          <button onclick="switchTab('growth-os')" class="mt-3 text-xs text-brandViolet hover:text-white font-semibold flex items-center gap-1 transition-colors">
+            <i data-lucide="arrow-right" class="w-3 h-3"></i> Open Growth OS Pipeline
+          </button>
+        </div>
+
+        <!-- Q5: What did we learn? -->
+        <div class="designer-card rounded-xl p-4 sm:p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-md bg-amber-950 border border-amber-700/50 flex items-center justify-center text-[10px] font-mono font-bold text-amber-300">Q5</span>
+            <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider">What did we learn from the data?</span>
+          </div>
+          <p class="text-sm text-white font-semibold leading-snug">Scale without post-click optimization is budget destruction. Mix adjustment proves it is not an audience composition problem.</p>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">Even under identical demographic weights (direct standardization), Campaign 1178's cost per approved conversion is structurally higher — ruling out audience skew as a confound. The issue is intra-segment post-click conversion decay. This is a learnable, testable, fixable problem.</p>
+          <button onclick="switchTab('standardization')" class="mt-3 text-xs text-brandAmber hover:text-white font-semibold flex items-center gap-1 transition-colors">
+            <i data-lucide="arrow-right" class="w-3 h-3"></i> View Mix Adjustment Proof
+          </button>
+        </div>
+
+        <!-- Q6: What market signals matter? -->
+        <div class="designer-card rounded-xl p-4 sm:p-5">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-md bg-sky-950 border border-sky-700/50 flex items-center justify-center text-[10px] font-mono font-bold text-sky-300">Q6</span>
+            <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider">What market signals matter?</span>
+          </div>
+          <p class="text-sm text-white font-semibold leading-snug">OkCredit is retreating. BharatPe's hardware scale is a competitive gap. App store trust signals point to onboarding friction.</p>
+          <div class="mt-2 space-y-1.5">
+            <div class="flex items-start gap-2 text-xs">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0"></span>
+              <span class="text-slate-300">OkCredit P2P lending shut down (RBI 2025) — acquisition window in their Tier-3 markets</span>
+            </div>
+            <div class="flex items-start gap-2 text-xs">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+              <span class="text-slate-300">BharatPe 5M+ Soundboxes: payment data Khatabook currently lacks</span>
+            </div>
+            <div class="flex items-start gap-2 text-xs">
+              <span class="mt-0.5 w-1.5 h-1.5 rounded-full bg-rose-400 shrink-0"></span>
+              <span class="text-slate-300">App Store signal: unsolicited calls post-signup flagged as uninstall trigger</span>
+            </div>
+          </div>
+          <button onclick="switchTab('market-intel')" class="mt-3 text-xs text-brandCyan hover:text-white font-semibold flex items-center gap-1 transition-colors">
+            <i data-lucide="arrow-right" class="w-3 h-3"></i> Open Market Intelligence
+          </button>
+        </div>
+
+        <!-- Q7: How reliable is the underlying data? (full width) -->
+        <div class="designer-card rounded-xl p-4 sm:p-5 lg:col-span-2">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-6 h-6 rounded-md bg-slate-800 border border-slate-600/50 flex items-center justify-center text-[10px] font-mono font-bold text-slate-300">Q7</span>
+            <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider">How reliable is the underlying data?</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+              <p class="text-xs font-semibold text-emerald-400 mb-1">What we can trust</p>
+              <ul class="text-xs text-slate-400 space-y-1">
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-emerald-400">+</span>1,143 real ad records, zero synthetic values</li>
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-emerald-400">+</span>11-check automated data quality audit (all passed)</li>
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-emerald-400">+</span>Ratio-of-sums aggregation prevents Simpson's paradox</li>
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-emerald-400">+</span>Decomposition reconciles to 100.000% (zero residual)</li>
+              </ul>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-amber-400 mb-1">Known limitations</p>
+              <ul class="text-xs text-slate-400 space-y-1">
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-amber-400">~</span>No app install, login, or retention data available</li>
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-amber-400">~</span>Dataset ends at approved conversion — no downstream LTV</li>
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-amber-400">~</span>No time dimension — cannot compute period-over-period trends</li>
+              </ul>
+            </div>
+            <div>
+              <p class="text-xs font-semibold text-rose-400 mb-1">What we will not compute</p>
+              <ul class="text-xs text-slate-400 space-y-1">
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-rose-400">×</span>Revenue or ROAS — no transaction data exists</li>
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-rose-400">×</span>True CAC — excludes blended organic spend</li>
+                <li class="flex items-start gap-1.5"><span class="mt-0.5 text-rose-400">×</span>Khatabook internal metrics — 100% public datasets only</li>
+              </ul>
+            </div>
+          </div>
+          <div class="mt-4 pt-4 border-t border-white/5 flex items-center gap-3 text-xs">
+            <span class="flex items-center gap-1.5 text-emerald-400 font-semibold"><i data-lucide="shield-check" class="w-3 h-3"></i> 40 tests passing</span>
+            <span class="text-slate-600">|</span>
+            <span class="text-slate-400">Dataset A: 1,143 records</span>
+            <span class="text-slate-600">|</span>
+            <span class="text-slate-400">Dataset B: 12,330 sessions</span>
+            <span class="text-slate-600">|</span>
+            <button onclick="switchTab('quality')" class="text-slate-400 hover:text-white flex items-center gap-1 transition-colors">
+              <i data-lucide="terminal" class="w-3 h-3"></i> Audit Daemon
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="tab-overview" class="tab-content hidden space-y-4 sm:space-y-6">
       <!-- Problem Banner -->
       <div class="designer-card rounded-2xl p-4 sm:p-6 relative overflow-hidden">
         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 relative z-10">
@@ -444,6 +629,15 @@
     <!-- TAB 2: EFFICIENCY WATERFALL                                        -->
     <!-- =================================================================== -->
     <section id="tab-waterfall" class="tab-content hidden space-y-4 sm:space-y-6">
+      <!-- Page Purpose Header -->
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+        <div class="text-[11px] text-slate-500 font-mono">
+          <span class="text-slate-400 font-semibold">This page answers:</span> What caused cost per approved conversion to change between campaigns? &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Data:</span> Dataset A (1,143 ad records) &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Decision:</span> Which lever (CPM, CTR, or conversion rate) to fix first
+        </div>
+      </div>
+
       <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4">
         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
           <div>
@@ -533,6 +727,15 @@
     <!-- TAB 3: MULTI-STAGE FUNNEL FLOW                                     -->
     <!-- =================================================================== -->
     <section id="tab-funnel" class="tab-content hidden space-y-4 sm:space-y-6">
+      <!-- Page Purpose Header -->
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+        <div class="text-[11px] text-slate-500 font-mono">
+          <span class="text-slate-400 font-semibold">This page answers:</span> Where exactly do users drop off in the acquisition funnel? &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Data:</span> Dataset A campaigns &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Decision:</span> Where to focus conversion rate optimization effort
+        </div>
+      </div>
+
       <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-6">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
           <div>
@@ -844,6 +1047,15 @@
     <!-- TAB 6: AUDIENCE BUBBLE MATRIX                                      -->
     <!-- =================================================================== -->
     <section id="tab-audience" class="tab-content hidden space-y-4 sm:space-y-6">
+      <!-- Page Purpose Header -->
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+        <div class="text-[11px] text-slate-500 font-mono">
+          <span class="text-slate-400 font-semibold">This page answers:</span> Which audience segments are statistically reliable and most cost-efficient? &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Data:</span> Dataset A interest/age/gender breakdowns &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Decision:</span> Which segments to scale, pause, or test further
+        </div>
+      </div>
+
       <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-5">
         <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
           <div>
@@ -896,6 +1108,15 @@
     <!-- TAB 7: LIVE A/B TESTING LAB (BELL CURVES)                          -->
     <!-- =================================================================== -->
     <section id="tab-ab-lab" class="tab-content hidden space-y-4 sm:space-y-6">
+      <!-- Page Purpose Header -->
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+        <div class="text-[11px] text-slate-500 font-mono">
+          <span class="text-slate-400 font-semibold">This page answers:</span> Is this observed conversion difference statistically significant and large enough to act on? &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Data:</span> User-entered experiment results + real baseline rates &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Decision:</span> Ship variant, extend test, or do not conclude
+        </div>
+      </div>
+
       <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-5">
         <div>
           <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
@@ -1027,6 +1248,15 @@
     <!-- TAB 8: CONSUMER INTENT & SESSIONS                                  -->
     <!-- =================================================================== -->
     <section id="tab-consumer" class="tab-content hidden space-y-4 sm:space-y-6">
+      <!-- Page Purpose Header -->
+      <div class="flex flex-wrap items-start justify-between gap-3 mb-1">
+        <div class="text-[11px] text-slate-500 font-mono">
+          <span class="text-slate-400 font-semibold">This page answers:</span> How does on-site session behavior correlate with conversion outcomes? &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Data:</span> Dataset B (12,330 UCI sessions) &nbsp;|&nbsp;
+          <span class="text-slate-400 font-semibold">Decision:</span> Which behavioral signals to surface in CRM re-engagement targeting
+        </div>
+      </div>
+
       <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-5">
         <div>
           <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
@@ -1200,6 +1430,32 @@
     <!-- =================================================================== -->
     <!-- TAB 11: QUALITY AUDIT TERMINAL                                     -->
     <!-- =================================================================== -->
+    
+    <!-- =================================================================== -->
+    <!-- TAB: METRIC DICTIONARY                                             -->
+    <!-- =================================================================== -->
+    <section id="tab-metric-dict" class="tab-content hidden space-y-4 sm:space-y-6">
+      <!-- Page purpose header -->
+      <div class="designer-card rounded-2xl p-4 sm:p-6">
+        <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-2">
+          <i data-lucide="book-marked" class="w-3.5 h-3.5"></i>
+          <span>Metric & Methodology Dictionary</span>
+        </div>
+        <h2 class="text-base sm:text-xl font-extrabold text-white">In-Product Metric Reference</h2>
+        <p class="text-xs text-slate-400 mt-1 max-w-3xl">Every metric, abbreviation, and formula used across this platform. Includes exact formula, derivation chain, data source, confidence level, and what it can and cannot prove. No acronym is assumed to be self-evident.</p>
+        <!-- Search box -->
+        <div class="mt-4 relative">
+          <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-500"></i>
+          <input type="text" id="metric-search" placeholder="Search metrics (e.g. CTR, CAC, p-value)..." 
+            class="w-full max-w-md pl-9 pr-4 py-2 rounded-lg bg-slate-900/80 border border-white/10 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-indigo-500/60" 
+            oninput="filterMetrics(this.value)">
+        </div>
+      </div>
+
+      <!-- Metric cards grid -->
+      <div id="metric-dict-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-4"></div>
+    </section>
+
     <section id="tab-quality" class="tab-content hidden space-y-4 sm:space-y-6">
       <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-6">
         <div>

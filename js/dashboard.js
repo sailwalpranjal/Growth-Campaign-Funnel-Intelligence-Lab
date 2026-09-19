@@ -97,6 +97,19 @@ function switchTab(tabId) {
   }, 40);
 
   // Lazy render on first visit
+  
+  if (tabId === 'metric-dict' && DASHBOARD_DATA?.metric_dictionary && !window._metricDictRendered) {
+    renderMetricDictionary();
+    window._metricDictRendered = true;
+  }
+  if (tabId === 'command-center') {
+    if (window.lucide) window.lucide.createIcons();
+    if (DASHBOARD_DATA?.growth_os && !window._growthOsRendered) {
+        renderGrowthOS();
+        window._growthOsRendered = true;
+    }
+  }
+
   if (tabId === 'growth-os' && DASHBOARD_DATA?.growth_os && !window._growthOsRendered) {
     renderGrowthOS();
     window._growthOsRendered = true;
@@ -109,6 +122,7 @@ function switchTab(tabId) {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await initDashboard();
+  switchTab('command-center');
 });
 
 async function initDashboard() {
@@ -147,6 +161,71 @@ async function initDashboard() {
 
   // Attach Bell Curve Interactive Crosshair
   initBellCurveCrosshair();
+
+
+  // App Store Signals
+  const appStoreData = DASHBOARD_DATA.market_intelligence.app_store_signals;
+  if (appStoreData) {
+    const appStoreHtml = `
+      <div class="mt-6 pt-6 border-t border-white/10 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="smartphone" class="w-4 h-4 text-brandIndigo"></i> App Store Signal Analysis
+          </h3>
+          <span class="px-2 py-1 rounded-md bg-slate-900 border border-slate-700 text-[10px] font-mono text-slate-400">Publicly observable Play Store review patterns — not a statistical sample</span>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <!-- Positive Themes -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Positive Signals (Protect & Scale)</h4>
+            ${appStoreData.positive_themes.map(t => `
+              <div class="p-3.5 rounded-xl bg-emerald-950/10 border-l-2 border-l-emerald-500 border border-white/5 space-y-1.5">
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-xs text-white font-medium">${t.theme}</span>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-900/60 text-emerald-300">${t.signal_strength}</span>
+                </div>
+                <p class="text-[11px] text-slate-400">${t.growth_implication}</p>
+              </div>
+            `).join('')}
+          </div>
+          
+          <!-- Friction Themes -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-semibold text-rose-400 uppercase tracking-wider">Friction Signals (Fix & Test)</h4>
+            ${appStoreData.friction_themes.map(t => `
+              <div class="p-3.5 rounded-xl bg-rose-950/10 border-l-2 border-l-rose-500 border border-white/5 space-y-1.5">
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-xs text-white font-medium">${t.theme}</span>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold ${t.signal_strength === 'Recurring' ? 'bg-rose-900/60 text-rose-300' : 'bg-amber-900/60 text-amber-300'}">${t.signal_strength}</span>
+                </div>
+                <p class="text-[11px] text-slate-400">${t.growth_implication}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Hypotheses -->
+        <div class="p-4 rounded-xl bg-indigo-950/20 border border-indigo-900/40 space-y-2">
+          <h4 class="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-2">Derived Experiment Hypotheses</h4>
+          <ul class="space-y-2">
+            ${appStoreData.experiment_hypotheses.map(h => `
+              <li class="flex items-start gap-2 text-xs text-slate-300">
+                <i data-lucide="flask-conical" class="w-3.5 h-3.5 text-brandIndigo shrink-0 mt-0.5"></i>
+                <span>${h}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      </div>
+    `;
+    
+    // Find the market-intel tab container and append (or insert inside existing content container if there is one)
+    const container = document.getElementById('market-intel-container') || document.querySelector('#tab-market-intel > div > div:last-child');
+    if (container) {
+      container.innerHTML += appStoreHtml;
+    }
+  }
 
   if (window.lucide) {
     lucide.createIcons();
@@ -1592,6 +1671,71 @@ function renderGrowthOS() {
     `;
   }).join('');
 
+
+  // App Store Signals
+  const appStoreData = DASHBOARD_DATA.market_intelligence.app_store_signals;
+  if (appStoreData) {
+    const appStoreHtml = `
+      <div class="mt-6 pt-6 border-t border-white/10 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i data-lucide="smartphone" class="w-4 h-4 text-brandIndigo"></i> App Store Signal Analysis
+          </h3>
+          <span class="px-2 py-1 rounded-md bg-slate-900 border border-slate-700 text-[10px] font-mono text-slate-400">Publicly observable Play Store review patterns — not a statistical sample</span>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <!-- Positive Themes -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Positive Signals (Protect & Scale)</h4>
+            ${appStoreData.positive_themes.map(t => `
+              <div class="p-3.5 rounded-xl bg-emerald-950/10 border-l-2 border-l-emerald-500 border border-white/5 space-y-1.5">
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-xs text-white font-medium">${t.theme}</span>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-emerald-900/60 text-emerald-300">${t.signal_strength}</span>
+                </div>
+                <p class="text-[11px] text-slate-400">${t.growth_implication}</p>
+              </div>
+            `).join('')}
+          </div>
+          
+          <!-- Friction Themes -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-semibold text-rose-400 uppercase tracking-wider">Friction Signals (Fix & Test)</h4>
+            ${appStoreData.friction_themes.map(t => `
+              <div class="p-3.5 rounded-xl bg-rose-950/10 border-l-2 border-l-rose-500 border border-white/5 space-y-1.5">
+                <div class="flex items-start justify-between gap-2">
+                  <span class="text-xs text-white font-medium">${t.theme}</span>
+                  <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold ${t.signal_strength === 'Recurring' ? 'bg-rose-900/60 text-rose-300' : 'bg-amber-900/60 text-amber-300'}">${t.signal_strength}</span>
+                </div>
+                <p class="text-[11px] text-slate-400">${t.growth_implication}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- Hypotheses -->
+        <div class="p-4 rounded-xl bg-indigo-950/20 border border-indigo-900/40 space-y-2">
+          <h4 class="text-xs font-semibold text-indigo-300 uppercase tracking-wider mb-2">Derived Experiment Hypotheses</h4>
+          <ul class="space-y-2">
+            ${appStoreData.experiment_hypotheses.map(h => `
+              <li class="flex items-start gap-2 text-xs text-slate-300">
+                <i data-lucide="flask-conical" class="w-3.5 h-3.5 text-brandIndigo shrink-0 mt-0.5"></i>
+                <span>${h}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      </div>
+    `;
+    
+    // Find the market-intel tab container and append (or insert inside existing content container if there is one)
+    const container = document.getElementById('market-intel-container') || document.querySelector('#tab-market-intel > div > div:last-child');
+    if (container) {
+      container.innerHTML += appStoreHtml;
+    }
+  }
+
   if (window.lucide) window.lucide.createIcons();
 }
 
@@ -1751,4 +1895,54 @@ function renderMarketIntel() {
   container.innerHTML = html;
 
   if (window.lucide) window.lucide.createIcons();
+}
+
+
+function renderMetricDictionary() {
+  const container = document.getElementById('metric-dict-container');
+  if (!container || !DASHBOARD_DATA?.metric_dictionary) return;
+
+  const metrics = DASHBOARD_DATA.metric_dictionary;
+  container.innerHTML = metrics.map(m => {
+    const isAvailable = m.availability === 'Available';
+    const confidenceColor = m.confidence === 'High' ? 'text-emerald-400' : m.confidence === 'Medium' ? 'text-amber-400' : 'text-rose-400';
+    const availBadge = isAvailable 
+      ? '<span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/40">Available</span>'
+      : '<span class="px-1.5 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-950/80 text-rose-300 border border-rose-700/40">Not Available</span>';
+    
+    return `<div class="designer-card rounded-xl p-4 sm:p-5 space-y-3 metric-dict-card" data-metric="${m.metric.toLowerCase()}">
+      <div class="flex items-start justify-between gap-2">
+        <h3 class="font-bold text-sm text-white leading-tight">${m.metric}</h3>
+        ${availBadge}
+      </div>
+      <div class="font-mono text-xs text-brandIndigo bg-indigo-950/40 border border-indigo-800/30 rounded-lg px-3 py-2">${m.formula}</div>
+      <div class="space-y-1.5 text-xs">
+        <div class="flex items-start gap-2">
+          <span class="text-slate-500 shrink-0 w-20">Source</span>
+          <span class="text-slate-300">${m.data_source || 'N/A'}</span>
+        </div>
+        <div class="flex items-start gap-2">
+          <span class="text-slate-500 shrink-0 w-20">Confidence</span>
+          <span class="font-semibold ${confidenceColor}">${m.confidence}</span>
+        </div>
+        ${m.aggregation_method ? `<div class="flex items-start gap-2"><span class="text-slate-500 shrink-0 w-20">Method</span><span class="text-slate-300">${m.aggregation_method}</span></div>` : ''}
+        <div class="pt-1.5 border-t border-white/5">
+          <p class="text-slate-400 leading-relaxed">${m.known_limitation}</p>
+        </div>
+        <div class="pt-1.5 border-t border-white/5">
+          <p class="text-[11px] text-indigo-300/80 leading-relaxed"><span class="font-semibold text-indigo-400">Growth relevance:</span> ${m.khatabook_relevance}</p>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  if (window.lucide) window.lucide.createIcons();
+}
+
+function filterMetrics(query) {
+  const cards = document.querySelectorAll('.metric-dict-card');
+  const q = query.toLowerCase();
+  cards.forEach(card => {
+    const text = card.dataset.metric + ' ' + card.textContent.toLowerCase();
+    card.style.display = text.includes(q) ? '' : 'none';
+  });
 }

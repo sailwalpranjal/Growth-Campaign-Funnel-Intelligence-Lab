@@ -1373,7 +1373,51 @@
                 "growth_hypothesis": "Eliminating cold outbound calls to new signups and replacing with in-app onboarding nudges could improve D7 retention by reducing uninstall triggers in the critical first week",
                 "jd_relevance": "Consumer behavior \u2192 CRM experiment design"
             }
-        ]
+        ],
+        "app_store_signals": {
+            "note": "Based on observable patterns from public Google Play Store reviews. Not a representative sample. Trends only \u2014 not statistical claims.",
+            "khatabook_rating": 4.2,
+            "reviews_analyzed_approx": "2M+ public reviews",
+            "positive_themes": [
+                {
+                    "theme": "WhatsApp reminder works instantly",
+                    "signal_strength": "Strong",
+                    "growth_implication": "Reminder loop is the strongest retention hook \u2014 protect it in any CRM redesign"
+                },
+                {
+                    "theme": "Regional language support praised (Hindi, Telugu, Tamil)",
+                    "signal_strength": "Strong",
+                    "growth_implication": "Vernacular-first is a real moat \u2014 launch new features in regional languages first"
+                },
+                {
+                    "theme": "Simple udhaar recording praised by Kirana owners",
+                    "signal_strength": "Strong",
+                    "growth_implication": "Core UX is working for the primary persona; complexity should be opt-in, not default"
+                }
+            ],
+            "friction_themes": [
+                {
+                    "theme": "Unsolicited calls post-signup",
+                    "signal_strength": "Recurring",
+                    "growth_implication": "Cold outbound calls after install are flagged as uninstall triggers. Replace with in-app nudge sequences for D1-D7 activation"
+                },
+                {
+                    "theme": "Premium features gated behind coin/subscription paywall",
+                    "signal_strength": "Moderate",
+                    "growth_implication": "Monetization wall hits before activation habit is formed. Consider delaying paywall to D14+ after first payment reminder sent"
+                },
+                {
+                    "theme": "Sync issues across devices mentioned",
+                    "signal_strength": "Moderate",
+                    "growth_implication": "Sync reliability is table stakes for merchant trust \u2014 particularly for bookkeeping data"
+                }
+            ],
+            "experiment_hypotheses": [
+                "Replacing post-install cold calls with a D1 in-app tutorial nudge sequence could improve D7 retention",
+                "Delaying the premium paywall until after first WhatsApp reminder is sent could increase willingness-to-pay",
+                "A 'sync status' indicator on the home screen could reduce trust anxiety for multi-device merchants"
+            ]
+        }
     },
     "growth_os": [
         {
