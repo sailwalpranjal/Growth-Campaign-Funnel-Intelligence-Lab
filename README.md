@@ -1,7 +1,7 @@
 # Khatabook Growth Intelligence Platform
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests Passing](https://img.shields.io/badge/tests-40%20passed-brightgreen.svg)](tests/)
+[![Tests Passing](https://img.shields.io/badge/tests-44%20passed-brightgreen.svg)](tests/)
 [![Data Integrity](https://img.shields.io/badge/data%20provenance-100%25%20real%20public-orange.svg)](data/)
 [![Live Dashboard](https://img.shields.io/badge/live%20dashboard-Vercel-teal.svg)](https://growth-campaign-funnel-intelligence-lab.vercel.app)
 [![API](https://img.shields.io/badge/backend%20API-Render%20Free-purple.svg)](https://growth-intelligence-api.onrender.com)
@@ -174,13 +174,13 @@ e:\Growth Campaign & Funnel Intelligence Lab\
 │   ├── limitations.md           # Honest capability boundaries
 │   └── khatabook_growth_strategy.md  # Khatabook product & growth analysis
 │
-├── tests/                       # 40 automated tests
+├── tests/                       # 44 automated tests
 │   ├── test_metrics.py          # Ratio-of-sums, safe_divide, scorecard
 │   ├── test_diagnostics.py      # Decomposition bridge, mix adjustment
 │   ├── test_statistics.py       # Z-test, CI, sample size
 │   ├── test_funnel.py           # Funnel stage calculations
 │   ├── test_quality.py          # Data quality audit checks
-│   ├── test_backend.py          # FastAPI endpoint integration
+│   ├── test_backend.py          # FastAPI endpoint integration (10 endpoints)
 │   ├── test_experiment_engine.py # ICE scoring, hypothesis pipeline
 │   └── test_market_data.py      # Market intelligence data structure
 │
@@ -217,7 +217,7 @@ python scripts/run_analysis.py
 python scripts/export_reports.py
 python scripts/export_web_data.py
 
-# Run full test suite (40 tests)
+# Run full test suite (44 tests)
 python -m pytest -q
 
 # Start backend API

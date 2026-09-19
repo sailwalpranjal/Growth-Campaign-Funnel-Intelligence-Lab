@@ -73,7 +73,10 @@ def root() -> Dict[str, Any]:
             "efficiency_decomposition": "/api/decomposition?base=936&target=1178",
             "experiment_backlog": "/api/experiments",
             "ab_test_calculator": "POST /api/ab-test",
-            "sample_size_planner": "POST /api/sample-size"
+            "sample_size_planner": "POST /api/sample-size",
+            "market_intelligence": "/api/market-intelligence",
+            "hypothesis_pipeline": "/api/hypothesis-pipeline",
+            "metric_dictionary": "/api/metric-dictionary"
         }
     }
 
@@ -170,11 +173,6 @@ def get_experiments() -> Dict[str, Any]:
         raise HTTPException(status_code=500, detail=str(e))
 
 
-if __name__ == "__main__":
-    import uvicorn
-    port = int(os.environ.get("PORT", 8000))
-    uvicorn.run("backend.main:app", host="0.0.0.0", port=port, reload=True)
-
 @app.get("/api/market-intelligence")
 def get_market_intelligence() -> Dict[str, Any]:
     """Return structured market intelligence: MSME landscape, competitor matrix, growth loops."""
@@ -210,3 +208,10 @@ def get_metric_dictionary() -> Dict[str, Any]:
         return {"status": "success", "count": len(data.get("metric_dictionary", [])), "metrics": data.get("metric_dictionary", [])}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=port, reload=True)
+

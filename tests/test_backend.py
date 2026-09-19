@@ -73,3 +73,49 @@ def test_sample_size_endpoint():
     assert res.status_code == 200
     data = res.json()
     assert 7000 <= data["sample_required_per_variant"] <= 8500
+
+
+def test_experiments_endpoint():
+    res = client.get("/api/experiments")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "success"
+    assert data["count"] == 5
+    assert len(data["experiments"]) == 5
+    exp0 = data["experiments"][0]
+    assert "experiment_id" in exp0
+    assert "ice_score" in exp0
+    assert "status" in exp0
+
+
+def test_market_intelligence_endpoint():
+    res = client.get("/api/market-intelligence")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "success"
+    intel = data["market_intelligence"]
+    assert "msme_landscape" in intel
+    assert "competitors" in intel
+    assert len(intel["competitors"]) >= 4
+
+
+def test_hypothesis_pipeline_endpoint():
+    res = client.get("/api/hypothesis-pipeline")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "success"
+    assert data["count"] == 5
+    assert len(data["pipeline"]) == 5
+
+
+def test_metric_dictionary_endpoint():
+    res = client.get("/api/metric-dictionary")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "success"
+    assert data["count"] >= 10
+    metrics = data["metrics"]
+    names = [m["metric"] for m in metrics]
+    assert any("CTR" in n for n in names)
+    assert any("CAC" in n for n in names)
+
