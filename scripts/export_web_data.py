@@ -107,8 +107,14 @@ def main():
     
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(web_data, f, indent=2)
+
+    # Also keep root data/dashboard_data.json in sync for zero-config root hosting
+    root_data_dir = os.path.join(root_dir, "data")
+    root_out_path = os.path.join(root_data_dir, "dashboard_data.json")
+    with open(root_out_path, "w", encoding="utf-8") as f:
+        json.dump(web_data, f, indent=2)
         
-    print(f"[+] Successfully exported web data to {out_path} ({os.path.getsize(out_path):,} bytes)")
+    print(f"[+] Successfully exported web data to {out_path} and {root_out_path} ({os.path.getsize(out_path):,} bytes)")
 
 
 if __name__ == "__main__":
