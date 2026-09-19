@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytical & Methodological Audit Dossier | Mathematical Proofs & Traceability</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230A0C13'/><path d='M8 22V10l8-4 8 4v12l-8 4-8-4z' fill='none' stroke='%2306B6D4' stroke-width='2.2'/><circle cx='16' cy='16' r='3.5' fill='%236366F1'/></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    code, pre, .font-mono { font-family: 'JetBrains Mono', monospace; }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #ffffff !important; color: #0f172a !important; font-size: 11pt; }
+      .print-card { background: #f8fafc !important; border: 1px solid #cbd5e1 !important; color: #0f172a !important; page-break-inside: avoid; }
+      .print-text-dark { color: #0f172a !important; }
+      .print-text-muted { color: #475569 !important; }
+      .print-border { border-color: #cbd5e1 !important; }
+      a { text-decoration: none !important; color: #0f172a !important; }
+      @page { margin: 1.5cm; size: A4 portrait; }
+    }
+  </style>
+</head>
+<body class="bg-[#0A0C13] text-slate-200 min-h-screen antialiased selection:bg-indigo-500/20 selection:text-indigo-300">
+
+  <!-- TOP BAR (SCREEN ONLY) -->
+  <header class="no-print sticky top-0 z-50 bg-[#0A0C13]/90 backdrop-blur-md border-b border-white/10 px-4 sm:px-8 py-3.5 flex items-center justify-between">
+    <div class="flex items-center space-x-3">
+      <a href="../index.html" class="flex items-center space-x-2 text-xs font-mono text-slate-400 hover:text-white transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        <span>Back to Platform</span>
+      </a>
+      <span class="text-slate-600">|</span>
+      <span class="text-xs font-mono text-indigo-400 font-bold uppercase tracking-wider">Methodology &amp; Lineage</span>
+    </div>
+
+    <div class="flex items-center space-x-3">
+      <button onclick="window.print()" class="px-3.5 py-1.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs font-mono flex items-center space-x-1.5 shadow-lg shadow-indigo-500/20 transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        <span>Print / Save PDF</span>
+      </button>
+      <a href="analytical_dossier.pdf" download class="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white border border-white/10 font-bold text-xs font-mono flex items-center space-x-1.5 transition-all">
+        <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+        <span>Download .PDF</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN DOCUMENT CONTAINER -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-8 py-8 sm:py-12 space-y-8 text-slate-200 print-text-dark">
+    
+    <!-- COVER / HEADER BLOCK -->
+    <div class="border-b border-white/10 print-border pb-6 space-y-3">
+      <div class="flex items-center space-x-2 text-indigo-400 text-xs font-mono font-bold tracking-widest uppercase">
+        <span>Khatabook Growth Intelligence</span>
+        <span>&bull;</span>
+        <span>Audit Dossier</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white print-text-dark tracking-tight">
+        Analytical &amp; Methodological Audit Dossier
+      </h1>
+      <p class="text-sm sm:text-base text-slate-400 print-text-muted leading-relaxed">
+        Mathematical proofs, variance identities, direct standardization formulas, statistical test specifications, and full code traceability for the Khatabook Growth Platform.
+      </p>
+      <div class="flex flex-wrap gap-4 text-xs font-mono text-slate-500 pt-2">
+        <div>Author: <span class="text-slate-300 font-semibold print-text-dark">Pranjal Sailwal</span></div>
+        <div>Scope: <span class="text-slate-300 print-text-dark">Mathematical &amp; Statistical Lineage</span></div>
+        <div>Verification: <span class="text-emerald-400 font-bold">44 Automated Unit Tests Passing</span></div>
+        <div>Precision: <span class="text-slate-300 print-text-dark">Machine Epsilon ($10^{-6}$)</span></div>
+      </div>
+    </div>
+
+    <!-- SECTION 1 -->
+    <section class="space-y-4">
+      <div class="flex items-center space-x-2 text-xs font-mono text-indigo-400 uppercase tracking-wider font-bold">
+        <span>Section 1</span>
+        <span>&bull;</span>
+        <span>Mathematical Proofs</span>
+      </div>
+      <h2 class="text-xl sm:text-2xl font-bold text-white print-text-dark">
+        1. Mathematical Proofs &amp; Variance Identities
+      </h2>
+
+      <!-- Proof 1.1 -->
+      <div class="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 print-card space-y-3">
+        <h3 class="font-bold text-sm text-indigo-300 print-text-dark">Proof 1.1: Exact Three-Factor Efficiency Decomposition</h3>
+        <p class="text-xs sm:text-sm text-slate-300 print-text-muted leading-relaxed">
+          Cost per Approved Conversion is expressed as the product of three distinct commercial levers:
+        </p>
+        <div class="p-3 rounded-lg bg-slate-950 font-mono text-xs text-center border border-white/5 my-2">
+          $$\text{Cost per Approved} = \left(\frac{\text{Spend}}{\text{Impressions}}\right) \times \left(\frac{\text{Impressions}}{\text{Clicks}}\right) \times \left(\frac{\text{Clicks}}{\text{Approved}}\right) = \left(\frac{\text{CPM}}{1000}\right) \times \left(\frac{1}{\text{CTR}}\right) \times \left(\frac{1}{\text{ConvRate}}\right)$$
+        </div>
+        <p class="text-xs sm:text-sm text-slate-300 print-text-muted leading-relaxed">
+          Let \(C_0\) be baseline unit cost (Campaign 936, $15.811) and \(C_1\) be scaled unit cost (Campaign 1178, $63.833). Under sequential substitution:
+        </p>
+        <div class="space-y-1.5 font-mono text-xs p-3 rounded-lg bg-slate-950 border border-white/5">
+          <div>Step 1 = \(\left(\frac{\text{CPM}_1}{1000}\right) \times \left(\frac{1}{\text{CTR}_0}\right) \times \left(\frac{1}{\text{ConvRate}_0}\right) = \$12.072\)</div>
+          <div class="text-emerald-400 font-bold">&rarr; Lever 1 (CPM Effect) = Step 1 - \(C_0\) = $12.072 - $15.811 = -$3.739</div>
+          <div class="pt-1">Step 2 = \(\left(\frac{\text{CPM}_1}{1000}\right) \times \left(\frac{1}{\text{CTR}_1}\right) \times \left(\frac{1}{\text{ConvRate}_0}\right) = \$16.732\)</div>
+          <div class="text-amber-400 font-bold">&rarr; Lever 2 (CTR Effect) = Step 2 - Step 1 = $16.732 - $12.072 = +$4.660</div>
+          <div class="pt-1">Step 3 = \(\left(\frac{\text{CPM}_1}{1000}\right) \times \left(\frac{1}{\text{CTR}_1}\right) \times \left(\frac{1}{\text{ConvRate}_1}\right) = C_1 = \$63.833\)</div>
+          <div class="text-rose-400 font-bold">&rarr; Lever 3 (Conversion Effect) = Step 3 - Step 2 = $63.833 - $16.732 = +$47.101</div>
+        </div>
+        <div class="p-2.5 rounded-lg bg-slate-950 border border-white/5 text-center font-mono text-xs text-emerald-400">
+          $$\text{Total Explained Variance} = (-\$3.739) + (+\$4.660) + (+\$47.101) = +\$48.022$$
+          $$\text{Residual Error} = |\Delta C - (\text{Lever}_1 + \text{Lever}_2 + \text{Lever}_3)| = \$0.00000000$$
+        </div>
+        <p class="text-xs text-slate-400 print-text-muted">
+          Validated in unit test <code>tests/test_diagnostics.py::test_decomposition_bridge_mathematical_identity</code>.
+        </p>
+      </div>
+
+      <!-- Proof 1.2 -->
+      <div class="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 print-card space-y-3">
+        <h3 class="font-bold text-sm text-indigo-300 print-text-dark">Proof 1.2: Direct Standardization &amp; Confounding Adjustment</h3>
+        <p class="text-xs sm:text-sm text-slate-300 print-text-muted leading-relaxed">
+          To adjust for demographic composition, we compute the pooled benchmark click distribution across all 4 age categories:
+        </p>
+        <div class="p-3 rounded-lg bg-slate-950 font-mono text-xs text-center border border-white/5 my-2">
+          $$w_i = \frac{\sum_{c} \text{Clicks}_{c, i}}{\sum_{c} \sum_{i} \text{Clicks}_{c, i}}$$
+          $$\text{Cost}_{\text{adj}, c} = \sum_{i} w_i \times \text{Cost per Approved}_{c, i}$$
+        </div>
+        <div class="p-2.5 rounded-lg bg-slate-950 border border-white/5 text-center font-mono text-xs text-cyan-400">
+          $$\text{Cost}_{\text{adj}, 936} = \$23.69 \quad \text{vs.} \quad \text{Cost}_{\text{adj}, 1178} = \$78.16 \quad (\text{Ratio: } 3.30\times)$$
+        </div>
+        <p class="text-xs text-slate-400 print-text-muted">
+          Validated in unit test <code>tests/test_diagnostics.py::test_mix_adjustment_direct_standardization</code>.
+        </p>
+      </div>
+
+      <!-- Proof 1.3 -->
+      <div class="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 print-card space-y-3">
+        <h3 class="font-bold text-sm text-indigo-300 print-text-dark">Proof 1.3: Two-Proportion Hypothesis Testing &amp; Normal Approximation</h3>
+        <p class="text-xs sm:text-sm text-slate-300 print-text-muted leading-relaxed">
+          For test evaluation under null hypothesis \(H_0: p_1 = p_2\):
+        </p>
+        <div class="p-3 rounded-lg bg-slate-950 font-mono text-xs text-center border border-white/5 my-2">
+          $$\hat{p} = \frac{x_1 + x_2}{n_1 + n_2}, \quad \text{SE}_{\text{pooled}} = \sqrt{\hat{p}(1-\hat{p})\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}$$
+          $$z = \frac{\hat{p}_1 - \hat{p}_2}{\text{SE}_{\text{pooled}}}, \quad p\text{-value} = 2 \times (1 - \Phi(|z|))$$
+          $$\text{CI}_{95\%} = (\hat{p}_1 - \hat{p}_2) \pm 1.96 \times \sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}$$
+        </div>
+        <p class="text-xs text-slate-400 print-text-muted">
+          Validated in unit test <code>tests/test_statistics.py::test_two_proportion_z_test_calculation</code>.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 2 -->
+    <section class="space-y-4">
+      <div class="flex items-center space-x-2 text-xs font-mono text-indigo-400 uppercase tracking-wider font-bold">
+        <span>Section 2</span>
+        <span>&bull;</span>
+        <span>Traceability Matrix</span>
+      </div>
+      <h2 class="text-xl sm:text-2xl font-bold text-white print-text-dark">
+        2. Code, Metric &amp; File Traceability Matrix
+      </h2>
+
+      <div class="overflow-x-auto print-card rounded-xl border border-white/10">
+        <table class="w-full text-left text-xs font-mono">
+          <thead class="bg-slate-900 border-b border-white/10 text-slate-400">
+            <tr>
+              <th class="p-3">Analytical Dimension</th>
+              <th class="p-3">Python Source</th>
+              <th class="p-3">SQL Transform</th>
+              <th class="p-3">Export File</th>
+              <th class="p-3">Verification Test</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-slate-300 print-text-muted">
+            <tr>
+              <td class="p-3 font-semibold text-white print-text-dark">Ratio-of-Sums Scorecard</td>
+              <td class="p-3 text-cyan-400">src/metrics.py</td>
+              <td class="p-3">sql/03_metrics.sql</td>
+              <td class="p-3">exports/campaign_scorecard.csv</td>
+              <td class="p-3 text-emerald-400">tests/test_metrics.py</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white print-text-dark">Efficiency Waterfall</td>
+              <td class="p-3 text-cyan-400">src/diagnostics.py</td>
+              <td class="p-3">sql/03_metrics.sql</td>
+              <td class="p-3">reports/campaign_diagnostic.md</td>
+              <td class="p-3 text-emerald-400">tests/test_diagnostics.py</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white print-text-dark">4-Stage Funnel Drop-off</td>
+              <td class="p-3 text-cyan-400">src/diagnostics.py</td>
+              <td class="p-3">sql/06_funnel.sql</td>
+              <td class="p-3">exports/funnel_analysis.csv</td>
+              <td class="p-3 text-emerald-400">tests/test_funnel.py</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white print-text-dark">Segment Stability (&ge;10, 25, 50)</td>
+              <td class="p-3 text-cyan-400">src/diagnostics.py</td>
+              <td class="p-3">sql/04_audience.sql</td>
+              <td class="p-3">exports/segment_stability.csv</td>
+              <td class="p-3 text-emerald-400">tests/test_diagnostics.py</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white print-text-dark">Direct Standardization</td>
+              <td class="p-3 text-cyan-400">src/diagnostics.py</td>
+              <td class="p-3">sql/05_mix_analysis.sql</td>
+              <td class="p-3">exports/mix_analysis.csv</td>
+              <td class="p-3 text-emerald-400">tests/test_diagnostics.py</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white print-text-dark">A/B Testing &amp; Sample Sizing</td>
+              <td class="p-3 text-cyan-400">src/statistics.py</td>
+              <td class="p-3">&mdash;</td>
+              <td class="p-3">Embedded in REST API</td>
+              <td class="p-3 text-emerald-400">tests/test_statistics.py</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white print-text-dark">11-Rule Quality Audit</td>
+              <td class="p-3 text-cyan-400">src/validation.py</td>
+              <td class="p-3">sql/07_quality.sql</td>
+              <td class="p-3">exports/data_quality.csv</td>
+              <td class="p-3 text-emerald-400">tests/test_quality.py</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white print-text-dark">Consumer Session Intent</td>
+              <td class="p-3 text-cyan-400">src/data_loader.py</td>
+              <td class="p-3">sql/02_clean.sql</td>
+              <td class="p-3">exports/consumer_behavior.csv</td>
+              <td class="p-3 text-emerald-400">tests/test_metrics.py</td>
+            </tr>
+            <tr>
+              <td class="p-3 font-semibold text-white print-text-dark">FastAPI REST Endpoints</td>
+              <td class="p-3 text-cyan-400">backend/main.py</td>
+              <td class="p-3">&mdash;</td>
+              <td class="p-3">OpenAPI Swagger /docs</td>
+              <td class="p-3 text-emerald-400">tests/test_backend.py</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FOOTER SIGN OFF -->
+    <footer class="border-t border-white/10 print-border pt-6 flex flex-col sm:flex-row justify-between items-center text-xs font-mono text-slate-500 gap-2">
+      <div>Khatabook Growth Intelligence Platform &bull; Pranjal Sailwal</div>
+      <div>Audit Traceability &bull; Complete Mathematical Rigor</div>
+    </footer>
+
+  </main>
+
+</body>
+</html>

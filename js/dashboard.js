@@ -83,54 +83,43 @@ function switchTab(tabId) {
   if (activeContent) activeContent.classList.remove('hidden');
   if (activeBtn) activeBtn.classList.add('active');
 
-  // Trigger chart resizes on tab switch
-  setTimeout(() => {
-    if (tabId === 'overview' && strategicRadarChartInst) strategicRadarChartInst.resize();
-    if (tabId === 'waterfall') {
-      if (waterfallChartInst) waterfallChartInst.resize();
-      if (waterfallDonutChartInst) waterfallDonutChartInst.resize();
-    }
-    if (tabId === 'funnel') {
-      renderInteractiveFunnelCanvas(currentFunnelCamp);
-    }
-    if (tabId === 'standardization' && mixAdjustmentChartInst) mixAdjustmentChartInst.resize();
-    if (tabId === 'simulator') {
-      if (appFunnelChartInst) appFunnelChartInst.resize();
-      if (ltvCacPaybackChartInst) ltvCacPaybackChartInst.resize();
-    }
-    if (tabId === 'audience') {
-      if (audienceBubbleChartInst) audienceBubbleChartInst.resize();
-      if (audienceDemographicMatrixChartInst) audienceDemographicMatrixChartInst.resize();
-    }
-    if (tabId === 'ab-lab') drawBellCurves();
-    if (tabId === 'consumer') {
-      if (consumerCohortChartInst) consumerCohortChartInst.resize();
-      if (consumerTrafficChartInst) consumerTrafficChartInst.resize();
-    }
-  }, 40);
+  // Trigger chart re-render with next animation frame so DOM layout reflow has completed
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      if (tabId === 'overview') {
+        if (typeof renderStrategicRadarChart === 'function') renderStrategicRadarChart();
+      } else if (tabId === 'waterfall') {
+        if (typeof renderWaterfallChart === 'function') renderWaterfallChart();
+        if (typeof renderWaterfallDonutChart === 'function') renderWaterfallDonutChart();
+      } else if (tabId === 'funnel') {
+        if (typeof renderInteractiveFunnelCanvas === 'function') renderInteractiveFunnelCanvas(currentFunnelCamp || 1178);
+      } else if (tabId === 'standardization') {
+        if (typeof renderMixAdjustmentChart === 'function') renderMixAdjustmentChart();
+      } else if (tabId === 'simulator') {
+        if (typeof initAppSimulator === 'function') initAppSimulator();
+      } else if (tabId === 'audience') {
+        if (typeof renderAudienceBubbleChart === 'function') renderAudienceBubbleChart();
+        if (typeof renderAudienceDemographicMatrix === 'function') renderAudienceDemographicMatrix();
+      } else if (tabId === 'ab-lab') {
+        if (typeof calculateLiveAB === 'function') calculateLiveAB();
+        if (typeof drawBellCurves === 'function') drawBellCurves();
+      } else if (tabId === 'consumer') {
+        if (typeof renderConsumerCharts === 'function') renderConsumerCharts();
+      } else if (tabId === 'roadmap') {
+        if (typeof renderExperiments === 'function') renderExperiments(window.currentExpFilter || 'all');
+      } else if (tabId === 'growth-os') {
+        if (typeof renderGrowthOS === 'function') renderGrowthOS();
+      } else if (tabId === 'market-intel') {
+        if (typeof renderMarketIntel === 'function') renderMarketIntel();
+      } else if (tabId === 'metric-dict') {
+        if (typeof renderMetricDictionary === 'function') renderMetricDictionary();
+      } else if (tabId === 'quality') {
+        if (typeof renderQualityAuditTerminal === 'function') renderQualityAuditTerminal();
+      }
 
-  // Lazy render on first visit
-  
-  if (tabId === 'metric-dict' && DASHBOARD_DATA?.metric_dictionary && !window._metricDictRendered) {
-    renderMetricDictionary();
-    window._metricDictRendered = true;
-  }
-  if (tabId === 'command-center') {
-    if (window.lucide) window.lucide.createIcons();
-    if (DASHBOARD_DATA?.growth_os && !window._growthOsRendered) {
-        renderGrowthOS();
-        window._growthOsRendered = true;
-    }
-  }
-
-  if (tabId === 'growth-os' && DASHBOARD_DATA?.growth_os && !window._growthOsRendered) {
-    renderGrowthOS();
-    window._growthOsRendered = true;
-  }
-  if (tabId === 'market-intel' && DASHBOARD_DATA?.market_intelligence && !window._marketIntelRendered) {
-    renderMarketIntel();
-    window._marketIntelRendered = true;
-  }
+      if (window.lucide) window.lucide.createIcons();
+    }, 45);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -2494,3 +2483,28 @@ function filterMetrics(query) {
     card.style.display = text.includes(q) ? '' : 'none';
   });
 }
+
+// Global window exposure for inline event handlers
+window.switchTab = switchTab;
+window.renderMixAdjustmentChart = renderMixAdjustmentChart;
+window.setMixMode = setMixMode;
+window.initAppSimulator = initAppSimulator;
+window.runAppSimulator = runAppSimulator;
+window.renderAudienceBubbleChart = renderAudienceBubbleChart;
+window.renderAudienceDemographicMatrix = renderAudienceDemographicMatrix;
+window.filterBubbleChart = filterBubbleChart;
+window.renderConsumerCharts = renderConsumerCharts;
+window.setFunnelView = setFunnelView;
+window.setWaterfallMode = setWaterfallMode;
+window.filterExperiments = filterExperiments;
+window.openExperimentModal = openExperimentModal;
+window.closeExperimentModal = closeExperimentModal;
+window.renderGrowthOS = renderGrowthOS;
+window.renderMarketIntel = renderMarketIntel;
+window.renderMetricDictionary = renderMetricDictionary;
+window.filterMetrics = filterMetrics;
+window.renderQualityAuditTerminal = renderQualityAuditTerminal;
+window.loadScenario = loadScenario;
+window.calculateLiveAB = calculateLiveAB;
+window.recalcSampleSize = recalcSampleSize;
+

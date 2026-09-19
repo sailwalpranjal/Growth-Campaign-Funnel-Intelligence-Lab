@@ -686,9 +686,9 @@
       </div>
 
       <!-- Cross-Campaign Strategic Efficiency Radar Section -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 min-w-0 max-w-full">
         <!-- Radar Chart Card (7 cols) -->
-        <div class="designer-card rounded-2xl p-4 sm:p-6 lg:col-span-7 space-y-3">
+        <div class="designer-card rounded-2xl p-4 sm:p-6 lg:col-span-7 space-y-3 min-w-0 overflow-hidden relative">
           <div class="flex justify-between items-center">
             <div>
               <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
@@ -704,7 +704,7 @@
               <span class="flex items-center gap-1 text-slate-400"><span class="w-2 h-2 rounded-full bg-brandRose"></span> Camp 1178</span>
             </div>
           </div>
-          <div class="h-64 sm:h-72 w-full flex items-center justify-center">
+          <div class="h-64 sm:h-72 w-full flex items-center justify-center min-w-0 overflow-hidden relative">
             <canvas id="strategicRadarChart"></canvas>
           </div>
           <div class="grid grid-cols-3 gap-2 text-center text-[10px] font-mono border-t border-white/5 pt-2 text-slate-400">
@@ -834,9 +834,9 @@
         </div>
 
         <!-- Dual Waterfall & Attribution Donut Visualizer -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 pt-1">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 pt-1 min-w-0 max-w-full">
           <!-- Step Waterfall Chart (8 cols) -->
-          <div class="lg:col-span-8 p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col justify-between">
+          <div class="lg:col-span-8 p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col justify-between min-w-0 overflow-hidden relative">
             <div class="flex justify-between items-center mb-1">
               <h4 class="text-xs font-mono font-bold text-slate-300 uppercase flex items-center gap-1.5">
                 <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-brandIndigo"></i>
@@ -844,13 +844,13 @@
               </h4>
               <span class="text-[10px] font-mono text-emerald-400">Zero Residual ($0.00)</span>
             </div>
-            <div class="h-64 sm:h-72 md:h-80 w-full">
+            <div class="h-64 sm:h-72 md:h-80 w-full min-w-0 relative">
               <canvas id="waterfallChart"></canvas>
             </div>
           </div>
 
           <!-- Lever Attribution Donut (4 cols) -->
-          <div class="lg:col-span-4 p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col justify-between space-y-2">
+          <div class="lg:col-span-4 p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col justify-between space-y-2 min-w-0 overflow-hidden relative">
             <div class="flex justify-between items-center">
               <h4 class="text-xs font-mono font-bold text-slate-300 uppercase flex items-center gap-1.5">
                 <i data-lucide="pie-chart" class="w-3.5 h-3.5 text-brandRose"></i>
@@ -858,7 +858,7 @@
               </h4>
               <span class="text-[10px] font-mono text-rose-400 font-bold">+$48.02 Net</span>
             </div>
-            <div class="h-48 sm:h-52 w-full flex items-center justify-center relative">
+            <div class="h-48 sm:h-52 w-full flex items-center justify-center relative min-w-0">
               <canvas id="waterfallDonutChart"></canvas>
             </div>
             <div class="space-y-1.5 text-[10px] font-mono border-t border-white/5 pt-2 text-slate-400">
@@ -1049,8 +1049,8 @@
         </div>
 
         <!-- Chart Canvas + Mathematical Summary -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 items-center">
-          <div class="lg:col-span-2 h-64 sm:h-80 w-full p-2 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 relative">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 items-center min-w-0 max-w-full">
+          <div class="lg:col-span-2 h-64 sm:h-80 w-full p-2 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 relative min-w-0 overflow-hidden">
             <canvas id="mixAdjustmentChart"></canvas>
           </div>
 
@@ -1235,23 +1235,23 @@
         </div>
 
         <!-- Dual Live Charts Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 pt-1">
-          <div class="p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 pt-1 min-w-0 max-w-full">
+          <div class="p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 min-w-0 overflow-hidden relative">
             <h4 class="text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-1.5">
               <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-brandCyan"></i>
               Merchant Volume Progression
             </h4>
-            <div class="h-56 sm:h-64 w-full">
+            <div class="h-56 sm:h-64 w-full min-w-0 relative">
               <canvas id="appFunnelChart"></canvas>
             </div>
           </div>
 
-          <div class="p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5">
+          <div class="p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 min-w-0 overflow-hidden relative">
             <h4 class="text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-1.5">
               <i data-lucide="line-chart" class="w-3.5 h-3.5 text-brandEmerald"></i>
               12-Month Cumulative LTV vs CAC Breakeven
             </h4>
-            <div class="h-56 sm:h-64 w-full">
+            <div class="h-56 sm:h-64 w-full min-w-0 relative">
               <canvas id="ltvCacPaybackChart"></canvas>
             </div>
           </div>
@@ -1314,9 +1314,9 @@
         </div>
 
         <!-- Dual Audience Visualizer: Scatter Matrix + Demographic Conversion Heatmap -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 pt-1">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 pt-1 min-w-0 max-w-full">
           <!-- Scatter Matrix (7 cols) -->
-          <div class="lg:col-span-7 p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col justify-between">
+          <div class="lg:col-span-7 p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col justify-between min-w-0 overflow-hidden relative">
             <div class="flex justify-between items-center mb-1">
               <h4 class="text-xs font-mono font-bold text-slate-300 uppercase flex items-center gap-1.5">
                 <i data-lucide="scatter-chart" class="w-3.5 h-3.5 text-brandCyan"></i>
@@ -1324,13 +1324,13 @@
               </h4>
               <span class="text-[10px] font-mono text-slate-400">Bubble Size = Media Spend</span>
             </div>
-            <div class="h-64 sm:h-80 w-full">
+            <div class="h-64 sm:h-80 w-full min-w-0 relative">
               <canvas id="audienceBubbleChart"></canvas>
             </div>
           </div>
 
           <!-- Demographic Age x Gender Matrix Chart (5 cols) -->
-          <div class="lg:col-span-5 p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col justify-between space-y-2">
+          <div class="lg:col-span-5 p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 flex flex-col justify-between space-y-2 min-w-0 overflow-hidden relative">
             <div class="flex justify-between items-center">
               <h4 class="text-xs font-mono font-bold text-slate-300 uppercase flex items-center gap-1.5">
                 <i data-lucide="users" class="w-3.5 h-3.5 text-brandViolet"></i>
@@ -1338,7 +1338,7 @@
               </h4>
               <span class="text-[10px] font-mono text-brandEmerald font-bold">Males 30-34 Top CR</span>
             </div>
-            <div class="h-64 sm:h-80 w-full">
+            <div class="h-64 sm:h-80 w-full min-w-0 relative">
               <canvas id="audienceDemographicMatrixChart"></canvas>
             </div>
           </div>
@@ -1511,23 +1511,23 @@
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-          <div class="p-3.5 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 min-w-0 max-w-full">
+          <div class="p-3.5 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 min-w-0 overflow-hidden relative">
             <h4 class="text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-1.5">
               <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-brandCyan"></i>
               Conversion Propensity by Visitor Cohort
             </h4>
-            <div class="h-56 sm:h-64 w-full">
+            <div class="h-56 sm:h-64 w-full min-w-0 relative">
               <canvas id="consumerCohortChart"></canvas>
             </div>
           </div>
 
-          <div class="p-3.5 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5">
+          <div class="p-3.5 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 min-w-0 overflow-hidden relative">
             <h4 class="text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-1.5">
               <i data-lucide="line-chart" class="w-3.5 h-3.5 text-brandViolet"></i>
               Traffic Source Conversion Rates
             </h4>
-            <div class="h-56 sm:h-64 w-full">
+            <div class="h-56 sm:h-64 w-full min-w-0 relative">
               <canvas id="consumerTrafficChart"></canvas>
             </div>
           </div>
@@ -1835,17 +1835,23 @@
                 <span class="p-2 rounded-xl bg-sky-950 text-brandCyan border border-sky-800">
                   <i data-lucide="book-open" class="w-4 h-4"></i>
                 </span>
-                <span class="text-[10px] font-mono text-brandCyan font-bold">Playbook</span>
+                <span class="text-[10px] font-mono text-brandCyan font-bold">Executive PDF &bull; 6 KB</span>
               </div>
               <h3 class="font-bold text-xs sm:text-sm text-white mt-2.5">Khatabook Growth Playbook</h3>
               <p class="text-[11px] text-slate-400 mt-1">
                 Executive strategy briefing covering attribution boundaries, Simpson's paradox, and merchant loop dynamics.
               </p>
             </div>
-            <a href="docs/growth_playbook.md" target="_blank" class="w-full py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs font-mono text-center flex items-center justify-center space-x-1.5 transition-all">
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-              <span>View Growth Playbook</span>
-            </a>
+            <div class="space-y-2 pt-1">
+              <a href="docs/growth_playbook.pdf" download class="w-full py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs font-mono text-center flex items-center justify-center space-x-1.5 transition-all shadow-md shadow-sky-500/10">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                <span>Download Executive PDF (.pdf)</span>
+              </a>
+              <a href="docs/growth_playbook.html" target="_blank" class="w-full py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-white/10 font-semibold text-xs font-mono text-center flex items-center justify-center space-x-1.5 transition-all">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>View Interactive Briefing (.html)</span>
+              </a>
+            </div>
           </div>
 
           <div class="p-4 sm:p-5 rounded-xl bg-slate-950/60 border border-purple-900/40 flex flex-col justify-between space-y-3">
@@ -1854,17 +1860,23 @@
                 <span class="p-2 rounded-xl bg-purple-950 text-brandViolet border border-purple-800">
                   <i data-lucide="file-code-2" class="w-4 h-4"></i>
                 </span>
-                <span class="text-[10px] font-mono text-brandViolet font-bold">Audit Lineage</span>
+                <span class="text-[10px] font-mono text-brandViolet font-bold">Audit PDF &bull; 4 KB</span>
               </div>
-              <h3 class="font-bold text-xs sm:text-sm text-white mt-2.5">Analytical & Audit Dossier</h3>
+              <h3 class="font-bold text-xs sm:text-sm text-white mt-2.5">Analytical &amp; Audit Dossier</h3>
               <p class="text-[11px] text-slate-400 mt-1">
                 Mathematical proofs, variance identities, direct standardization formulas, and code traceability.
               </p>
             </div>
-            <a href="docs/analytical_dossier.md" target="_blank" class="w-full py-2.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs font-mono text-center flex items-center justify-center space-x-1.5 transition-all">
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
-              <span>View Audit Dossier</span>
-            </a>
+            <div class="space-y-2 pt-1">
+              <a href="docs/analytical_dossier.pdf" download class="w-full py-2.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs font-mono text-center flex items-center justify-center space-x-1.5 transition-all shadow-md shadow-indigo-500/10">
+                <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                <span>Download Audit PDF (.pdf)</span>
+              </a>
+              <a href="docs/analytical_dossier.html" target="_blank" class="w-full py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-white/10 font-semibold text-xs font-mono text-center flex items-center justify-center space-x-1.5 transition-all">
+                <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                <span>View Interactive Dossier (.html)</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
