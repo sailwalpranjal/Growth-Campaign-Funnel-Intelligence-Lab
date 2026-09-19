@@ -45,19 +45,11 @@ if (window.Chart) {
   Chart.defaults.plugins.tooltip.displayColors = true;
   Chart.defaults.plugins.tooltip.boxPadding = 4;
 
-  // Fluid physics-based cubic-bezier easing & progressive animations
-  Chart.defaults.animation = {
-    duration: 1000,
-    easing: 'easeOutQuart',
-  };
-  Chart.defaults.transitions = {
-    active: {
-      animation: {
-        duration: 250,
-        easing: 'easeOutQuart'
-      }
-    }
-  };
+  // Fast, responsive animation defaults without corrupting built-in transitions
+  if (Chart.defaults.animation) {
+    Chart.defaults.animation.duration = 350;
+    Chart.defaults.animation.easing = 'easeOutQuart';
+  }
   // Ensure touch events are enabled for mobile microinteractions
   Chart.defaults.events = ['mousemove', 'mouseout', 'click', 'touchstart', 'touchmove', 'touchend'];
 }
@@ -561,7 +553,8 @@ function renderMixAdjustmentChart() {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  if (mixAdjustmentChartInst) mixAdjustmentChartInst.destroy();
+  const existing = Chart.getChart(canvas);
+  if (existing) existing.destroy();
 
   // Gradients for Mode A: Cost Comparison
   const gradObserved = createVGradient(ctx, 'rgba(99, 102, 241, 0.95)', 'rgba(79, 70, 229, 0.3)', 280);
@@ -757,6 +750,9 @@ function renderMixAdjustmentChart() {
   }
 
   mixAdjustmentChartInst = new Chart(ctx, chartConfig);
+  if (mixAdjustmentChartInst && typeof mixAdjustmentChartInst.draw === 'function') {
+    mixAdjustmentChartInst.draw();
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -1106,7 +1102,8 @@ function renderAppFunnelChart(installs, otp, d1, d7, soundbox) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  if (appFunnelChartInst) appFunnelChartInst.destroy();
+  const existing = Chart.getChart(canvas);
+  if (existing) existing.destroy();
 
   const gInst = createVGradient(ctx, 'rgba(56, 189, 248, 0.9)', 'rgba(14, 165, 233, 0.25)', 250);
   const gOtp = createVGradient(ctx, 'rgba(99, 102, 241, 0.9)', 'rgba(79, 70, 229, 0.25)', 250);
@@ -1146,6 +1143,9 @@ function renderAppFunnelChart(installs, otp, d1, d7, soundbox) {
       }
     }
   });
+  if (appFunnelChartInst && typeof appFunnelChartInst.draw === 'function') {
+    appFunnelChartInst.draw();
+  }
 }
 
 function renderLtvCacPaybackChart(cac, ltvCurve) {
@@ -1153,7 +1153,8 @@ function renderLtvCacPaybackChart(cac, ltvCurve) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
 
-  if (ltvCacPaybackChartInst) ltvCacPaybackChartInst.destroy();
+  const existing = Chart.getChart(canvas);
+  if (existing) existing.destroy();
 
   const labels = ['M1', 'M2', 'M3', 'M4', 'M5', 'M6', 'M7', 'M8', 'M9', 'M10', 'M11', 'M12'];
   const cacLine = Array(12).fill(cac);
@@ -1243,6 +1244,9 @@ function renderLtvCacPaybackChart(cac, ltvCurve) {
       }
     }
   });
+  if (ltvCacPaybackChartInst && typeof ltvCacPaybackChartInst.draw === 'function') {
+    ltvCacPaybackChartInst.draw();
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -1274,17 +1278,18 @@ function renderAudienceBubbleChart() {
   
   let bubblePoints = rawAudience.map((seg, i) => {
     const age = seg.age || '30-34';
-    const clicks = seg.clicks || (50 + i * 200);
-    const cost = seg.cost_per_approved || (20 + (i % 5) * 12);
-    const spend = seg.spend || (clicks * 1.5);
+    const clicks = Number(seg.clicks) || 0;
+    const cost = Number(seg.cost_per_approved) || 0;
+    const spend = Number(seg.spend) || (clicks * 1.5);
     return {
       x: clicks,
       y: cost,
-      r: Math.min(24, Math.max(6, Math.sqrt(spend / 12))),
+      r: Math.min(22, Math.max(5, Math.sqrt(spend / 10))),
       ageGroup: age,
-      gender: seg.gender || 'M',
+      gender: seg.gender || 'All',
       spend: spend,
-      segmentId: `SEG-INT-${15 + i}`
+      segmentId: seg.segment_id || `INT-${seg.interest || (15 + i)}`,
+      stability: seg.stability_classification || (clicks >= 50 ? 'Stable Core (>= 50 Clicks)' : (clicks >= 25 ? 'Moderate (25-49 Clicks)' : 'High Risk / Volatile (< 25 Clicks)'))
     };
   });
 
@@ -1294,7 +1299,24 @@ function renderAudienceBubbleChart() {
     bubblePoints = bubblePoints.filter(p => p.x < 25);
   }
 
-  if (audienceBubbleChartInst) audienceBubbleChartInst.destroy();
+  // Set HUD banner with first point or active summary
+  if (bubblePoints.length > 0) {
+    const p0 = bubblePoints[0];
+    const cohortEl = document.getElementById('bubble-hud-cohort');
+    const valEl = document.getElementById('bubble-hud-val');
+    const spendEl = document.getElementById('bubble-hud-spend');
+    const classEl = document.getElementById('bubble-hud-class');
+    if (cohortEl) cohortEl.innerText = `${p0.segmentId} | AGE ${p0.ageGroup}`;
+    if (valEl) valEl.innerText = `Traffic: ${p0.x} Clicks | Cost per Approved: $${p0.y.toFixed(2)}`;
+    if (spendEl) spendEl.innerText = `$${p0.spend.toFixed(2)}`;
+    if (classEl) {
+      classEl.innerText = p0.stability;
+      classEl.className = p0.x >= 50 ? 'font-bold text-brandEmerald' : (p0.x >= 25 ? 'font-bold text-brandCyan' : 'font-bold text-brandRose');
+    }
+  }
+
+  const existing = Chart.getChart(canvas);
+  if (existing) existing.destroy();
 
   audienceBubbleChartInst = new Chart(ctx, {
     type: 'bubble',
@@ -1334,7 +1356,7 @@ function renderAudienceBubbleChart() {
       responsive: true,
       maintainAspectRatio: false,
       animation: {
-        duration: 1000,
+        duration: 350,
         easing: 'easeOutQuart'
       },
       onHover: (event, elements) => {
@@ -1348,7 +1370,7 @@ function renderAudienceBubbleChart() {
           const dataIdx = elements[0].index;
           const p = audienceBubbleChartInst.data.datasets[dsIdx].data[dataIdx];
 
-          cohortEl.innerText = `${p.segmentId} | AGE ${p.ageGroup} (${p.gender})`;
+          cohortEl.innerText = `${p.segmentId} | AGE ${p.ageGroup}`;
           valEl.innerText = `Traffic: ${p.x} Clicks | Cost per Approved: $${p.y.toFixed(2)}`;
           spendEl.innerText = `$${p.spend.toFixed(2)}`;
 
@@ -1388,6 +1410,9 @@ function renderAudienceBubbleChart() {
       }
     }
   });
+  if (audienceBubbleChartInst && typeof audienceBubbleChartInst.draw === 'function') {
+    audienceBubbleChartInst.draw();
+  }
 }
 
 function renderAudienceDemographicMatrix() {
@@ -1395,7 +1420,9 @@ function renderAudienceDemographicMatrix() {
   if (!canvas || !DASHBOARD_DATA) return;
   const ctx = canvas.getContext('2d');
 
-  const rawSegments = DASHBOARD_DATA.audience_segments || [];
+  const rawSegments = (DASHBOARD_DATA.audience && DASHBOARD_DATA.audience.length > 0) 
+    ? DASHBOARD_DATA.audience 
+    : (DASHBOARD_DATA.audience_segments || []);
   const ageLabels = ['30-34', '35-39', '40-44', '45-49'];
   
   const maleCosts = [];
@@ -1407,20 +1434,19 @@ function renderAudienceDemographicMatrix() {
     const m = rawSegments.find(s => s.age === age && s.gender === 'M');
     const f = rawSegments.find(s => s.age === age && s.gender === 'F');
 
-    const mCost = m && m.cost_per_approved ? Number(m.cost_per_approved.toFixed(2)) : 0;
-    const fCost = f && f.cost_per_approved ? Number(f.cost_per_approved.toFixed(2)) : 0;
+    const mCost = m ? Number((m.cost_per_approved_conv || m.cost_per_approved || 0).toFixed(2)) : 0;
+    const fCost = f ? Number((f.cost_per_approved_conv || f.cost_per_approved || 0).toFixed(2)) : 0;
     maleCosts.push(mCost);
     femaleCosts.push(fCost);
 
-    const mCR = (m && m.clicks && m.approved) ? Number(((m.approved / m.clicks) * 100).toFixed(2)) : 0;
-    const fCR = (f && f.clicks && f.approved) ? Number(((f.approved / f.clicks) * 100).toFixed(2)) : 0;
+    const mCR = m ? Number(((m.click_to_approved_rate || (m.approved_conversions ? m.approved_conversions / m.total_clicks : 0)) * 100).toFixed(2)) : 0;
+    const fCR = f ? Number(((f.click_to_approved_rate || (f.approved_conversions ? f.approved_conversions / f.total_clicks : 0)) * 100).toFixed(2)) : 0;
     maleCRs.push(mCR);
     femaleCRs.push(fCR);
   });
 
-  if (audienceDemographicMatrixChartInst) {
-    audienceDemographicMatrixChartInst.destroy();
-  }
+  const existing = Chart.getChart(canvas);
+  if (existing) existing.destroy();
 
   audienceDemographicMatrixChartInst = new Chart(ctx, {
     type: 'bar',
@@ -1537,6 +1563,9 @@ function renderAudienceDemographicMatrix() {
       }
     }
   });
+  if (audienceDemographicMatrixChartInst && typeof audienceDemographicMatrixChartInst.draw === 'function') {
+    audienceDemographicMatrixChartInst.draw();
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -1797,22 +1826,36 @@ function renderConsumerCharts() {
   const ctx1 = c1.getContext('2d');
   const ctx2 = c2.getContext('2d');
 
-  if (consumerCohortChartInst) consumerCohortChartInst.destroy();
-  if (consumerTrafficChartInst) consumerTrafficChartInst.destroy();
+  const ex1 = Chart.getChart(c1);
+  if (ex1) ex1.destroy();
+  const ex2 = Chart.getChart(c2);
+  if (ex2) ex2.destroy();
+
+  const cb = (DASHBOARD_DATA && DASHBOARD_DATA.consumer_behavior) ? DASHBOARD_DATA.consumer_behavior : null;
+
+  let cohortLabels = ['New Visitors (1,694)', 'Returning Visitors (10,551)', 'Other (85)'];
+  let cohortData = [24.91, 13.93, 18.82];
+  let cohortColors = ['#10B981', '#6366F1', '#F59E0B'];
+
+  if (cb && cb.visitor_type && cb.visitor_type.length > 0) {
+    cohortLabels = cb.visitor_type.map(v => `${v.visitor_type.replace(/_/g, ' ')} (${v.total_sessions.toLocaleString()})`);
+    cohortData = cb.visitor_type.map(v => Number((v.purchase_rate * 100).toFixed(1)));
+  }
 
   const gNew = createVGradient(ctx1, 'rgba(16, 185, 129, 0.9)', 'rgba(5, 150, 105, 0.25)', 250);
   const gRet = createVGradient(ctx1, 'rgba(99, 102, 241, 0.9)', 'rgba(79, 70, 229, 0.25)', 250);
+  const gOth = createVGradient(ctx1, 'rgba(245, 158, 11, 0.9)', 'rgba(217, 119, 6, 0.25)', 250);
 
   consumerCohortChartInst = new Chart(ctx1, {
     type: 'bar',
     data: {
-      labels: ['New Visitors (1,694)', 'Returning Visitors (10,551)'],
+      labels: cohortLabels,
       datasets: [
         {
           label: 'Conversion Rate (%)',
-          data: [24.9, 13.9],
-          backgroundColor: [gNew, gRet],
-          borderColor: ['#34D399', '#818CF8'],
+          data: cohortData,
+          backgroundColor: [gNew, gRet, gOth],
+          borderColor: ['#34D399', '#818CF8', '#FBBF24'],
           borderWidth: 1.5,
           borderRadius: { topLeft: 8, topRight: 8 },
           maxBarThickness: 45
@@ -1823,11 +1866,17 @@ function renderConsumerCharts() {
       responsive: true,
       maintainAspectRatio: false,
       animation: {
-        duration: 1000,
-        easing: 'easeOutQuart',
-        delay: (ctx) => (ctx.type === 'data' && ctx.mode === 'default') ? ctx.dataIndex * 140 : 0
+        duration: 350,
+        easing: 'easeOutQuart'
       },
-      plugins: { legend: { display: false } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `Conversion Rate: ${ctx.raw}%`
+          }
+        }
+      },
       scales: {
         y: {
           beginAtZero: true,
@@ -1838,17 +1887,29 @@ function renderConsumerCharts() {
       }
     }
   });
+  if (consumerCohortChartInst && typeof consumerCohortChartInst.draw === 'function') {
+    consumerCohortChartInst.draw();
+  }
+
+  let trafficLabels = ['Channel 2 (3,913)', 'Channel 1 (2,451)', 'Channel 3 (2,052)', 'Channel 4 (1,069)', 'Channel 13 (738)', 'Channel 10 (450)'];
+  let trafficData = [21.7, 10.7, 8.8, 15.4, 5.8, 20.0];
+
+  if (cb && cb.traffic_type && cb.traffic_type.length > 0) {
+    const topT = cb.traffic_type.slice(0, 6);
+    trafficLabels = topT.map(t => `Channel ${t.traffic_type} (${t.total_sessions.toLocaleString()})`);
+    trafficData = topT.map(t => Number((t.purchase_rate * 100).toFixed(1)));
+  }
 
   const gLine = createVGradient(ctx2, 'rgba(139, 92, 246, 0.3)', 'rgba(139, 92, 246, 0.01)', 240);
 
   consumerTrafficChartInst = new Chart(ctx2, {
     type: 'line',
     data: {
-      labels: ['Direct (T1)', 'Search (T2)', 'Paid Social (T3)', 'Affiliate (T4)', 'Referral (T5)'],
+      labels: trafficLabels,
       datasets: [
         {
           label: 'Session Conversion Rate (%)',
-          data: [15.2, 21.4, 8.8, 14.2, 19.8],
+          data: trafficData,
           borderColor: '#A78BFA',
           backgroundColor: gLine,
           fill: true,
@@ -1863,10 +1924,17 @@ function renderConsumerCharts() {
       responsive: true,
       maintainAspectRatio: false,
       animation: {
-        duration: 1200,
+        duration: 350,
         easing: 'easeOutQuart'
       },
-      plugins: { legend: { display: false } },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: ctx => `Session Conversion Rate: ${ctx.raw}%`
+          }
+        }
+      },
       scales: {
         y: {
           beginAtZero: true,
@@ -1877,6 +1945,9 @@ function renderConsumerCharts() {
       }
     }
   });
+  if (consumerTrafficChartInst && typeof consumerTrafficChartInst.draw === 'function') {
+    consumerTrafficChartInst.draw();
+  }
 }
 
 // -----------------------------------------------------------------------------
@@ -2484,18 +2555,22 @@ function filterMetrics(query) {
   });
 }
 
-// Global window exposure for inline event handlers
+// Global window exposure for inline event handlers and tab lifecycle
 window.switchTab = switchTab;
 window.renderMixAdjustmentChart = renderMixAdjustmentChart;
-window.setMixMode = setMixMode;
+window.setMixChartMode = setMixChartMode;
+window.setMixMode = setMixChartMode; // alias
 window.initAppSimulator = initAppSimulator;
-window.runAppSimulator = runAppSimulator;
+window.updateAppSimulator = updateAppSimulator;
+window.runAppSimulator = updateAppSimulator; // alias
+window.resetSimulatorDefaults = resetSimulatorDefaults;
 window.renderAudienceBubbleChart = renderAudienceBubbleChart;
 window.renderAudienceDemographicMatrix = renderAudienceDemographicMatrix;
 window.filterBubbleChart = filterBubbleChart;
 window.renderConsumerCharts = renderConsumerCharts;
 window.setFunnelView = setFunnelView;
-window.setWaterfallMode = setWaterfallMode;
+window.renderWaterfallChart = renderWaterfallChart;
+window.renderWaterfallDonutChart = renderWaterfallDonutChart;
 window.filterExperiments = filterExperiments;
 window.openExperimentModal = openExperimentModal;
 window.closeExperimentModal = closeExperimentModal;
@@ -2506,5 +2581,5 @@ window.filterMetrics = filterMetrics;
 window.renderQualityAuditTerminal = renderQualityAuditTerminal;
 window.loadScenario = loadScenario;
 window.calculateLiveAB = calculateLiveAB;
-window.recalcSampleSize = recalcSampleSize;
+
 

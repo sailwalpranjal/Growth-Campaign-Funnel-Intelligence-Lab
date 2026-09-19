@@ -64,16 +64,40 @@ def main():
     quality_df = generate_full_quality_audit(df_ads, df_uci)
     metric_avail_df = get_metric_availability_table()
 
+    # Granular Age x Interest audience segments for bubble matrix
+    grp_audience = df_ads.groupby(["age", "interest"]).agg({
+        "impressions": "sum",
+        "clicks": "sum",
+        "spent": "sum",
+        "total_conversion": "sum",
+        "approved_conversion": "sum"
+    }).reset_index()
+
     audience_segments = []
-    for _, r in audience_df.iterrows():
+    for _, r in grp_audience.iterrows():
+        clk = int(r["clicks"])
+        spd = float(r["spent"])
+        app = int(r["approved_conversion"])
+        cpa = round(spd / app, 2) if app > 0 else round(spd, 2)
+        ctr = round(clk / r["impressions"], 6) if r["impressions"] > 0 else 0.0
+        
+        if clk >= 50:
+            stab = "Stable Core (>= 50 Clicks)"
+        elif clk >= 25:
+            stab = "Moderate (25-49 Clicks)"
+        else:
+            stab = "High Risk / Volatile (< 25 Clicks)"
+            
         audience_segments.append({
+            "segment_id": f"INT-{int(r['interest'])}",
             "age": str(r["age"]),
-            "gender": str(r["gender"]),
-            "clicks": int(r["total_clicks"]),
-            "spend": float(r["total_spend"]),
-            "approved": int(r["approved_conversions"]),
-            "cost_per_approved": float(r["cost_per_approved_conv"]) if pd.notnull(r["cost_per_approved_conv"]) else 0.0,
-            "ctr": float(r["ctr"])
+            "interest": int(r["interest"]),
+            "clicks": clk,
+            "spend": round(spd, 2),
+            "approved": app,
+            "cost_per_approved": cpa,
+            "ctr": ctr,
+            "stability_classification": stab
         })
     
     # Load existing preserved modules if present
