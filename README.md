@@ -3,18 +3,18 @@
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Tests Passing](https://img.shields.io/badge/tests-44%20passed-brightgreen.svg)](tests/)
 [![Data Integrity](https://img.shields.io/badge/data%20provenance-100%25%20real%20public-orange.svg)](data/)
-[![Live Dashboard](https://img.shields.io/badge/live%20dashboard-Vercel-teal.svg)](https://growth-campaign-funnel-intelligence-lab.vercel.app)
+[![Live Dashboard](https://img.shields.io/badge/live%20dashboard-Vercel-teal.svg)](https://growth-campaign-funnel-intelligence.vercel.app)
 [![API](https://img.shields.io/badge/backend%20API-Render%20Free-purple.svg)](https://growth-intelligence-api.onrender.com)
 
 ---
 
 ## The Problem
 
-When an acquisition campaign scales 19x in spend, why does cost per approved conversion sometimes surge 4x — even as CPM actually improves? The instinct is to blame expensive ad inventory. But a 3-factor mathematical decomposition points elsewhere: the CPM lever improved, the CTR lever partially degraded, and the post-click conversion rate collapsed by 73.8%. That single lever accounts for 98.1% of the entire cost explosion.
+When an acquisition campaign spends 19.2x more media budget ($55,662.15 in Campaign 1178 vs $2,893.37 in Campaign 936), why does cost per approved conversion surge 4x ($63.83 vs $15.81) — even as CPM actually improves? The instinct is to blame expensive ad inventory. But a 3-factor mathematical decomposition points elsewhere: the CPM lever improved, the CTR lever partially degraded, and the post-click conversion rate collapsed by 73.8%. That single lever accounts for 98.1% of the entire cost explosion.
 
-This is a real diagnostic question every growth team faces. This platform investigates exactly where and why growth fails at scale, and provides a structured evidence-to-hypothesis-to-experiment pipeline for fixing it — using 100% real public data, no synthetic metrics, and no fabricated Khatabook internal numbers.
+This is a real diagnostic question every growth team faces. This platform investigates exactly where and why growth unit economics degrade at higher spend, and provides a structured evidence-to-hypothesis-to-experiment pipeline for fixing it — using 100% real public data, no synthetic metrics, and no fabricated Khatabook internal numbers.
 
-**Live Platform:** [growth-campaign-funnel-intelligence-lab.vercel.app](https://growth-campaign-funnel-intelligence-lab.vercel.app)  
+**Live Platform:** [growth-campaign-funnel-intelligence.vercel.app](https://growth-campaign-funnel-intelligence.vercel.app)  
 **API Docs:** [growth-intelligence-api.onrender.com/docs](https://growth-intelligence-api.onrender.com/docs)
 
 ---
@@ -80,9 +80,9 @@ $$z = \frac{p_2 - p_1}{SE_\text{pool}}, \quad SE_\text{pool} = \sqrt{p_\text{poo
 
 The decision matrix distinguishes: Run longer (underpowered) / Do not conclude (null) / Investigate (wide CI) / Promote cautiously (significant + practical + CI > 0). See [`src/statistics.py`](src/statistics.py).
 
-### 4. Ratio-of-Sums Aggregation
+### 4. Ratio-of-Sums Aggregation & Demographic Confounding Control
 
-All conversion rates use SUM(numerator) / SUM(denominator) across rows — never the average of row-level rates. This prevents row-averaging bias and Simpson's paradox. See [`src/metrics.py`](src/metrics.py).
+All conversion rates strictly use $\frac{\sum \text{Numerator}}{\sum \text{Denominator}}$ across rows — never unweighted row-level averages. Across all 1,143 ads in the dataset, the true ratio-of-sums CTR is **0.0179%** (38,181 clicks / 213,434,828 impressions), whereas unweighted row-averaging yields **0.0164%** (understating true CTR by -8.2%; in Campaign 1178, row-averaging gives 0.0162% vs 0.0176%). Unweighted row-averaging assigns equal weight to micro-budget ad sets with small impressions and scaled ad sets with millions of impressions. Strict ratio-of-sums and Direct Standardization ensure comparisons control for demographic confounding. See [`src/metrics.py`](src/metrics.py).
 
 ### 5. ICE Prioritization
 

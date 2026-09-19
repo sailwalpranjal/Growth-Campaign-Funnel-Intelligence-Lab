@@ -2163,7 +2163,7 @@ function getFallbackData() {
   return {
     scorecard: [
       { campaign_id: 916, total_ads: 54, total_impressions: 482925, total_clicks: 113, total_spend: 148.52, approved_conversions: 24, ctr: 0.000234, cpm: 0.308, click_to_approved_conv_rate: 0.2124, cost_per_approved_conv: 6.19 },
-      { campaign_id: 936, total_ads: 225, total_impressions: 8143820, total_clicks: 1984, total_spend: 2893.37, approved_conversions: 183, ctr: 0.000244, cpm: 0.356, click_to_approved_conv_rate: 0.0922, cost_per_approved_conv: 15.81 },
+      { campaign_id: 936, total_ads: 464, total_impressions: 8128187, total_clicks: 1984, total_spend: 2893.37, approved_conversions: 183, ctr: 0.000244, cpm: 0.356, click_to_approved_conv_rate: 0.0922, cost_per_approved_conv: 15.81 },
       { campaign_id: 1178, total_ads: 625, total_impressions: 204823716, total_clicks: 36068, total_spend: 55662.15, approved_conversions: 872, ctr: 0.000176, cpm: 0.272, click_to_approved_conv_rate: 0.0242, cost_per_approved_conv: 63.83 }
     ],
     decomposition: {
@@ -2380,30 +2380,74 @@ function renderMarketIntel() {
   let html = '';
 
   // Section 1: Indian MSME Landscape
-  if (data.msme_landscape && data.msme_landscape.metrics) {
+  if (data.msme_landscape) {
+    const l = data.msme_landscape;
+    const cards = [
+      { value: `${l.total_msmes_india_million || 63}M`, label: "Total MSMEs in India", source: "Ministry of MSME Annual Report 2022-23", url: "https://msme.gov.in/" },
+      { value: `${l.digital_payment_adopters_pct || 47}%`, label: "Digital Payment Adopters", source: "RBI Report on Currency and Finance 2022-23", url: "https://www.rbi.org.in/" },
+      { value: `${l.tier2_tier3_share_pct || 68}%`, label: "Tier 2 / Tier 3 Geography Share", source: "Ministry of MSME Annual Report 2022-23", url: "https://msme.gov.in/" },
+      { value: `${l.feature_phone_still_active_pct || 31}%`, label: "Feature Phone / Offline Active", source: "RBI Report on Currency and Finance 2022-23", url: "https://www.rbi.org.in/" }
+    ];
     html += `
       <div class="space-y-3">
-        <h3 class="text-sm font-bold text-white">Indian MSME Landscape</h3>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
-          ${data.msme_landscape.metrics.map(m => `
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i data-lucide="building-2" class="w-4 h-4 text-brandCyan"></i>
+              Indian MSME Landscape (Published Benchmark Data)
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">Macro operating environment benchmarked from official central publications.</p>
+          </div>
+          <div class="flex items-center gap-2 text-[11px] font-mono text-slate-400 shrink-0">
+            <span>Official Sources:</span>
+            <a href="https://msme.gov.in/" target="_blank" rel="noopener noreferrer" class="text-brandCyan hover:underline inline-flex items-center gap-0.5">
+              Ministry of MSME <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
+            </a>
+            <span>•</span>
+            <a href="https://www.rbi.org.in/" target="_blank" rel="noopener noreferrer" class="text-brandCyan hover:underline inline-flex items-center gap-0.5">
+              RBI RCF 2022-23 <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+          ${cards.map(m => `
             <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 relative group">
-              <h4 class="text-xl font-extrabold text-brandCyan font-mono">${m.value}</h4>
-              <p class="text-xs text-slate-400 mt-1">${m.label}</p>
-              <div class="absolute top-2 right-2 text-slate-500 cursor-help" title="Source: ${m.source}">
-                <i data-lucide="info" class="w-3.5 h-3.5"></i>
+              <h4 class="text-xl sm:text-2xl font-extrabold text-brandCyan font-mono">${m.value}</h4>
+              <p class="text-xs text-slate-300 mt-1 font-medium">${m.label}</p>
+              <div class="mt-2 pt-2 border-t border-white/5 flex items-center justify-between text-[10px] text-slate-500 font-mono">
+                <a href="${m.url}" target="_blank" rel="noopener noreferrer" class="hover:text-brandCyan inline-flex items-center gap-1 transition-colors">
+                  <span>${m.source}</span>
+                  <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
+                </a>
               </div>
             </div>
           `).join('')}
         </div>
+        ${l.note ? `<p class="text-[11px] text-slate-500 italic font-mono">${l.note}</p>` : ''}
       </div>
     `;
   }
 
-  // Section 2: Competitor Matrix
-  if (data.competitor_matrix) {
+  // Section 2: Competitor Positioning Matrix
+  const competitors = data.competitors || data.competitor_matrix;
+  if (competitors && competitors.length > 0) {
     html += `
       <div class="space-y-3 pt-4 border-t border-white/10">
-        <h3 class="text-sm font-bold text-white">Competitor Positioning Matrix</h3>
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i data-lucide="swords" class="w-4 h-4 text-brandIndigo"></i>
+              Competitor Positioning Matrix
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">Competitive landscape across micro-merchant ledger, billing, and payments fintech.</p>
+          </div>
+          <div class="flex items-center gap-2 text-[11px] font-mono text-slate-400 shrink-0">
+            <span>Listing:</span>
+            <a href="https://play.google.com/store/apps/details?id=com.vaity.khatabook" target="_blank" rel="noopener noreferrer" class="text-brandCyan hover:underline inline-flex items-center gap-0.5">
+              Google Play Store (Khatabook) <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
+            </a>
+          </div>
+        </div>
         <div class="overflow-x-auto custom-scrollbar">
           <table class="w-full text-left text-xs whitespace-nowrap">
             <thead>
@@ -2413,24 +2457,42 @@ function renderMarketIntel() {
                 <th class="p-3">Target Segment</th>
                 <th class="p-3">Monetization</th>
                 <th class="p-3">Differentiator</th>
+                <th class="p-3">Rating / Installs</th>
                 <th class="p-3">Status</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-white/5">
-              ${data.competitor_matrix.map(c => `
-                <tr class="hover:bg-white/5 transition-colors ${c.company === 'Khatabook' ? 'border-l-2 border-l-brandIndigo bg-indigo-950/10' : ''}">
-                  <td class="p-3 font-bold ${c.company === 'Khatabook' ? 'text-brandIndigo' : 'text-slate-200'}">${c.company}</td>
-                  <td class="p-3 text-slate-300">${c.core_identity}</td>
-                  <td class="p-3 text-slate-400">${c.target_segment}</td>
-                  <td class="p-3 text-slate-400">${c.monetization}</td>
-                  <td class="p-3 text-slate-400">${c.differentiator}</td>
+              ${competitors.map(c => {
+                const name = c.name || c.company;
+                const identity = c.core_identity;
+                const segment = c.merchant_segment || c.target_segment;
+                const monetization = c.primary_monetization || c.monetization;
+                const differentiator = c.key_differentiator || c.differentiator;
+                const rating = c.app_store_rating ? `⭐ ${c.app_store_rating} (${c.app_store_reviews_approx || ''})` : '—';
+                const isKhatabook = name === 'Khatabook';
+                return `
+                <tr class="hover:bg-white/5 transition-colors ${isKhatabook ? 'border-l-2 border-l-brandIndigo bg-indigo-950/20' : ''}">
+                  <td class="p-3 font-bold ${isKhatabook ? 'text-brandIndigo' : 'text-slate-200'}">
+                    ${isKhatabook ? `
+                      <a href="https://play.google.com/store/apps/details?id=com.vaity.khatabook" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 hover:underline text-brandIndigo">
+                        ${name} <i data-lucide="external-link" class="w-2.5 h-2.5"></i>
+                      </a>
+                    ` : name}
+                  </td>
+                  <td class="p-3 text-slate-300">${identity}</td>
+                  <td class="p-3 text-slate-400">${segment}</td>
+                  <td class="p-3 text-slate-400">${monetization}</td>
+                  <td class="p-3 text-slate-400">${differentiator}</td>
+                  <td class="p-3 font-mono text-slate-300">${rating}</td>
                   <td class="p-3">
                     <span class="px-2 py-0.5 rounded text-[10px] font-bold ${
-                      c.status === 'Active' ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-800/50' : 'bg-slate-800 text-slate-400'
+                      (c.status || '').includes('Active') || (c.status || '').includes('Growing')
+                        ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-800/50'
+                        : 'bg-slate-800 text-slate-400'
                     }">${c.status}</span>
                   </td>
                 </tr>
-              `).join('')}
+              `;}).join('')}
             </tbody>
           </table>
         </div>
@@ -2439,26 +2501,35 @@ function renderMarketIntel() {
   }
 
   // Section 3: Growth Loops
-  if (data.growth_loops) {
+  const loops = data.khatabook_growth_loops || data.growth_loops;
+  if (loops && loops.length > 0) {
     html += `
       <div class="space-y-3 pt-4 border-t border-white/10">
-        <h3 class="text-sm font-bold text-white">Khatabook Growth Loops</h3>
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i data-lucide="repeat" class="w-4 h-4 text-brandEmerald"></i>
+          Khatabook Flywheel & Growth Loops
+        </h3>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          ${data.growth_loops.map(loop => `
+          ${loops.map(loop => {
+            const loopId = loop.loop_id || loop.id;
+            const metric = loop.viral_coefficient || loop.channel || loop.ltv_driver || loop.key_metric || '';
+            return `
             <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-3">
               <div class="flex justify-between items-start">
                 <div class="flex items-center gap-2">
-                  <span class="w-6 h-6 flex items-center justify-center rounded-lg bg-indigo-500/20 text-brandIndigo font-bold text-xs border border-indigo-500/30">${loop.id}</span>
+                  <span class="w-6 h-6 flex items-center justify-center rounded-lg bg-indigo-500/20 text-brandIndigo font-bold text-xs border border-indigo-500/30">${loopId}</span>
                   <span class="font-bold text-white text-sm">${loop.name}</span>
                 </div>
                 <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-300">${loop.stage}</span>
               </div>
               <p class="text-xs text-slate-400 leading-relaxed">${loop.description}</p>
-              <div class="pt-2 border-t border-white/5">
-                <span class="px-2 py-1 rounded text-[10px] font-mono bg-cyan-950/50 text-brandCyan border border-cyan-900/50">${loop.key_metric}</span>
-              </div>
+              ${metric ? `
+                <div class="pt-2 border-t border-white/5">
+                  <span class="px-2 py-1 rounded text-[10px] font-mono bg-cyan-950/50 text-brandCyan border border-cyan-900/50">${metric}</span>
+                </div>
+              ` : ''}
             </div>
-          `).join('')}
+          `;}).join('')}
         </div>
       </div>
     `;
@@ -2468,7 +2539,10 @@ function renderMarketIntel() {
   if (data.strategic_implications) {
     html += `
       <div class="space-y-3 pt-4 border-t border-white/10">
-        <h3 class="text-sm font-bold text-white">Strategic Implications</h3>
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <i data-lucide="target" class="w-4 h-4 text-brandViolet"></i>
+          Strategic Implications for Growth Operations
+        </h3>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
           ${data.strategic_implications.map(si => `
             <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-3 relative overflow-hidden group">
@@ -2496,6 +2570,83 @@ function renderMarketIntel() {
             </div>
           `).join('')}
         </div>
+      </div>
+    `;
+  }
+
+  // Section 5: Public App Store User Signals & Friction Audit
+  if (data.app_store_signals) {
+    const sig = data.app_store_signals;
+    html += `
+      <div class="space-y-4 pt-4 border-t border-white/10">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+          <div>
+            <h3 class="text-sm font-bold text-white flex items-center gap-2">
+              <i data-lucide="star" class="w-4 h-4 text-amber-400"></i>
+              Public Play Store User Signals & Friction Audit
+            </h3>
+            <p class="text-xs text-slate-400 mt-0.5">${sig.note || 'Observable patterns from public Google Play Store reviews.'}</p>
+          </div>
+          <a href="https://play.google.com/store/apps/details?id=com.vaity.khatabook" target="_blank" rel="noopener noreferrer" class="text-xs text-brandCyan hover:underline font-mono inline-flex items-center gap-1.5 shrink-0 px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10">
+            <span>Khatabook Play Store (${sig.khatabook_rating}★ / ${sig.reviews_analyzed_approx})</span>
+            <i data-lucide="external-link" class="w-3 h-3"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <!-- Positive Themes -->
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-3">
+            <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="thumbs-up" class="w-3.5 h-3.5"></i> Verified Value Drivers
+            </h4>
+            <div class="space-y-2.5">
+              ${(sig.positive_themes || []).map(t => `
+                <div class="p-2.5 rounded-lg bg-emerald-950/20 border border-emerald-500/20 text-xs">
+                  <div class="flex justify-between items-start gap-2">
+                    <span class="font-semibold text-white">${t.theme}</span>
+                    <span class="px-1.5 py-0.5 rounded text-[9px] font-mono bg-emerald-900/60 text-emerald-300 shrink-0">${t.signal_strength}</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-1">${t.growth_implication}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Friction Themes -->
+          <div class="p-4 rounded-xl bg-slate-900/60 border border-white/5 space-y-3">
+            <h4 class="text-xs font-bold text-rose-400 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i> Uninstall & Friction Triggers
+            </h4>
+            <div class="space-y-2.5">
+              ${(sig.friction_themes || []).map(t => `
+                <div class="p-2.5 rounded-lg bg-rose-950/20 border border-rose-500/20 text-xs">
+                  <div class="flex justify-between items-start gap-2">
+                    <span class="font-semibold text-white">${t.theme}</span>
+                    <span class="px-1.5 py-0.5 rounded text-[9px] font-mono bg-rose-900/60 text-rose-300 shrink-0">${t.signal_strength}</span>
+                  </div>
+                  <p class="text-[11px] text-slate-400 mt-1">${t.growth_implication}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+
+        <!-- Derived Experiment Hypotheses -->
+        ${sig.experiment_hypotheses && sig.experiment_hypotheses.length > 0 ? `
+          <div class="p-3.5 rounded-xl bg-indigo-950/30 border border-indigo-500/20 space-y-2">
+            <h5 class="text-xs font-bold text-indigo-300 flex items-center gap-1.5 uppercase tracking-wider">
+              <i data-lucide="lightbulb" class="w-3.5 h-3.5 text-brandCyan"></i>
+              Hypotheses Derived from Public Merchant Sentiment
+            </h5>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-1">
+              ${sig.experiment_hypotheses.map(h => `
+                <div class="p-2.5 rounded-lg bg-slate-900/80 border border-white/5 text-[11px] text-slate-300 leading-relaxed">
+                  ${h}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
       </div>
     `;
   }
