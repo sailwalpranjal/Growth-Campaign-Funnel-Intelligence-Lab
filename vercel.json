@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/", "destination": "/web/index.html" },
+    { "source": "/js/(.*)", "destination": "/web/js/$1" },
+    { "source": "/data/(.*)", "destination": "/web/data/$1" },
+    { "source": "/sheets/(.*)", "destination": "/web/sheets/$1" },
+    { "source": "/exports/(.*)", "destination": "/web/exports/$1" },
+    { "source": "/docs/(.*)", "destination": "/web/docs/$1" },
+    { "source": "/(.*)", "destination": "/web/$1" }
+  ]
+}

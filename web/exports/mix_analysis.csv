@@ -1,0 +1,3 @@
+campaign_id,raw_cost_per_approved,mix_adjusted_cost_per_approved,cost_gap_mix_effect,raw_click_to_approved_rate,mix_adjusted_click_to_approved_rate,interpretation
+936,15.81,23.69,7.88,0.0922,0.1273,Baseline campaign maintains strong efficiency under common weighting.
+1178,63.83,78.16,14.33,0.0242,0.024,"Underperformance persists even under identical audience weighting, proving the 4x cost surge is driven by intra-segment post-click conversion decay rather than audience demographic skew."
