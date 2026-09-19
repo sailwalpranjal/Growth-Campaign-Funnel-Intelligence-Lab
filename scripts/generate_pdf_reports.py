@@ -112,8 +112,9 @@ def build_playbook_pdf(output_path: str):
     story.append(Paragraph("1.1 Aggregation Integrity: Ratio-of-Sums vs. Row-Level Averages", sub_heading))
     story.append(Paragraph(
         "Ad networks report performance metrics across fragmented ad sets with orders-of-magnitude volume disparities. "
-        "In Campaign 1178, row-averaging Click-Through Rate (CTR) reports <b>0.0271%</b>, whereas true Ratio-of-Sums CTR is <b>0.0176%</b> "
-        "(36,068 clicks / 204,823,716 impressions). Row-averaging artificially inflates perceived CTR by <b>+54.0%</b> due to small, noisy sample sizes.",
+        "In Campaign 1178, true Ratio-of-Sums CTR is <b>0.0176%</b> (36,068 clicks / 204,823,716 impressions), whereas unweighted row-averaging "
+        "yields <b>0.0162%</b> (-7.9% understated). Across all 1,143 ads, unweighted row-averaging yields <b>0.0164%</b> vs true ratio-of-sums <b>0.0179%</b> "
+        "(-8.2% understated). Averaging row-level rates assigns equal weight to micro-budget ad sets with small, noisy sample sizes.",
         body_style
     ))
 
@@ -140,7 +141,7 @@ def build_playbook_pdf(output_path: str):
     # Section 2
     story.append(Paragraph("2. Mathematical Variance Attribution (The 3-Factor Efficiency Bridge)", section_heading))
     story.append(Paragraph(
-        "When scaling media spend from <b>Campaign 936</b> ($2,893.37 across 225 ad sets) to <b>Campaign 1178</b> ($55,662.15 across 625 ad sets), "
+        "When comparing <b>Campaign 936</b> ($2,893.37 across 464 ad sets) to <b>Campaign 1178</b> ($55,662.15 across 625 ad sets, a 19.2x media budget expansion), "
         "Cost per Approved Conversion escalated from <b>$15.81</b> to <b>$63.83</b> (+303.7% cost inflation). "
         "Decomposed via sequential substitution attribution:",
         body_style

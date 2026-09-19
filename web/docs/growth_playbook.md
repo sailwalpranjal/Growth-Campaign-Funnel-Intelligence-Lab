@@ -7,8 +7,8 @@ This document serves as the executive reference for growth product managers, per
 ## 1. Commercial Diagnostics & Performance Metric Standards
 
 ### Section 1.1: Aggregation Integrity (Ratio-of-Sums vs. Row-Level Averages)
-* **The Operational Problem**: Ad networks report performance metrics across fragmented ad sets with orders-of-magnitude differences in impression volume (from 10 impressions to 1,000,000+ impressions). Averaging row-level rates introduces severe **Simpson's Paradox**.
-* **The Empirical Evidence**: In Campaign 1178, the row-averaged Click-Through Rate (CTR) is **0.0271%**, whereas the true Ratio-of-Sums CTR is **0.0176%** ($\frac{36,068 \text{ total clicks}}{204,823,716 \text{ total impressions}}$). Averaging row-level rates artificially inflates CTR by **+54.0%** due to micro-budget ad sets with small, noisy sample sizes.
+* **The Operational Problem**: Ad networks report performance metrics across fragmented ad sets with orders-of-magnitude differences in impression volume (from 10 impressions to 1,000,000+ impressions). Averaging row-level rates introduces severe aggregation distortion.
+* **The Empirical Evidence**: In Campaign 1178, the true Ratio-of-Sums CTR is **0.0176%** ($\frac{36,068 \text{ total clicks}}{204,823,716 \text{ total impressions}}$), whereas unweighted row-averaging yields **0.0162%** (-7.9% understated). Across all 1,143 ads in the dataset, unweighted row-averaging yields **0.0164%** vs true ratio-of-sums **0.0179%** (-8.2% understated). Averaging row-level rates assigns equal weight to micro-budget ad sets with small, noisy samples and scaled ad sets with millions of impressions.
 * **The Growth Rule**: *All portfolio and segment-level conversion rates, CTRs, and cost metrics must be strictly aggregated as $\frac{\sum \text{Numerator}}{\sum \text{Denominator}}$*. Row-averaged rates are prohibited in financial, scorecard, and executive dashboards.
 
 ---
@@ -32,7 +32,7 @@ This document serves as the executive reference for growth product managers, per
 
 ## 2. Mathematical Variance Attribution (The 3-Factor Efficiency Bridge)
 
-When scaling paid media budget from **Campaign 936** (\$2,893.37 across 225 ad sets) to **Campaign 1178** (\$55,662.15 across 625 ad sets), Cost per Approved Conversion escalated from **\$15.81** to **\$63.83** (+303.7% cost inflation).
+When comparing **Campaign 936** (\$2,893.37 across 464 ad sets) to **Campaign 1178** (\$55,662.15 across 625 ad sets, a 19.2x media budget expansion), Cost per Approved Conversion escalated from **\$15.81** to **\$63.83** (+303.7% cost inflation).
 
 Rather than relying on qualitative speculation, the gap is decomposed via a continuous 3-factor mathematical identity:
 
@@ -46,10 +46,10 @@ $$\Delta \text{Cost} = \text{Lever}_1 (\text{CPM}) + \text{Lever}_2 (\text{CTR})
    * *Commercial Takeaway*: Media buying efficiency was actually *superior* at scale. Broad targeting unlocked cheaper inventory auction prices. Media buying was **not** the source of cost escalation.
 2. **Lever 2 (Creative CTR Effect = +\$4.66)**:
    * *Observation*: CTR declined from 0.0244% to 0.0176% (-27.9%).
-   * *Commercial Takeaway*: Ad creative experienced moderate resonance decay and audience fatigue as impressions scaled from 8.1M to 204.8M. This contributed +9.7% of the gross cost inflation.
+   * *Commercial Takeaway*: Ad creative experienced lower engagement at higher impression volumes (8.1M to 204.8M). Note that creative fatigue is an unobserved hypothesis to be tested via creative testing, as creative assets and ad timestamps are not present in the dataset. This contributed +9.7% of the gross cost inflation.
 3. **Lever 3 (Post-Click Conversion Effect = +\$47.10)**:
    * *Observation*: Click-to-Approved conversion collapsed from 9.22% to 2.42% (-73.8%).
-   * *Commercial Takeaway*: **98.1% of the net cost surge occurred after the click**. The scaled campaign drove high volumes of low-intent clicks onto an unoptimized landing page form, resulting in a catastrophic 92.6% drop-off.
+   * *Commercial Takeaway*: **98.1% of the net cost surge occurred after the click**. The scaled campaign drove high volumes of low-intent clicks onto an unoptimized landing page form, resulting in a 92.6% drop-off.
 * **Mathematical Reconciliation**: Total explained variance = **+\$48.02** with **\$0.00000000** residual.
 
 ---

@@ -21,7 +21,7 @@ All proposed experiments follow the **Evidence $\to$ Hypothesis $\to$ Test $\to$
 
 ### `EXP-GROWTH-001`: Ad Creative Value Prop Realignment for Scaled Campaigns
 * **Priority**: P0 (Immediate Sprint) (ICE: 8.67) — *Directly attacks the largest source of cost leakage ($48.02 cost-per-approved surge).*
-* **Observed Evidence**: Campaign 1178 scaled budget to $55,662 and achieved lower CPM ($0.27 vs $0.36), but post-click approved conversion collapsed by 73.8% (from 9.22% in Camp 936 to 2.42% in Camp 1178), causing cost per approved conversion to inflate from $15.81 to $63.83.
+* **Observed Evidence**: Campaign 1178 spent $55,662.15 (19.2x the budget of Campaign 936 at $2,893.37) and achieved lower CPM ($0.27 vs $0.36), but post-click approved conversion collapsed by 73.8% (from 9.22% in Camp 936 to 2.42% in Camp 1178), causing cost per approved conversion to inflate from $15.81 to $63.83 (+303.7%).
 * **Hypothesis**: Broad-reach ad creatives in Campaign 1178 set generic or misaligned user expectations that fail to convert on the post-click enquiry form. Replacing generic reach hooks with high-intent SMB pain-point hooks (e.g., 'Track daily udhaar payments instantly') will filter low-intent clicks and improve post-click conversion.
 * **Control**: Generic broad benefit creative: 'Grow your business with smart digital tools'
 * **Variant**: High-intent operational pain-point creative: 'Stop losing money to forgotten credits: 1-click ledger tracking'
@@ -49,9 +49,9 @@ All proposed experiments follow the **Evidence $\to$ Hypothesis $\to$ Test $\to$
 ---
 ### `EXP-GROWTH-003`: Audience Concentration & Budget Reallocation to Stable Interest Segments
 * **Priority**: P0 (Immediate Sprint) (ICE: 8.67) — *Zero engineering required; actionable immediately within ad campaign budget settings.*
-* **Observed Evidence**: Segment stability analysis showed that 12 of the 28 interest groups evaluated have < 10 clicks, exhibiting extreme variance in cost per approved conversion, while top interests (e.g. ID 16, 27) demonstrate consistent sub-$25 cost per approved conversion across 50+ click thresholds.
+* **Observed Evidence**: Audience segment stability analysis across all 40 interest categories reveals that Interest 27 carries the highest cost per approved conversion at $95.85 (54 conversions on $5,176.17 spend across 3,409 clicks), whereas top efficient scaled interests like ID 16 ($57.34 CPA across 5,144 clicks) and ID 10 ($55.89 CPA across 3,317 clicks) demonstrate proven scale. Reallocating spend away from high-CPA clusters into high-intent stable clusters optimizes blended unit economics.
 * **Hypothesis**: Reallocating 30% of media budget away from unstable, fragmented interest segments into the top 5 sample-stable segments will improve overall blended campaign efficiency by eliminating long-tail spend waste.
-* **Control**: Fragmented broad targeting across all 30+ interest codes.
+* **Control**: Fragmented broad targeting across all 40 interest codes.
 * **Variant**: Concentrated tier-1 targeting strictly limited to stable interest clusters with >50 clicks history.
 * **Primary KPI**: Blended Cost per Approved Conversion ($)
 * **Secondary KPI**: Total Approved Conversions per Week
@@ -63,7 +63,7 @@ All proposed experiments follow the **Evidence $\to$ Hypothesis $\to$ Test $\to$
 ---
 ### `EXP-GROWTH-004`: Returning Visitor Personalized High-Intent Nudge (Consumer Behavior)
 * **Priority**: P1 (Next Sprint) (ICE: 7.00) — *Capitalizes on high baseline intent with proven behavioral divergence.*
-* **Observed Evidence**: UCI consumer behavior diagnostics show that Returning Visitors have a 3.5x higher purchase rate (16.9% vs 4.8%) and average page value of $7.82 vs $1.15 for New Visitors, but exhibit high exit rates (0.045) on cart pages.
+* **Observed Evidence**: UCI consumer diagnostics reveal that Returning Visitors convert at 13.93% (1,470/10,551) compared to 24.91% (422/1,694) for New Visitors—a 44.1% conversion deficit—with an average cart exit rate of 0.0465 and average page value of $5.01 vs $10.77 for New Visitors. Personalizing returning merchant sessions addresses the sharp drop-off observed post-initial visit.
 * **Hypothesis**: Displaying a personalized re-engagement banner ('Continue where you left off + free merchant QR setup') to returning visitors within 5 seconds of session start will increase transaction completion.
 * **Control**: Standard landing view with generic homepage promotions.
 * **Variant**: Personalized sticky top-bar showing last viewed feature with 1-click resume CTA.
@@ -77,7 +77,7 @@ All proposed experiments follow the **Evidence $\to$ Hypothesis $\to$ Test $\to$
 ---
 ### `EXP-GROWTH-005`: Demographic Gender-Specific Creative Framing Test
 * **Priority**: P1 (Next Sprint) (ICE: 7.00) — *High initial click engagement indicates strong top-of-funnel resonance that is currently squandered.*
-* **Observed Evidence**: Audience analysis reveals Female segments generate higher CTR (0.024% vs 0.016%) but incur a higher cost per approved conversion ($68.20 vs $42.10 for Males) due to post-click enquiry friction.
+* **Observed Evidence**: Audience analysis reveals Female segments generate higher CTR (0.0208% vs 0.0145% for Males, +43.4% higher) but incur higher cost per approved conversion ($69.70 vs $41.44 for Males, +68.2% higher) due to post-click conversion friction (2.07% vs 4.09%).
 * **Hypothesis**: Current creative hooks appeal to female SMB owners' visual interest but downstream product copy is tailored predominantly to male-dominated wholesale trade. Creating retail/apparel-specific merchant landing copy for female audiences will bridge the post-click intent gap.
 * **Control**: General wholesale distribution merchant testimonials and imagery.
 * **Variant**: Retail, boutique, and local apparel merchant testimonials and workflow screenshots.

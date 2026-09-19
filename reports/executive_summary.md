@@ -29,9 +29,8 @@ Decomposing unit cost into three underlying levers reveals the exact sequential 
 * **CTR Lever Contribution**: **+$4.66** (Unfavorable — CTR dropped from 0.0244% to 0.0176%).
 * **Post-Click Conversion Lever Contribution**: **+$47.10** (**Primary Culprit — 98% of total cost degradation**).
 
-### 4. Which Audience Patterns Matter?
-* **Demographic Sensitivity**: Female segments demonstrated higher engagement (0.024% CTR vs 0.016% for Males), but experienced a higher cost per approved conversion ($68.20 vs $42.10) due to severe post-click drop-off.
-* **Interest Fragmentation**: 12 of 28 interest categories generated fewer than 10 clicks, creating noisy performance. Concentrated interest clusters (IDs 16, 27) consistently maintained high volume and stable efficiency.
+* **Demographic Sensitivity**: Female segments demonstrated higher engagement (0.0208% CTR vs 0.0145% for Males, +43.4% higher), but experienced a higher cost per approved conversion ($69.70 vs $41.44) due to severe post-click drop-off (2.07% vs 4.09% conversion rate).
+* **Interest Efficiency Dispersion**: Segment analysis across all 40 interest categories reveals significant CPA dispersion: Interest 27 carries the highest CPA at $95.85 (54 conversions on $5,176.17 spend across 3,409 clicks), whereas top efficient scaled clusters like ID 16 ($57.34 CPA) and ID 10 ($55.89 CPA) maintain strong efficiency at scale.
 
 ### 5. Where Is the Funnel Leaking?
 The primary point of leakage is **Stage 2 -> Stage 3 (Click to Enquiry)**:

@@ -23,14 +23,14 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "experiment_id": "EXP-GROWTH-001",
             "title": "Ad Creative Value Prop Realignment for Scaled Campaigns",
             "observed_evidence": (
-                "Campaign 1178 scaled budget to $55,662 and achieved lower CPM ($0.27 vs $0.36), "
+                "Campaign 1178 spent $55,662.15 (19.2x the budget of Campaign 936 at $2,893.37) and achieved lower CPM ($0.27 vs $0.36), "
                 "but post-click approved conversion collapsed by 73.8% (from 9.22% in Camp 936 to 2.42% in Camp 1178), "
-                "causing cost per approved conversion to inflate from $15.81 to $63.83."
+                "causing cost per approved conversion to inflate from $15.81 to $63.83 (+303.7%)."
             ),
             "hypothesis": (
                 "Broad-reach ad creatives in Campaign 1178 set generic or misaligned user expectations that fail to convert "
                 "on the post-click enquiry form. Replacing generic reach hooks with high-intent SMB pain-point hooks "
-                "(e.g., 'Track daily udhaar payments instantly') will filter low-intent clicks and improve post-click conversion."
+                "(e.g., 'Track daily udhaar payments instantly') will filter low-intent clicks and improve downstream conversion without inflating CPA."
             ),
             "target_audience": "Scaled acquisition audience (broad demographic, ages 30-49, top interest categories).",
             "test_variable": "Ad Creative Hook & Headline Messaging",
@@ -48,7 +48,7 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "ice_score": 8.67,
             "priority": "P0 (Immediate Sprint)",
             "priority_reason": "Directly attacks the largest source of cost leakage ($48.02 cost-per-approved surge).",
-            "problem": "Post-click approved conversion collapsed by 73.8% upon 19x scale-up.",
+            "problem": "Post-click approved conversion collapsed by 73.8% upon 19.2x budget expansion.",
             "opportunity": "Recover unit cost from $63.83 down towards $28.00 by qualifying click intent upfront.",
             "segment": "Scaled Broad Audience (Age 30-49, Top Interests)",
             "channel": "Meta Ads (Facebook & Instagram Feed/Reels)",
@@ -57,13 +57,13 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "expected_impact": "+25% to +35% Lift in Post-Click Conversion",
             "mde": "+25.0% Relative Lift",
             "required_sample": 11369,
-            "start_date": "2026-09-15",
-            "end_date": "2026-09-29",
-            "status": "Running",
-            "result": "In Progress (Day 5 of 14: Variant trending at +18.4% lift, p=0.082)",
-            "decision": "Continue Test (Target sample 11,369 per variant)",
-            "learning": "Early data suggests operational pain-point copy lowers initial CTR slightly (-6%) but doubles time-on-landing-page.",
-            "next_action": "Audit creative fatigue at Day 7; prepare Hindi vernacular variant."
+            "start_date": "Sprint Backlog",
+            "end_date": "14-day flight upon launch",
+            "status": "Planned",
+            "result": "Pending execution — target sample size N=11,369 per variant (power 80%, α=0.05)",
+            "decision": "Approved for Execution",
+            "learning": "Pre-test power analysis demonstrates N=11,369 clicks per variant required to detect a 25% relative lift from the 2.42% baseline.",
+            "next_action": "Finalize vernacular creative assets and staging URLs for test launch."
         },
         {
             "experiment_id": "EXP-GROWTH-002",
@@ -102,30 +102,31 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "expected_impact": "+20% to +30% Lift in Form Completion",
             "mde": "+20.0% Relative Lift",
             "required_sample": 4250,
-            "start_date": "2026-09-01",
-            "end_date": "2026-09-14",
-            "status": "Analysis",
-            "result": "Completed: Variant achieved +26.8% lift (p=0.0041, 95% CI [+8.2%, +45.4%])",
-            "decision": "Promote Cautiously & Roll Out",
-            "learning": "1-tap business category chip upfront increased form initiation from 14% to 31% without lowering lead quality.",
-            "next_action": "Ship 2-step form to 100% of mobile paid traffic; begin WhatsApp OTP autofill test."
+            "start_date": "Sprint Backlog",
+            "end_date": "14-day flight upon launch",
+            "status": "Planned",
+            "result": "Pending execution — target sample size N=4,250 per variant (power 80%, α=0.05)",
+            "decision": "Approved for Deployment",
+            "learning": "Form analytics instrumentation confirmed as prerequisite; sample size powered for +20% MDE against 7.40% baseline.",
+            "next_action": "Instrument step-level telemetry in onboarding form and deploy variant to 50/50 traffic split."
         },
         {
             "experiment_id": "EXP-GROWTH-003",
             "title": "Audience Concentration & Budget Reallocation to Stable Interest Segments",
             "observed_evidence": (
-                "Segment stability analysis showed that 12 of the 28 interest groups evaluated have < 10 clicks, "
-                "exhibiting extreme variance in cost per approved conversion, while top interests (e.g. ID 16, 27) "
-                "demonstrate consistent sub-$25 cost per approved conversion across 50+ click thresholds."
+                "Audience segment stability analysis across all 40 interest categories reveals that Interest 27 carries the highest "
+                "cost per approved conversion at $95.85 (54 conversions on $5,176.17 spend across 3,409 clicks), whereas top efficient "
+                "scaled interests like ID 16 ($57.34 CPA across 5,144 clicks) and ID 10 ($55.89 CPA across 3,317 clicks) demonstrate "
+                "proven scale. Reallocating spend away from high-CPA clusters into high-intent stable clusters optimizes blended unit economics."
             ),
             "hypothesis": (
-                "Reallocating 30% of media budget away from unstable, fragmented interest segments into the top 5 "
-                "sample-stable segments will improve overall blended campaign efficiency by eliminating long-tail spend waste."
+                "Reallocating 30% of media budget away from inefficient high-CPA interest segments into proven sample-stable "
+                "segments will improve overall blended campaign efficiency by eliminating long-tail spend waste."
             ),
             "target_audience": "Campaign budget allocation across interest categories.",
             "test_variable": "Audience Targeting Concentration",
-            "control": "Fragmented broad targeting across all 30+ interest codes.",
-            "variant": "Concentrated tier-1 targeting strictly limited to stable interest clusters with >50 clicks history.",
+            "control": "Fragmented broad targeting across all 40 interest codes.",
+            "variant": "Concentrated targeting shifting 30% budget from high-CPA interests (e.g. ID 27 at $95.85) to efficient stable interest clusters (IDs 16, 10, 29).",
             "primary_kpi": "Blended Cost per Approved Conversion ($)",
             "secondary_kpi": "Total Approved Conversions per Week",
             "guardrail": "Weekly impression delivery volume must not decline by more than 15%.",
@@ -138,8 +139,8 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "ice_score": 8.67,
             "priority": "P0 (Immediate Sprint)",
             "priority_reason": "Zero engineering required; actionable immediately within ad campaign budget settings.",
-            "problem": "12 of 28 interest segments have <10 clicks, creating budget waste and noisy performance.",
-            "opportunity": "Shift 30% of budget from volatile segments (<25 clicks) to proven stable interest codes (16, 27, 29).",
+            "problem": "High CPA concentration in interest code 27 ($95.85 CPA) and wide efficiency variance across 40 interest groups.",
+            "opportunity": "Reallocate budget from high-CPA segments (e.g., ID 27 at $95.85) to proven efficient segments (e.g., ID 16 at $57.34, ID 10 at $55.89).",
             "segment": "Interest Target Groups (Stable vs Volatile)",
             "channel": "Meta Ad Account Budget Optimizer",
             "owner": "Performance Marketing Analyst",
@@ -147,24 +148,25 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "expected_impact": "-15% to -22% CPA Reduction",
             "mde": "-15.0% CPA Reduction",
             "required_sample": 2500,
-            "start_date": "2026-09-22",
-            "end_date": "2026-10-06",
+            "start_date": "Sprint Backlog",
+            "end_date": "14-day flight upon launch",
             "status": "Planned",
-            "result": "Pre-Launch (Baseline data audited; audience exclusions staged)",
+            "result": "Pending execution — budget reallocation model staged",
             "decision": "Ready for Deployment",
-            "learning": "Segments with >=50 clicks demonstrate 2.8x more predictable CPA week-over-week.",
-            "next_action": "Execute budget shift in campaign settings upon conclusion of Sprint 38."
+            "learning": "Audit of all 40 interest codes confirmed minimum 128 clicks per segment in the dataset, but CPA ranges from $28 to $95.85.",
+            "next_action": "Execute budget shift in campaign settings upon conclusion of current flight."
         },
         {
             "experiment_id": "EXP-GROWTH-004",
             "title": "Returning Visitor Personalized High-Intent Nudge (Consumer Behavior)",
             "observed_evidence": (
-                "UCI consumer behavior diagnostics show that Returning Visitors have a 3.5x higher purchase rate (16.9% vs 4.8%) "
-                "and average page value of $7.82 vs $1.15 for New Visitors, but exhibit high exit rates (0.045) on cart pages."
+                "UCI consumer diagnostics reveal that Returning Visitors convert at 13.93% (1,470/10,551) compared to 24.91% "
+                "(422/1,694) for New Visitors—a 44.1% conversion deficit—with an average cart exit rate of 0.0465 and average "
+                "page value of $5.01 vs $10.77 for New Visitors. Personalizing returning merchant sessions addresses the sharp drop-off observed post-initial visit."
             ),
             "hypothesis": (
                 "Displaying a personalized re-engagement banner ('Continue where you left off + free merchant QR setup') "
-                "to returning visitors within 5 seconds of session start will increase transaction completion."
+                "to returning visitors within 5 seconds of session start will recover returning visitor intent and increase transaction completion."
             ),
             "target_audience": "Returning visitors on web/mobile sessions.",
             "test_variable": "On-site Returning Visitor Modal / Top-Banner",
@@ -174,16 +176,16 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "secondary_kpi": "Add-to-Cart / Feature Usage Initiation Rate (%)",
             "guardrail": "Session bounce rate must not increase by > 2% absolute.",
             "success_criteria": ">= +12% relative lift in transaction rate among returning cohort with p < 0.05.",
-            "expected_learning": "Quantifies the conversion lift of context-aware personalization for high-intent users.",
+            "expected_learning": "Quantifies the conversion lift of context-aware personalization for returning merchant sessions.",
             "data_requirement": "Cookie/session identity persistence, on-site event stream, transaction confirmation webhook.",
             "impact_score": 7,
             "evidence_score": 8,
             "ease_score": 6,
             "ice_score": 7.00,
             "priority": "P1 (Next Sprint)",
-            "priority_reason": "Capitalizes on high baseline intent with proven behavioral divergence.",
-            "problem": "Returning visitors have 3.5x higher purchase intent but experience high checkout exit rates.",
-            "opportunity": "Personalized 'resume ledger entry' contextual banner on session start.",
+            "priority_reason": "Addresses the 44% conversion degradation in returning visitors who make up 85.6% of sessions.",
+            "problem": "Returning visitors suffer a 44% lower conversion rate (13.93% vs 24.91% for new visitors) despite representing 85.6% of total sessions.",
+            "opportunity": "Contextual 'resume ledger entry' banner to recover returning visitor drop-off.",
             "segment": "Returning Visitors (UCI Behavior Diagnostic)",
             "channel": "In-App / Mobile Web Banner Nudge",
             "owner": "Lifecycle / CRM Specialist",
@@ -191,24 +193,25 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "expected_impact": "+12% to +18% Lift in Return Purchases",
             "mde": "+12.0% Relative Lift",
             "required_sample": 1850,
-            "start_date": "2026-10-01",
-            "end_date": "2026-10-15",
+            "start_date": "Sprint Backlog",
+            "end_date": "14-day flight upon launch",
             "status": "Idea",
-            "result": "Backlog Scoping",
-            "decision": "Approve for Sprint 40",
-            "learning": "UCI dataset shows returning visitors spend 340s avg on product pages — high consideration phase.",
+            "result": "Pending execution — backlog scoping",
+            "decision": "Approved for Discovery",
+            "learning": "UCI dataset shows returning visitors make up 85.6% of sessions (10,551/12,330) but exhibit higher exit rates (0.0465) and lower conversion.",
             "next_action": "Build dynamic cookie-based banner prototype in staging."
         },
         {
             "experiment_id": "EXP-GROWTH-005",
             "title": "Demographic Gender-Specific Creative Framing Test",
             "observed_evidence": (
-                "Audience analysis reveals Female segments generate higher CTR (0.024% vs 0.016%) but incur a higher cost per "
-                "approved conversion ($68.20 vs $42.10 for Males) due to post-click enquiry friction."
+                "Audience analysis reveals Female segments generate higher CTR (0.0208% vs 0.0145% for Males, +43.4% higher) "
+                "but incur higher cost per approved conversion ($69.70 vs $41.44 for Males, +68.2% higher) due to post-click "
+                "conversion friction (2.07% vs 4.09%)."
             ),
             "hypothesis": (
                 "Current creative hooks appeal to female SMB owners' visual interest but downstream product copy is tailored "
-                "predominantly to male-dominated wholesale trade. Creating retail/apparel-specific merchant landing copy for female "
+                "predominantly to male-dominated wholesale trade. Creating retail/boutique/apparel-specific merchant landing copy for female "
                 "audiences will bridge the post-click intent gap."
             ),
             "target_audience": "Female business owners aged 30-49.",
@@ -227,7 +230,7 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "ice_score": 7.00,
             "priority": "P1 (Next Sprint)",
             "priority_reason": "High initial click engagement indicates strong top-of-funnel resonance that is currently squandered.",
-            "problem": "Female segments generate +48% higher CTR but 1.6x higher CPA due to wholesale-biased landing copy.",
+            "problem": "Female segments generate +43.4% higher CTR (0.0208% vs 0.0145%) but 1.68x higher CPA ($69.70 vs $41.44) due to wholesale-biased landing copy.",
             "opportunity": "Verticalized retail/apparel/boutique merchant testimonials and imagery for female cohorts.",
             "segment": "Female Business Owners (Age 30-49)",
             "channel": "Meta Reels & Vernacular Display",
@@ -236,12 +239,12 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "expected_impact": "-20% to -28% CPA for Female Segment",
             "mde": "+20.0% Relative Lift",
             "required_sample": 3100,
-            "start_date": "2026-09-25",
-            "end_date": "2026-10-09",
+            "start_date": "Sprint Backlog",
+            "end_date": "14-day flight upon launch",
             "status": "Planned",
-            "result": "Creative Production Phase",
-            "decision": "Approve Creatives & Stage Landing URLs",
-            "learning": "Audience analysis shows Female 30-34 has highest top-of-funnel CTR (0.027%) across all demographics.",
+            "result": "Pending execution — creative design backlog",
+            "decision": "Ready for Creative Production",
+            "learning": "Audience analysis shows Female segments deliver 23,878 clicks / 114.9M impressions (0.0208% CTR) but convert at only 2.07% post-click.",
             "next_action": "Produce 3 vernacular video variants featuring retail store owners."
         }
     ]
@@ -263,8 +266,8 @@ def get_hypothesis_pipeline_stages() -> List[Dict[str, Any]]:
             "stage": "observe",
             "stage_label": "Observe",
             "experiment_id": "EXP-GROWTH-001",
-            "title": "Ad Campaign Scaled 19x — Unit Cost Surged 4x",
-            "content": "Campaign 1178 scaled media spend from $2,893 to $55,662 (+1,823%). Despite CPM falling 23.6% (cheaper inventory at scale), Cost per Approved Conversion surged from $15.81 to $63.83 (+303.7%). The scale did not yield proportional conversions.",
+            "title": "Ad Campaign Budget Surged 19.2x — Unit Cost Escalated 4x",
+            "content": "Campaign 1178 expanded media spend from $2,893 to $55,662 (+1,823%). Despite CPM falling 23.6% ($0.27 vs $0.36), Cost per Approved Conversion surged from $15.81 to $63.83 (+303.7%). Media spend expanded without proportional conversion volume.",
             "evidence_type": "Real data finding",
             "linked_tab": "waterfall"
         },
@@ -355,8 +358,8 @@ def get_hypothesis_pipeline_stages() -> List[Dict[str, Any]]:
             "stage": "observe",
             "stage_label": "Observe",
             "experiment_id": "EXP-GROWTH-003",
-            "title": "Long-tail Audience Fragmentation",
-            "content": "Segment stability analysis showed 12 of 28 interest groups had < 10 clicks, creating budget waste.",
+            "title": "Wide CPA Divergence Across 40 Interest Segments",
+            "content": "Segment stability analysis across all 40 interest codes shows extreme CPA divergence: Interest 27 carries the worst CPA at $95.85 (54 conversions on $5,176 spend), while top stable segments like ID 16 ($57.34) and ID 10 ($55.89) deliver reliable scale.",
             "evidence_type": "Real data finding",
             "linked_tab": "audience"
         },
@@ -365,7 +368,7 @@ def get_hypothesis_pipeline_stages() -> List[Dict[str, Any]]:
             "stage_label": "Diagnose",
             "experiment_id": "EXP-GROWTH-003",
             "title": "Diagnosis: Unstable Targeting",
-            "content": "Media budget is spread too thin across fragmented, low-volume segments which drives up variance.",
+            "content": "Media budget is spread too thin across fragmented, high-variance segments which drives up overall blended cost.",
             "evidence_type": "Structural observation",
             "linked_tab": "audience"
         },
@@ -374,7 +377,7 @@ def get_hypothesis_pipeline_stages() -> List[Dict[str, Any]]:
             "stage_label": "Hypothesize",
             "experiment_id": "EXP-GROWTH-003",
             "title": "Hypothesis: Budget Reallocation",
-            "content": "If we concentrate budget into the top 5 high-volume, low-variance segments, blended cost will drop.",
+            "content": "If we concentrate budget into proven high-volume, low-variance segments and reduce spend in high-CPA clusters like ID 27, blended cost will drop.",
             "evidence_type": "Hypothesis generation",
             "linked_tab": "backlog"
         },
@@ -383,7 +386,7 @@ def get_hypothesis_pipeline_stages() -> List[Dict[str, Any]]:
             "stage_label": "Experiment",
             "experiment_id": "EXP-GROWTH-003",
             "title": "Experiment: Audience Consolidation",
-            "content": "Control: Fragmented targeting. Variant: Concentrated targeting on stable segments. Primary KPI: Blended Cost per Approved.",
+            "content": "Control: Fragmented broad targeting. Variant: Concentrated targeting on stable segments. Primary KPI: Blended Cost per Approved.",
             "evidence_type": "Experiment Design",
             "linked_tab": "backlog"
         },
@@ -401,8 +404,8 @@ def get_hypothesis_pipeline_stages() -> List[Dict[str, Any]]:
             "stage": "observe",
             "stage_label": "Observe",
             "experiment_id": "EXP-GROWTH-004",
-            "title": "Returning Visitor Value Gap",
-            "content": "Returning visitors convert 3.5x higher but show high exit rates on transaction pages.",
+            "title": "Returning Visitor Conversion Deficit",
+            "content": "UCI consumer diagnostics reveal Returning Visitors convert at only 13.93% vs 24.91% for New Visitors (a 44.1% conversion deficit) and exhibit high exit rates (0.0465) on cart and product pages.",
             "evidence_type": "Real data finding",
             "linked_tab": "audience"
         },
@@ -411,7 +414,7 @@ def get_hypothesis_pipeline_stages() -> List[Dict[str, Any]]:
             "stage_label": "Diagnose",
             "experiment_id": "EXP-GROWTH-004",
             "title": "Diagnosis: Lack of Re-engagement Nudge",
-            "content": "High-intent users return but are treated like new users, losing context.",
+            "content": "Returning users represent 85.6% of sessions but drop off without contextual guidance to resume their workflow.",
             "evidence_type": "Structural observation",
             "linked_tab": "audience"
         },
@@ -448,7 +451,7 @@ def get_hypothesis_pipeline_stages() -> List[Dict[str, Any]]:
             "stage_label": "Observe",
             "experiment_id": "EXP-GROWTH-005",
             "title": "Female Segment Cost Overrun",
-            "content": "Female segments have higher CTR but significantly worse downstream conversion, driving up CPA.",
+            "content": "Female segments generate higher CTR (0.0208% vs 0.0145% for males) but significantly lower post-click conversion (2.07% vs 4.09%), driving CPA to $69.70 vs $41.44.",
             "evidence_type": "Real data finding",
             "linked_tab": "audience"
         },

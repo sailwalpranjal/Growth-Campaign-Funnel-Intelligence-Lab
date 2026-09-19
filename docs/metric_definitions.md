@@ -65,6 +65,7 @@ $$\text{Metric}_{\text{agg}} = \frac{\sum_{i=1}^N \text{Numerator}_i}{\sum_{i=1}
 Averaging row-level rates $\frac{1}{N}\sum \frac{\text{Numerator}_i}{\text{Denominator}_i}$ assigns equal weight to an ad that received 10 impressions and an ad that received 1,000,000 impressions. This introduces severe **Simpson's Paradox** and distorts campaign comparisons.
 
 **Proof with Real Data:**
-* In Campaign 1178, row-averaged CTR is **0.0271%**.
-* True Ratio-of-Sums CTR is **0.0176%** ($\frac{36,068 \text{ clicks}}{204,823,716 \text{ impressions}}$).
-* Row-averaging overstates click-through performance by **+54.0%** because low-impression ad sets with lucky clicks distort the mean.
+* In Campaign 1178, true Ratio-of-Sums CTR is **0.0176%** ($\frac{36,068 \text{ clicks}}{204,823,716 \text{ impressions}}$).
+* Unweighted row-averaged CTR across Campaign 1178 ad rows is **0.0162%** (understating true CTR by -7.9%).
+* Across all 1,143 ads in the dataset, unweighted row-averaging yields **0.0164%** vs true ratio-of-sums **0.0179%** (-8.2% understated).
+* Unweighted row-averaging violates aggregation integrity by assigning equal weight to micro-budget ad sets with minimal impressions and scaled ad sets with millions of impressions. Strict ratio-of-sums aggregation is mandatory for all executive reporting.

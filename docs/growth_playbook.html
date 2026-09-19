@@ -94,16 +94,16 @@
       <div class="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 print-card space-y-3">
         <h3 class="font-bold text-sm text-cyan-300 print-text-dark">1.1 Aggregation Integrity: Ratio-of-Sums vs. Row-Level Averages</h3>
         <p class="text-xs sm:text-sm text-slate-300 print-text-muted leading-relaxed">
-          <strong>The Operational Problem:</strong> Ad networks report metrics across fragmented ad sets with orders-of-magnitude volume disparities (from 10 to 1,000,000+ impressions). Averaging row-level rates introduces severe <strong>Simpson's Paradox</strong>.
+          <strong>The Operational Problem:</strong> Ad networks report metrics across fragmented ad sets with orders-of-magnitude volume disparities (from 10 to 1,000,000+ impressions). Averaging row-level rates introduces severe aggregation distortion.
         </p>
         <p class="text-xs sm:text-sm text-slate-300 print-text-muted leading-relaxed">
-          <strong>The Empirical Evidence:</strong> In Campaign 1178, the row-averaged Click-Through Rate (CTR) is <strong>0.0271%</strong>, whereas the true Ratio-of-Sums CTR is <strong>0.0176%</strong>:
+          <strong>The Empirical Evidence:</strong> In Campaign 1178, the true Ratio-of-Sums CTR is <strong>0.0176%</strong>, whereas unweighted row-averaging yields <strong>0.0162%</strong> (-7.9% understated):
         </p>
         <div class="p-3 rounded-lg bg-slate-950 font-mono text-xs text-center border border-white/5 my-2">
           $$\text{True CTR} = \frac{\sum \text{Clicks}}{\sum \text{Impressions}} = \frac{36,068}{204,823,716} = 0.0176\%$$
         </div>
         <p class="text-xs text-slate-400 print-text-muted">
-          Averaging row-level rates artificially inflates perceived CTR by <strong>+54.0%</strong> due to micro-budget ad sets with small, noisy sample sizes.
+          Averaging row-level rates distorts performance by assigning equal weight to micro-budget ad sets with small, noisy sample sizes and scaled ad sets with millions of impressions. Across all 1,143 ads, unweighted row-averaging yields <strong>0.0164%</strong> vs true ratio-of-sums <strong>0.0179%</strong> (-8.2% understated).
         </p>
         <div class="p-3 rounded-lg bg-indigo-950/40 border border-indigo-500/30 text-xs text-indigo-200">
           <strong>The Growth Rule:</strong> All portfolio and segment-level conversion rates, CTRs, and cost metrics must be strictly aggregated as \(\frac{\sum \text{Numerator}}{\sum \text{Denominator}}\). Row-averaged rates are strictly prohibited in executive reporting.
@@ -149,7 +149,7 @@
 
       <div class="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 print-card space-y-3">
         <p class="text-xs sm:text-sm text-slate-300 print-text-muted leading-relaxed">
-          When scaling paid media budget from <strong>Campaign 936</strong> ($2,893.37 across 225 ad sets) to <strong>Campaign 1178</strong> ($55,662.15 across 625 ad sets), Cost per Approved Conversion escalated from <strong>$15.81</strong> to <strong>$63.83</strong> (+303.7% cost inflation).
+          When comparing <strong>Campaign 936</strong> ($2,893.37 across 464 ad sets) to <strong>Campaign 1178</strong> ($55,662.15 across 625 ad sets, a 19.2x media budget expansion), Cost per Approved Conversion escalated from <strong>$15.81</strong> to <strong>$63.83</strong> (+303.7% cost inflation).
         </p>
         <p class="text-xs sm:text-sm text-slate-300 print-text-muted leading-relaxed">
           Rather than relying on qualitative speculation, the gap is decomposed via a continuous 3-factor mathematical identity:
