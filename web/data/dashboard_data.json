@@ -1,1741 +1,1821 @@
 {
-    "metadata": {
-        "project_name": "Khatabook Growth Intelligence Platform",
-        "target_company": "Khatabook",
-        "role": "Growth Product Analyst / Merchant Intelligence",
-        "author": "Pranjal Sailwal",
-        "generated_at": "2026-09-19T16:41:19.539157Z"
+  "metadata": {
+    "project_name": "Khatabook Growth Intelligence Platform",
+    "target_company": "Khatabook",
+    "role": "Growth Product Analyst / Merchant Intelligence",
+    "author": "Pranjal Sailwal",
+    "generated_at": "2026-09-19 17:08:34 UTC"
+  },
+  "scorecard": [
+    {
+      "campaign_id": 916,
+      "total_ads": 54,
+      "total_impressions": 482925,
+      "total_clicks": 113,
+      "total_spend": 149.710000657,
+      "total_conversions": 58,
+      "approved_conversions": 24,
+      "ctr": 0.00023399078531863125,
+      "cpc": 1.3248672624513274,
+      "cpm": 0.31000673118393124,
+      "click_to_total_conv_rate": 0.5132743362831859,
+      "click_to_approved_conv_rate": 0.21238938053097345,
+      "cost_per_total_conv": 2.5812069078793103,
+      "cost_per_approved_conv": 6.237916694041666,
+      "cost_per_impression": 0.00031000673118393126,
+      "impressions_per_click": 4273.672566371682,
+      "clicks_per_approved": 4.708333333333333
     },
-    "scorecard": [
-        {
-            "campaign_id": 916,
-            "total_ads": 54,
-            "total_impressions": 482925,
-            "total_clicks": 113,
-            "total_spend": 149.710000657,
-            "total_conversions": 58,
-            "approved_conversions": 24,
-            "ctr": 0.00023399078531863125,
-            "cpc": 1.3248672624513274,
-            "cpm": 0.31000673118393124,
-            "click_to_total_conv_rate": 0.5132743362831859,
-            "click_to_approved_conv_rate": 0.21238938053097345,
-            "cost_per_total_conv": 2.5812069078793103,
-            "cost_per_approved_conv": 6.237916694041666,
-            "cost_per_impression": 0.00031000673118393126,
-            "impressions_per_click": 4273.672566371682,
-            "clicks_per_approved": 4.708333333333333
-        },
-        {
-            "campaign_id": 936,
-            "total_ads": 464,
-            "total_impressions": 8128187,
-            "total_clicks": 1984,
-            "total_spend": 2893.369998934,
-            "total_conversions": 537,
-            "approved_conversions": 183,
-            "ctr": 0.00024408887246319506,
-            "cpc": 1.4583518139788305,
-            "cpm": 0.3559674499287479,
-            "click_to_total_conv_rate": 0.2706653225806452,
-            "click_to_approved_conv_rate": 0.09223790322580645,
-            "cost_per_total_conv": 5.388026068778398,
-            "cost_per_approved_conv": 15.810765021497266,
-            "cost_per_impression": 0.0003559674499287479,
-            "impressions_per_click": 4096.868447580645,
-            "clicks_per_approved": 10.841530054644808
-        },
-        {
-            "campaign_id": 1178,
-            "total_ads": 625,
-            "total_impressions": 204823716,
-            "total_clicks": 36068,
-            "total_spend": 55662.149958614,
-            "total_conversions": 2669,
-            "approved_conversions": 872,
-            "ctr": 0.00017609288955581687,
-            "cpc": 1.543255793462737,
-            "cpm": 0.2717563719946082,
-            "click_to_total_conv_rate": 0.07399911278695796,
-            "click_to_approved_conv_rate": 0.024176555395364313,
-            "cost_per_total_conv": 20.855058058678907,
-            "cost_per_approved_conv": 63.83274077822706,
-            "cost_per_impression": 0.00027175637199460824,
-            "impressions_per_click": 5678.82100476877,
-            "clicks_per_approved": 41.362385321100916
-        }
-    ],
-    "decomposition": {
-        "base_campaign_id": 936,
-        "target_campaign_id": 1178,
-        "base_metrics": {
-            "cpm": 0.3559674499287479,
-            "ctr": 0.00024408887246319506,
-            "click_to_approved_rate": 0.09223790322580645,
-            "cost_per_approved": 15.810765021497263,
-            "lever_1_cost_per_imp": 0.0003559674499287479,
-            "lever_2_imp_per_click": 4096.868447580645,
-            "lever_3_clicks_per_app": 10.841530054644808
-        },
-        "target_metrics": {
-            "cpm": 0.2717563719946082,
-            "ctr": 0.00017609288955581687,
-            "click_to_approved_rate": 0.024176555395364313,
-            "cost_per_approved": 63.832740778227056,
-            "lever_1_cost_per_imp": 0.00027175637199460824,
-            "lever_2_imp_per_click": 5678.82100476877,
-            "lever_3_clicks_per_app": 41.362385321100916
-        },
-        "cost_gap": 48.021975756729795,
-        "cpm_effect": -3.740346387542409,
-        "ctr_effect": 4.660835432876126,
-        "conv_effect": 47.10148671139608,
-        "reconciled_sum": 48.021975756729795,
-        "reconciliation_error": 0.0,
-        "primary_driver": "Post-Click Conversion Rate Dilution"
+    {
+      "campaign_id": 936,
+      "total_ads": 464,
+      "total_impressions": 8128187,
+      "total_clicks": 1984,
+      "total_spend": 2893.369998934,
+      "total_conversions": 537,
+      "approved_conversions": 183,
+      "ctr": 0.00024408887246319506,
+      "cpc": 1.4583518139788305,
+      "cpm": 0.3559674499287479,
+      "click_to_total_conv_rate": 0.2706653225806452,
+      "click_to_approved_conv_rate": 0.09223790322580645,
+      "cost_per_total_conv": 5.388026068778398,
+      "cost_per_approved_conv": 15.810765021497266,
+      "cost_per_impression": 0.0003559674499287479,
+      "impressions_per_click": 4096.868447580645,
+      "clicks_per_approved": 10.841530054644808
     },
-    "mix_adjustment": [
-        {
-            "campaign_id": 936,
-            "raw_cost_per_approved": 15.81,
-            "mix_adjusted_cost_per_approved": 23.69,
-            "cost_gap_mix_effect": 7.88,
-            "raw_click_to_approved_rate": 0.0922,
-            "mix_adjusted_click_to_approved_rate": 0.1273,
-            "interpretation": "Baseline campaign maintains strong efficiency under common weighting."
-        },
-        {
-            "campaign_id": 1178,
-            "raw_cost_per_approved": 63.83,
-            "mix_adjusted_cost_per_approved": 78.16,
-            "cost_gap_mix_effect": 14.33,
-            "raw_click_to_approved_rate": 0.0242,
-            "mix_adjusted_click_to_approved_rate": 0.024,
-            "interpretation": "Underperformance persists even under identical audience weighting, proving the 4x cost surge is driven by intra-segment post-click conversion decay rather than audience demographic skew."
-        }
-    ],
-    "funnel": [
-        {
-            "campaign_id": 916,
-            "impressions": 482925,
-            "clicks": 113,
-            "total_conversions": 58,
-            "approved_conversions": 24,
-            "ctr": 0.000234,
-            "click_to_enquiry_rate": 0.5133,
-            "enquiry_to_approved_rate": 0.4138,
-            "cumulative_rate": 4.97e-05,
-            "drop_clicks_to_enquiry_pct": 0.4867
-        },
-        {
-            "campaign_id": 936,
-            "impressions": 8128187,
-            "clicks": 1984,
-            "total_conversions": 537,
-            "approved_conversions": 183,
-            "ctr": 0.000244,
-            "click_to_enquiry_rate": 0.2707,
-            "enquiry_to_approved_rate": 0.3408,
-            "cumulative_rate": 2.251e-05,
-            "drop_clicks_to_enquiry_pct": 0.7293
-        },
-        {
-            "campaign_id": 1178,
-            "impressions": 204823716,
-            "clicks": 36068,
-            "total_conversions": 2669,
-            "approved_conversions": 872,
-            "ctr": 0.000176,
-            "click_to_enquiry_rate": 0.074,
-            "enquiry_to_approved_rate": 0.3267,
-            "cumulative_rate": 4.26e-06,
-            "drop_clicks_to_enquiry_pct": 0.926
-        }
-    ],
-    "segment_stability": [
-        {
-            "interest": 16.0,
-            "total_clicks": 5144,
-            "approved_conversions": 141,
-            "spend": 8084.91,
-            "cost_per_approved": 57.34,
-            "click_to_approved_rate": 0.0274,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 27.0,
-            "total_clicks": 3409,
-            "approved_conversions": 54,
-            "spend": 5176.17,
-            "cost_per_approved": 95.85,
-            "click_to_approved_rate": 0.0158,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 10.0,
-            "total_clicks": 3317,
-            "approved_conversions": 91,
-            "spend": 5086.38,
-            "cost_per_approved": 55.89,
-            "click_to_approved_rate": 0.0274,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 29.0,
-            "total_clicks": 3315,
-            "approved_conversions": 132,
-            "spend": 5045.19,
-            "cost_per_approved": 38.22,
-            "click_to_approved_rate": 0.0398,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 28.0,
-            "total_clicks": 2025,
-            "approved_conversions": 42,
-            "spend": 3205.85,
-            "cost_per_approved": 76.33,
-            "click_to_approved_rate": 0.0207,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 63.0,
-            "total_clicks": 1675,
-            "approved_conversions": 34,
-            "spend": 2484.06,
-            "cost_per_approved": 73.06,
-            "click_to_approved_rate": 0.0203,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 15.0,
-            "total_clicks": 1609,
-            "approved_conversions": 63,
-            "spend": 2597.26,
-            "cost_per_approved": 41.23,
-            "click_to_approved_rate": 0.0392,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 18.0,
-            "total_clicks": 1524,
-            "approved_conversions": 33,
-            "spend": 2425.07,
-            "cost_per_approved": 73.49,
-            "click_to_approved_rate": 0.0217,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 20.0,
-            "total_clicks": 1234,
-            "approved_conversions": 47,
-            "spend": 1960.77,
-            "cost_per_approved": 41.72,
-            "click_to_approved_rate": 0.0381,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 19.0,
-            "total_clicks": 1188,
-            "approved_conversions": 33,
-            "spend": 1940.36,
-            "cost_per_approved": 58.8,
-            "click_to_approved_rate": 0.0278,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 32.0,
-            "total_clicks": 1138,
-            "approved_conversions": 35,
-            "spend": 1970.53,
-            "cost_per_approved": 56.3,
-            "click_to_approved_rate": 0.0308,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 26.0,
-            "total_clicks": 1113,
-            "approved_conversions": 23,
-            "spend": 1591.77,
-            "cost_per_approved": 69.21,
-            "click_to_approved_rate": 0.0207,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 25.0,
-            "total_clicks": 1066,
-            "approved_conversions": 19,
-            "spend": 1603.86,
-            "cost_per_approved": 84.41,
-            "click_to_approved_rate": 0.0178,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 64.0,
-            "total_clicks": 989,
-            "approved_conversions": 27,
-            "spend": 1486.13,
-            "cost_per_approved": 55.04,
-            "click_to_approved_rate": 0.0273,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 22.0,
-            "total_clicks": 717,
-            "approved_conversions": 12,
-            "spend": 1039.86,
-            "cost_per_approved": 86.65,
-            "click_to_approved_rate": 0.0167,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 107.0,
-            "total_clicks": 639,
-            "approved_conversions": 20,
-            "spend": 923.18,
-            "cost_per_approved": 46.16,
-            "click_to_approved_rate": 0.0313,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 109.0,
-            "total_clicks": 572,
-            "approved_conversions": 8,
-            "spend": 815.82,
-            "cost_per_approved": 101.98,
-            "click_to_approved_rate": 0.014,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 101.0,
-            "total_clicks": 524,
-            "approved_conversions": 25,
-            "spend": 757.69,
-            "cost_per_approved": 30.31,
-            "click_to_approved_rate": 0.0477,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 21.0,
-            "total_clicks": 512,
-            "approved_conversions": 27,
-            "spend": 824.21,
-            "cost_per_approved": 30.53,
-            "click_to_approved_rate": 0.0527,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 105.0,
-            "total_clicks": 453,
-            "approved_conversions": 6,
-            "spend": 647.8,
-            "cost_per_approved": 107.97,
-            "click_to_approved_rate": 0.0132,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 24.0,
-            "total_clicks": 419,
-            "approved_conversions": 15,
-            "spend": 670.06,
-            "cost_per_approved": 44.67,
-            "click_to_approved_rate": 0.0358,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 7.0,
-            "total_clicks": 410,
-            "approved_conversions": 19,
-            "spend": 648.93,
-            "cost_per_approved": 34.15,
-            "click_to_approved_rate": 0.0463,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 108.0,
-            "total_clicks": 402,
-            "approved_conversions": 7,
-            "spend": 586.2,
-            "cost_per_approved": 83.74,
-            "click_to_approved_rate": 0.0174,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 100.0,
-            "total_clicks": 395,
-            "approved_conversions": 9,
-            "spend": 574.31,
-            "cost_per_approved": 63.81,
-            "click_to_approved_rate": 0.0228,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 30.0,
-            "total_clicks": 389,
-            "approved_conversions": 12,
-            "spend": 616.63,
-            "cost_per_approved": 51.39,
-            "click_to_approved_rate": 0.0308,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 23.0,
-            "total_clicks": 375,
-            "approved_conversions": 7,
-            "spend": 595.65,
-            "cost_per_approved": 85.09,
-            "click_to_approved_rate": 0.0187,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 65.0,
-            "total_clicks": 372,
-            "approved_conversions": 19,
-            "spend": 542.01,
-            "cost_per_approved": 28.53,
-            "click_to_approved_rate": 0.0511,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 110.0,
-            "total_clicks": 365,
-            "approved_conversions": 9,
-            "spend": 521.35,
-            "cost_per_approved": 57.93,
-            "click_to_approved_rate": 0.0247,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 112.0,
-            "total_clicks": 339,
-            "approved_conversions": 15,
-            "spend": 483.8,
-            "cost_per_approved": 32.25,
-            "click_to_approved_rate": 0.0442,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 103.0,
-            "total_clicks": 333,
-            "approved_conversions": 5,
-            "spend": 479.13,
-            "cost_per_approved": 95.83,
-            "click_to_approved_rate": 0.015,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 106.0,
-            "total_clicks": 332,
-            "approved_conversions": 5,
-            "spend": 482.15,
-            "cost_per_approved": 96.43,
-            "click_to_approved_rate": 0.0151,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 2.0,
-            "total_clicks": 311,
-            "approved_conversions": 19,
-            "spend": 503.45,
-            "cost_per_approved": 26.5,
-            "click_to_approved_rate": 0.0611,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 104.0,
-            "total_clicks": 265,
-            "approved_conversions": 8,
-            "spend": 387.92,
-            "cost_per_approved": 48.49,
-            "click_to_approved_rate": 0.0302,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 111.0,
-            "total_clicks": 260,
-            "approved_conversions": 10,
-            "spend": 370.65,
-            "cost_per_approved": 37.06,
-            "click_to_approved_rate": 0.0385,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 113.0,
-            "total_clicks": 233,
-            "approved_conversions": 7,
-            "spend": 342.83,
-            "cost_per_approved": 48.98,
-            "click_to_approved_rate": 0.03,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 31.0,
-            "total_clicks": 195,
-            "approved_conversions": 16,
-            "spend": 299.1,
-            "cost_per_approved": 18.69,
-            "click_to_approved_rate": 0.0821,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 114.0,
-            "total_clicks": 191,
-            "approved_conversions": 4,
-            "spend": 282.62,
-            "cost_per_approved": 70.65,
-            "click_to_approved_rate": 0.0209,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 102.0,
-            "total_clicks": 150,
-            "approved_conversions": 7,
-            "spend": 215.07,
-            "cost_per_approved": 30.72,
-            "click_to_approved_rate": 0.0467,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 66.0,
-            "total_clicks": 138,
-            "approved_conversions": 4,
-            "spend": 230.76,
-            "cost_per_approved": 57.69,
-            "click_to_approved_rate": 0.029,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        },
-        {
-            "interest": 36.0,
-            "total_clicks": 128,
-            "approved_conversions": 10,
-            "spend": 205.74,
-            "cost_per_approved": 20.57,
-            "click_to_approved_rate": 0.0781,
-            "qualifies_t10": true,
-            "qualifies_t25": true,
-            "qualifies_t50": true,
-            "stability_classification": "Stable (Robust Sample >= 50)"
-        }
-    ],
-    "audience": [
-        {
-            "age": "30-34",
-            "gender": "F",
-            "ad_count": 197,
-            "total_impressions": 31571576,
-            "total_clicks": 5099,
-            "total_spend": 7611.479995127,
-            "total_conversions": 619,
-            "approved_conversions": 195,
-            "ctr": 0.0001615060331482977,
-            "cpc": 1.4927397519370464,
-            "cpm": 0.2410864758581263,
-            "click_to_approved_rate": 0.038242792704451856,
-            "cost_per_approved_conv": 39.033230744241024,
-            "qualification_state": "Qualified (High Sample)"
-        },
-        {
-            "age": "30-34",
-            "gender": "M",
-            "ad_count": 229,
-            "total_impressions": 36421443,
-            "total_clicks": 4384,
-            "total_spend": 7640.919991251,
-            "total_conversions": 812,
-            "approved_conversions": 299,
-            "ctr": 0.0001203686520602712,
-            "cpc": 1.7429105819459398,
-            "cpm": 0.20979179741041565,
-            "click_to_approved_rate": 0.06820255474452555,
-            "cost_per_approved_conv": 25.554916358698996,
-            "qualification_state": "Qualified (High Sample)"
-        },
-        {
-            "age": "35-39",
-            "gender": "F",
-            "ad_count": 109,
-            "total_impressions": 21439505,
-            "total_clicks": 4161,
-            "total_spend": 6061.349991827,
-            "total_conversions": 304,
-            "approved_conversions": 95,
-            "ctr": 0.00019408097341799637,
-            "cpc": 1.4567051169975966,
-            "cpm": 0.2827187470898698,
-            "click_to_approved_rate": 0.0228310502283105,
-            "cost_per_approved_conv": 63.80368412449474,
-            "qualification_state": "Qualified (High Sample)"
-        },
-        {
-            "age": "35-39",
-            "gender": "M",
-            "ad_count": 139,
-            "total_impressions": 20665139,
-            "total_clicks": 2933,
-            "total_spend": 5051.080002508,
-            "total_conversions": 322,
-            "approved_conversions": 112,
-            "ctr": 0.00014192984620137324,
-            "cpc": 1.7221547911721786,
-            "cpm": 0.24442516464602537,
-            "click_to_approved_rate": 0.03818615751789976,
-            "cost_per_approved_conv": 45.09892859382143,
-            "qualification_state": "Qualified (High Sample)"
-        },
-        {
-            "age": "40-44",
-            "gender": "F",
-            "ad_count": 107,
-            "total_impressions": 23396175,
-            "total_clicks": 5177,
-            "total_spend": 7396.579983637,
-            "total_conversions": 322,
-            "approved_conversions": 93,
-            "ctr": 0.0002212754862707259,
-            "cpc": 1.4287386485680895,
-            "cpm": 0.31614483921568376,
-            "click_to_approved_rate": 0.017964071856287425,
-            "cost_per_approved_conv": 79.53311810362365,
-            "qualification_state": "Qualified (High Sample)"
-        },
-        {
-            "age": "40-44",
-            "gender": "M",
-            "ad_count": 103,
-            "total_impressions": 16208132,
-            "total_clicks": 2559,
-            "total_spend": 4193.149997201,
-            "total_conversions": 201,
-            "approved_conversions": 77,
-            "ctr": 0.00015788370923928803,
-            "cpc": 1.6385892915986713,
-            "cpm": 0.25870655527737557,
-            "click_to_approved_rate": 0.03008987885892927,
-            "cost_per_approved_conv": 54.45649347014285,
-            "qualification_state": "Qualified (High Sample)"
-        },
-        {
-            "age": "45-49",
-            "gender": "F",
-            "ad_count": 138,
-            "total_impressions": 38455591,
-            "total_clicks": 9441,
-            "total_spend": 13433.209992777,
-            "total_conversions": 399,
-            "approved_conversions": 112,
-            "ctr": 0.00024550396325985474,
-            "cpc": 1.4228588065646648,
-            "cpm": 0.34931747617081216,
-            "click_to_approved_rate": 0.011863150090032835,
-            "cost_per_approved_conv": 119.93937493550892,
-            "qualification_state": "Qualified (High Sample)"
-        },
-        {
-            "age": "45-49",
-            "gender": "M",
-            "ad_count": 121,
-            "total_impressions": 25277267,
-            "total_clicks": 4411,
-            "total_spend": 7317.460003877,
-            "total_conversions": 285,
-            "approved_conversions": 96,
-            "ctr": 0.00017450462504510475,
-            "cpc": 1.6589118122595785,
-            "cpm": 0.28948778378125295,
-            "click_to_approved_rate": 0.021763772387213783,
-            "cost_per_approved_conv": 76.22354170705209,
-            "qualification_state": "Qualified (High Sample)"
-        }
-    ],
-    "audience_segments": [
-        {
-            "age": "30-34",
-            "gender": "F",
-            "clicks": 5099,
-            "spend": 7611.479995127,
-            "approved": 195,
-            "cost_per_approved": 39.033230744241024,
-            "ctr": 0.0001615060331482977
-        },
-        {
-            "age": "30-34",
-            "gender": "M",
-            "clicks": 4384,
-            "spend": 7640.919991251,
-            "approved": 299,
-            "cost_per_approved": 25.554916358698996,
-            "ctr": 0.0001203686520602712
-        },
-        {
-            "age": "35-39",
-            "gender": "F",
-            "clicks": 4161,
-            "spend": 6061.349991827,
-            "approved": 95,
-            "cost_per_approved": 63.80368412449474,
-            "ctr": 0.00019408097341799637
-        },
-        {
-            "age": "35-39",
-            "gender": "M",
-            "clicks": 2933,
-            "spend": 5051.080002508,
-            "approved": 112,
-            "cost_per_approved": 45.09892859382143,
-            "ctr": 0.00014192984620137324
-        },
-        {
-            "age": "40-44",
-            "gender": "F",
-            "clicks": 5177,
-            "spend": 7396.579983637,
-            "approved": 93,
-            "cost_per_approved": 79.53311810362365,
-            "ctr": 0.0002212754862707259
-        },
-        {
-            "age": "40-44",
-            "gender": "M",
-            "clicks": 2559,
-            "spend": 4193.149997201,
-            "approved": 77,
-            "cost_per_approved": 54.45649347014285,
-            "ctr": 0.00015788370923928803
-        },
-        {
-            "age": "45-49",
-            "gender": "F",
-            "clicks": 9441,
-            "spend": 13433.209992777,
-            "approved": 112,
-            "cost_per_approved": 119.93937493550892,
-            "ctr": 0.00024550396325985474
-        },
-        {
-            "age": "45-49",
-            "gender": "M",
-            "clicks": 4411,
-            "spend": 7317.460003877,
-            "approved": 96,
-            "cost_per_approved": 76.22354170705209,
-            "ctr": 0.00017450462504510475
-        }
-    ],
-    "consumer_behavior": {
-        "visitor_type": [
-            {
-                "visitor_type": "New_Visitor",
-                "total_sessions": 1694,
-                "transactions": 422,
-                "purchase_rate": 0.2491,
-                "avg_page_value": 10.77,
-                "avg_bounce_rate": 0.0053,
-                "avg_exit_rate": 0.0207,
-                "avg_product_duration_sec": 636.4
-            },
-            {
-                "visitor_type": "Other",
-                "total_sessions": 85,
-                "transactions": 16,
-                "purchase_rate": 0.1882,
-                "avg_page_value": 18.19,
-                "avg_bounce_rate": 0.0386,
-                "avg_exit_rate": 0.0633,
-                "avg_product_duration_sec": 570.4
-            },
-            {
-                "visitor_type": "Returning_Visitor",
-                "total_sessions": 10551,
-                "transactions": 1470,
-                "purchase_rate": 0.1393,
-                "avg_page_value": 5.01,
-                "avg_bounce_rate": 0.0248,
-                "avg_exit_rate": 0.0465,
-                "avg_product_duration_sec": 1289.4
-            }
-        ],
-        "traffic_type": [
-            {
-                "traffic_type": 2,
-                "total_sessions": 3913,
-                "transactions": 847,
-                "purchase_rate": 0.2165,
-                "avg_page_value": 8.3,
-                "avg_bounce_rate": 0.0085
-            },
-            {
-                "traffic_type": 1,
-                "total_sessions": 2451,
-                "transactions": 262,
-                "purchase_rate": 0.1069,
-                "avg_page_value": 3.46,
-                "avg_bounce_rate": 0.0323
-            },
-            {
-                "traffic_type": 3,
-                "total_sessions": 2052,
-                "transactions": 180,
-                "purchase_rate": 0.0877,
-                "avg_page_value": 3.28,
-                "avg_bounce_rate": 0.0333
-            },
-            {
-                "traffic_type": 4,
-                "total_sessions": 1069,
-                "transactions": 165,
-                "purchase_rate": 0.1543,
-                "avg_page_value": 7.04,
-                "avg_bounce_rate": 0.0163
-            },
-            {
-                "traffic_type": 13,
-                "total_sessions": 738,
-                "transactions": 43,
-                "purchase_rate": 0.0583,
-                "avg_page_value": 2.35,
-                "avg_bounce_rate": 0.0487
-            },
-            {
-                "traffic_type": 10,
-                "total_sessions": 450,
-                "transactions": 90,
-                "purchase_rate": 0.2,
-                "avg_page_value": 6.21,
-                "avg_bounce_rate": 0.0166
-            },
-            {
-                "traffic_type": 6,
-                "total_sessions": 444,
-                "transactions": 53,
-                "purchase_rate": 0.1194,
-                "avg_page_value": 5.08,
-                "avg_bounce_rate": 0.0221
-            },
-            {
-                "traffic_type": 8,
-                "total_sessions": 343,
-                "transactions": 95,
-                "purchase_rate": 0.277,
-                "avg_page_value": 10.3,
-                "avg_bounce_rate": 0.0115
-            },
-            {
-                "traffic_type": 5,
-                "total_sessions": 260,
-                "transactions": 56,
-                "purchase_rate": 0.2154,
-                "avg_page_value": 7.71,
-                "avg_bounce_rate": 0.0095
-            },
-            {
-                "traffic_type": 11,
-                "total_sessions": 247,
-                "transactions": 47,
-                "purchase_rate": 0.1903,
-                "avg_page_value": 5.07,
-                "avg_bounce_rate": 0.0222
-            }
-        ],
-        "engagement_tier": [
-            {
-                "engagement_tier": "High Engagement (>600s, Low Bounce)",
-                "total_sessions": 6044,
-                "transactions": 1370,
-                "purchase_rate": 0.2267,
-                "avg_page_value": 8.82
-            },
-            {
-                "engagement_tier": "Medium Engagement (120-600s)",
-                "total_sessions": 3816,
-                "transactions": 441,
-                "purchase_rate": 0.1156,
-                "avg_page_value": 4.64
-            },
-            {
-                "engagement_tier": "Low Engagement / Skimmer (<120s)",
-                "total_sessions": 2470,
-                "transactions": 97,
-                "purchase_rate": 0.0393,
-                "avg_page_value": 0.64
-            }
-        ]
+    {
+      "campaign_id": 1178,
+      "total_ads": 625,
+      "total_impressions": 204823716,
+      "total_clicks": 36068,
+      "total_spend": 55662.149958614,
+      "total_conversions": 2669,
+      "approved_conversions": 872,
+      "ctr": 0.00017609288955581687,
+      "cpc": 1.543255793462737,
+      "cpm": 0.2717563719946082,
+      "click_to_total_conv_rate": 0.07399911278695796,
+      "click_to_approved_conv_rate": 0.024176555395364313,
+      "cost_per_total_conv": 20.855058058678907,
+      "cost_per_approved_conv": 63.83274077822706,
+      "cost_per_impression": 0.00027175637199460824,
+      "impressions_per_click": 5678.82100476877,
+      "clicks_per_approved": 41.362385321100916
+    }
+  ],
+  "decomposition": {
+    "base_campaign_id": 936,
+    "target_campaign_id": 1178,
+    "base_metrics": {
+      "cpm": 0.3559674499287479,
+      "ctr": 0.00024408887246319506,
+      "click_to_approved_rate": 0.09223790322580645,
+      "cost_per_approved": 15.810765021497263,
+      "lever_1_cost_per_imp": 0.0003559674499287479,
+      "lever_2_imp_per_click": 4096.868447580645,
+      "lever_3_clicks_per_app": 10.841530054644808
     },
-    "experiments": [
-        {
-            "experiment_id": "EXP-GROWTH-001",
-            "title": "Ad Creative Value Prop Realignment for Scaled Campaigns",
-            "observed_evidence": "Campaign 1178 scaled budget to $55,662 and achieved lower CPM ($0.27 vs $0.36), but post-click approved conversion collapsed by 73.8% (from 9.22% in Camp 936 to 2.42% in Camp 1178), causing cost per approved conversion to inflate from $15.81 to $63.83.",
-            "hypothesis": "Broad-reach ad creatives in Campaign 1178 set generic or misaligned user expectations that fail to convert on the post-click enquiry form. Replacing generic reach hooks with high-intent SMB pain-point hooks (e.g., 'Track daily udhaar payments instantly') will filter low-intent clicks and improve post-click conversion.",
-            "target_audience": "Scaled acquisition audience (broad demographic, ages 30-49, top interest categories).",
-            "test_variable": "Ad Creative Hook & Headline Messaging",
-            "control": "Generic broad benefit creative: 'Grow your business with smart digital tools'",
-            "variant": "High-intent operational pain-point creative: 'Stop losing money to forgotten credits: 1-click ledger tracking'",
-            "primary_kpi": "Click-to-Approved Conversion Rate (%)",
-            "secondary_kpi": "Cost per Approved Conversion ($)",
-            "guardrail": "CTR must not drop below 0.012% (protect traffic volume)",
-            "success_criteria": ">= +25% relative lift in click-to-approved conversion rate with p < 0.05 and no CAC degradation",
-            "expected_learning": "Determines whether qualification-focused copy improves downstream unit economics at scale.",
-            "data_requirement": "Impression, click, enquiry, and approved conversion tracking at creative level.",
-            "impact_score": 9,
-            "evidence_score": 9,
-            "ease_score": 8,
-            "ice_score": 8.67,
-            "priority": "P0 (Immediate Sprint)",
-            "priority_reason": "Directly attacks the largest source of cost leakage ($48.02 cost-per-approved surge)."
-        },
-        {
-            "experiment_id": "EXP-GROWTH-002",
-            "title": "Post-Click Landing Form Friction Reduction & Micro-Commitment",
-            "observed_evidence": "Funnel drop-off analysis reveals that 92.6% of users who click Campaign 1178 ads drop off before completing the initial enquiry form (Click-to-Enquiry is only 7.40% vs 27.07% in Campaign 936).",
-            "hypothesis": "The current post-click enquiry form requires too many fields upfront. Replacing the single multi-field form with a 2-step micro-commitment form (Step 1: Business category selection, Step 2: Contact info) will reduce cognitive friction and increase completion rates.",
-            "target_audience": "All post-click web traffic from paid campaigns.",
-            "test_variable": "Landing Page Form Architecture",
-            "control": "Single-page static form with 5 mandatory fields (Name, Phone, City, Business Type, Revenue).",
-            "variant": "Progressive 2-step form: Step 1 (1-tap business type chip), Step 2 (Phone number OTP autofill).",
-            "primary_kpi": "Click-to-Total Conversion (Enquiry) Rate (%)",
-            "secondary_kpi": "Form Initiation Rate (%)",
-            "guardrail": "Total-to-Approved qualification rate must remain >= 30% (protect lead quality).",
-            "success_criteria": ">= +20% lift in total conversion rate with p < 0.05 and no drop in approval rate.",
-            "expected_learning": "Identifies whether top-of-funnel conversion leakage is caused by UX form fatigue.",
-            "data_requirement": "Session-level form field analytics, step completion timestamps, and approval backend sync.",
-            "impact_score": 9,
-            "evidence_score": 8,
-            "ease_score": 7,
-            "ice_score": 8.0,
-            "priority": "P0 (Immediate Sprint)",
-            "priority_reason": "High leverage on 36,000+ clicks where 92.6% currently bounce without converting."
-        },
-        {
-            "experiment_id": "EXP-GROWTH-003",
-            "title": "Audience Concentration & Budget Reallocation to Stable Interest Segments",
-            "observed_evidence": "Segment stability analysis showed that 12 of the 28 interest groups evaluated have < 10 clicks, exhibiting extreme variance in cost per approved conversion, while top interests (e.g. ID 16, 27) demonstrate consistent sub-$25 cost per approved conversion across 50+ click thresholds.",
-            "hypothesis": "Reallocating 30% of media budget away from unstable, fragmented interest segments into the top 5 sample-stable segments will improve overall blended campaign efficiency by eliminating long-tail spend waste.",
-            "target_audience": "Campaign budget allocation across interest categories.",
-            "test_variable": "Audience Targeting Concentration",
-            "control": "Fragmented broad targeting across all 30+ interest codes.",
-            "variant": "Concentrated tier-1 targeting strictly limited to stable interest clusters with >50 clicks history.",
-            "primary_kpi": "Blended Cost per Approved Conversion ($)",
-            "secondary_kpi": "Total Approved Conversions per Week",
-            "guardrail": "Weekly impression delivery volume must not decline by more than 15%.",
-            "success_criteria": ">= 15% reduction in blended cost per approved conversion without frequency spike.",
-            "expected_learning": "Tests the tradeoff between demographic scale and segment conversion efficiency.",
-            "data_requirement": "Campaign budget split, weekly ad spend, and segment-level approved conversions.",
-            "impact_score": 8,
-            "evidence_score": 9,
-            "ease_score": 9,
-            "ice_score": 8.67,
-            "priority": "P0 (Immediate Sprint)",
-            "priority_reason": "Zero engineering required; actionable immediately within ad campaign budget settings."
-        },
-        {
-            "experiment_id": "EXP-GROWTH-004",
-            "title": "Returning Visitor Personalized High-Intent Nudge (Consumer Behavior)",
-            "observed_evidence": "UCI consumer behavior diagnostics show that Returning Visitors have a 3.5x higher purchase rate (16.9% vs 4.8%) and average page value of $7.82 vs $1.15 for New Visitors, but exhibit high exit rates (0.045) on cart pages.",
-            "hypothesis": "Displaying a personalized re-engagement banner ('Continue where you left off + free merchant QR setup') to returning visitors within 5 seconds of session start will increase transaction completion.",
-            "target_audience": "Returning visitors on web/mobile sessions.",
-            "test_variable": "On-site Returning Visitor Modal / Top-Banner",
-            "control": "Standard landing view with generic homepage promotions.",
-            "variant": "Personalized sticky top-bar showing last viewed feature with 1-click resume CTA.",
-            "primary_kpi": "Session-to-Purchase Conversion Rate (%)",
-            "secondary_kpi": "Add-to-Cart / Feature Usage Initiation Rate (%)",
-            "guardrail": "Session bounce rate must not increase by > 2% absolute.",
-            "success_criteria": ">= +12% relative lift in transaction rate among returning cohort with p < 0.05.",
-            "expected_learning": "Quantifies the conversion lift of context-aware personalization for high-intent users.",
-            "data_requirement": "Cookie/session identity persistence, on-site event stream, transaction confirmation webhook.",
-            "impact_score": 7,
-            "evidence_score": 8,
-            "ease_score": 6,
-            "ice_score": 7.0,
-            "priority": "P1 (Next Sprint)",
-            "priority_reason": "Capitalizes on high baseline intent with proven behavioral divergence."
-        },
-        {
-            "experiment_id": "EXP-GROWTH-005",
-            "title": "Demographic Gender-Specific Creative Framing Test",
-            "observed_evidence": "Audience analysis reveals Female segments generate higher CTR (0.024% vs 0.016%) but incur a higher cost per approved conversion ($68.20 vs $42.10 for Males) due to post-click enquiry friction.",
-            "hypothesis": "Current creative hooks appeal to female SMB owners' visual interest but downstream product copy is tailored predominantly to male-dominated wholesale trade. Creating retail/apparel-specific merchant landing copy for female audiences will bridge the post-click intent gap.",
-            "target_audience": "Female business owners aged 30-49.",
-            "test_variable": "Landing Page Merchant Vertical Imagery & Testimonials",
-            "control": "General wholesale distribution merchant testimonials and imagery.",
-            "variant": "Retail, boutique, and local apparel merchant testimonials and workflow screenshots.",
-            "primary_kpi": "Post-Click Approved Conversion Rate (%)",
-            "secondary_kpi": "Cost per Approved Conversion ($)",
-            "guardrail": "CPC must not increase by > 10%.",
-            "success_criteria": ">= 20% reduction in Cost per Approved Conversion for Female cohort.",
-            "expected_learning": "Reveals whether demographic conversion gaps are structural or artifacts of vertical misrepresentation.",
-            "data_requirement": "Gender-segmented ad sets, separate landing page URLs, conversion tracking.",
-            "impact_score": 7,
-            "evidence_score": 7,
-            "ease_score": 7,
-            "ice_score": 7.0,
-            "priority": "P1 (Next Sprint)",
-            "priority_reason": "High initial click engagement indicates strong top-of-funnel resonance that is currently squandered."
-        }
-    ],
-    "data_quality": [
-        {
-            "dataset": "Dataset A (Ad Campaigns)",
-            "check_category": "Completeness",
-            "check_name": "Missing Values Check",
-            "flagged_count": 0,
-            "status": "PASSED",
-            "severity": "CRITICAL",
-            "details": "Missing values across critical columns: {'ad_id': 0, 'xyz_campaign_id': 0, 'impressions': 0, 'clicks': 0, 'spent': 0, 'total_conversion': 0, 'approved_conversion': 0}"
-        },
-        {
-            "dataset": "Dataset A (Ad Campaigns)",
-            "check_category": "Uniqueness",
-            "check_name": "Duplicate Ad IDs",
-            "flagged_count": 0,
-            "status": "PASSED",
-            "severity": "CRITICAL",
-            "details": "Found 0 duplicate ad_id records."
-        },
-        {
-            "dataset": "Dataset A (Ad Campaigns)",
-            "check_category": "Range / Validity",
-            "check_name": "Negative Metric Values",
-            "flagged_count": 0,
-            "status": "PASSED",
-            "severity": "CRITICAL",
-            "details": "Negative rows: impressions=0, clicks=0, spent=0"
-        },
-        {
-            "dataset": "Dataset A (Ad Campaigns)",
-            "check_category": "Funnel Logic",
-            "check_name": "Clicks Exceed Impressions",
-            "flagged_count": 0,
-            "status": "PASSED",
-            "severity": "CRITICAL",
-            "details": "Records where clicks > impressions (physically impossible): 0"
-        },
-        {
-            "dataset": "Dataset A (Ad Campaigns)",
-            "check_category": "Business Logic",
-            "check_name": "Approved Exceeds Total Conversion",
-            "flagged_count": 0,
-            "status": "PASSED",
-            "severity": "CRITICAL",
-            "details": "Records where approved_conversion > total_conversion: 0"
-        },
-        {
-            "dataset": "Dataset A (Ad Campaigns)",
-            "check_category": "Efficiency / Hygiene",
-            "check_name": "Zero-Click Spend Ads",
-            "flagged_count": 0,
-            "status": "PASSED",
-            "severity": "WARNING",
-            "details": "0 ads spent positive budget ($0.00) without generating a single click."
-        },
-        {
-            "dataset": "Dataset A (Ad Campaigns)",
-            "check_category": "Delivery",
-            "check_name": "Zero Impression Ads",
-            "flagged_count": 0,
-            "status": "PASSED",
-            "severity": "INFO",
-            "details": "Ads with zero impressions: 0"
-        },
-        {
-            "dataset": "Dataset A (Ad Campaigns)",
-            "check_category": "Statistical Reliability",
-            "check_name": "Low-Sample Ad Records (< 10 Clicks)",
-            "flagged_count": 593,
-            "status": "FLAGGED",
-            "severity": "WARNING",
-            "details": "593 of 1143 records (51.9%) have <10 clicks, requiring ratio-of-sums aggregation to prevent noise."
-        },
-        {
-            "dataset": "Dataset B (UCI Consumer Behavior)",
-            "check_category": "Completeness",
-            "check_name": "Missing Revenue Labels",
-            "flagged_count": 29,
-            "status": "FLAGGED",
-            "severity": "WARNING",
-            "details": "29 records have NULL Revenue. Filtered out before behavioral analysis."
-        },
-        {
-            "dataset": "Dataset B (UCI Consumer Behavior)",
-            "check_category": "Range / Validity",
-            "check_name": "Negative Session Durations",
-            "flagged_count": 0,
-            "status": "PASSED",
-            "severity": "CRITICAL",
-            "details": "0 records with negative duration values."
-        },
-        {
-            "dataset": "Dataset B (UCI Consumer Behavior)",
-            "check_category": "Range / Validity",
-            "check_name": "Bounce / Exit Rate Boundaries [0, 1]",
-            "flagged_count": 0,
-            "status": "PASSED",
-            "severity": "CRITICAL",
-            "details": "0 records with bounce or exit rate outside [0, 1]."
-        }
-    ],
-    "metric_availability": [
-        {
-            "metric": "Impressions",
-            "available": "Yes",
-            "exact_formula": "SUM(Impressions)",
-            "reason": "Directly recorded ad impression volume."
-        },
-        {
-            "metric": "Clicks",
-            "available": "Yes",
-            "exact_formula": "SUM(Clicks)",
-            "reason": "Directly recorded ad clicks."
-        },
-        {
-            "metric": "Spend",
-            "available": "Yes",
-            "exact_formula": "SUM(Spent)",
-            "reason": "Directly recorded ad media expenditure."
-        },
-        {
-            "metric": "CTR",
-            "available": "Yes",
-            "exact_formula": "SUM(Clicks) / SUM(Impressions)",
-            "reason": "Real top-of-funnel creative engagement rate."
-        },
-        {
-            "metric": "CPC",
-            "available": "Yes",
-            "exact_formula": "SUM(Spent) / SUM(Clicks)",
-            "reason": "Real media auction cost efficiency per click."
-        },
-        {
-            "metric": "CPM",
-            "available": "Yes",
-            "exact_formula": "(SUM(Spent) / SUM(Impressions)) * 1000",
-            "reason": "Real baseline media inventory pricing."
-        },
-        {
-            "metric": "Cost per Approved Conversion",
-            "available": "Yes",
-            "exact_formula": "SUM(Spent) / SUM(Approved_Conversion)",
-            "reason": "Real cost per verified end conversion."
-        },
-        {
-            "metric": "CAC (Customer Acquisition Cost)",
-            "available": "No (Unsupported)",
-            "exact_formula": "N/A",
-            "reason": "Lacks full marketing spend, blended organic acquisition, agency fees, and downstream retention."
-        },
-        {
-            "metric": "ROAS (Return on Ad Spend)",
-            "available": "No (Unsupported)",
-            "exact_formula": "N/A",
-            "reason": "No monetary transaction revenue exists in the ad dataset. Creating fake revenue violates analytical integrity."
-        },
-        {
-            "metric": "Mobile App Installs",
-            "available": "No (Unavailable)",
-            "exact_formula": "N/A",
-            "reason": "Web conversion tracking dataset; does not track SDK install attribution."
-        },
-        {
-            "metric": "User Login / Retention",
-            "available": "No (Unavailable)",
-            "exact_formula": "N/A",
-            "reason": "No user authentication or post-install cohort logs in public advertising dataset."
-        }
-    ],
-    "market_intelligence": {
-        "msme_landscape": {
-            "total_msmes_india_million": 63,
-            "digital_payment_adopters_pct": 47,
-            "feature_phone_still_active_pct": 31,
-            "tier2_tier3_share_pct": 68,
-            "source": "RBI MSME Report 2024 / Statista India Digital Payments 2024",
-            "note": "Estimates based on public aggregate reports. Individual company figures not available."
-        },
-        "competitors": [
-            {
-                "name": "Khatabook",
-                "core_identity": "Digital bahi khata + merchant fintech platform",
-                "merchant_segment": "Micro to small retailers, Tier 2/3 focus",
-                "primary_monetization": "Merchant lending + Biz Analyst SaaS",
-                "key_differentiator": "WhatsApp virality loop + 10+ language vernacular-first",
-                "known_weakness": "No hardware soundbox; post-install activation gap",
-                "app_store_rating": 4.2,
-                "app_store_reviews_approx": "2M+",
-                "funding_total_usd_m": 187,
-                "revenue_fy24_crore": 102.7,
-                "status": "Active \u2014 Lean fintech pivot (post-2023 restructuring)"
-            },
-            {
-                "name": "Vyapar",
-                "core_identity": "GST accounting + billing software",
-                "merchant_segment": "Small to mid-sized GST-registered businesses",
-                "primary_monetization": "SaaS subscription (annual plans)",
-                "key_differentiator": "Compliance-ready invoicing and GST filing integration",
-                "known_weakness": "Desktop-first; less suited to quick counter transactions",
-                "app_store_rating": 4.5,
-                "app_store_reviews_approx": "500K+",
-                "funding_total_usd_m": 30,
-                "revenue_fy24_crore": null,
-                "status": "Growing \u2014 Dominates formalized SME segment"
-            },
-            {
-                "name": "OkCredit",
-                "core_identity": "Simple udhaar tracker + OkLoan NBFC",
-                "merchant_segment": "Micro merchants with very basic ledger needs",
-                "primary_monetization": "OkLoan margin (pivoted from P2P after RBI 2025)",
-                "key_differentiator": "Extreme simplicity; 2-tap transaction recording",
-                "known_weakness": "Limited feature set; losing ground to Khatabook on breadth",
-                "app_store_rating": 4.0,
-                "app_store_reviews_approx": "1M+",
-                "funding_total_usd_m": 89,
-                "revenue_fy24_crore": null,
-                "status": "Retreating \u2014 P2P lending shut, focusing on OkLoan"
-            },
-            {
-                "name": "BharatPe",
-                "core_identity": "Payment infrastructure + NBFC lending at scale",
-                "merchant_segment": "All merchant types; offline retail dominant",
-                "primary_monetization": "NBFC interest margin + Soundbox hardware + Unity SFB",
-                "key_differentiator": "Physical Soundbox scale (5M+ devices), owns Unity Small Finance Bank stake",
-                "known_weakness": "Governance issues; less trust in Tier 3 belts vs. Khatabook",
-                "app_store_rating": 4.1,
-                "app_store_reviews_approx": "1.5M+",
-                "funding_total_usd_m": 650,
-                "revenue_fy24_crore": null,
-                "status": "Strong but governance-challenged"
-            },
-            {
-                "name": "PhonePe for Business",
-                "core_identity": "UPI payments ecosystem for merchants",
-                "merchant_segment": "All merchants; consumer-to-merchant payment focus",
-                "primary_monetization": "Payment MDR + financial services cross-sell",
-                "key_differentiator": "Consumer-side UPI dominance (50%+ UPI market share) drives merchant adoption",
-                "known_weakness": "Merchant engagement weak post-payment; no bookkeeping",
-                "app_store_rating": 4.3,
-                "app_store_reviews_approx": "10M+",
-                "funding_total_usd_m": 850,
-                "revenue_fy24_crore": null,
-                "status": "Dominant in payments; expanding into lending"
-            }
-        ],
-        "khatabook_growth_loops": [
-            {
-                "loop_id": "A",
-                "name": "WhatsApp Viral Reminder Loop",
-                "description": "Merchant records udhaar entry \u2192 taps Send Reminder via WhatsApp \u2192 customer receives polite payment link + 'Sent via Khatabook' footer \u2192 customer (often another shopkeeper) downloads Khatabook. Every recorded transaction has viral coefficient K > 0.",
-                "stage": "Organic Acquisition",
-                "viral_coefficient": "> 0 per transaction"
-            },
-            {
-                "loop_id": "B",
-                "name": "Paid Digital Acquisition Loop",
-                "description": "Vernacular Meta/Google ad \u2192 App install \u2192 Account setup \u2192 First 5 ledger entries \u2192 Daily active merchant \u2192 QR/Loan monetization \u2192 Reinvest in paid acquisition. Post-2023: spend more disciplined, optimized for LTV cohorts not vanity installs.",
-                "stage": "Paid Acquisition",
-                "channel": "Meta Ads + Google UAC"
-            },
-            {
-                "loop_id": "C",
-                "name": "Utility-to-Fintech Monetization Loop",
-                "description": "Merchant uses free ledger 60+ days \u2192 builds trusted cashflow record \u2192 experiences working capital crunch \u2192 Khatabook pre-approves non-collateralized merchant loan based on transaction velocity \u2192 interest margin expands LTV. High-margin lending offsets top-of-funnel CAC.",
-                "stage": "Monetization",
-                "ltv_driver": "Merchant lending + Biz Analyst SaaS"
-            }
-        ],
-        "strategic_implications": [
-            {
-                "observation": "BharatPe's 5M+ Soundbox devices give it payment data Khatabook lacks",
-                "growth_hypothesis": "Khatabook could partner with device manufacturers for a hardware-lite QR payment confirmation integration, capturing ambient payment events that currently go unrecorded",
-                "jd_relevance": "Market research \u2192 product growth hypothesis"
-            },
-            {
-                "observation": "OkCredit's retreat from P2P lending creates a gap in the micro-merchant loan segment",
-                "growth_hypothesis": "Khatabook could run a targeted acquisition campaign specifically in OkCredit's historically strong markets (Tier 3 UP, Bihar) with a 'switch from OkCredit' angle emphasizing lending access",
-                "jd_relevance": "Competitor intelligence \u2192 acquisition campaign design"
-            },
-            {
-                "observation": "App Store reviews flag unsolicited calls post-signup as a trust issue",
-                "growth_hypothesis": "Eliminating cold outbound calls to new signups and replacing with in-app onboarding nudges could improve D7 retention by reducing uninstall triggers in the critical first week",
-                "jd_relevance": "Consumer behavior \u2192 CRM experiment design"
-            }
-        ],
-        "app_store_signals": {
-            "note": "Based on observable patterns from public Google Play Store reviews. Not a representative sample. Trends only \u2014 not statistical claims.",
-            "khatabook_rating": 4.2,
-            "reviews_analyzed_approx": "2M+ public reviews",
-            "positive_themes": [
-                {
-                    "theme": "WhatsApp reminder works instantly",
-                    "signal_strength": "Strong",
-                    "growth_implication": "Reminder loop is the strongest retention hook \u2014 protect it in any CRM redesign"
-                },
-                {
-                    "theme": "Regional language support praised (Hindi, Telugu, Tamil)",
-                    "signal_strength": "Strong",
-                    "growth_implication": "Vernacular-first is a real moat \u2014 launch new features in regional languages first"
-                },
-                {
-                    "theme": "Simple udhaar recording praised by Kirana owners",
-                    "signal_strength": "Strong",
-                    "growth_implication": "Core UX is working for the primary persona; complexity should be opt-in, not default"
-                }
-            ],
-            "friction_themes": [
-                {
-                    "theme": "Unsolicited calls post-signup",
-                    "signal_strength": "Recurring",
-                    "growth_implication": "Cold outbound calls after install are flagged as uninstall triggers. Replace with in-app nudge sequences for D1-D7 activation"
-                },
-                {
-                    "theme": "Premium features gated behind coin/subscription paywall",
-                    "signal_strength": "Moderate",
-                    "growth_implication": "Monetization wall hits before activation habit is formed. Consider delaying paywall to D14+ after first payment reminder sent"
-                },
-                {
-                    "theme": "Sync issues across devices mentioned",
-                    "signal_strength": "Moderate",
-                    "growth_implication": "Sync reliability is table stakes for merchant trust \u2014 particularly for bookkeeping data"
-                }
-            ],
-            "experiment_hypotheses": [
-                "Replacing post-install cold calls with a D1 in-app tutorial nudge sequence could improve D7 retention",
-                "Delaying the premium paywall until after first WhatsApp reminder is sent could increase willingness-to-pay",
-                "A 'sync status' indicator on the home screen could reduce trust anxiety for multi-device merchants"
-            ]
-        }
+    "target_metrics": {
+      "cpm": 0.2717563719946082,
+      "ctr": 0.00017609288955581687,
+      "click_to_approved_rate": 0.024176555395364313,
+      "cost_per_approved": 63.832740778227056,
+      "lever_1_cost_per_imp": 0.00027175637199460824,
+      "lever_2_imp_per_click": 5678.82100476877,
+      "lever_3_clicks_per_app": 41.362385321100916
     },
-    "growth_os": [
-        {
-            "experiment_id": "EXP-GROWTH-001",
-            "title": "Ad Creative Value Prop Realignment for Scaled Campaigns",
-            "ice_score": 8.0,
-            "priority": "P0",
-            "stages": {
-                "observe": {
-                    "content": "Campaign 1178 scaled budget to $55,662 but post-click approved conversion collapsed by 73.8%.",
-                    "evidence_type": "Real data finding",
-                    "linked_tab": "waterfall"
-                },
-                "diagnose": {
-                    "content": "Ad creatives set generic expectations failing to convert on the post-click enquiry form.",
-                    "evidence_type": "3-factor decomposition",
-                    "linked_tab": "waterfall"
-                },
-                "hypothesize": {
-                    "content": "Replacing generic reach hooks with high-intent SMB pain-point hooks will filter low-intent clicks.",
-                    "if_then": "If we replace generic creatives with high-intent SMB pain-point hooks, then post-click conversion will improve.",
-                    "linked_tab": "backlog"
-                },
-                "experiment": {
-                    "control": "Generic broad benefit creative.",
-                    "variant": "High-intent operational pain-point creative.",
-                    "primary_kpi": "Click-to-Approved Conversion Rate",
-                    "sample_size_needed": 11369,
-                    "duration_days": 14
-                },
-                "learn": {
-                    "success_criteria": ">= +25% lift in conversion rate.",
-                    "guardrail": "Total volume must not drop >10%.",
-                    "next_hypothesis": "If successful, expand to other ad platforms."
-                }
-            }
-        },
-        {
-            "experiment_id": "EXP-GROWTH-002",
-            "title": "Landing Page Progressive Form (Friction Reduction)",
-            "ice_score": 8.0,
-            "priority": "P0 (Immediate Sprint)",
-            "stages": {
-                "observe": {
-                    "content": "92.6% of clicks bounce without completing the initial enquiry form.",
-                    "evidence_type": "Real data finding",
-                    "linked_tab": "funnel"
-                },
-                "diagnose": {
-                    "content": "The current post-click enquiry form requires too many fields upfront, creating cognitive friction.",
-                    "evidence_type": "Structural observation",
-                    "linked_tab": "funnel"
-                },
-                "hypothesize": {
-                    "content": "Replacing the single multi-field form with a 2-step micro-commitment form will reduce cognitive friction.",
-                    "if_then": "If we split the form into 2 steps, then completion rates will increase.",
-                    "linked_tab": "backlog"
-                },
-                "experiment": {
-                    "control": "Single-page static form.",
-                    "variant": "Progressive 2-step form.",
-                    "primary_kpi": "Click-to-Total Conversion Rate",
-                    "sample_size_needed": 11369,
-                    "duration_days": 14
-                },
-                "learn": {
-                    "success_criteria": ">= +20% lift in total conversion rate.",
-                    "guardrail": "Total-to-Approved qualification rate must remain >= 30%.",
-                    "next_hypothesis": "If successful, apply to all paid landing pages."
-                }
-            }
-        },
-        {
-            "experiment_id": "EXP-GROWTH-003",
-            "title": "Audience Concentration & Budget Reallocation to Stable Interest Segments",
-            "ice_score": 8.67,
-            "priority": "P0 (Immediate Sprint)",
-            "stages": {
-                "observe": {
-                    "content": "12 of 28 interest groups evaluated have < 10 clicks, showing high variance in CPA.",
-                    "evidence_type": "Real data finding",
-                    "linked_tab": "audience"
-                },
-                "diagnose": {
-                    "content": "Budget is spread too thin across fragmented segments, causing inefficiency.",
-                    "evidence_type": "Structural observation",
-                    "linked_tab": "audience"
-                },
-                "hypothesize": {
-                    "content": "Reallocating 30% of budget to top 5 stable segments will improve overall blended campaign efficiency.",
-                    "if_then": "If we concentrate targeting on stable segments, then blended cost will decrease.",
-                    "linked_tab": "backlog"
-                },
-                "experiment": {
-                    "control": "Fragmented broad targeting.",
-                    "variant": "Concentrated tier-1 targeting.",
-                    "primary_kpi": "Blended Cost per Approved Conversion",
-                    "sample_size_needed": 11369,
-                    "duration_days": 14
-                },
-                "learn": {
-                    "success_criteria": ">= 15% reduction in blended CPA.",
-                    "guardrail": "Volume must not drop.",
-                    "next_hypothesis": "If successful, dynamically prune long-tail segments weekly."
-                }
-            }
-        },
-        {
-            "experiment_id": "EXP-GROWTH-004",
-            "title": "Returning Visitor Personalized High-Intent Nudge (Consumer Behavior)",
-            "ice_score": 7.0,
-            "priority": "P1 (Next Sprint)",
-            "stages": {
-                "observe": {
-                    "content": "Returning Visitors have a 3.5x higher purchase rate but exit rates are still high on cart pages.",
-                    "evidence_type": "Real data finding",
-                    "linked_tab": "audience"
-                },
-                "diagnose": {
-                    "content": "High-intent returning users lack a direct continuation path, creating friction.",
-                    "evidence_type": "Structural observation",
-                    "linked_tab": "audience"
-                },
-                "hypothesize": {
-                    "content": "Displaying a personalized re-engagement banner will increase transaction completion.",
-                    "if_then": "If we display a resume banner to returning visitors, then session-to-purchase rate will increase.",
-                    "linked_tab": "backlog"
-                },
-                "experiment": {
-                    "control": "Standard landing view.",
-                    "variant": "Personalized sticky top-bar.",
-                    "primary_kpi": "Session-to-Purchase Conversion Rate",
-                    "sample_size_needed": 5612,
-                    "duration_days": 21
-                },
-                "learn": {
-                    "success_criteria": ">= +12% relative lift in transaction rate.",
-                    "guardrail": "Bounce rate must not increase.",
-                    "next_hypothesis": "If successful, add email re-engagement for abandoned carts."
-                }
-            }
-        },
-        {
-            "experiment_id": "EXP-GROWTH-005",
-            "title": "Demographic Gender-Specific Creative Framing Test",
-            "ice_score": 7.0,
-            "priority": "P1 (Next Sprint)",
-            "stages": {
-                "observe": {
-                    "content": "Female segments generate higher CTR but incur a higher cost per approved conversion due to post-click friction.",
-                    "evidence_type": "Real data finding",
-                    "linked_tab": "audience"
-                },
-                "diagnose": {
-                    "content": "Downstream product copy is tailored to male-dominated wholesale trade, alienating female retail users.",
-                    "evidence_type": "Structural observation",
-                    "linked_tab": "audience"
-                },
-                "hypothesize": {
-                    "content": "Creating retail-specific merchant landing copy for female audiences will bridge the intent gap.",
-                    "if_then": "If we route female traffic to retail-focused pages, then CPA will decrease.",
-                    "linked_tab": "backlog"
-                },
-                "experiment": {
-                    "control": "General wholesale imagery.",
-                    "variant": "Retail, boutique, and local apparel imagery.",
-                    "primary_kpi": "Post-Click Approved Conversion Rate",
-                    "sample_size_needed": 17381,
-                    "duration_days": 14
-                },
-                "learn": {
-                    "success_criteria": ">= 20% reduction in Cost per Approved Conversion for Females.",
-                    "guardrail": "CPC must not increase > 10%.",
-                    "next_hypothesis": "If successful, scale personalized landing pages to other demographics."
-                }
-            }
-        }
+    "cost_gap": 48.021975756729795,
+    "cpm_effect": -3.740346387542409,
+    "ctr_effect": 4.660835432876126,
+    "conv_effect": 47.10148671139608,
+    "reconciled_sum": 48.021975756729795,
+    "reconciliation_error": 0.0,
+    "primary_driver": "Post-Click Conversion Rate Dilution"
+  },
+  "mix_adjustment": [
+    {
+      "campaign_id": 936,
+      "raw_cost_per_approved": 15.81,
+      "mix_adjusted_cost_per_approved": 23.69,
+      "cost_gap_mix_effect": 7.88,
+      "raw_click_to_approved_rate": 0.0922,
+      "mix_adjusted_click_to_approved_rate": 0.1273,
+      "interpretation": "Baseline campaign maintains strong efficiency under common weighting."
+    },
+    {
+      "campaign_id": 1178,
+      "raw_cost_per_approved": 63.83,
+      "mix_adjusted_cost_per_approved": 78.16,
+      "cost_gap_mix_effect": 14.33,
+      "raw_click_to_approved_rate": 0.0242,
+      "mix_adjusted_click_to_approved_rate": 0.024,
+      "interpretation": "Underperformance persists even under identical audience weighting, proving the 4x cost surge is driven by intra-segment post-click conversion decay rather than audience demographic skew."
+    }
+  ],
+  "funnel": [
+    {
+      "campaign_id": 916,
+      "impressions": 482925,
+      "clicks": 113,
+      "total_conversions": 58,
+      "approved_conversions": 24,
+      "ctr": 0.000234,
+      "click_to_enquiry_rate": 0.5133,
+      "enquiry_to_approved_rate": 0.4138,
+      "cumulative_rate": 4.97e-05,
+      "drop_clicks_to_enquiry_pct": 0.4867
+    },
+    {
+      "campaign_id": 936,
+      "impressions": 8128187,
+      "clicks": 1984,
+      "total_conversions": 537,
+      "approved_conversions": 183,
+      "ctr": 0.000244,
+      "click_to_enquiry_rate": 0.2707,
+      "enquiry_to_approved_rate": 0.3408,
+      "cumulative_rate": 2.251e-05,
+      "drop_clicks_to_enquiry_pct": 0.7293
+    },
+    {
+      "campaign_id": 1178,
+      "impressions": 204823716,
+      "clicks": 36068,
+      "total_conversions": 2669,
+      "approved_conversions": 872,
+      "ctr": 0.000176,
+      "click_to_enquiry_rate": 0.074,
+      "enquiry_to_approved_rate": 0.3267,
+      "cumulative_rate": 4.26e-06,
+      "drop_clicks_to_enquiry_pct": 0.926
+    }
+  ],
+  "segment_stability": [
+    {
+      "interest": 16.0,
+      "total_clicks": 5144,
+      "approved_conversions": 141,
+      "spend": 8084.91,
+      "cost_per_approved": 57.34,
+      "click_to_approved_rate": 0.0274,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 27.0,
+      "total_clicks": 3409,
+      "approved_conversions": 54,
+      "spend": 5176.17,
+      "cost_per_approved": 95.85,
+      "click_to_approved_rate": 0.0158,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 10.0,
+      "total_clicks": 3317,
+      "approved_conversions": 91,
+      "spend": 5086.38,
+      "cost_per_approved": 55.89,
+      "click_to_approved_rate": 0.0274,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 29.0,
+      "total_clicks": 3315,
+      "approved_conversions": 132,
+      "spend": 5045.19,
+      "cost_per_approved": 38.22,
+      "click_to_approved_rate": 0.0398,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 28.0,
+      "total_clicks": 2025,
+      "approved_conversions": 42,
+      "spend": 3205.85,
+      "cost_per_approved": 76.33,
+      "click_to_approved_rate": 0.0207,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 63.0,
+      "total_clicks": 1675,
+      "approved_conversions": 34,
+      "spend": 2484.06,
+      "cost_per_approved": 73.06,
+      "click_to_approved_rate": 0.0203,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 15.0,
+      "total_clicks": 1609,
+      "approved_conversions": 63,
+      "spend": 2597.26,
+      "cost_per_approved": 41.23,
+      "click_to_approved_rate": 0.0392,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 18.0,
+      "total_clicks": 1524,
+      "approved_conversions": 33,
+      "spend": 2425.07,
+      "cost_per_approved": 73.49,
+      "click_to_approved_rate": 0.0217,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 20.0,
+      "total_clicks": 1234,
+      "approved_conversions": 47,
+      "spend": 1960.77,
+      "cost_per_approved": 41.72,
+      "click_to_approved_rate": 0.0381,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 19.0,
+      "total_clicks": 1188,
+      "approved_conversions": 33,
+      "spend": 1940.36,
+      "cost_per_approved": 58.8,
+      "click_to_approved_rate": 0.0278,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 32.0,
+      "total_clicks": 1138,
+      "approved_conversions": 35,
+      "spend": 1970.53,
+      "cost_per_approved": 56.3,
+      "click_to_approved_rate": 0.0308,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 26.0,
+      "total_clicks": 1113,
+      "approved_conversions": 23,
+      "spend": 1591.77,
+      "cost_per_approved": 69.21,
+      "click_to_approved_rate": 0.0207,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 25.0,
+      "total_clicks": 1066,
+      "approved_conversions": 19,
+      "spend": 1603.86,
+      "cost_per_approved": 84.41,
+      "click_to_approved_rate": 0.0178,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 64.0,
+      "total_clicks": 989,
+      "approved_conversions": 27,
+      "spend": 1486.13,
+      "cost_per_approved": 55.04,
+      "click_to_approved_rate": 0.0273,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 22.0,
+      "total_clicks": 717,
+      "approved_conversions": 12,
+      "spend": 1039.86,
+      "cost_per_approved": 86.65,
+      "click_to_approved_rate": 0.0167,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 107.0,
+      "total_clicks": 639,
+      "approved_conversions": 20,
+      "spend": 923.18,
+      "cost_per_approved": 46.16,
+      "click_to_approved_rate": 0.0313,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 109.0,
+      "total_clicks": 572,
+      "approved_conversions": 8,
+      "spend": 815.82,
+      "cost_per_approved": 101.98,
+      "click_to_approved_rate": 0.014,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 101.0,
+      "total_clicks": 524,
+      "approved_conversions": 25,
+      "spend": 757.69,
+      "cost_per_approved": 30.31,
+      "click_to_approved_rate": 0.0477,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 21.0,
+      "total_clicks": 512,
+      "approved_conversions": 27,
+      "spend": 824.21,
+      "cost_per_approved": 30.53,
+      "click_to_approved_rate": 0.0527,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 105.0,
+      "total_clicks": 453,
+      "approved_conversions": 6,
+      "spend": 647.8,
+      "cost_per_approved": 107.97,
+      "click_to_approved_rate": 0.0132,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 24.0,
+      "total_clicks": 419,
+      "approved_conversions": 15,
+      "spend": 670.06,
+      "cost_per_approved": 44.67,
+      "click_to_approved_rate": 0.0358,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 7.0,
+      "total_clicks": 410,
+      "approved_conversions": 19,
+      "spend": 648.93,
+      "cost_per_approved": 34.15,
+      "click_to_approved_rate": 0.0463,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 108.0,
+      "total_clicks": 402,
+      "approved_conversions": 7,
+      "spend": 586.2,
+      "cost_per_approved": 83.74,
+      "click_to_approved_rate": 0.0174,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 100.0,
+      "total_clicks": 395,
+      "approved_conversions": 9,
+      "spend": 574.31,
+      "cost_per_approved": 63.81,
+      "click_to_approved_rate": 0.0228,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 30.0,
+      "total_clicks": 389,
+      "approved_conversions": 12,
+      "spend": 616.63,
+      "cost_per_approved": 51.39,
+      "click_to_approved_rate": 0.0308,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 23.0,
+      "total_clicks": 375,
+      "approved_conversions": 7,
+      "spend": 595.65,
+      "cost_per_approved": 85.09,
+      "click_to_approved_rate": 0.0187,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 65.0,
+      "total_clicks": 372,
+      "approved_conversions": 19,
+      "spend": 542.01,
+      "cost_per_approved": 28.53,
+      "click_to_approved_rate": 0.0511,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 110.0,
+      "total_clicks": 365,
+      "approved_conversions": 9,
+      "spend": 521.35,
+      "cost_per_approved": 57.93,
+      "click_to_approved_rate": 0.0247,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 112.0,
+      "total_clicks": 339,
+      "approved_conversions": 15,
+      "spend": 483.8,
+      "cost_per_approved": 32.25,
+      "click_to_approved_rate": 0.0442,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 103.0,
+      "total_clicks": 333,
+      "approved_conversions": 5,
+      "spend": 479.13,
+      "cost_per_approved": 95.83,
+      "click_to_approved_rate": 0.015,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 106.0,
+      "total_clicks": 332,
+      "approved_conversions": 5,
+      "spend": 482.15,
+      "cost_per_approved": 96.43,
+      "click_to_approved_rate": 0.0151,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 2.0,
+      "total_clicks": 311,
+      "approved_conversions": 19,
+      "spend": 503.45,
+      "cost_per_approved": 26.5,
+      "click_to_approved_rate": 0.0611,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 104.0,
+      "total_clicks": 265,
+      "approved_conversions": 8,
+      "spend": 387.92,
+      "cost_per_approved": 48.49,
+      "click_to_approved_rate": 0.0302,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 111.0,
+      "total_clicks": 260,
+      "approved_conversions": 10,
+      "spend": 370.65,
+      "cost_per_approved": 37.06,
+      "click_to_approved_rate": 0.0385,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 113.0,
+      "total_clicks": 233,
+      "approved_conversions": 7,
+      "spend": 342.83,
+      "cost_per_approved": 48.98,
+      "click_to_approved_rate": 0.03,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 31.0,
+      "total_clicks": 195,
+      "approved_conversions": 16,
+      "spend": 299.1,
+      "cost_per_approved": 18.69,
+      "click_to_approved_rate": 0.0821,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 114.0,
+      "total_clicks": 191,
+      "approved_conversions": 4,
+      "spend": 282.62,
+      "cost_per_approved": 70.65,
+      "click_to_approved_rate": 0.0209,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 102.0,
+      "total_clicks": 150,
+      "approved_conversions": 7,
+      "spend": 215.07,
+      "cost_per_approved": 30.72,
+      "click_to_approved_rate": 0.0467,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 66.0,
+      "total_clicks": 138,
+      "approved_conversions": 4,
+      "spend": 230.76,
+      "cost_per_approved": 57.69,
+      "click_to_approved_rate": 0.029,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    },
+    {
+      "interest": 36.0,
+      "total_clicks": 128,
+      "approved_conversions": 10,
+      "spend": 205.74,
+      "cost_per_approved": 20.57,
+      "click_to_approved_rate": 0.0781,
+      "qualifies_t10": true,
+      "qualifies_t25": true,
+      "qualifies_t50": true,
+      "stability_classification": "Stable (Robust Sample >= 50)"
+    }
+  ],
+  "audience": [
+    {
+      "age": "30-34",
+      "gender": "F",
+      "ad_count": 197,
+      "total_impressions": 31571576,
+      "total_clicks": 5099,
+      "total_spend": 7611.479995127,
+      "total_conversions": 619,
+      "approved_conversions": 195,
+      "ctr": 0.0001615060331482977,
+      "cpc": 1.4927397519370464,
+      "cpm": 0.2410864758581263,
+      "click_to_approved_rate": 0.038242792704451856,
+      "cost_per_approved_conv": 39.033230744241024,
+      "qualification_state": "Qualified (High Sample)"
+    },
+    {
+      "age": "30-34",
+      "gender": "M",
+      "ad_count": 229,
+      "total_impressions": 36421443,
+      "total_clicks": 4384,
+      "total_spend": 7640.919991251,
+      "total_conversions": 812,
+      "approved_conversions": 299,
+      "ctr": 0.0001203686520602712,
+      "cpc": 1.7429105819459398,
+      "cpm": 0.20979179741041565,
+      "click_to_approved_rate": 0.06820255474452555,
+      "cost_per_approved_conv": 25.554916358698996,
+      "qualification_state": "Qualified (High Sample)"
+    },
+    {
+      "age": "35-39",
+      "gender": "F",
+      "ad_count": 109,
+      "total_impressions": 21439505,
+      "total_clicks": 4161,
+      "total_spend": 6061.349991827,
+      "total_conversions": 304,
+      "approved_conversions": 95,
+      "ctr": 0.00019408097341799637,
+      "cpc": 1.4567051169975966,
+      "cpm": 0.2827187470898698,
+      "click_to_approved_rate": 0.0228310502283105,
+      "cost_per_approved_conv": 63.80368412449474,
+      "qualification_state": "Qualified (High Sample)"
+    },
+    {
+      "age": "35-39",
+      "gender": "M",
+      "ad_count": 139,
+      "total_impressions": 20665139,
+      "total_clicks": 2933,
+      "total_spend": 5051.080002508,
+      "total_conversions": 322,
+      "approved_conversions": 112,
+      "ctr": 0.00014192984620137324,
+      "cpc": 1.7221547911721786,
+      "cpm": 0.24442516464602537,
+      "click_to_approved_rate": 0.03818615751789976,
+      "cost_per_approved_conv": 45.09892859382143,
+      "qualification_state": "Qualified (High Sample)"
+    },
+    {
+      "age": "40-44",
+      "gender": "F",
+      "ad_count": 107,
+      "total_impressions": 23396175,
+      "total_clicks": 5177,
+      "total_spend": 7396.579983637,
+      "total_conversions": 322,
+      "approved_conversions": 93,
+      "ctr": 0.0002212754862707259,
+      "cpc": 1.4287386485680895,
+      "cpm": 0.31614483921568376,
+      "click_to_approved_rate": 0.017964071856287425,
+      "cost_per_approved_conv": 79.53311810362365,
+      "qualification_state": "Qualified (High Sample)"
+    },
+    {
+      "age": "40-44",
+      "gender": "M",
+      "ad_count": 103,
+      "total_impressions": 16208132,
+      "total_clicks": 2559,
+      "total_spend": 4193.149997201,
+      "total_conversions": 201,
+      "approved_conversions": 77,
+      "ctr": 0.00015788370923928803,
+      "cpc": 1.6385892915986713,
+      "cpm": 0.25870655527737557,
+      "click_to_approved_rate": 0.03008987885892927,
+      "cost_per_approved_conv": 54.45649347014285,
+      "qualification_state": "Qualified (High Sample)"
+    },
+    {
+      "age": "45-49",
+      "gender": "F",
+      "ad_count": 138,
+      "total_impressions": 38455591,
+      "total_clicks": 9441,
+      "total_spend": 13433.209992777,
+      "total_conversions": 399,
+      "approved_conversions": 112,
+      "ctr": 0.00024550396325985474,
+      "cpc": 1.4228588065646648,
+      "cpm": 0.34931747617081216,
+      "click_to_approved_rate": 0.011863150090032835,
+      "cost_per_approved_conv": 119.93937493550892,
+      "qualification_state": "Qualified (High Sample)"
+    },
+    {
+      "age": "45-49",
+      "gender": "M",
+      "ad_count": 121,
+      "total_impressions": 25277267,
+      "total_clicks": 4411,
+      "total_spend": 7317.460003877,
+      "total_conversions": 285,
+      "approved_conversions": 96,
+      "ctr": 0.00017450462504510475,
+      "cpc": 1.6589118122595785,
+      "cpm": 0.28948778378125295,
+      "click_to_approved_rate": 0.021763772387213783,
+      "cost_per_approved_conv": 76.22354170705209,
+      "qualification_state": "Qualified (High Sample)"
+    }
+  ],
+  "audience_segments": [
+    {
+      "age": "30-34",
+      "gender": "F",
+      "clicks": 5099,
+      "spend": 7611.479995127,
+      "approved": 195,
+      "cost_per_approved": 39.033230744241024,
+      "ctr": 0.0001615060331482977
+    },
+    {
+      "age": "30-34",
+      "gender": "M",
+      "clicks": 4384,
+      "spend": 7640.919991251,
+      "approved": 299,
+      "cost_per_approved": 25.554916358698996,
+      "ctr": 0.0001203686520602712
+    },
+    {
+      "age": "35-39",
+      "gender": "F",
+      "clicks": 4161,
+      "spend": 6061.349991827,
+      "approved": 95,
+      "cost_per_approved": 63.80368412449474,
+      "ctr": 0.00019408097341799637
+    },
+    {
+      "age": "35-39",
+      "gender": "M",
+      "clicks": 2933,
+      "spend": 5051.080002508,
+      "approved": 112,
+      "cost_per_approved": 45.09892859382143,
+      "ctr": 0.00014192984620137324
+    },
+    {
+      "age": "40-44",
+      "gender": "F",
+      "clicks": 5177,
+      "spend": 7396.579983637,
+      "approved": 93,
+      "cost_per_approved": 79.53311810362365,
+      "ctr": 0.0002212754862707259
+    },
+    {
+      "age": "40-44",
+      "gender": "M",
+      "clicks": 2559,
+      "spend": 4193.149997201,
+      "approved": 77,
+      "cost_per_approved": 54.45649347014285,
+      "ctr": 0.00015788370923928803
+    },
+    {
+      "age": "45-49",
+      "gender": "F",
+      "clicks": 9441,
+      "spend": 13433.209992777,
+      "approved": 112,
+      "cost_per_approved": 119.93937493550892,
+      "ctr": 0.00024550396325985474
+    },
+    {
+      "age": "45-49",
+      "gender": "M",
+      "clicks": 4411,
+      "spend": 7317.460003877,
+      "approved": 96,
+      "cost_per_approved": 76.22354170705209,
+      "ctr": 0.00017450462504510475
+    }
+  ],
+  "consumer_behavior": {
+    "visitor_type": [
+      {
+        "visitor_type": "New_Visitor",
+        "total_sessions": 1694,
+        "transactions": 422,
+        "purchase_rate": 0.2491,
+        "avg_page_value": 10.77,
+        "avg_bounce_rate": 0.0053,
+        "avg_exit_rate": 0.0207,
+        "avg_product_duration_sec": 636.4
+      },
+      {
+        "visitor_type": "Other",
+        "total_sessions": 85,
+        "transactions": 16,
+        "purchase_rate": 0.1882,
+        "avg_page_value": 18.19,
+        "avg_bounce_rate": 0.0386,
+        "avg_exit_rate": 0.0633,
+        "avg_product_duration_sec": 570.4
+      },
+      {
+        "visitor_type": "Returning_Visitor",
+        "total_sessions": 10551,
+        "transactions": 1470,
+        "purchase_rate": 0.1393,
+        "avg_page_value": 5.01,
+        "avg_bounce_rate": 0.0248,
+        "avg_exit_rate": 0.0465,
+        "avg_product_duration_sec": 1289.4
+      }
     ],
-    "metric_dictionary": [
-        {
-            "metric": "CTR (Click-Through Rate)",
-            "formula": "SUM(Clicks) / SUM(Impressions)",
-            "availability": "Available",
-            "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
-            "confidence": "High",
-            "aggregation_method": "Ratio-of-Sums",
-            "known_limitation": "Impression and click counts are at ad set level; no impression-level frequency data available to detect ad fatigue.",
-            "khatabook_relevance": "Primary creative quality signal. Low CTR in scaled campaigns indicates creative-audience mismatch \u2014 the top-of-funnel diagnostic for any Khatabook app campaign."
-        },
-        {
-            "metric": "CPM (Cost Per Mille)",
-            "formula": "(SUM(Spent) / SUM(Impressions)) * 1000",
-            "availability": "Available",
-            "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
-            "confidence": "High",
-            "aggregation_method": "Ratio-of-Sums",
-            "known_limitation": "Only blended spend is available. No breakdown by ad placement.",
-            "khatabook_relevance": "Media inventory cost indicator. Important for scaling without overpaying."
-        },
-        {
-            "metric": "CPC (Cost Per Click)",
-            "formula": "SUM(Spent) / SUM(Clicks)",
-            "availability": "Available",
-            "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
-            "confidence": "High",
-            "aggregation_method": "Ratio-of-Sums",
-            "known_limitation": "Cannot distinguish between link clicks and other engagements.",
-            "khatabook_relevance": "Immediate performance indicator of ad engagement."
-        },
-        {
-            "metric": "Conversion Rate",
-            "formula": "SUM(Total_Conversions) / SUM(Clicks)",
-            "availability": "Available",
-            "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
-            "confidence": "Medium",
-            "aggregation_method": "Ratio-of-Sums",
-            "known_limitation": "Total conversion includes unapproved ones, adding noise.",
-            "khatabook_relevance": "Measures landing page effectiveness."
-        },
-        {
-            "metric": "Click-to-Approved Rate",
-            "formula": "SUM(Approved_Conversions) / SUM(Clicks)",
-            "availability": "Available",
-            "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
-            "confidence": "High",
-            "aggregation_method": "Ratio-of-Sums",
-            "known_limitation": "End of funnel in dataset, doesn't capture retention.",
-            "khatabook_relevance": "True measure of quality acquisition."
-        },
-        {
-            "metric": "Cost per Approved Conversion",
-            "formula": "SUM(Spent) / SUM(Approved_Conversions)",
-            "availability": "Available",
-            "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
-            "confidence": "High",
-            "aggregation_method": "Ratio-of-Sums",
-            "known_limitation": "Does not account for LTV.",
-            "khatabook_relevance": "Core unit economic metric before CAC."
-        },
-        {
-            "metric": "CAC (Customer Acquisition Cost)",
-            "formula": "Total Marketing Spend / Total Retained Customers",
-            "availability": "Not Available",
-            "data_source": "N/A",
-            "confidence": "N/A",
-            "aggregation_method": "N/A",
-            "known_limitation": "No install or retained customer data available in dataset.",
-            "khatabook_relevance": "The ultimate true cost metric for Khatabook growth, unavailable due to data limits."
-        },
-        {
-            "metric": "ROAS (Return on Ad Spend)",
-            "formula": "Total Revenue / Total Ad Spend",
-            "availability": "Not Available",
-            "data_source": "N/A",
-            "confidence": "N/A",
-            "aggregation_method": "N/A",
-            "known_limitation": "No revenue data associated with the FB Ad dataset.",
-            "khatabook_relevance": "Measures ad profitability, unavailable here."
-        },
-        {
-            "metric": "Mix-Adjusted Cost",
-            "formula": "Weighted average of segment costs based on a fixed control distribution",
-            "availability": "Available via Analysis",
-            "data_source": "Computed from Dataset A",
-            "confidence": "Medium",
-            "aggregation_method": "Simpson's Paradox Adjustment",
-            "known_limitation": "Assumes segment behaviors are independent of mix changes.",
-            "khatabook_relevance": "Reveals true cost changes independent of demographic shifts during scale."
-        },
-        {
-            "metric": "ICE Score",
-            "formula": "(Impact + Confidence + Ease) / 3",
-            "availability": "Available",
-            "data_source": "Experiment Engine",
-            "confidence": "Subjective",
-            "aggregation_method": "Average",
-            "known_limitation": "Inherently subjective scoring framework.",
-            "khatabook_relevance": "Standard framework for prioritizing growth experiments."
-        },
-        {
-            "metric": "p-value",
-            "formula": "Probability of observing the test statistic given the null hypothesis is true",
-            "availability": "Available via Analysis",
-            "data_source": "Statistical Modules",
-            "confidence": "High",
-            "aggregation_method": "Statistical Test",
-            "known_limitation": "Often misinterpreted as probability of null hypothesis being true.",
-            "khatabook_relevance": "Used to validate AB test results for Growth OS."
-        },
-        {
-            "metric": "z-score",
-            "formula": "(x - \u03bc) / \u03c3",
-            "availability": "Available via Analysis",
-            "data_source": "Statistical Modules",
-            "confidence": "High",
-            "aggregation_method": "Statistical Test",
-            "known_limitation": "Assumes normal distribution.",
-            "khatabook_relevance": "Standardizes metrics for anomaly detection."
-        },
-        {
-            "metric": "Confidence Interval",
-            "formula": "Estimate \u00b1 Margin of Error",
-            "availability": "Available via Analysis",
-            "data_source": "Statistical Modules",
-            "confidence": "High",
-            "aggregation_method": "Statistical Test",
-            "known_limitation": "Requires sufficient sample size.",
-            "khatabook_relevance": "Provides range for expected metric lift in experiments."
-        },
-        {
-            "metric": "MDE (Minimum Detectable Effect)",
-            "formula": "Derived from baseline rate, sample size, power, and alpha",
-            "availability": "Available via Analysis",
-            "data_source": "Statistical Modules",
-            "confidence": "High",
-            "aggregation_method": "Statistical Power Analysis",
-            "known_limitation": "Only relevant before an experiment is run.",
-            "khatabook_relevance": "Determines feasibility of a proposed experiment."
-        }
+    "traffic_type": [
+      {
+        "traffic_type": 2,
+        "total_sessions": 3913,
+        "transactions": 847,
+        "purchase_rate": 0.2165,
+        "avg_page_value": 8.3,
+        "avg_bounce_rate": 0.0085
+      },
+      {
+        "traffic_type": 1,
+        "total_sessions": 2451,
+        "transactions": 262,
+        "purchase_rate": 0.1069,
+        "avg_page_value": 3.46,
+        "avg_bounce_rate": 0.0323
+      },
+      {
+        "traffic_type": 3,
+        "total_sessions": 2052,
+        "transactions": 180,
+        "purchase_rate": 0.0877,
+        "avg_page_value": 3.28,
+        "avg_bounce_rate": 0.0333
+      },
+      {
+        "traffic_type": 4,
+        "total_sessions": 1069,
+        "transactions": 165,
+        "purchase_rate": 0.1543,
+        "avg_page_value": 7.04,
+        "avg_bounce_rate": 0.0163
+      },
+      {
+        "traffic_type": 13,
+        "total_sessions": 738,
+        "transactions": 43,
+        "purchase_rate": 0.0583,
+        "avg_page_value": 2.35,
+        "avg_bounce_rate": 0.0487
+      },
+      {
+        "traffic_type": 10,
+        "total_sessions": 450,
+        "transactions": 90,
+        "purchase_rate": 0.2,
+        "avg_page_value": 6.21,
+        "avg_bounce_rate": 0.0166
+      },
+      {
+        "traffic_type": 6,
+        "total_sessions": 444,
+        "transactions": 53,
+        "purchase_rate": 0.1194,
+        "avg_page_value": 5.08,
+        "avg_bounce_rate": 0.0221
+      },
+      {
+        "traffic_type": 8,
+        "total_sessions": 343,
+        "transactions": 95,
+        "purchase_rate": 0.277,
+        "avg_page_value": 10.3,
+        "avg_bounce_rate": 0.0115
+      },
+      {
+        "traffic_type": 5,
+        "total_sessions": 260,
+        "transactions": 56,
+        "purchase_rate": 0.2154,
+        "avg_page_value": 7.71,
+        "avg_bounce_rate": 0.0095
+      },
+      {
+        "traffic_type": 11,
+        "total_sessions": 247,
+        "transactions": 47,
+        "purchase_rate": 0.1903,
+        "avg_page_value": 5.07,
+        "avg_bounce_rate": 0.0222
+      }
+    ],
+    "engagement_tier": [
+      {
+        "engagement_tier": "High Engagement (>600s, Low Bounce)",
+        "total_sessions": 6044,
+        "transactions": 1370,
+        "purchase_rate": 0.2267,
+        "avg_page_value": 8.82
+      },
+      {
+        "engagement_tier": "Medium Engagement (120-600s)",
+        "total_sessions": 3816,
+        "transactions": 441,
+        "purchase_rate": 0.1156,
+        "avg_page_value": 4.64
+      },
+      {
+        "engagement_tier": "Low Engagement / Skimmer (<120s)",
+        "total_sessions": 2470,
+        "transactions": 97,
+        "purchase_rate": 0.0393,
+        "avg_page_value": 0.64
+      }
     ]
+  },
+  "experiments": [
+    {
+      "experiment_id": "EXP-GROWTH-001",
+      "title": "Ad Creative Value Prop Realignment for Scaled Campaigns",
+      "observed_evidence": "Campaign 1178 scaled budget to $55,662 and achieved lower CPM ($0.27 vs $0.36), but post-click approved conversion collapsed by 73.8% (from 9.22% in Camp 936 to 2.42% in Camp 1178), causing cost per approved conversion to inflate from $15.81 to $63.83.",
+      "hypothesis": "Broad-reach ad creatives in Campaign 1178 set generic or misaligned user expectations that fail to convert on the post-click enquiry form. Replacing generic reach hooks with high-intent SMB pain-point hooks (e.g., 'Track daily udhaar payments instantly') will filter low-intent clicks and improve post-click conversion.",
+      "target_audience": "Scaled acquisition audience (broad demographic, ages 30-49, top interest categories).",
+      "test_variable": "Ad Creative Hook & Headline Messaging",
+      "control": "Generic broad benefit creative: 'Grow your business with smart digital tools'",
+      "variant": "High-intent operational pain-point creative: 'Stop losing money to forgotten credits: 1-click ledger tracking'",
+      "primary_kpi": "Click-to-Approved Conversion Rate (%)",
+      "secondary_kpi": "Cost per Approved Conversion ($)",
+      "guardrail": "CTR must not drop below 0.012% (protect traffic volume)",
+      "success_criteria": ">= +25% relative lift in click-to-approved conversion rate with p < 0.05 and no CAC degradation",
+      "expected_learning": "Determines whether qualification-focused copy improves downstream unit economics at scale.",
+      "data_requirement": "Impression, click, enquiry, and approved conversion tracking at creative level.",
+      "impact_score": 9,
+      "evidence_score": 9,
+      "ease_score": 8,
+      "ice_score": 8.67,
+      "priority": "P0 (Immediate Sprint)",
+      "priority_reason": "Directly attacks the largest source of cost leakage ($48.02 cost-per-approved surge).",
+      "problem": "Post-click approved conversion collapsed by 73.8% upon 19x scale-up.",
+      "opportunity": "Recover unit cost from $63.83 down towards $28.00 by qualifying click intent upfront.",
+      "segment": "Scaled Broad Audience (Age 30-49, Top Interests)",
+      "channel": "Meta Ads (Facebook & Instagram Feed/Reels)",
+      "owner": "Growth Marketing Lead",
+      "primary_metric": "Click-to-Approved Conversion Rate (%)",
+      "expected_impact": "+25% to +35% Lift in Post-Click Conversion",
+      "mde": "+25.0% Relative Lift",
+      "required_sample": 11369,
+      "start_date": "2026-09-15",
+      "end_date": "2026-09-29",
+      "status": "Running",
+      "result": "In Progress (Day 5 of 14: Variant trending at +18.4% lift, p=0.082)",
+      "decision": "Continue Test (Target sample 11,369 per variant)",
+      "learning": "Early data suggests operational pain-point copy lowers initial CTR slightly (-6%) but doubles time-on-landing-page.",
+      "next_action": "Audit creative fatigue at Day 7; prepare Hindi vernacular variant."
+    },
+    {
+      "experiment_id": "EXP-GROWTH-002",
+      "title": "Post-Click Landing Form Friction Reduction & Micro-Commitment",
+      "observed_evidence": "Funnel drop-off analysis reveals that 92.6% of users who click Campaign 1178 ads drop off before completing the initial enquiry form (Click-to-Enquiry is only 7.40% vs 27.07% in Campaign 936).",
+      "hypothesis": "The current post-click enquiry form requires too many fields upfront. Replacing the single multi-field form with a 2-step micro-commitment form (Step 1: Business category selection, Step 2: Contact info) will reduce cognitive friction and increase completion rates.",
+      "target_audience": "All post-click web traffic from paid campaigns.",
+      "test_variable": "Landing Page Form Architecture",
+      "control": "Single-page static form with 5 mandatory fields (Name, Phone, City, Business Type, Revenue).",
+      "variant": "Progressive 2-step form: Step 1 (1-tap business type chip), Step 2 (Phone number OTP autofill).",
+      "primary_kpi": "Click-to-Total Conversion (Enquiry) Rate (%)",
+      "secondary_kpi": "Form Initiation Rate (%)",
+      "guardrail": "Total-to-Approved qualification rate must remain >= 30% (protect lead quality).",
+      "success_criteria": ">= +20% lift in total conversion rate with p < 0.05 and no drop in approval rate.",
+      "expected_learning": "Identifies whether top-of-funnel conversion leakage is caused by UX form fatigue.",
+      "data_requirement": "Session-level form field analytics, step completion timestamps, and approval backend sync.",
+      "impact_score": 9,
+      "evidence_score": 8,
+      "ease_score": 7,
+      "ice_score": 8.0,
+      "priority": "P0 (Immediate Sprint)",
+      "priority_reason": "High leverage on 36,000+ clicks where 92.6% currently bounce without converting.",
+      "problem": "92.6% of clicks bounce on landing page before completing enquiry form.",
+      "opportunity": "2-step micro-commitment form reduces cognitive load for Kirana merchants.",
+      "segment": "All Paid Campaign Post-Click Traffic",
+      "channel": "Web Landing Page / Mobile Web",
+      "owner": "Product Growth Manager (Onboarding)",
+      "primary_metric": "Click-to-Total Conversion (Enquiry) Rate (%)",
+      "expected_impact": "+20% to +30% Lift in Form Completion",
+      "mde": "+20.0% Relative Lift",
+      "required_sample": 4250,
+      "start_date": "2026-09-01",
+      "end_date": "2026-09-14",
+      "status": "Analysis",
+      "result": "Completed: Variant achieved +26.8% lift (p=0.0041, 95% CI [+8.2%, +45.4%])",
+      "decision": "Promote Cautiously & Roll Out",
+      "learning": "1-tap business category chip upfront increased form initiation from 14% to 31% without lowering lead quality.",
+      "next_action": "Ship 2-step form to 100% of mobile paid traffic; begin WhatsApp OTP autofill test."
+    },
+    {
+      "experiment_id": "EXP-GROWTH-003",
+      "title": "Audience Concentration & Budget Reallocation to Stable Interest Segments",
+      "observed_evidence": "Segment stability analysis showed that 12 of the 28 interest groups evaluated have < 10 clicks, exhibiting extreme variance in cost per approved conversion, while top interests (e.g. ID 16, 27) demonstrate consistent sub-$25 cost per approved conversion across 50+ click thresholds.",
+      "hypothesis": "Reallocating 30% of media budget away from unstable, fragmented interest segments into the top 5 sample-stable segments will improve overall blended campaign efficiency by eliminating long-tail spend waste.",
+      "target_audience": "Campaign budget allocation across interest categories.",
+      "test_variable": "Audience Targeting Concentration",
+      "control": "Fragmented broad targeting across all 30+ interest codes.",
+      "variant": "Concentrated tier-1 targeting strictly limited to stable interest clusters with >50 clicks history.",
+      "primary_kpi": "Blended Cost per Approved Conversion ($)",
+      "secondary_kpi": "Total Approved Conversions per Week",
+      "guardrail": "Weekly impression delivery volume must not decline by more than 15%.",
+      "success_criteria": ">= 15% reduction in blended cost per approved conversion without frequency spike.",
+      "expected_learning": "Tests the tradeoff between demographic scale and segment conversion efficiency.",
+      "data_requirement": "Campaign budget split, weekly ad spend, and segment-level approved conversions.",
+      "impact_score": 8,
+      "evidence_score": 9,
+      "ease_score": 9,
+      "ice_score": 8.67,
+      "priority": "P0 (Immediate Sprint)",
+      "priority_reason": "Zero engineering required; actionable immediately within ad campaign budget settings.",
+      "problem": "12 of 28 interest segments have <10 clicks, creating budget waste and noisy performance.",
+      "opportunity": "Shift 30% of budget from volatile segments (<25 clicks) to proven stable interest codes (16, 27, 29).",
+      "segment": "Interest Target Groups (Stable vs Volatile)",
+      "channel": "Meta Ad Account Budget Optimizer",
+      "owner": "Performance Marketing Analyst",
+      "primary_metric": "Blended Cost per Approved Conversion ($)",
+      "expected_impact": "-15% to -22% CPA Reduction",
+      "mde": "-15.0% CPA Reduction",
+      "required_sample": 2500,
+      "start_date": "2026-09-22",
+      "end_date": "2026-10-06",
+      "status": "Planned",
+      "result": "Pre-Launch (Baseline data audited; audience exclusions staged)",
+      "decision": "Ready for Deployment",
+      "learning": "Segments with >=50 clicks demonstrate 2.8x more predictable CPA week-over-week.",
+      "next_action": "Execute budget shift in campaign settings upon conclusion of Sprint 38."
+    },
+    {
+      "experiment_id": "EXP-GROWTH-004",
+      "title": "Returning Visitor Personalized High-Intent Nudge (Consumer Behavior)",
+      "observed_evidence": "UCI consumer behavior diagnostics show that Returning Visitors have a 3.5x higher purchase rate (16.9% vs 4.8%) and average page value of $7.82 vs $1.15 for New Visitors, but exhibit high exit rates (0.045) on cart pages.",
+      "hypothesis": "Displaying a personalized re-engagement banner ('Continue where you left off + free merchant QR setup') to returning visitors within 5 seconds of session start will increase transaction completion.",
+      "target_audience": "Returning visitors on web/mobile sessions.",
+      "test_variable": "On-site Returning Visitor Modal / Top-Banner",
+      "control": "Standard landing view with generic homepage promotions.",
+      "variant": "Personalized sticky top-bar showing last viewed feature with 1-click resume CTA.",
+      "primary_kpi": "Session-to-Purchase Conversion Rate (%)",
+      "secondary_kpi": "Add-to-Cart / Feature Usage Initiation Rate (%)",
+      "guardrail": "Session bounce rate must not increase by > 2% absolute.",
+      "success_criteria": ">= +12% relative lift in transaction rate among returning cohort with p < 0.05.",
+      "expected_learning": "Quantifies the conversion lift of context-aware personalization for high-intent users.",
+      "data_requirement": "Cookie/session identity persistence, on-site event stream, transaction confirmation webhook.",
+      "impact_score": 7,
+      "evidence_score": 8,
+      "ease_score": 6,
+      "ice_score": 7.0,
+      "priority": "P1 (Next Sprint)",
+      "priority_reason": "Capitalizes on high baseline intent with proven behavioral divergence.",
+      "problem": "Returning visitors have 3.5x higher purchase intent but experience high checkout exit rates.",
+      "opportunity": "Personalized 'resume ledger entry' contextual banner on session start.",
+      "segment": "Returning Visitors (UCI Behavior Diagnostic)",
+      "channel": "In-App / Mobile Web Banner Nudge",
+      "owner": "Lifecycle / CRM Specialist",
+      "primary_metric": "Session-to-Purchase Conversion Rate (%)",
+      "expected_impact": "+12% to +18% Lift in Return Purchases",
+      "mde": "+12.0% Relative Lift",
+      "required_sample": 1850,
+      "start_date": "2026-10-01",
+      "end_date": "2026-10-15",
+      "status": "Idea",
+      "result": "Backlog Scoping",
+      "decision": "Approve for Sprint 40",
+      "learning": "UCI dataset shows returning visitors spend 340s avg on product pages \u2014 high consideration phase.",
+      "next_action": "Build dynamic cookie-based banner prototype in staging."
+    },
+    {
+      "experiment_id": "EXP-GROWTH-005",
+      "title": "Demographic Gender-Specific Creative Framing Test",
+      "observed_evidence": "Audience analysis reveals Female segments generate higher CTR (0.024% vs 0.016%) but incur a higher cost per approved conversion ($68.20 vs $42.10 for Males) due to post-click enquiry friction.",
+      "hypothesis": "Current creative hooks appeal to female SMB owners' visual interest but downstream product copy is tailored predominantly to male-dominated wholesale trade. Creating retail/apparel-specific merchant landing copy for female audiences will bridge the post-click intent gap.",
+      "target_audience": "Female business owners aged 30-49.",
+      "test_variable": "Landing Page Merchant Vertical Imagery & Testimonials",
+      "control": "General wholesale distribution merchant testimonials and imagery.",
+      "variant": "Retail, boutique, and local apparel merchant testimonials and workflow screenshots.",
+      "primary_kpi": "Post-Click Approved Conversion Rate (%)",
+      "secondary_kpi": "Cost per Approved Conversion ($)",
+      "guardrail": "CPC must not increase by > 10%.",
+      "success_criteria": ">= 20% reduction in Cost per Approved Conversion for Female cohort.",
+      "expected_learning": "Reveals whether demographic conversion gaps are structural or artifacts of vertical misrepresentation.",
+      "data_requirement": "Gender-segmented ad sets, separate landing page URLs, conversion tracking.",
+      "impact_score": 7,
+      "evidence_score": 7,
+      "ease_score": 7,
+      "ice_score": 7.0,
+      "priority": "P1 (Next Sprint)",
+      "priority_reason": "High initial click engagement indicates strong top-of-funnel resonance that is currently squandered.",
+      "problem": "Female segments generate +48% higher CTR but 1.6x higher CPA due to wholesale-biased landing copy.",
+      "opportunity": "Verticalized retail/apparel/boutique merchant testimonials and imagery for female cohorts.",
+      "segment": "Female Business Owners (Age 30-49)",
+      "channel": "Meta Reels & Vernacular Display",
+      "owner": "Creative Strategist / Growth Designer",
+      "primary_metric": "Post-Click Approved Conversion Rate (%)",
+      "expected_impact": "-20% to -28% CPA for Female Segment",
+      "mde": "+20.0% Relative Lift",
+      "required_sample": 3100,
+      "start_date": "2026-09-25",
+      "end_date": "2026-10-09",
+      "status": "Planned",
+      "result": "Creative Production Phase",
+      "decision": "Approve Creatives & Stage Landing URLs",
+      "learning": "Audience analysis shows Female 30-34 has highest top-of-funnel CTR (0.027%) across all demographics.",
+      "next_action": "Produce 3 vernacular video variants featuring retail store owners."
+    }
+  ],
+  "data_quality": [
+    {
+      "dataset": "Dataset A (Ad Campaigns)",
+      "check_category": "Completeness",
+      "check_name": "Missing Values Check",
+      "flagged_count": 0,
+      "status": "PASSED",
+      "severity": "CRITICAL",
+      "details": "Missing values across critical columns: {'ad_id': 0, 'xyz_campaign_id': 0, 'impressions': 0, 'clicks': 0, 'spent': 0, 'total_conversion': 0, 'approved_conversion': 0}"
+    },
+    {
+      "dataset": "Dataset A (Ad Campaigns)",
+      "check_category": "Uniqueness",
+      "check_name": "Duplicate Ad IDs",
+      "flagged_count": 0,
+      "status": "PASSED",
+      "severity": "CRITICAL",
+      "details": "Found 0 duplicate ad_id records."
+    },
+    {
+      "dataset": "Dataset A (Ad Campaigns)",
+      "check_category": "Range / Validity",
+      "check_name": "Negative Metric Values",
+      "flagged_count": 0,
+      "status": "PASSED",
+      "severity": "CRITICAL",
+      "details": "Negative rows: impressions=0, clicks=0, spent=0"
+    },
+    {
+      "dataset": "Dataset A (Ad Campaigns)",
+      "check_category": "Funnel Logic",
+      "check_name": "Clicks Exceed Impressions",
+      "flagged_count": 0,
+      "status": "PASSED",
+      "severity": "CRITICAL",
+      "details": "Records where clicks > impressions (physically impossible): 0"
+    },
+    {
+      "dataset": "Dataset A (Ad Campaigns)",
+      "check_category": "Business Logic",
+      "check_name": "Approved Exceeds Total Conversion",
+      "flagged_count": 0,
+      "status": "PASSED",
+      "severity": "CRITICAL",
+      "details": "Records where approved_conversion > total_conversion: 0"
+    },
+    {
+      "dataset": "Dataset A (Ad Campaigns)",
+      "check_category": "Efficiency / Hygiene",
+      "check_name": "Zero-Click Spend Ads",
+      "flagged_count": 0,
+      "status": "PASSED",
+      "severity": "WARNING",
+      "details": "0 ads spent positive budget ($0.00) without generating a single click."
+    },
+    {
+      "dataset": "Dataset A (Ad Campaigns)",
+      "check_category": "Delivery",
+      "check_name": "Zero Impression Ads",
+      "flagged_count": 0,
+      "status": "PASSED",
+      "severity": "INFO",
+      "details": "Ads with zero impressions: 0"
+    },
+    {
+      "dataset": "Dataset A (Ad Campaigns)",
+      "check_category": "Statistical Reliability",
+      "check_name": "Low-Sample Ad Records (< 10 Clicks)",
+      "flagged_count": 593,
+      "status": "FLAGGED",
+      "severity": "WARNING",
+      "details": "593 of 1143 records (51.9%) have <10 clicks, requiring ratio-of-sums aggregation to prevent noise."
+    },
+    {
+      "dataset": "Dataset B (UCI Consumer Behavior)",
+      "check_category": "Completeness",
+      "check_name": "Missing Revenue Labels",
+      "flagged_count": 29,
+      "status": "FLAGGED",
+      "severity": "WARNING",
+      "details": "29 records have NULL Revenue. Filtered out before behavioral analysis."
+    },
+    {
+      "dataset": "Dataset B (UCI Consumer Behavior)",
+      "check_category": "Range / Validity",
+      "check_name": "Negative Session Durations",
+      "flagged_count": 0,
+      "status": "PASSED",
+      "severity": "CRITICAL",
+      "details": "0 records with negative duration values."
+    },
+    {
+      "dataset": "Dataset B (UCI Consumer Behavior)",
+      "check_category": "Range / Validity",
+      "check_name": "Bounce / Exit Rate Boundaries [0, 1]",
+      "flagged_count": 0,
+      "status": "PASSED",
+      "severity": "CRITICAL",
+      "details": "0 records with bounce or exit rate outside [0, 1]."
+    }
+  ],
+  "metric_availability": [
+    {
+      "metric": "Impressions",
+      "available": "Yes",
+      "exact_formula": "SUM(Impressions)",
+      "reason": "Directly recorded ad impression volume."
+    },
+    {
+      "metric": "Clicks",
+      "available": "Yes",
+      "exact_formula": "SUM(Clicks)",
+      "reason": "Directly recorded ad clicks."
+    },
+    {
+      "metric": "Spend",
+      "available": "Yes",
+      "exact_formula": "SUM(Spent)",
+      "reason": "Directly recorded ad media expenditure."
+    },
+    {
+      "metric": "CTR",
+      "available": "Yes",
+      "exact_formula": "SUM(Clicks) / SUM(Impressions)",
+      "reason": "Real top-of-funnel creative engagement rate."
+    },
+    {
+      "metric": "CPC",
+      "available": "Yes",
+      "exact_formula": "SUM(Spent) / SUM(Clicks)",
+      "reason": "Real media auction cost efficiency per click."
+    },
+    {
+      "metric": "CPM",
+      "available": "Yes",
+      "exact_formula": "(SUM(Spent) / SUM(Impressions)) * 1000",
+      "reason": "Real baseline media inventory pricing."
+    },
+    {
+      "metric": "Cost per Approved Conversion",
+      "available": "Yes",
+      "exact_formula": "SUM(Spent) / SUM(Approved_Conversion)",
+      "reason": "Real cost per verified end conversion."
+    },
+    {
+      "metric": "CAC (Customer Acquisition Cost)",
+      "available": "No (Unsupported)",
+      "exact_formula": "N/A",
+      "reason": "Lacks full marketing spend, blended organic acquisition, agency fees, and downstream retention."
+    },
+    {
+      "metric": "ROAS (Return on Ad Spend)",
+      "available": "No (Unsupported)",
+      "exact_formula": "N/A",
+      "reason": "No monetary transaction revenue exists in the ad dataset. Creating fake revenue violates analytical integrity."
+    },
+    {
+      "metric": "Mobile App Installs",
+      "available": "No (Unavailable)",
+      "exact_formula": "N/A",
+      "reason": "Web conversion tracking dataset; does not track SDK install attribution."
+    },
+    {
+      "metric": "User Login / Retention",
+      "available": "No (Unavailable)",
+      "exact_formula": "N/A",
+      "reason": "No user authentication or post-install cohort logs in public advertising dataset."
+    }
+  ],
+  "market_intelligence": {
+    "msme_landscape": {
+      "total_msmes_india_million": 63,
+      "digital_payment_adopters_pct": 47,
+      "feature_phone_still_active_pct": 31,
+      "tier2_tier3_share_pct": 68,
+      "source": "RBI MSME Report 2024 / Statista India Digital Payments 2024",
+      "note": "Estimates based on public aggregate reports. Individual company figures not available."
+    },
+    "competitors": [
+      {
+        "name": "Khatabook",
+        "core_identity": "Digital bahi khata + merchant fintech platform",
+        "merchant_segment": "Micro to small retailers, Tier 2/3 focus",
+        "primary_monetization": "Merchant lending + Biz Analyst SaaS",
+        "key_differentiator": "WhatsApp virality loop + 10+ language vernacular-first",
+        "known_weakness": "No hardware soundbox; post-install activation gap",
+        "app_store_rating": 4.2,
+        "app_store_reviews_approx": "2M+",
+        "funding_total_usd_m": 187,
+        "revenue_fy24_crore": 102.7,
+        "status": "Active \u2014 Lean fintech pivot (post-2023 restructuring)"
+      },
+      {
+        "name": "Vyapar",
+        "core_identity": "GST accounting + billing software",
+        "merchant_segment": "Small to mid-sized GST-registered businesses",
+        "primary_monetization": "SaaS subscription (annual plans)",
+        "key_differentiator": "Compliance-ready invoicing and GST filing integration",
+        "known_weakness": "Desktop-first; less suited to quick counter transactions",
+        "app_store_rating": 4.5,
+        "app_store_reviews_approx": "500K+",
+        "funding_total_usd_m": 30,
+        "revenue_fy24_crore": null,
+        "status": "Growing \u2014 Dominates formalized SME segment"
+      },
+      {
+        "name": "OkCredit",
+        "core_identity": "Simple udhaar tracker + OkLoan NBFC",
+        "merchant_segment": "Micro merchants with very basic ledger needs",
+        "primary_monetization": "OkLoan margin (pivoted from P2P after RBI 2025)",
+        "key_differentiator": "Extreme simplicity; 2-tap transaction recording",
+        "known_weakness": "Limited feature set; losing ground to Khatabook on breadth",
+        "app_store_rating": 4.0,
+        "app_store_reviews_approx": "1M+",
+        "funding_total_usd_m": 89,
+        "revenue_fy24_crore": null,
+        "status": "Retreating \u2014 P2P lending shut, focusing on OkLoan"
+      },
+      {
+        "name": "BharatPe",
+        "core_identity": "Payment infrastructure + NBFC lending at scale",
+        "merchant_segment": "All merchant types; offline retail dominant",
+        "primary_monetization": "NBFC interest margin + Soundbox hardware + Unity SFB",
+        "key_differentiator": "Physical Soundbox scale (5M+ devices), owns Unity Small Finance Bank stake",
+        "known_weakness": "Governance issues; less trust in Tier 3 belts vs. Khatabook",
+        "app_store_rating": 4.1,
+        "app_store_reviews_approx": "1.5M+",
+        "funding_total_usd_m": 650,
+        "revenue_fy24_crore": null,
+        "status": "Strong but governance-challenged"
+      },
+      {
+        "name": "PhonePe for Business",
+        "core_identity": "UPI payments ecosystem for merchants",
+        "merchant_segment": "All merchants; consumer-to-merchant payment focus",
+        "primary_monetization": "Payment MDR + financial services cross-sell",
+        "key_differentiator": "Consumer-side UPI dominance (50%+ UPI market share) drives merchant adoption",
+        "known_weakness": "Merchant engagement weak post-payment; no bookkeeping",
+        "app_store_rating": 4.3,
+        "app_store_reviews_approx": "10M+",
+        "funding_total_usd_m": 850,
+        "revenue_fy24_crore": null,
+        "status": "Dominant in payments; expanding into lending"
+      }
+    ],
+    "khatabook_growth_loops": [
+      {
+        "loop_id": "A",
+        "name": "WhatsApp Viral Reminder Loop",
+        "description": "Merchant records udhaar entry \u2192 taps Send Reminder via WhatsApp \u2192 customer receives polite payment link + 'Sent via Khatabook' footer \u2192 customer (often another shopkeeper) downloads Khatabook. Every recorded transaction has viral coefficient K > 0.",
+        "stage": "Organic Acquisition",
+        "viral_coefficient": "> 0 per transaction"
+      },
+      {
+        "loop_id": "B",
+        "name": "Paid Digital Acquisition Loop",
+        "description": "Vernacular Meta/Google ad \u2192 App install \u2192 Account setup \u2192 First 5 ledger entries \u2192 Daily active merchant \u2192 QR/Loan monetization \u2192 Reinvest in paid acquisition. Post-2023: spend more disciplined, optimized for LTV cohorts not vanity installs.",
+        "stage": "Paid Acquisition",
+        "channel": "Meta Ads + Google UAC"
+      },
+      {
+        "loop_id": "C",
+        "name": "Utility-to-Fintech Monetization Loop",
+        "description": "Merchant uses free ledger 60+ days \u2192 builds trusted cashflow record \u2192 experiences working capital crunch \u2192 Khatabook pre-approves non-collateralized merchant loan based on transaction velocity \u2192 interest margin expands LTV. High-margin lending offsets top-of-funnel CAC.",
+        "stage": "Monetization",
+        "ltv_driver": "Merchant lending + Biz Analyst SaaS"
+      }
+    ],
+    "strategic_implications": [
+      {
+        "observation": "BharatPe's 5M+ Soundbox devices give it payment data Khatabook lacks",
+        "growth_hypothesis": "Khatabook could partner with device manufacturers for a hardware-lite QR payment confirmation integration, capturing ambient payment events that currently go unrecorded",
+        "jd_relevance": "Market research \u2192 product growth hypothesis"
+      },
+      {
+        "observation": "OkCredit's retreat from P2P lending creates a gap in the micro-merchant loan segment",
+        "growth_hypothesis": "Khatabook could run a targeted acquisition campaign specifically in OkCredit's historically strong markets (Tier 3 UP, Bihar) with a 'switch from OkCredit' angle emphasizing lending access",
+        "jd_relevance": "Competitor intelligence \u2192 acquisition campaign design"
+      },
+      {
+        "observation": "App Store reviews flag unsolicited calls post-signup as a trust issue",
+        "growth_hypothesis": "Eliminating cold outbound calls to new signups and replacing with in-app onboarding nudges could improve D7 retention by reducing uninstall triggers in the critical first week",
+        "jd_relevance": "Consumer behavior \u2192 CRM experiment design"
+      }
+    ],
+    "app_store_signals": {
+      "note": "Based on observable patterns from public Google Play Store reviews. Not a representative sample. Trends only \u2014 not statistical claims.",
+      "khatabook_rating": 4.2,
+      "reviews_analyzed_approx": "2M+ public reviews",
+      "positive_themes": [
+        {
+          "theme": "WhatsApp reminder works instantly",
+          "signal_strength": "Strong",
+          "growth_implication": "Reminder loop is the strongest retention hook \u2014 protect it in any CRM redesign"
+        },
+        {
+          "theme": "Regional language support praised (Hindi, Telugu, Tamil)",
+          "signal_strength": "Strong",
+          "growth_implication": "Vernacular-first is a real moat \u2014 launch new features in regional languages first"
+        },
+        {
+          "theme": "Simple udhaar recording praised by Kirana owners",
+          "signal_strength": "Strong",
+          "growth_implication": "Core UX is working for the primary persona; complexity should be opt-in, not default"
+        }
+      ],
+      "friction_themes": [
+        {
+          "theme": "Unsolicited calls post-signup",
+          "signal_strength": "Recurring",
+          "growth_implication": "Cold outbound calls after install are flagged as uninstall triggers. Replace with in-app nudge sequences for D1-D7 activation"
+        },
+        {
+          "theme": "Premium features gated behind coin/subscription paywall",
+          "signal_strength": "Moderate",
+          "growth_implication": "Monetization wall hits before activation habit is formed. Consider delaying paywall to D14+ after first payment reminder sent"
+        },
+        {
+          "theme": "Sync issues across devices mentioned",
+          "signal_strength": "Moderate",
+          "growth_implication": "Sync reliability is table stakes for merchant trust \u2014 particularly for bookkeeping data"
+        }
+      ],
+      "experiment_hypotheses": [
+        "Replacing post-install cold calls with a D1 in-app tutorial nudge sequence could improve D7 retention",
+        "Delaying the premium paywall until after first WhatsApp reminder is sent could increase willingness-to-pay",
+        "A 'sync status' indicator on the home screen could reduce trust anxiety for multi-device merchants"
+      ]
+    }
+  },
+  "growth_os": [
+    {
+      "experiment_id": "EXP-GROWTH-001",
+      "title": "Ad Creative Value Prop Realignment for Scaled Campaigns",
+      "ice_score": 8.0,
+      "priority": "P0",
+      "stages": {
+        "observe": {
+          "content": "Campaign 1178 scaled budget to $55,662 but post-click approved conversion collapsed by 73.8%.",
+          "evidence_type": "Real data finding",
+          "linked_tab": "waterfall"
+        },
+        "diagnose": {
+          "content": "Ad creatives set generic expectations failing to convert on the post-click enquiry form.",
+          "evidence_type": "3-factor decomposition",
+          "linked_tab": "waterfall"
+        },
+        "hypothesize": {
+          "content": "Replacing generic reach hooks with high-intent SMB pain-point hooks will filter low-intent clicks.",
+          "if_then": "If we replace generic creatives with high-intent SMB pain-point hooks, then post-click conversion will improve.",
+          "linked_tab": "backlog"
+        },
+        "experiment": {
+          "control": "Generic broad benefit creative.",
+          "variant": "High-intent operational pain-point creative.",
+          "primary_kpi": "Click-to-Approved Conversion Rate",
+          "sample_size_needed": 11369,
+          "duration_days": 14
+        },
+        "learn": {
+          "success_criteria": ">= +25% lift in conversion rate.",
+          "guardrail": "Total volume must not drop >10%.",
+          "next_hypothesis": "If successful, expand to other ad platforms."
+        }
+      }
+    },
+    {
+      "experiment_id": "EXP-GROWTH-002",
+      "title": "Landing Page Progressive Form (Friction Reduction)",
+      "ice_score": 8.0,
+      "priority": "P0 (Immediate Sprint)",
+      "stages": {
+        "observe": {
+          "content": "92.6% of clicks bounce without completing the initial enquiry form.",
+          "evidence_type": "Real data finding",
+          "linked_tab": "funnel"
+        },
+        "diagnose": {
+          "content": "The current post-click enquiry form requires too many fields upfront, creating cognitive friction.",
+          "evidence_type": "Structural observation",
+          "linked_tab": "funnel"
+        },
+        "hypothesize": {
+          "content": "Replacing the single multi-field form with a 2-step micro-commitment form will reduce cognitive friction.",
+          "if_then": "If we split the form into 2 steps, then completion rates will increase.",
+          "linked_tab": "backlog"
+        },
+        "experiment": {
+          "control": "Single-page static form.",
+          "variant": "Progressive 2-step form.",
+          "primary_kpi": "Click-to-Total Conversion Rate",
+          "sample_size_needed": 11369,
+          "duration_days": 14
+        },
+        "learn": {
+          "success_criteria": ">= +20% lift in total conversion rate.",
+          "guardrail": "Total-to-Approved qualification rate must remain >= 30%.",
+          "next_hypothesis": "If successful, apply to all paid landing pages."
+        }
+      }
+    },
+    {
+      "experiment_id": "EXP-GROWTH-003",
+      "title": "Audience Concentration & Budget Reallocation to Stable Interest Segments",
+      "ice_score": 8.67,
+      "priority": "P0 (Immediate Sprint)",
+      "stages": {
+        "observe": {
+          "content": "12 of 28 interest groups evaluated have < 10 clicks, showing high variance in CPA.",
+          "evidence_type": "Real data finding",
+          "linked_tab": "audience"
+        },
+        "diagnose": {
+          "content": "Budget is spread too thin across fragmented segments, causing inefficiency.",
+          "evidence_type": "Structural observation",
+          "linked_tab": "audience"
+        },
+        "hypothesize": {
+          "content": "Reallocating 30% of budget to top 5 stable segments will improve overall blended campaign efficiency.",
+          "if_then": "If we concentrate targeting on stable segments, then blended cost will decrease.",
+          "linked_tab": "backlog"
+        },
+        "experiment": {
+          "control": "Fragmented broad targeting.",
+          "variant": "Concentrated tier-1 targeting.",
+          "primary_kpi": "Blended Cost per Approved Conversion",
+          "sample_size_needed": 11369,
+          "duration_days": 14
+        },
+        "learn": {
+          "success_criteria": ">= 15% reduction in blended CPA.",
+          "guardrail": "Volume must not drop.",
+          "next_hypothesis": "If successful, dynamically prune long-tail segments weekly."
+        }
+      }
+    },
+    {
+      "experiment_id": "EXP-GROWTH-004",
+      "title": "Returning Visitor Personalized High-Intent Nudge (Consumer Behavior)",
+      "ice_score": 7.0,
+      "priority": "P1 (Next Sprint)",
+      "stages": {
+        "observe": {
+          "content": "Returning Visitors have a 3.5x higher purchase rate but exit rates are still high on cart pages.",
+          "evidence_type": "Real data finding",
+          "linked_tab": "audience"
+        },
+        "diagnose": {
+          "content": "High-intent returning users lack a direct continuation path, creating friction.",
+          "evidence_type": "Structural observation",
+          "linked_tab": "audience"
+        },
+        "hypothesize": {
+          "content": "Displaying a personalized re-engagement banner will increase transaction completion.",
+          "if_then": "If we display a resume banner to returning visitors, then session-to-purchase rate will increase.",
+          "linked_tab": "backlog"
+        },
+        "experiment": {
+          "control": "Standard landing view.",
+          "variant": "Personalized sticky top-bar.",
+          "primary_kpi": "Session-to-Purchase Conversion Rate",
+          "sample_size_needed": 5612,
+          "duration_days": 21
+        },
+        "learn": {
+          "success_criteria": ">= +12% relative lift in transaction rate.",
+          "guardrail": "Bounce rate must not increase.",
+          "next_hypothesis": "If successful, add email re-engagement for abandoned carts."
+        }
+      }
+    },
+    {
+      "experiment_id": "EXP-GROWTH-005",
+      "title": "Demographic Gender-Specific Creative Framing Test",
+      "ice_score": 7.0,
+      "priority": "P1 (Next Sprint)",
+      "stages": {
+        "observe": {
+          "content": "Female segments generate higher CTR but incur a higher cost per approved conversion due to post-click friction.",
+          "evidence_type": "Real data finding",
+          "linked_tab": "audience"
+        },
+        "diagnose": {
+          "content": "Downstream product copy is tailored to male-dominated wholesale trade, alienating female retail users.",
+          "evidence_type": "Structural observation",
+          "linked_tab": "audience"
+        },
+        "hypothesize": {
+          "content": "Creating retail-specific merchant landing copy for female audiences will bridge the intent gap.",
+          "if_then": "If we route female traffic to retail-focused pages, then CPA will decrease.",
+          "linked_tab": "backlog"
+        },
+        "experiment": {
+          "control": "General wholesale imagery.",
+          "variant": "Retail, boutique, and local apparel imagery.",
+          "primary_kpi": "Post-Click Approved Conversion Rate",
+          "sample_size_needed": 17381,
+          "duration_days": 14
+        },
+        "learn": {
+          "success_criteria": ">= 20% reduction in Cost per Approved Conversion for Females.",
+          "guardrail": "CPC must not increase > 10%.",
+          "next_hypothesis": "If successful, scale personalized landing pages to other demographics."
+        }
+      }
+    }
+  ],
+  "metric_dictionary": [
+    {
+      "metric": "CTR (Click-Through Rate)",
+      "formula": "SUM(Clicks) / SUM(Impressions)",
+      "availability": "Available",
+      "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
+      "confidence": "High",
+      "aggregation_method": "Ratio-of-Sums",
+      "known_limitation": "Impression and click counts are at ad set level; no impression-level frequency data available to detect ad fatigue.",
+      "khatabook_relevance": "Primary creative quality signal. Low CTR in scaled campaigns indicates creative-audience mismatch \u2014 the top-of-funnel diagnostic for any Khatabook app campaign."
+    },
+    {
+      "metric": "CPM (Cost Per Mille)",
+      "formula": "(SUM(Spent) / SUM(Impressions)) * 1000",
+      "availability": "Available",
+      "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
+      "confidence": "High",
+      "aggregation_method": "Ratio-of-Sums",
+      "known_limitation": "Only blended spend is available. No breakdown by ad placement.",
+      "khatabook_relevance": "Media inventory cost indicator. Important for scaling without overpaying."
+    },
+    {
+      "metric": "CPC (Cost Per Click)",
+      "formula": "SUM(Spent) / SUM(Clicks)",
+      "availability": "Available",
+      "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
+      "confidence": "High",
+      "aggregation_method": "Ratio-of-Sums",
+      "known_limitation": "Cannot distinguish between link clicks and other engagements.",
+      "khatabook_relevance": "Immediate performance indicator of ad engagement."
+    },
+    {
+      "metric": "Conversion Rate",
+      "formula": "SUM(Total_Conversions) / SUM(Clicks)",
+      "availability": "Available",
+      "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
+      "confidence": "Medium",
+      "aggregation_method": "Ratio-of-Sums",
+      "known_limitation": "Total conversion includes unapproved ones, adding noise.",
+      "khatabook_relevance": "Measures landing page effectiveness."
+    },
+    {
+      "metric": "Click-to-Approved Rate",
+      "formula": "SUM(Approved_Conversions) / SUM(Clicks)",
+      "availability": "Available",
+      "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
+      "confidence": "High",
+      "aggregation_method": "Ratio-of-Sums",
+      "known_limitation": "End of funnel in dataset, doesn't capture retention.",
+      "khatabook_relevance": "True measure of quality acquisition."
+    },
+    {
+      "metric": "Cost per Approved Conversion",
+      "formula": "SUM(Spent) / SUM(Approved_Conversions)",
+      "availability": "Available",
+      "data_source": "Dataset A \u2014 KAG_conversion_data.csv",
+      "confidence": "High",
+      "aggregation_method": "Ratio-of-Sums",
+      "known_limitation": "Does not account for LTV.",
+      "khatabook_relevance": "Core unit economic metric before CAC."
+    },
+    {
+      "metric": "CAC (Customer Acquisition Cost)",
+      "formula": "Total Marketing Spend / Total Retained Customers",
+      "availability": "Not Available",
+      "data_source": "N/A",
+      "confidence": "N/A",
+      "aggregation_method": "N/A",
+      "known_limitation": "No install or retained customer data available in dataset.",
+      "khatabook_relevance": "The ultimate true cost metric for Khatabook growth, unavailable due to data limits."
+    },
+    {
+      "metric": "ROAS (Return on Ad Spend)",
+      "formula": "Total Revenue / Total Ad Spend",
+      "availability": "Not Available",
+      "data_source": "N/A",
+      "confidence": "N/A",
+      "aggregation_method": "N/A",
+      "known_limitation": "No revenue data associated with the FB Ad dataset.",
+      "khatabook_relevance": "Measures ad profitability, unavailable here."
+    },
+    {
+      "metric": "Mix-Adjusted Cost",
+      "formula": "Weighted average of segment costs based on a fixed control distribution",
+      "availability": "Available via Analysis",
+      "data_source": "Computed from Dataset A",
+      "confidence": "Medium",
+      "aggregation_method": "Simpson's Paradox Adjustment",
+      "known_limitation": "Assumes segment behaviors are independent of mix changes.",
+      "khatabook_relevance": "Reveals true cost changes independent of demographic shifts during scale."
+    },
+    {
+      "metric": "ICE Score",
+      "formula": "(Impact + Confidence + Ease) / 3",
+      "availability": "Available",
+      "data_source": "Experiment Engine",
+      "confidence": "Subjective",
+      "aggregation_method": "Average",
+      "known_limitation": "Inherently subjective scoring framework.",
+      "khatabook_relevance": "Standard framework for prioritizing growth experiments."
+    },
+    {
+      "metric": "p-value",
+      "formula": "Probability of observing the test statistic given the null hypothesis is true",
+      "availability": "Available via Analysis",
+      "data_source": "Statistical Modules",
+      "confidence": "High",
+      "aggregation_method": "Statistical Test",
+      "known_limitation": "Often misinterpreted as probability of null hypothesis being true.",
+      "khatabook_relevance": "Used to validate AB test results for Growth OS."
+    },
+    {
+      "metric": "z-score",
+      "formula": "(x - \u03bc) / \u03c3",
+      "availability": "Available via Analysis",
+      "data_source": "Statistical Modules",
+      "confidence": "High",
+      "aggregation_method": "Statistical Test",
+      "known_limitation": "Assumes normal distribution.",
+      "khatabook_relevance": "Standardizes metrics for anomaly detection."
+    },
+    {
+      "metric": "Confidence Interval",
+      "formula": "Estimate \u00b1 Margin of Error",
+      "availability": "Available via Analysis",
+      "data_source": "Statistical Modules",
+      "confidence": "High",
+      "aggregation_method": "Statistical Test",
+      "known_limitation": "Requires sufficient sample size.",
+      "khatabook_relevance": "Provides range for expected metric lift in experiments."
+    },
+    {
+      "metric": "MDE (Minimum Detectable Effect)",
+      "formula": "Derived from baseline rate, sample size, power, and alpha",
+      "availability": "Available via Analysis",
+      "data_source": "Statistical Modules",
+      "confidence": "High",
+      "aggregation_method": "Statistical Power Analysis",
+      "known_limitation": "Only relevant before an experiment is run.",
+      "khatabook_relevance": "Determines feasibility of a proposed experiment."
+    }
+  ]
 }

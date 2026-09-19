@@ -76,6 +76,16 @@ def main():
             "ctr": float(r["ctr"])
         })
     
+    # Load existing preserved modules if present
+    existing_data_path = os.path.join(root_dir, "data", "dashboard_data.json")
+    existing_data = {}
+    if os.path.exists(existing_data_path):
+        try:
+            with open(existing_data_path, "r", encoding="utf-8") as f:
+                existing_data = json.load(f)
+        except Exception:
+            existing_data = {}
+
     web_data = {
         "metadata": {
             "project_name": "Khatabook Growth Intelligence Platform",
@@ -98,7 +108,10 @@ def main():
         },
         "experiments": backlog_df.to_dict(orient="records"),
         "data_quality": quality_df.to_dict(orient="records"),
-        "metric_availability": metric_avail_df.to_dict(orient="records")
+        "metric_availability": metric_avail_df.to_dict(orient="records"),
+        "market_intelligence": existing_data.get("market_intelligence", {}),
+        "growth_os": existing_data.get("growth_os", []),
+        "metric_dictionary": existing_data.get("metric_dictionary", [])
     }
     
     web_dir = os.path.join(root_dir, "web", "data")
