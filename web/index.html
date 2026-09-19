@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0">
+  <title>Khatabook Growth Intelligence Platform | Performance Diagnostics & Merchant Economics</title>
+  <meta name="description" content="Production-grade growth analytics platform engineered for Khatabook growth marketing, product growth, and merchant acquisition leadership.">
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            appDark: '#08090D',
+            cardDark: '#0D0F17',
+            cardHover: '#131722',
+            borderDark: 'rgba(255, 255, 255, 0.08)',
+            borderLight: 'rgba(255, 255, 255, 0.15)',
+            brandIndigo: '#6366F1',
+            brandViolet: '#8B5CF6',
+            brandCyan: '#38BDF8',
+            brandEmerald: '#10B981',
+            brandAmber: '#F59E0B',
+            brandRose: '#F43F5E'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Designer Mesh Background & Glassmorphism */
+    body {
+      background-color: #08090D;
+      background-image: 
+        radial-gradient(circle at 15% 10%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(139, 92, 246, 0.06) 0%, transparent 50%);
+      color: #F8FAFC;
+      overflow-x: hidden;
+    }
+
+    .designer-card {
+      background: rgba(13, 15, 23, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 16px 36px -12px rgba(0, 0, 0, 0.7);
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    @media (hover: hover) {
+      .designer-card:hover {
+        border-color: rgba(99, 102, 241, 0.3);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 20px 44px -10px rgba(99, 102, 241, 0.15);
+        transform: translateY(-2px);
+      }
+    }
+
+    /* Live HUD Readout styling */
+    .hud-banner {
+      background: rgba(8, 10, 16, 0.95);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    /* Mobile scroll snap tab pill nav */
+    .tab-nav-container {
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+    .tab-nav-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-pill {
+      scroll-snap-align: start;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .tab-pill.active {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(56, 189, 248, 0.2));
+      border-color: rgba(99, 102, 241, 0.8);
+      color: #FFFFFF;
+      box-shadow: 0 0 16px rgba(99, 102, 241, 0.35);
+    }
+
+    .chart-view-btn.active {
+      background: #6366F1;
+      color: #FFFFFF;
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Interactive button scaling */
+    button:active {
+      transform: scale(0.97);
+    }
+
+    /* Custom range input slider styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      height: 6px;
+      border-radius: 9999px;
+      background: #1E293B;
+      outline: none;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #6366F1;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+      transition: transform 0.15s ease;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col font-sans antialiased text-slate-100">
+
+  <!-- TOP APP NAVIGATION HEADER -->
+  <header class="bg-[#0A0C13]/95 border-b border-white/5 sticky top-0 z-50 backdrop-blur-xl">
+    <div class="max-w-[1600px] mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-14 sm:h-16">
+        
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-2.5 sm:space-x-3.5">
+          <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-brandIndigo via-brandViolet to-brandCyan flex items-center justify-center text-white font-extrabold text-sm sm:text-base shadow-lg shadow-indigo-500/25 border border-white/20 shrink-0">
+            KB
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <h1 class="font-bold text-xs sm:text-base text-white tracking-tight flex items-center gap-1.5">
+                <span>Khatabook Growth Lab</span>
+                <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] font-mono font-bold bg-indigo-950/80 text-indigo-300 border border-indigo-500/30">
+                  v2.5
+                </span>
+              </h1>
+            </div>
+            <p class="hidden sm:block text-[11px] text-slate-400 font-medium">Performance Diagnostics & Merchant Economics</p>
+          </div>
+        </div>
+
+        <!-- Global Action Badges -->
+        <div class="flex items-center space-x-2 sm:space-x-3">
+          <div class="hidden md:flex items-center space-x-2 px-2.5 py-1 rounded-lg bg-slate-900/80 border border-white/5 text-[11px] text-slate-300 font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>AUDIT: PASS</span>
+          </div>
+
+          <a href="#tab-downloads" onclick="switchTab('downloads')" class="inline-flex items-center space-x-1 sm:space-x-1.5 text-[11px] sm:text-xs font-semibold text-white bg-gradient-to-r from-brandIndigo to-brandViolet hover:from-indigo-500 hover:to-violet-500 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg shadow-md shadow-indigo-500/20 border border-white/10 transition-all">
+            <i data-lucide="download" class="w-3 h-3 sm:w-3.5 sm:h-3.5"></i>
+            <span class="hidden xs:inline">Export Model</span>
+            <span class="xs:hidden">Model</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- RESPONSIVE TOUCH-FRIENDLY TABS -->
+      <div class="tab-nav-container flex space-x-1.5 overflow-x-auto py-2 border-t border-white/5 text-xs font-medium">
+        <button onclick="switchTab('overview')" id="tab-btn-overview" class="tab-pill active px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
+          <span>1. Overview</span>
+        </button>
+
+        <button onclick="switchTab('waterfall')" id="tab-btn-waterfall" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+          <span>2. Waterfall</span>
+        </button>
+
+        <button onclick="switchTab('funnel')" id="tab-btn-funnel" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="filter" class="w-3.5 h-3.5"></i>
+          <span>3. Funnel Flow</span>
+        </button>
+
+        <button onclick="switchTab('standardization')" id="tab-btn-standardization" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+          <span>4. Mix Standardization</span>
+        </button>
+
+        <button onclick="switchTab('simulator')" id="tab-btn-simulator" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="smartphone" class="w-3.5 h-3.5"></i>
+          <span>5. App & LTV Simulator</span>
+        </button>
+
+        <button onclick="switchTab('audience')" id="tab-btn-audience" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="scatter-chart" class="w-3.5 h-3.5"></i>
+          <span>6. Audience Matrix</span>
+        </button>
+
+        <button onclick="switchTab('ab-lab')" id="tab-btn-ab-lab" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="flask-conical" class="w-3.5 h-3.5"></i>
+          <span>7. Live A/B Lab</span>
+        </button>
+
+        <button onclick="switchTab('consumer')" id="tab-btn-consumer" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+          <span>8. Consumer Sessions</span>
+        </button>
+
+        <button onclick="switchTab('loops')" id="tab-btn-loops" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="repeat" class="w-3.5 h-3.5"></i>
+          <span>9. Growth Loops</span>
+        </button>
+
+        <button onclick="switchTab('roadmap')" id="tab-btn-roadmap" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="kanban" class="w-3.5 h-3.5"></i>
+          <span>10. ICE Roadmap</span>
+        </button>
+
+        <button onclick="switchTab('quality')" id="tab-btn-quality" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+          <span>11. Audit Daemon</span>
+        </button>
+
+        <button onclick="switchTab('downloads')" id="tab-btn-downloads" class="tab-pill px-3 py-1.5 min-h-[36px] rounded-lg border border-transparent text-slate-400 hover:text-white flex items-center space-x-1.5 whitespace-nowrap shrink-0">
+          <i data-lucide="folder-archive" class="w-3.5 h-3.5"></i>
+          <span>12. Exports</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER (Fluid mobile padding) -->
+  <main class="max-w-[1600px] w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 flex-1 space-y-4 sm:space-y-6">
+
+    <!-- =================================================================== -->
+    <!-- TAB 1: EXECUTIVE OVERVIEW                                          -->
+    <!-- =================================================================== -->
+    <section id="tab-overview" class="tab-content space-y-4 sm:space-y-6">
+      <!-- Problem Banner -->
+      <div class="designer-card rounded-2xl p-4 sm:p-6 relative overflow-hidden">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 relative z-10">
+          <div>
+            <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1.5">
+              <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i>
+              <span>Core Commercial Problem Statement</span>
+            </div>
+            <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white tracking-tight leading-snug">
+              Why did scaling ad spend from $2.9k to $55.7k (+1,823%) cause Cost per Approved Conversion to surge from $15.81 to $63.83 (+303.7%)?
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 mt-2 max-w-4xl leading-relaxed">
+              Variance decomposition reveals that <strong class="text-brandEmerald">media buying was 23.6% cheaper at scale (lower CPMs)</strong>. 
+              The collapse occurred post-click: <strong class="text-brandRose">92.6% of clicks in Campaign 1178 bounced before enquiry submission</strong>, driving 98.1% of the cost explosion.
+            </p>
+          </div>
+          <div class="flex sm:flex-col gap-2 shrink-0 w-full sm:w-auto">
+            <button onclick="switchTab('waterfall')" class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-gradient-to-r from-brandIndigo to-brandViolet hover:from-indigo-500 hover:to-violet-500 text-white font-bold text-xs shadow-lg shadow-indigo-500/25 transition-all flex items-center justify-center space-x-1.5">
+              <span>Inspect Waterfall</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+            <button onclick="switchTab('standardization')" class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-semibold text-xs border border-white/10 transition-all flex items-center justify-center space-x-1.5">
+              <span>Mix Standardization</span>
+              <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Hero KPI Cards (Optimized 2x2 grid on mobile) -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
+        <!-- Card 1 -->
+        <div class="designer-card rounded-xl p-3.5 sm:p-5">
+          <div class="flex justify-between items-start">
+            <p class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Ad Spend</p>
+            <span class="p-1.5 sm:p-2 rounded-lg bg-sky-950/80 text-brandCyan border border-sky-800/40">
+              <i data-lucide="dollar-sign" class="w-3 h-3 sm:w-4 sm:h-4"></i>
+            </span>
+          </div>
+          <h3 class="text-lg sm:text-2xl font-extrabold text-white mt-2 sm:mt-3 font-mono" id="kpi-total-spend">$58,704.04</h3>
+          <div class="text-[10px] sm:text-xs text-slate-400 mt-1 sm:mt-2 truncate">
+            <span class="text-brandCyan font-semibold font-mono">1,143 ad sets</span> across 3 campaigns
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="designer-card rounded-xl p-3.5 sm:p-5">
+          <div class="flex justify-between items-start">
+            <p class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Approved Leads</p>
+            <span class="p-1.5 sm:p-2 rounded-lg bg-emerald-950/80 text-brandEmerald border border-emerald-800/40">
+              <i data-lucide="check-circle-2" class="w-3 h-3 sm:w-4 sm:h-4"></i>
+            </span>
+          </div>
+          <h3 class="text-lg sm:text-2xl font-extrabold text-brandEmerald mt-2 sm:mt-3 font-mono" id="kpi-total-approved">1,079</h3>
+          <div class="text-[10px] sm:text-xs text-slate-400 mt-1 sm:mt-2 truncate">
+            <span class="text-brandEmerald font-semibold font-mono">+376.5%</span> volume scale
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="designer-card rounded-xl p-3.5 sm:p-5">
+          <div class="flex justify-between items-start">
+            <p class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Blended CPA</p>
+            <span class="p-1.5 sm:p-2 rounded-lg bg-rose-950/80 text-brandRose border border-rose-800/40">
+              <i data-lucide="target" class="w-3 h-3 sm:w-4 sm:h-4"></i>
+            </span>
+          </div>
+          <h3 class="text-lg sm:text-2xl font-extrabold text-white mt-2 sm:mt-3 font-mono" id="kpi-blended-cpa">$54.41</h3>
+          <div class="text-[10px] sm:text-xs text-brandRose mt-1 sm:mt-2 truncate">
+            <span class="font-semibold font-mono">+244.1%</span> cost surge
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="designer-card rounded-xl p-3.5 sm:p-5">
+          <div class="flex justify-between items-start">
+            <p class="text-[10px] sm:text-xs font-semibold text-slate-400 uppercase tracking-wider">Post-Click Drop</p>
+            <span class="p-1.5 sm:p-2 rounded-lg bg-amber-950/80 text-brandAmber border border-amber-800/40">
+              <i data-lucide="alert-triangle" class="w-3 h-3 sm:w-4 sm:h-4"></i>
+            </span>
+          </div>
+          <h3 class="text-lg sm:text-2xl font-extrabold text-brandAmber mt-2 sm:mt-3 font-mono">92.6%</h3>
+          <div class="text-[10px] sm:text-xs text-slate-400 mt-1 sm:mt-2 truncate">
+            <span class="text-brandAmber font-semibold font-mono">33,484</span> clicks bounced
+          </div>
+        </div>
+      </div>
+
+      <!-- Scorecard Table (Touch scrollable) -->
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-3">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1">
+          <div>
+            <h3 class="font-bold text-sm sm:text-base text-white">Campaign Performance Scorecard (Ratio-of-Sums)</h3>
+            <p class="text-[11px] sm:text-xs text-slate-400">Summed numerators over summed denominators. Eliminates Simpson's Paradox.</p>
+          </div>
+          <span class="text-[10px] font-mono text-slate-500">Swipe right to inspect columns &rarr;</span>
+        </div>
+
+        <div class="overflow-x-auto custom-scrollbar -mx-4 sm:mx-0 px-4 sm:px-0">
+          <table class="w-full text-left border-collapse text-xs whitespace-nowrap">
+            <thead>
+              <tr class="border-b border-white/10 text-slate-400 font-semibold font-mono uppercase text-[10px] sm:text-xs bg-slate-950/40">
+                <th class="px-3.5 py-2.5">Campaign</th>
+                <th class="px-3.5 py-2.5">Ad Sets</th>
+                <th class="px-3.5 py-2.5">Impressions</th>
+                <th class="px-3.5 py-2.5">Clicks</th>
+                <th class="px-3.5 py-2.5">Media Spend</th>
+                <th class="px-3.5 py-2.5">Approved</th>
+                <th class="px-3.5 py-2.5">CTR</th>
+                <th class="px-3.5 py-2.5">CPM</th>
+                <th class="px-3.5 py-2.5">Click $\to$ Appr</th>
+                <th class="px-3.5 py-2.5 text-right">Cost / Approved</th>
+              </tr>
+            </thead>
+            <tbody id="scorecard-tbody" class="divide-y divide-white/5 font-mono">
+              <!-- Populated via dashboard.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 2: EFFICIENCY WATERFALL                                        -->
+    <!-- =================================================================== -->
+    <section id="tab-waterfall" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
+          <div>
+            <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+              <i data-lucide="git-commit" class="w-3.5 h-3.5"></i>
+              <span>Variance Decomposition Model</span>
+            </div>
+            <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">The 3-Factor Efficiency Bridge (Waterfall Attribution)</h2>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-1 max-w-3xl">
+              Exact mathematical identity decomposing the +$48.02 cost-per-approved surge into its three levers: CPM, CTR, and Post-Click Conversion.
+            </p>
+          </div>
+          <div class="px-3 py-1.5 rounded-xl bg-slate-900/90 border border-white/10 text-right font-mono text-[11px]">
+            <span class="text-slate-400 text-[9px] block">Reconciliation Error:</span>
+            <span class="text-brandEmerald font-bold">$0.00000000 (Exact)</span>
+          </div>
+        </div>
+
+        <!-- REAL-TIME WATERFALL HUD -->
+        <div id="waterfall-hud" class="hud-banner rounded-xl p-3 sm:p-4 transition-all flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-3">
+          <div class="flex items-center space-x-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandIndigo animate-pulse shrink-0" id="wf-hud-dot"></span>
+            <div>
+              <span class="text-[10px] font-mono text-slate-400 block uppercase" id="wf-hud-title">HOVER OR TOUCH BARS TO INSPECT</span>
+              <h4 class="text-xs sm:text-sm md:text-base font-bold text-white font-mono" id="wf-hud-value">Touch or hover any step to see formula micro-attribution</h4>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3 text-[11px] font-mono shrink-0">
+            <div class="text-right">
+              <span class="text-slate-500 text-[9px] block">Share of Gap</span>
+              <span class="font-bold text-brandCyan" id="wf-hud-share">100% Net</span>
+            </div>
+            <div class="text-right border-l border-white/10 pl-3">
+              <span class="text-slate-500 text-[9px] block">Status</span>
+              <span class="font-bold text-brandEmerald" id="wf-hud-verdict">Reconciled</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Waterfall Chart Container (Fluid height) -->
+        <div class="h-64 sm:h-80 md:h-96 w-full pt-1">
+          <canvas id="waterfallChart"></canvas>
+        </div>
+
+        <!-- 3 Levers Detail Cards (Stacked on mobile) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-3 border-t border-white/5">
+          <div class="p-3.5 rounded-xl bg-slate-900/50 border border-emerald-900/40">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-brandEmerald uppercase font-mono">Lever 1: CPM Effect</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-950 text-emerald-300 border border-emerald-800">
+                -$3.74 (Favorable)
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-300 mt-1.5">
+              CPM dropped from <strong>$0.356</strong> to <strong>$0.272 (-23.6%)</strong>. Scale media buying unlocked cheaper ad inventory, saving $3.74 per lead.
+            </p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-900/50 border border-amber-900/40">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-brandAmber uppercase font-mono">Lever 2: CTR Effect</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-amber-950 text-amber-300 border border-amber-800">
+                +$4.66 (Unfavorable)
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-300 mt-1.5">
+              CTR declined from <strong>0.0244%</strong> to <strong>0.0176% (-27.9%)</strong> as reach broadened, creating creative fatigue and adding +9.7% of cost surge.
+            </p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-900/50 border border-rose-900/40">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-brandRose uppercase font-mono">Lever 3: Post-Click Conv</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-rose-950 text-rose-300 border border-rose-800">
+                +$47.10 (Primary Culprit)
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-300 mt-1.5">
+              Click-to-Approved rate collapsed from <strong>9.22%</strong> to <strong>2.42% (-73.8%)</strong>, driving <strong>98.1% of the net cost surge</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 3: MULTI-STAGE FUNNEL FLOW                                     -->
+    <!-- =================================================================== -->
+    <section id="tab-funnel" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+              <i data-lucide="filter" class="w-3.5 h-3.5"></i>
+              <span>Funnel Progression & Drop-off</span>
+            </div>
+            <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">Multi-Stage Funnel Flow Diagnostic</h2>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-1">Impressions $\to$ Clicks $\to$ Enquiries $\to$ Approved Conversions</p>
+          </div>
+
+          <!-- Funnel View Toggle -->
+          <div class="flex items-center p-1 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-medium w-full sm:w-auto">
+            <button id="funnel-toggle-1178" onclick="setFunnelView(1178)" class="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-rose-500/20 text-brandRose border border-rose-500/30 font-bold transition-all text-center">
+              Camp 1178 (Leaking)
+            </button>
+            <button id="funnel-toggle-936" onclick="setFunnelView(936)" class="flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all text-center">
+              Camp 936 (Baseline)
+            </button>
+          </div>
+        </div>
+
+        <!-- Funnel Step Visualization Flow -->
+        <div class="space-y-3 sm:space-y-4" id="funnel-steps-container">
+          <!-- Dynamically populated via dashboard.js -->
+        </div>
+
+        <!-- Leakage Diagnostic Callout Box -->
+        <div class="p-4 sm:p-5 rounded-xl bg-rose-950/20 border border-rose-900/60 flex items-start space-x-3 sm:space-x-4">
+          <div class="p-2 sm:p-2.5 rounded-xl bg-rose-900/40 text-brandRose border border-rose-700/50 shrink-0 mt-0.5">
+            <i data-lucide="alert-octagon" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+          </div>
+          <div class="space-y-1 text-xs text-slate-300">
+            <h4 class="text-xs sm:text-sm font-bold text-rose-300">The Empirical Smoking Gun: 92.6% Post-Click Bounce</h4>
+            <p class="leading-relaxed text-[11px] sm:text-xs">
+              Once an enquiry is submitted, <strong class="text-white">Stage 3 $\to$ 4 qualification is identical (34.08% in 936 vs 32.67% in 1178)</strong>. 
+              The entire failure occurs in <strong class="text-white">Stage 2 $\to$ 3 (Click to Enquiry)</strong>, where completion collapsed from 27.1% to 7.4% (33,484 visitors bounced).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 4: MIX STANDARDIZATION (OVERHAULED PER USER SCREENSHOT)        -->
+    <!-- =================================================================== -->
+    <section id="tab-standardization" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
+          <div>
+            <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+              <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+              <span>Confounding Control</span>
+            </div>
+            <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">Direct Standardization (Ruling Out Demographic Skew)</h2>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-1 max-w-3xl">
+              Did Campaign 1178 underperform simply because it reached an older demographic? 
+              Direct standardization re-weights both campaigns under an identical pooled benchmark distribution.
+            </p>
+          </div>
+
+          <!-- Interactive View Switcher Toolbar -->
+          <div class="flex items-center p-1 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-mono w-full sm:w-auto overflow-x-auto">
+            <button onclick="setMixChartMode('cost')" id="btn-mix-cost" class="chart-view-btn active px-3 py-1.5 rounded-lg transition-all whitespace-nowrap">
+              Cost ($)
+            </button>
+            <button onclick="setMixChartMode('shift')" id="btn-mix-shift" class="chart-view-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all whitespace-nowrap">
+              Shift ($)
+            </button>
+            <button onclick="setMixChartMode('weights')" id="btn-mix-weights" class="chart-view-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all whitespace-nowrap">
+              Weights (%)
+            </button>
+          </div>
+        </div>
+
+        <!-- REAL-TIME HOVER HUD FOR MIX STANDARDIZATION -->
+        <div id="mix-hud" class="hud-banner rounded-xl p-3 sm:p-4 transition-all flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-3">
+          <div class="flex items-center space-x-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandIndigo animate-pulse shrink-0" id="mix-hud-dot"></span>
+            <div>
+              <span class="text-[10px] font-mono text-slate-400 block uppercase" id="mix-hud-title">HOVER OR TOUCH BARS TO INSPECT</span>
+              <h4 class="text-xs sm:text-sm md:text-base font-bold text-white font-mono" id="mix-hud-val">Touch or hover bars for real-time comparison</h4>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3 text-[11px] font-mono shrink-0">
+            <div class="text-right">
+              <span class="text-slate-500 text-[9px] block">Impact Shift</span>
+              <span class="font-bold text-brandCyan" id="mix-hud-shift">Hover Bar</span>
+            </div>
+            <div class="text-right border-l border-white/10 pl-3">
+              <span class="text-slate-500 text-[9px] block">Ratio Verdict</span>
+              <span class="font-bold text-brandEmerald" id="mix-hud-ratio">3.3x Gap Intact</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart Canvas + Mathematical Summary -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 items-center">
+          <div class="lg:col-span-2 h-64 sm:h-80 w-full p-2 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5 relative">
+            <canvas id="mixAdjustmentChart"></canvas>
+          </div>
+
+          <div class="p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-white/10 space-y-3 text-xs leading-relaxed">
+            <h4 class="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
+              <i data-lucide="check-circle" class="w-4 h-4 text-brandEmerald"></i>
+              Standardization Findings
+            </h4>
+            <div class="space-y-2 text-slate-300 font-mono text-[11px]">
+              <div class="p-2.5 rounded-lg bg-slate-950 border border-white/5">
+                <span class="text-slate-500 block text-[9px]">Campaign 936:</span>
+                <div class="flex justify-between items-center mt-0.5">
+                  <span class="text-white font-bold">Observed: $15.81</span>
+                  <span class="text-brandCyan font-bold">Adjusted: $23.69</span>
+                </div>
+              </div>
+
+              <div class="p-2.5 rounded-lg bg-slate-950 border border-white/5">
+                <span class="text-slate-500 block text-[9px]">Campaign 1178:</span>
+                <div class="flex justify-between items-center mt-0.5">
+                  <span class="text-white font-bold">Observed: $63.83</span>
+                  <span class="text-brandRose font-bold">Adjusted: $78.16</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-slate-300 text-[11px]">
+              Under identical demographic weights, Campaign 1178's unit cost still increases to <strong class="text-brandRose font-mono">$78.16</strong>. 
+              The <strong class="text-white">3.3x gap remains completely intact</strong>.
+            </p>
+            <p class="text-slate-400 text-[11px]">
+              <strong class="text-brandEmerald">Verdict</strong>: Demographic skew does <em>not</em> explain underperformance. The root cause is intra-segment landing page conversion decay.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 5: KHATABOOK APP & LTV SIMULATOR                              -->
+    <!-- =================================================================== -->
+    <section id="tab-simulator" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
+          <div>
+            <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+              <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
+              <span>Merchant Unit Economics Engine</span>
+            </div>
+            <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">Khatabook App Funnel & 12-Month LTV/CAC Simulator</h2>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-1 max-w-3xl">
+              Model real-world Khatabook growth levers: Play Store install CPI, OTP verification, D1 ledger activation, Soundbox adoption, and 12-month breakeven payback.
+            </p>
+          </div>
+          <button onclick="resetSimulatorDefaults()" class="px-3 py-1.5 rounded-lg bg-slate-900 border border-white/10 text-xs font-mono text-slate-400 hover:text-white transition-all flex items-center space-x-1.5 self-end sm:self-auto">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span>Reset Defaults</span>
+          </button>
+        </div>
+
+        <!-- Sliders Grid (Touch optimized) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5 p-3.5 sm:p-5 rounded-xl bg-slate-950/60 border border-white/5">
+          <!-- Slider 1 -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-slate-400 text-[11px]">Monthly Ad Budget (₹)</span>
+              <span class="text-brandCyan font-bold" id="sim-budget-val">₹5,00,000</span>
+            </div>
+            <input type="range" id="sim-budget" min="100000" max="5000000" step="50000" value="500000" class="w-full" oninput="updateAppSimulator()">
+            <div class="flex justify-between text-[9px] text-slate-500 font-mono">
+              <span>₹1L</span><span>₹50L</span>
+            </div>
+          </div>
+
+          <!-- Slider 2 -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-slate-400 text-[11px]">Target CPI (₹)</span>
+              <span class="text-brandCyan font-bold" id="sim-cpi-val">₹35</span>
+            </div>
+            <input type="range" id="sim-cpi" min="10" max="120" step="2" value="35" class="w-full" oninput="updateAppSimulator()">
+            <div class="flex justify-between text-[9px] text-slate-500 font-mono">
+              <span>₹10 (Tier 3)</span><span>₹120 (Metro)</span>
+            </div>
+          </div>
+
+          <!-- Slider 3 -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-slate-400 text-[11px]">OTP Verification</span>
+              <span class="text-brandCyan font-bold" id="sim-otp-val">82%</span>
+            </div>
+            <input type="range" id="sim-otp" min="50" max="95" step="1" value="82" class="w-full" oninput="updateAppSimulator()">
+            <div class="flex justify-between text-[9px] text-slate-500 font-mono">
+              <span>50%</span><span>95%</span>
+            </div>
+          </div>
+
+          <!-- Slider 4 -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-slate-400 text-[11px]">D1 First Ledger Entry</span>
+              <span class="text-brandEmerald font-bold" id="sim-d1-val">42%</span>
+            </div>
+            <input type="range" id="sim-d1" min="20" max="80" step="1" value="42" class="w-full" oninput="updateAppSimulator()">
+            <div class="flex justify-between text-[9px] text-slate-500 font-mono">
+              <span>20% (Friction)</span><span>80% (Smooth)</span>
+            </div>
+          </div>
+
+          <!-- Slider 5 -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-slate-400 text-[11px]">D7 Active Retention</span>
+              <span class="text-brandEmerald font-bold" id="sim-d7-val">28%</span>
+            </div>
+            <input type="range" id="sim-d7" min="10" max="60" step="1" value="28" class="w-full" oninput="updateAppSimulator()">
+            <div class="flex justify-between text-[9px] text-slate-500 font-mono">
+              <span>10%</span><span>60%</span>
+            </div>
+          </div>
+
+          <!-- Slider 6 -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-slate-400 text-[11px]">Soundbox Attach</span>
+              <span class="text-brandViolet font-bold" id="sim-soundbox-val">15%</span>
+            </div>
+            <input type="range" id="sim-soundbox" min="5" max="40" step="1" value="15" class="w-full" oninput="updateAppSimulator()">
+            <div class="flex justify-between text-[9px] text-slate-500 font-mono">
+              <span>5%</span><span>40%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Real-time Metric Outputs (2x2 on mobile) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4">
+          <div class="p-3 sm:p-4 rounded-xl bg-slate-900 border border-white/5">
+            <p class="text-[9px] sm:text-[11px] font-mono text-slate-400 uppercase">Monthly Installs</p>
+            <h4 class="text-base sm:text-xl font-bold font-mono text-white mt-1" id="sim-out-installs">14,285</h4>
+            <p class="text-[9px] text-slate-500 mt-0.5">Paid Play Store ads</p>
+          </div>
+
+          <div class="p-3 sm:p-4 rounded-xl bg-slate-900 border border-white/5">
+            <p class="text-[9px] sm:text-[11px] font-mono text-slate-400 uppercase">Active Bookkeepers</p>
+            <h4 class="text-base sm:text-xl font-bold font-mono text-brandEmerald mt-1" id="sim-out-active">4,920</h4>
+            <p class="text-[9px] text-slate-500 mt-0.5">D1 credit entry</p>
+          </div>
+
+          <div class="p-3 sm:p-4 rounded-xl bg-slate-900 border border-white/5">
+            <p class="text-[9px] sm:text-[11px] font-mono text-slate-400 uppercase">Blended CAC</p>
+            <h4 class="text-base sm:text-xl font-bold font-mono text-brandCyan mt-1" id="sim-out-cac">₹101.62</h4>
+            <p class="text-[9px] text-slate-500 mt-0.5">Per active merchant</p>
+          </div>
+
+          <div class="p-3 sm:p-4 rounded-xl bg-slate-900 border border-white/5">
+            <p class="text-[9px] sm:text-[11px] font-mono text-slate-400 uppercase">Payback Horizon</p>
+            <h4 class="text-base sm:text-xl font-bold font-mono text-brandEmerald mt-1" id="sim-out-payback">4.2 Mo</h4>
+            <p class="text-[9px] text-slate-500 mt-0.5">LTV:CAC = <span class="font-bold text-brandEmerald" id="sim-out-ltvcac">3.4x</span></p>
+          </div>
+        </div>
+
+        <!-- LIVE LTV SCRUBBER HUD -->
+        <div id="ltv-hud" class="hud-banner rounded-xl p-3 sm:p-4 transition-all flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-3">
+          <div class="flex items-center space-x-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandEmerald animate-pulse shrink-0"></span>
+            <div>
+              <span class="text-[10px] font-mono text-slate-400 block uppercase" id="ltv-hud-month">TIMELINE SCRUBBER: HOVER OR DRAG ACROSS POINTS</span>
+              <h4 class="text-xs sm:text-sm md:text-base font-bold text-white font-mono" id="ltv-hud-val">Drag across M1-M12 to inspect cohort profit progression</h4>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3 text-[11px] font-mono shrink-0">
+            <div class="text-right">
+              <span class="text-slate-500 text-[9px] block">Net Margin / Lead</span>
+              <span class="font-bold text-brandEmerald" id="ltv-hud-profit">+₹245.80 (Profitable)</span>
+            </div>
+            <div class="text-right border-l border-white/10 pl-3">
+              <span class="text-slate-500 text-[9px] block">Breakeven</span>
+              <span class="font-bold text-brandCyan" id="ltv-hud-breakeven">Month 4.2</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dual Live Charts Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 pt-1">
+          <div class="p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5">
+            <h4 class="text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-1.5">
+              <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-brandCyan"></i>
+              Merchant Volume Progression
+            </h4>
+            <div class="h-56 sm:h-64 w-full">
+              <canvas id="appFunnelChart"></canvas>
+            </div>
+          </div>
+
+          <div class="p-3 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5">
+            <h4 class="text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-1.5">
+              <i data-lucide="line-chart" class="w-3.5 h-3.5 text-brandEmerald"></i>
+              12-Month Cumulative LTV vs CAC Breakeven
+            </h4>
+            <div class="h-56 sm:h-64 w-full">
+              <canvas id="ltvCacPaybackChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 6: AUDIENCE BUBBLE MATRIX                                      -->
+    <!-- =================================================================== -->
+    <section id="tab-audience" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-3">
+          <div>
+            <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+              <i data-lucide="scatter-chart" class="w-3.5 h-3.5"></i>
+              <span>Segmentation & Stability Dynamics</span>
+            </div>
+            <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">Audience Volume vs Cost Efficiency Scatter Matrix</h2>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-1 max-w-3xl">
+              Bubble size represents media spend. Hover over bubbles to inspect segment traffic, spend, CPA, and stability status in real time.
+            </p>
+          </div>
+          <!-- Filter buttons -->
+          <div class="flex items-center p-1 rounded-xl bg-slate-900/90 border border-white/10 text-xs font-mono w-full sm:w-auto overflow-x-auto">
+            <button onclick="filterBubbleChart('all')" id="btn-bubble-all" class="chart-view-btn active px-3 py-1.5 rounded-lg transition-all whitespace-nowrap">All</button>
+            <button onclick="filterBubbleChart('stable')" id="btn-bubble-stable" class="chart-view-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all whitespace-nowrap">&ge; 50 Clicks</button>
+            <button onclick="filterBubbleChart('volatile')" id="btn-bubble-volatile" class="chart-view-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white transition-all whitespace-nowrap">&lt; 25 Clicks</button>
+          </div>
+        </div>
+
+        <!-- REAL-TIME BUBBLE INSPECTOR HUD -->
+        <div id="bubble-hud" class="hud-banner rounded-xl p-3 sm:p-4 transition-all flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-3">
+          <div class="flex items-center space-x-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandCyan animate-pulse shrink-0"></span>
+            <div>
+              <span class="text-[10px] font-mono text-slate-400 block uppercase" id="bubble-hud-cohort">HOVER OVER BUBBLES TO INSPECT</span>
+              <h4 class="text-xs sm:text-sm md:text-base font-bold text-white font-mono" id="bubble-hud-val">Touch or hover bubbles for demographic efficiency</h4>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3 text-[11px] font-mono shrink-0">
+            <div class="text-right">
+              <span class="text-slate-500 text-[9px] block">Media Spend</span>
+              <span class="font-bold text-brandCyan" id="bubble-hud-spend">$0.00</span>
+            </div>
+            <div class="text-right border-l border-white/10 pl-3">
+              <span class="text-slate-500 text-[9px] block">Stability</span>
+              <span class="font-bold text-brandEmerald" id="bubble-hud-class">Select Bubble</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bubble Chart Canvas -->
+        <div class="h-64 sm:h-80 md:h-96 w-full p-2 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5">
+          <canvas id="audienceBubbleChart"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 7: LIVE A/B TESTING LAB (BELL CURVES)                          -->
+    <!-- =================================================================== -->
+    <section id="tab-ab-lab" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+        <div>
+          <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+            <i data-lucide="flask-conical" class="w-3.5 h-3.5"></i>
+            <span>Frequentist Hypothesis Testing</span>
+          </div>
+          <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">Live Statistical A/B Testing Lab (With Gaussian Bell Curves)</h2>
+          <p class="text-[11px] sm:text-xs text-slate-400 mt-1 max-w-3xl">
+            Two-proportion hypothesis testing engine. Drag your finger or cursor across the normal distribution to track the laser crosshair in real time.
+          </p>
+        </div>
+
+        <!-- Quick Scenario Presets -->
+        <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs">
+          <span class="text-slate-400 font-mono text-[10px] sm:text-[11px]">Scenarios:</span>
+          <button onclick="loadScenario('real-data')" class="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-brandCyan border border-white/10 font-mono transition-all text-[11px]">
+            Real Data (p &lt; 1e-15)
+          </button>
+          <button onclick="loadScenario('exp-001')" class="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-brandEmerald border border-white/10 font-mono transition-all text-[11px]">
+            EXP-001 (+25% Lift)
+          </button>
+          <button onclick="loadScenario('marginal')" class="px-2.5 py-1 rounded-lg bg-slate-900 hover:bg-slate-800 text-brandAmber border border-white/10 font-mono transition-all text-[11px]">
+            Underpowered (+3% Lift)
+          </button>
+        </div>
+
+        <!-- REAL-TIME BELL CURVE LASER HUD -->
+        <div id="bell-hud" class="hud-banner rounded-xl p-3 sm:p-4 transition-all flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-3">
+          <div class="flex items-center space-x-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-brandViolet animate-pulse shrink-0"></span>
+            <div>
+              <span class="text-[10px] font-mono text-slate-400 block uppercase" id="bell-hud-title">REAL-TIME DENSITY RETICLE: DRAG OR HOVER CURVE</span>
+              <h4 class="text-xs sm:text-sm md:text-base font-bold text-white font-mono" id="bell-hud-val">Z = 0.00 | Probability Density = 0.3989</h4>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3 text-[11px] font-mono shrink-0">
+            <div class="text-right">
+              <span class="text-slate-500 text-[9px] block">Two-Tailed P</span>
+              <span class="font-bold text-brandEmerald" id="bell-hud-p">&lt; 0.0001</span>
+            </div>
+            <div class="text-right border-l border-white/10 pl-3">
+              <span class="text-slate-500 text-[9px] block">Hypothesis</span>
+              <span class="font-bold text-brandEmerald" id="bell-hud-status">Reject $H_0$</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Form & Output Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div class="p-3.5 sm:p-5 rounded-xl bg-slate-950/60 border border-white/5 space-y-3 sm:space-y-4">
+            <h4 class="text-xs font-bold text-slate-300 font-mono uppercase tracking-wider">Test Variant Parameters</h4>
+            <div class="space-y-2.5 text-xs font-mono">
+              <div>
+                <label class="text-slate-400 block mb-1 text-[11px]">Control Clicks ($N_A$)</label>
+                <input type="number" id="ab-n1" value="1984" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-white/10 text-white font-mono focus:border-brandIndigo focus:outline-none" oninput="calculateLiveAB()">
+              </div>
+              <div>
+                <label class="text-slate-400 block mb-1 text-[11px]">Control Conversions ($X_A$)</label>
+                <input type="number" id="ab-x1" value="183" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-white/10 text-white font-mono focus:border-brandIndigo focus:outline-none" oninput="calculateLiveAB()">
+              </div>
+              <div>
+                <label class="text-slate-400 block mb-1 text-[11px]">Variant Clicks ($N_B$)</label>
+                <input type="number" id="ab-n2" value="36068" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-white/10 text-white font-mono focus:border-brandIndigo focus:outline-none" oninput="calculateLiveAB()">
+              </div>
+              <div>
+                <label class="text-slate-400 block mb-1 text-[11px]">Variant Conversions ($X_B$)</label>
+                <input type="number" id="ab-x2" value="872" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-white/10 text-white font-mono focus:border-brandIndigo focus:outline-none" oninput="calculateLiveAB()">
+              </div>
+              <div>
+                <label class="text-slate-400 block mb-1 text-[11px]">Significance ($\alpha$)</label>
+                <select id="ab-alpha" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-white/10 text-white font-mono focus:border-brandIndigo focus:outline-none" onchange="calculateLiveAB()">
+                  <option value="0.05" selected>95% Confidence (&alpha; = 0.05)</option>
+                  <option value="0.01">99% Confidence (&alpha; = 0.01)</option>
+                  <option value="0.10">90% Confidence (&alpha; = 0.10)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 p-3.5 sm:p-5 rounded-xl bg-slate-950/60 border border-white/5 space-y-3 sm:space-y-4">
+            <div class="flex justify-between items-center text-xs">
+              <h4 class="font-bold text-white font-mono uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="activity" class="w-3.5 h-3.5 text-brandCyan"></i>
+                Gaussian Normal Distribution & 95% CI
+              </h4>
+              <div class="flex items-center space-x-2 text-[10px] font-mono">
+                <span class="flex items-center gap-1 text-slate-400"><span class="w-2 h-2 rounded-full bg-brandCyan"></span> Control</span>
+                <span class="flex items-center gap-1 text-slate-400"><span class="w-2 h-2 rounded-full bg-brandViolet"></span> Variant</span>
+              </div>
+            </div>
+
+            <!-- Canvas with touch support -->
+            <div class="h-48 sm:h-60 w-full bg-slate-950 rounded-xl border border-white/5 p-2 flex items-center justify-center relative cursor-crosshair touch-none">
+              <canvas id="bellCurveCanvas" class="w-full h-full"></canvas>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-xs font-mono">
+              <div class="p-2.5 sm:p-3 rounded-lg bg-slate-900 border border-white/5">
+                <span class="text-slate-500 block text-[9px]">Relative Lift</span>
+                <span class="text-sm sm:text-base font-bold" id="ab-out-lift">-73.78%</span>
+              </div>
+              <div class="p-2.5 sm:p-3 rounded-lg bg-slate-900 border border-white/5">
+                <span class="text-slate-500 block text-[9px]">Z-Score</span>
+                <span class="text-sm sm:text-base font-bold text-brandCyan" id="ab-out-zscore">-17.98</span>
+              </div>
+              <div class="p-2.5 sm:p-3 rounded-lg bg-slate-900 border border-white/5">
+                <span class="text-slate-500 block text-[9px]">P-Value</span>
+                <span class="text-sm sm:text-base font-bold text-brandEmerald" id="ab-out-pvalue">&lt; 0.0001</span>
+              </div>
+              <div class="p-2.5 sm:p-3 rounded-lg bg-slate-900 border border-white/5">
+                <span class="text-slate-500 block text-[9px]">Statistical Power</span>
+                <span class="text-sm sm:text-base font-bold text-brandEmerald" id="ab-out-power">&gt; 99.9%</span>
+              </div>
+            </div>
+
+            <div class="p-3 rounded-xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 text-xs" id="ab-decision-card">
+              <div class="flex items-center space-x-2">
+                <i data-lucide="info" class="w-4 h-4 shrink-0" id="ab-decision-icon"></i>
+                <span class="font-bold" id="ab-decision-text">Decision: Significant Negative Impact</span>
+              </div>
+              <span class="text-[10px] sm:text-[11px] font-mono text-slate-400" id="ab-ci-text">95% CI: [-7.92%, -5.69%]</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 8: CONSUMER INTENT & SESSIONS                                  -->
+    <!-- =================================================================== -->
+    <section id="tab-consumer" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-5">
+        <div>
+          <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+            <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+            <span>Behavioral Session Diagnostics</span>
+          </div>
+          <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">Consumer Intent & On-Site Dynamics (12,330 Sessions)</h2>
+          <p class="text-[11px] sm:text-xs text-slate-400 mt-1 max-w-3xl">
+            Real session analytics from the UCI dataset isolating visitor conversion propensity, browsing durations, and bounce velocity.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+          <div class="p-3.5 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5">
+            <h4 class="text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-1.5">
+              <i data-lucide="bar-chart-2" class="w-3.5 h-3.5 text-brandCyan"></i>
+              Conversion Propensity by Visitor Cohort
+            </h4>
+            <div class="h-56 sm:h-64 w-full">
+              <canvas id="consumerCohortChart"></canvas>
+            </div>
+          </div>
+
+          <div class="p-3.5 sm:p-4 rounded-xl bg-slate-950/60 border border-white/5">
+            <h4 class="text-xs sm:text-sm font-bold text-white mb-2 flex items-center gap-1.5">
+              <i data-lucide="line-chart" class="w-3.5 h-3.5 text-brandViolet"></i>
+              Traffic Source Conversion Rates
+            </h4>
+            <div class="h-56 sm:h-64 w-full">
+              <canvas id="consumerTrafficChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 9: GROWTH LOOPS & ECOSYSTEM                                    -->
+    <!-- =================================================================== -->
+    <section id="tab-loops" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div>
+          <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+            <i data-lucide="repeat" class="w-3.5 h-3.5"></i>
+            <span>Systemic Growth Mechanics</span>
+          </div>
+          <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">Khatabook 3-Engine Growth Loop Architecture</h2>
+          <p class="text-[11px] sm:text-xs text-slate-400 mt-1 max-w-3xl">
+            Growth at Khatabook operates as an interconnected flywheel combining paid acquisition, organic WhatsApp referral loops, and fintech monetization.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+          <div class="p-4 sm:p-5 rounded-xl bg-slate-950/60 border border-sky-900/40 space-y-2.5">
+            <div class="flex items-center space-x-2">
+              <span class="p-1.5 sm:p-2 rounded-lg bg-sky-950 text-brandCyan border border-sky-800/60">
+                <i data-lucide="megaphone" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+              </span>
+              <h3 class="font-bold text-xs sm:text-sm text-white">1. Paid Acquisition Engine</h3>
+            </div>
+            <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed">
+              Meta and Google performance ads in 11 regional languages driving kirana shopkeepers to Play Store downloads.
+            </p>
+            <div class="space-y-1 text-[10px] sm:text-[11px] font-mono text-slate-400 border-t border-white/5 pt-2.5">
+              <div class="flex justify-between"><span>Core Benchmark:</span><span class="text-brandCyan">CPI &le; ₹35</span></div>
+              <div class="flex justify-between"><span>Primary Leakage:</span><span class="text-brandRose">OTP $\to$ D1 Activation</span></div>
+              <div class="flex justify-between"><span>Optimization:</span><span class="text-brandEmerald">Pre-qualified creative hooks</span></div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-5 rounded-xl bg-slate-950/60 border border-emerald-900/40 space-y-2.5">
+            <div class="flex items-center space-x-2">
+              <span class="p-1.5 sm:p-2 rounded-lg bg-emerald-950 text-brandEmerald border border-emerald-800/60">
+                <i data-lucide="message-square" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+              </span>
+              <h3 class="font-bold text-xs sm:text-sm text-white">2. WhatsApp Reminder Loop ($K$)</h3>
+            </div>
+            <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed">
+              Merchant records udhaar $\to$ Sends automated WhatsApp link $\to$ Retail customer sees "Powered by Khatabook" $\to$ Installs app.
+            </p>
+            <div class="space-y-1 text-[10px] sm:text-[11px] font-mono text-slate-400 border-t border-white/5 pt-2.5">
+              <div class="flex justify-between"><span>Viral Factor ($K$):</span><span class="text-brandEmerald">0.32 - 0.45</span></div>
+              <div class="flex justify-between"><span>Recovery Speed:</span><span class="text-brandCyan">3x faster collection</span></div>
+              <div class="flex justify-between"><span>CAC Subsidy:</span><span class="text-brandEmerald">Cuts blended CAC by 30%</span></div>
+            </div>
+          </div>
+
+          <div class="p-4 sm:p-5 rounded-xl bg-slate-950/60 border border-purple-900/40 space-y-2.5">
+            <div class="flex items-center space-x-2">
+              <span class="p-1.5 sm:p-2 rounded-lg bg-purple-950 text-brandViolet border border-purple-800/60">
+                <i data-lucide="credit-card" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+              </span>
+              <h3 class="font-bold text-xs sm:text-sm text-white">3. Fintech Monetization</h3>
+            </div>
+            <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed">
+              Active ledger history creates proprietary credit score $\to$ Disburses MSME loans + Smart QR Soundbox monthly subscription.
+            </p>
+            <div class="space-y-1 text-[10px] sm:text-[11px] font-mono text-slate-400 border-t border-white/5 pt-2.5">
+              <div class="flex justify-between"><span>Soundbox SaaS:</span><span class="text-brandViolet">₹125/month recurring</span></div>
+              <div class="flex justify-between"><span>Lending Spread:</span><span class="text-brandCyan">2.5% origination fee</span></div>
+              <div class="flex justify-between"><span>Payback Horizon:</span><span class="text-brandEmerald">4.2 Months to Net Profit</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 10: ICE GROWTH ROADMAP                                         -->
+    <!-- =================================================================== -->
+    <section id="tab-roadmap" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+              <i data-lucide="kanban" class="w-3.5 h-3.5"></i>
+              <span>Evidence-Based Pipeline</span>
+            </div>
+            <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">ICE Experiment Backlog & Prioritization Matrix</h2>
+            <p class="text-[11px] sm:text-xs text-slate-400 mt-1">5 structured growth experiments ranked by Impact, Confidence/Evidence, and Ease.</p>
+          </div>
+
+          <div class="flex items-center p-1 rounded-xl bg-slate-900 border border-white/10 text-xs w-full sm:w-auto">
+            <button onclick="filterExperiments('all')" class="flex-1 sm:flex-none px-3 py-1.5 rounded-lg bg-brandIndigo text-white font-semibold text-center" id="exp-filter-all">All (5)</button>
+            <button onclick="filterExperiments('P0')" class="flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center" id="exp-filter-p0">P0 (3)</button>
+            <button onclick="filterExperiments('P1')" class="flex-1 sm:flex-none px-3 py-1.5 rounded-lg text-slate-400 hover:text-white text-center" id="exp-filter-p1">P1 (2)</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5" id="experiments-grid">
+          <!-- Populated via dashboard.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 11: QUALITY AUDIT TERMINAL                                     -->
+    <!-- =================================================================== -->
+    <section id="tab-quality" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div>
+          <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+            <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+            <span>Automated Daemon</span>
+          </div>
+          <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">Data Hygiene & Quality Diagnostic Terminal</h2>
+          <p class="text-[11px] sm:text-xs text-slate-400 mt-1">11 automated SQL & Python validation rules executed prior to reporting.</p>
+        </div>
+
+        <div class="rounded-xl bg-slate-950 border border-white/10 overflow-hidden font-mono text-xs">
+          <div class="bg-slate-900/90 px-3.5 py-2 sm:py-2.5 border-b border-white/5 flex items-center justify-between text-slate-400">
+            <div class="flex items-center space-x-1.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+              <span class="ml-2 text-slate-300 font-semibold text-[11px]">growth_audit_daemon.py</span>
+            </div>
+            <span class="text-[10px] text-brandEmerald font-bold">11 RULES: PASS</span>
+          </div>
+          <div class="p-3 sm:p-4 space-y-1.5 text-slate-300 custom-scrollbar max-h-72 overflow-y-auto" id="terminal-logs">
+            <!-- Populated via dashboard.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- TAB 12: EXPORT & DATA HUB                                          -->
+    <!-- =================================================================== -->
+    <section id="tab-downloads" class="tab-content hidden space-y-4 sm:space-y-6">
+      <div class="designer-card rounded-2xl p-4 sm:p-6 space-y-4 sm:space-y-6">
+        <div>
+          <div class="flex items-center space-x-2 text-brandCyan text-[11px] font-mono font-semibold uppercase tracking-wider mb-1">
+            <i data-lucide="folder-archive" class="w-3.5 h-3.5"></i>
+            <span>Production Artifacts</span>
+          </div>
+          <h2 class="text-base sm:text-xl md:text-2xl font-extrabold text-white">Analytical Deliverables & Export Download Center</h2>
+          <p class="text-[11px] sm:text-xs text-slate-400 mt-1">Direct downloads for executive models, CSV datasets, and strategic playbooks.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-5">
+          <div class="p-4 sm:p-5 rounded-xl bg-slate-950/60 border border-emerald-900/40 flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="p-2 rounded-xl bg-emerald-950 text-brandEmerald border border-emerald-800">
+                  <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
+                </span>
+                <span class="text-[10px] font-mono text-brandEmerald font-bold">10 Tabs | 36 KB</span>
+              </div>
+              <h3 class="font-bold text-xs sm:text-sm text-white mt-2.5">Formatted Excel Growth Model</h3>
+              <p class="text-[11px] text-slate-400 mt-1">
+                Multi-tab formatted Excel model with executive KPI cards, scorecard, waterfall breakdown, and audience tables.
+              </p>
+            </div>
+            <a href="sheets/growth_dashboard.xlsx" download class="w-full py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs font-mono text-center flex items-center justify-center space-x-1.5 transition-all">
+              <i data-lucide="download" class="w-3.5 h-3.5"></i>
+              <span>Download Excel (.xlsx)</span>
+            </a>
+          </div>
+
+          <div class="p-4 sm:p-5 rounded-xl bg-slate-950/60 border border-sky-900/40 flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="p-2 rounded-xl bg-sky-950 text-brandCyan border border-sky-800">
+                  <i data-lucide="book-open" class="w-4 h-4"></i>
+                </span>
+                <span class="text-[10px] font-mono text-brandCyan font-bold">Playbook</span>
+              </div>
+              <h3 class="font-bold text-xs sm:text-sm text-white mt-2.5">Khatabook Growth Playbook</h3>
+              <p class="text-[11px] text-slate-400 mt-1">
+                Executive strategy briefing covering attribution boundaries, Simpson's paradox, and merchant loop dynamics.
+              </p>
+            </div>
+            <a href="docs/growth_playbook.md" target="_blank" class="w-full py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs font-mono text-center flex items-center justify-center space-x-1.5 transition-all">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              <span>View Growth Playbook</span>
+            </a>
+          </div>
+
+          <div class="p-4 sm:p-5 rounded-xl bg-slate-950/60 border border-purple-900/40 flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="p-2 rounded-xl bg-purple-950 text-brandViolet border border-purple-800">
+                  <i data-lucide="file-code-2" class="w-4 h-4"></i>
+                </span>
+                <span class="text-[10px] font-mono text-brandViolet font-bold">Audit Lineage</span>
+              </div>
+              <h3 class="font-bold text-xs sm:text-sm text-white mt-2.5">Analytical & Audit Dossier</h3>
+              <p class="text-[11px] text-slate-400 mt-1">
+                Mathematical proofs, variance identities, direct standardization formulas, and code traceability.
+              </p>
+            </div>
+            <a href="docs/analytical_dossier.md" target="_blank" class="w-full py-2.5 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs font-mono text-center flex items-center justify-center space-x-1.5 transition-all">
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+              <span>View Audit Dossier</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0A0C13] border-t border-white/5 py-4 sm:py-6 text-xs text-slate-500 font-mono">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4 text-[11px]">
+      <div>
+        <span class="text-slate-300 font-semibold">Khatabook Growth Intelligence Platform</span>
+        <span class="mx-1 text-slate-600">|</span>
+        <span>Pranjal Sailwal</span>
+      </div>
+      <div class="flex items-center space-x-3 text-slate-400">
+        <span>Vercel Global CDN</span>
+        <span>Render FastAPI</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript -->
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
