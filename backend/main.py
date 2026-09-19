@@ -174,3 +174,39 @@ if __name__ == "__main__":
     import uvicorn
     port = int(os.environ.get("PORT", 8000))
     uvicorn.run("backend.main:app", host="0.0.0.0", port=port, reload=True)
+
+@app.get("/api/market-intelligence")
+def get_market_intelligence() -> Dict[str, Any]:
+    """Return structured market intelligence: MSME landscape, competitor matrix, growth loops."""
+    try:
+        import json, os
+        data_path = os.path.join(root_dir, "data", "dashboard_data.json")
+        with open(data_path) as f:
+            data = json.load(f)
+        return {"status": "success", "market_intelligence": data.get("market_intelligence", {})}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/hypothesis-pipeline")
+def get_hypothesis_pipeline() -> Dict[str, Any]:
+    """Return Growth OS hypothesis pipeline — all 5 experiments across 5 stages."""
+    try:
+        import json, os
+        data_path = os.path.join(root_dir, "data", "dashboard_data.json")
+        with open(data_path) as f:
+            data = json.load(f)
+        return {"status": "success", "count": len(data.get("growth_os", [])), "pipeline": data.get("growth_os", [])}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/api/metric-dictionary")
+def get_metric_dictionary() -> Dict[str, Any]:
+    """Return full metric dictionary with formulas, availability, and business rationale."""
+    try:
+        import json, os
+        data_path = os.path.join(root_dir, "data", "dashboard_data.json")
+        with open(data_path) as f:
+            data = json.load(f)
+        return {"status": "success", "count": len(data.get("metric_dictionary", [])), "metrics": data.get("metric_dictionary", [])}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
