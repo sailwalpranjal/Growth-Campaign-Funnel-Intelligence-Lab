@@ -56,6 +56,28 @@ class SampleSizeRequest(BaseModel):
     power: float = Field(0.80, gt=0, lt=1)
 
 
+@app.get("/")
+def root() -> Dict[str, Any]:
+    """Root landing endpoint with system status, metadata, and service discovery."""
+    return {
+        "service": "Khatabook Growth Intelligence Platform API",
+        "status": "online",
+        "version": "1.0.0",
+        "author": "Pranjal Sailwal",
+        "repository": "https://github.com/sailwalpranjal/Growth-Campaign-Funnel-Intelligence-Lab",
+        "interactive_docs": "/docs",
+        "openapi_schema": "/openapi.json",
+        "health_check": "/health",
+        "endpoints": {
+            "campaign_scorecard": "/api/scorecard",
+            "efficiency_decomposition": "/api/decomposition?base=936&target=1178",
+            "experiment_backlog": "/api/experiments",
+            "ab_test_calculator": "POST /api/ab-test",
+            "sample_size_planner": "POST /api/sample-size"
+        }
+    }
+
+
 @app.get("/health")
 def health_check() -> Dict[str, str]:
     """Health check endpoint for Render monitoring."""

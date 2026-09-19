@@ -11,6 +11,14 @@ from backend.main import app
 client = TestClient(app)
 
 
+def test_root_endpoint():
+    res = client.get("/")
+    assert res.status_code == 200
+    data = res.json()
+    assert data["status"] == "online"
+    assert data["interactive_docs"] == "/docs"
+
+
 def test_health_check_endpoint():
     res = client.get("/health")
     assert res.status_code == 200
