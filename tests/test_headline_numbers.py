@@ -115,6 +115,7 @@ def test_interest_facts(interests):
 # ---- the published text must match --------------------------------------------------------
 
 STALE = [
+    "28.4% vs 4.8%",
     "38,181",
     "3.5x higher",
     "16.9% vs 4.8%",
@@ -200,3 +201,12 @@ def test_bridge_share_depends_on_substitution_order(ads):
     assert round(max(shares) * 100, 1) == 128.5
     assert [round(x, 2) for x in shapley] == [-11.08, 12.62, 46.48]
     assert round(shapley[2] / gap * 100, 1) == 96.8
+
+
+def test_engagement_tier_conversion_quoted_in_limitations():
+    tiers = analyze_consumer_behavior_diagnostics(load_raw_consumer_behavior())["engagement_tier"]
+    rate = tiers.set_index("engagement_tier")["purchase_rate"]
+    assert round(rate["High Engagement (>600s, Low Bounce)"] * 100, 1) == 22.7
+    assert round(rate["Low Engagement / Skimmer (<120s)"] * 100, 1) == 3.9
+    text = read("docs", "limitations.md")
+    assert "22.7%" in text and "3.9%" in text

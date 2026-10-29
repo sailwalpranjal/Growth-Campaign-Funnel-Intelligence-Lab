@@ -35,7 +35,7 @@ The secondary analysis on 12,330 e-commerce sessions provides valuable behaviora
 
 ### Association vs. Causation in Web Analytics:
 * **Page Values**: High page values correlate with high purchase conversion ($r > 0.45$). However, visiting high-value pages (such as the cart or checkout review) is an **indicator of high pre-existing purchase intent**, not a marketing lever that automatically causes a passive user to buy.
-* **Product Duration**: Users who spend >600 seconds convert at 28.4% vs 4.8% for users spending <120 seconds. This does not imply that artificially lengthening the merchant onboarding flow will increase conversion; rather, engaged users voluntarily invest time.
+* **Product Duration**: Sessions with more than 600 seconds on product pages and a low bounce rate convert at 22.7%, against 3.9% for sessions under 120 seconds. This does not imply that artificially lengthening the merchant onboarding flow will increase conversion; rather, engaged users voluntarily invest time.
 
 ---
 
