@@ -270,7 +270,7 @@ Decomposing unit cost into three underlying levers reveals the exact sequential 
 
 ### 4. Which Audience Patterns Matter?
 * **Demographic Sensitivity**: Female segments demonstrated higher engagement (0.0208% CTR vs 0.0145% for Males, +43.4% higher), but experienced a higher cost per approved conversion ($69.70 vs $41.44) due to severe post-click drop-off (2.07% vs 4.09% conversion rate).
-* **Interest Efficiency Dispersion**: Segment analysis across all 40 interest categories reveals significant CPA dispersion: Interest 27 carries the highest CPA at $95.85 (54 conversions on $5,176.17 spend across 3,409 clicks), whereas top efficient scaled clusters like ID 16 ($57.34 CPA) and ID 10 ($55.89 CPA) maintain strong efficiency at scale.
+* **Interest Efficiency Dispersion**: Segment analysis across all 40 interest categories reveals significant CPA dispersion: Interest 27 carries the highest CPA at $95.85 among the five interests with at least 50 approved conversions (54 conversions on $5,176.17 spend across 3,409 clicks), whereas top efficient scaled clusters like ID 16 ($57.34 CPA) and ID 10 ($55.89 CPA) maintain strong efficiency at scale.
 
 ### 5. Where Is the Funnel Leaking?
 The primary point of leakage is **Stage 2 -> Stage 3 (Click to Enquiry)**:

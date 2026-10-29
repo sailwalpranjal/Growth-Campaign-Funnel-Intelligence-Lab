@@ -115,7 +115,7 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "title": "Audience Concentration & Budget Reallocation to Stable Interest Segments",
             "observed_evidence": (
                 "Audience segment stability analysis across all 40 interest categories reveals that Interest 27 carries the highest "
-                "cost per approved conversion at $95.85 (54 conversions on $5,176.17 spend across 3,409 clicks), whereas top efficient "
+                "cost per approved conversion at $95.85 among the five interests with at least 50 approved conversions (54 conversions on $5,176.17 spend across 3,409 clicks); 13 other interests have under 10 approved conversions, so their CPA is too noisy to rank. By contrast, "
                 "scaled interests like ID 16 ($57.34 CPA across 5,144 clicks) and ID 10 ($55.89 CPA across 3,317 clicks) demonstrate "
                 "proven scale. Reallocating spend away from high-CPA clusters into high-intent stable clusters optimizes blended unit economics."
             ),
@@ -359,7 +359,7 @@ def get_hypothesis_pipeline_stages() -> List[Dict[str, Any]]:
             "stage_label": "Observe",
             "experiment_id": "EXP-GROWTH-003",
             "title": "Wide CPA Divergence Across 40 Interest Segments",
-            "content": "Segment stability analysis across all 40 interest codes shows extreme CPA divergence: Interest 27 carries the worst CPA at $95.85 (54 conversions on $5,176 spend), while top stable segments like ID 16 ($57.34) and ID 10 ($55.89) deliver reliable scale.",
+            "content": "Segment stability analysis across all 40 interest codes shows extreme CPA divergence: Interest 27 carries the highest CPA at $95.85 among interests with at least 50 approved conversions (54 conversions on $5,176 spend), while top stable segments like ID 16 ($57.34) and ID 10 ($55.89) deliver reliable scale.",
             "evidence_type": "Real data finding",
             "linked_tab": "audience"
         },

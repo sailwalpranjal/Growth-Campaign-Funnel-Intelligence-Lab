@@ -82,7 +82,7 @@ The decision matrix distinguishes: Run longer (underpowered) / Do not conclude (
 
 ### 4. Ratio-of-Sums Aggregation & Demographic Confounding Control
 
-All conversion rates strictly use $\frac{\sum \text{Numerator}}{\sum \text{Denominator}}$ across rows — never unweighted row-level averages. Across all 1,143 ads in the dataset, the true ratio-of-sums CTR is **0.0179%** (38,181 clicks / 213,434,828 impressions), whereas unweighted row-averaging yields **0.0164%** (understating true CTR by -8.2%; in Campaign 1178, row-averaging gives 0.0162% vs 0.0176%). Unweighted row-averaging assigns equal weight to micro-budget ad sets with small impressions and scaled ad sets with millions of impressions. Strict ratio-of-sums and Direct Standardization ensure comparisons control for demographic confounding. See [`src/metrics.py`](src/metrics.py).
+All conversion rates strictly use $\frac{\sum \text{Numerator}}{\sum \text{Denominator}}$ across rows — never unweighted row-level averages. Across all 1,143 ads in the dataset, the true ratio-of-sums CTR is **0.0179%** (38,165 clicks / 213,434,828 impressions), whereas unweighted row-averaging yields **0.0164%** (understating true CTR by -8.2%; in Campaign 1178, row-averaging gives 0.0162% vs 0.0176%). Unweighted row-averaging assigns equal weight to micro-budget ad sets with small impressions and scaled ad sets with millions of impressions. Strict ratio-of-sums and Direct Standardization ensure comparisons control for demographic confounding. See [`src/metrics.py`](src/metrics.py).
 
 ### 5. ICE Prioritization
 
