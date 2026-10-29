@@ -43,7 +43,7 @@ $$\Delta \text{Cost} = \text{Lever}_1 (\text{CPM}) + \text{Lever}_2 (\text{CTR})
 
 1. **Lever 1 (CPM Effect = -\$3.74)**:
    * *Observation*: Blended CPM decreased from \$0.356 in Campaign 936 to \$0.272 in Campaign 1178 (-23.6%).
-   * *Commercial Takeaway*: Media buying efficiency was actually *superior* at scale. Broad targeting unlocked cheaper inventory auction prices. Media buying was **not** the source of cost escalation.
+   * *Commercial Takeaway*: Media buying efficiency was actually *superior* at scale. Broad targeting reached cheaper inventory at auction. Media buying was **not** the source of cost escalation.
 2. **Lever 2 (Creative CTR Effect = +\$4.66)**:
    * *Observation*: CTR declined from 0.0244% to 0.0176% (-27.9%).
    * *Commercial Takeaway*: Ad creative experienced lower engagement at higher impression volumes (8.1M to 204.8M). Note that creative fatigue is an unobserved hypothesis to be tested via creative testing, as creative assets and ad timestamps are not present in the dataset. This contributed +9.7% of the gross cost inflation.

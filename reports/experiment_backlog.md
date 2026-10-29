@@ -34,7 +34,7 @@ All proposed experiments follow the **Evidence $\to$ Hypothesis $\to$ Test $\to$
 
 ---
 ### `EXP-GROWTH-002`: Post-Click Landing Form Friction Reduction & Micro-Commitment
-* **Priority**: P0 (Immediate Sprint) (ICE: 8.00) — *High leverage on 36,000+ clicks where 92.6% currently bounce without converting.*
+* **Priority**: P0 (Immediate Sprint) (ICE: 8.00) — *Applies to 36,000+ clicks, 92.6% of which currently drop out before converting.*
 * **Observed Evidence**: Funnel drop-off analysis reveals that 92.6% of users who click Campaign 1178 ads drop off before completing the initial enquiry form (Click-to-Enquiry is only 7.40% vs 27.07% in Campaign 936).
 * **Hypothesis**: The current post-click enquiry form requires too many fields upfront. Replacing the single multi-field form with a 2-step micro-commitment form (Step 1: Business category selection, Step 2: Contact info) will reduce cognitive friction and increase completion rates.
 * **Control**: Single-page static form with 5 mandatory fields (Name, Phone, City, Business Type, Revenue).

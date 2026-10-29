@@ -15,7 +15,7 @@ India’s MSME landscape consists of approximately 63 million enterprises, formi
 
 ## 3. Khatabook's 3 Core Growth Loops
 1. **WhatsApp Viral Reminder Loop (Organic Acquisition):** A merchant records an udhaar entry and taps "Send Reminder" via WhatsApp. The customer receives a polite payment link with a 'Sent via Khatabook' footer. Often another shopkeeper themselves, the customer clicks through and downloads Khatabook, creating a viral coefficient K > 0 for every recorded transaction.
-2. **Paid Digital Acquisition Loop (Paid Acquisition):** Vernacular Meta and Google ads drive app installs. A merchant sets up an account, records their first 5 ledger entries, and becomes a daily active merchant. This activity eventually unlocks QR/Loan monetization, which generates revenue to reinvest into paid acquisition channels.
+2. **Paid Digital Acquisition Loop (Paid Acquisition):** Vernacular Meta and Google ads drive app installs. A merchant sets up an account, records their first 5 ledger entries, and becomes a daily active merchant. Once a merchant is active, QR and loan products can be offered, which brings in revenue to reinvest into paid acquisition channels.
 3. **Utility-to-Fintech Monetization Loop (Monetization):** A merchant uses the free ledger for 60+ days, building a trusted cashflow record. When they experience a working capital crunch, Khatabook pre-approves a non-collateralized merchant loan based on transaction velocity. This high-margin lending offsets top-of-funnel CAC and expands LTV.
 
 ## 4. App Store Signal Analysis

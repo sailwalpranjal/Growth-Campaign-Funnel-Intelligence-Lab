@@ -34,7 +34,7 @@ By 2026, Khatabook has completed a strategic pivot:
 ## 3. Khatabook's Three Core Growth Loops
 
 ### Loop A: The Organic Viral WhatsApp Reminder Loop (P2P Viral Loop)
-The most powerful organic acquisition engine in Khatabook's history is the customer reminder loop:
+The biggest organic acquisition channel in Khatabook's history is the customer reminder loop:
 
 ```text
 Merchant records credit entry in Khatabook
