@@ -166,3 +166,37 @@ def test_dashboard_json_copies_agree():
     a = json.loads(read("data", "dashboard_data.json"))
     b = json.loads(read("web", "data", "dashboard_data.json"))
     assert a["growth_os"] == b["growth_os"]
+
+
+# ---- the bridge depends on the order of substitution ---------------------------------------
+
+def test_bridge_share_depends_on_substitution_order(ads):
+    """The 98.1% post-click share is the order CPM, CTR, conversion. Other orders disagree."""
+    import itertools
+    import math
+
+    def factors(cid):
+        s = ads[ads["xyz_campaign_id"] == cid]
+        return [
+            s["spent"].sum() / s["impressions"].sum(),
+            s["impressions"].sum() / s["clicks"].sum(),
+            s["clicks"].sum() / s["approved_conversion"].sum(),
+        ]
+
+    a, b = factors(936), factors(1178)
+    gap = math.prod(b) - math.prod(a)
+    shares, shapley = [], [0.0, 0.0, 0.0]
+    for order in itertools.permutations(range(3)):
+        cur, step = a[:], [0.0] * 3
+        for j in order:
+            before = math.prod(cur)
+            cur[j] = b[j]
+            step[j] = math.prod(cur) - before
+        assert abs(sum(step) - gap) < 1e-9
+        shares.append(step[2] / gap)
+        for j in range(3):
+            shapley[j] += step[j] / 6
+    assert round(min(shares) * 100, 1) == 70.8
+    assert round(max(shares) * 100, 1) == 128.5
+    assert [round(x, 2) for x in shapley] == [-11.08, 12.62, 46.48]
+    assert round(shapley[2] / gap * 100, 1) == 96.8
