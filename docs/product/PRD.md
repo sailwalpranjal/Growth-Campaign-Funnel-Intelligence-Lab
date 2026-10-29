@@ -50,6 +50,6 @@ See [METRICS.md](METRICS.md) for how adoption would be measured.
 
 ## Risks and open questions
 
-- **Wrong claims survive in generated text.** This happened: the exported backlog had figures that failed recomputation. Mitigation: the recompute tests now scan the published files for the stale phrases.
+- **Wrong claims survive in exported text.** This happened: the exported backlog had figures that failed recomputation. Mitigation: the recompute tests now scan the published files for the stale phrases.
 - **Bridge order dependence.** Reordering the substitution moves the post-click share between 70.8% and 128.5%. An order-independent split (Shapley) gives 96.8%. Open question: which should the dashboard show by default?
 - **Observational data.** The campaigns may be different phases of one rollout. Open question: is any concurrent split data available?

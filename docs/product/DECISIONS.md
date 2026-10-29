@@ -35,4 +35,4 @@ Decisions I can see in the code and docs. I did not date them at the time, so I 
 **Context.** The dashboard has to load fast on a free host.
 **Options.** Query the API per tab; precompute one JSON file; ship a database to the browser.
 **Decision.** Precompute `data/dashboard_data.json`; the FastAPI backend serves the same data.
-**Consequences.** Fast and cheap. Some blocks (`growth_os`, market intelligence) are preserved across exports instead of regenerated, and one of them drifted out of date. Replacing that is on the roadmap.
+**Consequences.** Fast and cheap. Some blocks (`growth_os`, market intelligence) are preserved across exports instead of rebuilt, and one of them drifted out of date. Replacing that is on the roadmap.

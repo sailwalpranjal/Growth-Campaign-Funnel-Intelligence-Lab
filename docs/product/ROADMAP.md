@@ -16,7 +16,7 @@ RICE = Reach x Impact x Confidence / Effort. Reach is a guess at viewers on a 1-
 
 | Item | Why | Score (my judgement) |
 |---|---|---|
-| Replace the hand-maintained `growth_os` block in the dashboard JSON with generated content | That block went stale because the export script preserves it rather than rebuilding it | RICE: 5 x 1 x 0.8 / 2 = **2.0** |
+| Replace the hand-maintained `growth_os` block in the dashboard JSON with content built from the code | That block went stale because the export script preserves it rather than rebuilding it | RICE: 5 x 1 x 0.8 / 2 = **2.0** |
 | Add a two-proportion test with Holm correction to the audience tab | Many segments are compared with no multiple-comparison control | RICE: 4 x 1 x 0.5 / 2 = **1.0** |
 
 ## Later

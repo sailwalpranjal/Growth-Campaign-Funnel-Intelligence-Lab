@@ -4,7 +4,7 @@
 
 ## Problem
 
-Stale numbers reached the exported backlog and the live dashboard because the generator was fixed but the committed exports were not regenerated. CI now catches that after a push. It should also be caught before the commit exists.
+Stale numbers reached the exported backlog and the live dashboard because the code that builds the export was fixed but the committed exports were not regenerated. CI now catches that after a push. It should also be caught before the commit exists.
 
 ## Acceptance criteria
 

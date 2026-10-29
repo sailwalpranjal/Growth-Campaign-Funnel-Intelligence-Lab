@@ -1,4 +1,4 @@
-# Generate the Growth OS block instead of preserving it
+# Build the Growth OS block from the code instead of preserving it
 
 **Labels:** type:chore, priority:P1, area:data
 
