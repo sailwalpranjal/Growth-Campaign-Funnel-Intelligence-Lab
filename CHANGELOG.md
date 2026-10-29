@@ -12,6 +12,9 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 - README click total corrected from 38,181 to 38,165.
 - Gender CTR in the limitations doc corrected to 0.0208% and 0.0145%.
 
+### Changed
+- The Kaggle ad file is no longer committed: Kaggle lists its licence as "Other (specified in description)" and the description states no terms. `scripts/download_data.py` fetches it and checks the SHA-256, CI downloads it before the tests, and the tests that need it skip when it is absent. The row-level SQLite and parquet copies built from it are no longer committed either.
+
 ### Added
 - `tests/test_headline_numbers.py`, which recomputes the headline numbers and scans published files for stale claims.
 - MIT licence, CI workflow, issue and pull request templates, contributing, security and conduct files.

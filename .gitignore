@@ -41,3 +41,8 @@ htmlcov/
 # OS
 .DS_Store
 Thumbs.db
+
+# Kaggle ad data has no stated licence: fetch it with scripts/download_data.py
+data/raw/KAG_conversion_data.csv
+data/processed/clean_ad_campaigns.parquet
+data/processed/growth_analytics.db

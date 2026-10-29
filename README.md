@@ -34,7 +34,7 @@ uvicorn backend.main:app --reload --port 8000   # API docs at /docs
 python -m http.server 3000                      # dashboard at localhost:3000
 ```
 
-The raw data is committed (`data/raw/`, with SHA-256 checksums in `data/raw/provenance_metadata.json`), so there is nothing to download.
+Run `python scripts/download_data.py` first. It fetches the Kaggle ad file and checks its SHA-256; that file is not committed because Kaggle states no licence terms for it. The UCI sessions file (CC BY 4.0) is committed in `data/raw/`.
 
 ## How it works
 
@@ -91,7 +91,7 @@ How I would run this as a product, written down after the fact:
 | `KAG_conversion_data.csv` | Kaggle, Sales Conversion Optimization | 1,143 ad sets, 3 campaigns | scorecard, bridge, audience, funnel |
 | `online_shoppers_intention.csv` | UCI Machine Learning Repository, Online Shoppers Purchasing Intention | 12,330 labelled sessions | visitor and engagement diagnostics |
 
-Licence terms are recorded in [data/README.md](data/README.md). I have not independently confirmed the Kaggle dataset's licence; check it before reusing the data.
+Licence terms are in [data/README.md](data/README.md). Checked on Kaggle: the ad dataset's licence is listed as "Other (specified in description)" and the description states none, so I do not redistribute the file.
 
 ## Deploying
 

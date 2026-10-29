@@ -6,6 +6,7 @@ Unit and integration tests for FastAPI backend service endpoints.
 
 import pytest
 from fastapi.testclient import TestClient
+import os
 from backend.main import app
 
 client = TestClient(app)
@@ -27,6 +28,12 @@ def test_health_check_endpoint():
     assert data["service"] == "Growth Intelligence Lab API"
 
 
+needs_ad_data = pytest.mark.skipif(
+    not os.path.exists(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data", "raw", "KAG_conversion_data.csv")),
+    reason="KAG_conversion_data.csv is not committed; run scripts/download_data.py",
+)
+
+@needs_ad_data
 def test_campaign_scorecard_endpoint():
     res = client.get("/api/scorecard")
     assert res.status_code == 200
@@ -38,6 +45,7 @@ def test_campaign_scorecard_endpoint():
     assert c936["approved_conversions"] == 183
 
 
+@needs_ad_data
 def test_decomposition_endpoint():
     res = client.get("/api/decomposition?base=936&target=1178")
     assert res.status_code == 200

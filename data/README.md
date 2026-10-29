@@ -26,7 +26,7 @@ Before building this project, three public datasets were evaluated against the c
 - **Retrieval Date**: 2026-09-19
 - **Size**: 60,522 bytes (1,143 records, 11 columns)
 - **SHA-256 Checksum**: `2ee88488b5229562e8814b08e95e09e675aa939f69fc16f124eefe2bfdfa7cf8`
-- **License**: Public Domain / CC0 Equivalent
+- **License**: Kaggle lists the licence as "Other (specified in description)", and the description gives no terms. Not redistributed in this repository; `scripts/download_data.py` fetches it and checks the SHA-256.
 - **Description**: Anonymized public social-media advertising dataset spanning three campaigns (`916`, `936`, `1178`).
 - **Data Dictionary**:
   - `ad_id`: Unique identifier for each ad record (Integer).

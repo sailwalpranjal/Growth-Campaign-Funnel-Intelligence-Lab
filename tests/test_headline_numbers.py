@@ -27,6 +27,9 @@ def read(*parts: str) -> str:
 
 @pytest.fixture(scope="module")
 def ads() -> pd.DataFrame:
+    path = os.path.join(ROOT, "data", "raw", "KAG_conversion_data.csv")
+    if not os.path.exists(path):
+        pytest.skip("KAG_conversion_data.csv is not committed; run scripts/download_data.py")
     return load_raw_ad_campaigns()
 
 
