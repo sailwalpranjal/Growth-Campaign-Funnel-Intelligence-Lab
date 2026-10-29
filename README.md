@@ -1,266 +1,102 @@
-# Khatabook Growth Intelligence Platform
+# Growth Campaign & Funnel Intelligence Lab
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests Passing](https://img.shields.io/badge/tests-44%20passed-brightgreen.svg)](tests/)
-[![Data Integrity](https://img.shields.io/badge/data%20provenance-100%25%20real%20public-orange.svg)](data/)
-[![Live Dashboard](https://img.shields.io/badge/live%20dashboard-Vercel-teal.svg)](https://growth-campaign-funnel-intelligence.vercel.app)
-[![API](https://img.shields.io/badge/backend%20API-Render%20Free-purple.svg)](https://growth-intelligence-api.onrender.com)
+[![tests](https://github.com/sailwalpranjal/Growth-Campaign-Funnel-Intelligence-Lab/actions/workflows/ci.yml/badge.svg)](https://github.com/sailwalpranjal/Growth-Campaign-Funnel-Intelligence-Lab/actions/workflows/ci.yml)
+[![licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
 
----
+A funnel analysis of a public ad dataset that answers one question: why did one campaign cost 4.04x more per approved conversion than another, and what should a growth team test next?
 
-## The Problem
+**Live dashboard:** [growth-campaign-funnel-intelligence.vercel.app](https://growth-campaign-funnel-intelligence.vercel.app) · **API docs:** [growth-intelligence-api.onrender.com/docs](https://growth-intelligence-api.onrender.com/docs)
 
-When an acquisition campaign spends 19.2x more media budget ($55,662.15 in Campaign 1178 vs $2,893.37 in Campaign 936), why does cost per approved conversion surge 4x ($63.83 vs $15.81) — even as CPM actually improves? The instinct is to blame expensive ad inventory. But a 3-factor mathematical decomposition points elsewhere: the CPM lever improved, the CTR lever partially degraded, and the post-click conversion rate collapsed by 73.8%. That single lever accounts for 98.1% of the entire cost explosion.
+## Who this is for, and the problem
 
-This is a real diagnostic question every growth team faces. This platform investigates exactly where and why growth unit economics degrade at higher spend, and provides a structured evidence-to-hypothesis-to-experiment pipeline for fixing it — using 100% real public data, no synthetic metrics, and no fabricated Khatabook internal numbers.
+It is for a growth analyst or product manager who has two campaigns, one number that got much worse, and a marketing lead asking why. Campaign 1178 spent $55,662.15, 19.2 times campaign 936's $2,893.37. Its cost per approved conversion went from $15.81 to $63.83. The obvious suspect is pricier ad inventory, but CPM actually fell, from $0.36 to $0.27. So where did the money go?
 
-**Live Platform:** [growth-campaign-funnel-intelligence.vercel.app](https://growth-campaign-funnel-intelligence.vercel.app)  
-**API Docs:** [growth-intelligence-api.onrender.com/docs](https://growth-intelligence-api.onrender.com/docs)
+I built this to find out, and to turn the answer into experiments someone could run. It uses only public data. I have no access to any company's internal numbers, and nothing here should be read as describing one.
 
----
+## Demo
 
-## What This Platform Demonstrates
+The live dashboard has 16 tabs. The three worth opening first are Waterfall (the cost bridge), Funnel (where people drop out) and Growth OS (the experiment backlog).
 
-This is not a feature showcase. Every component exists because it answers a question a Growth Manager would actually ask.
+> Screenshot placeholder. To capture: open the live dashboard at 1440x900, select the Waterfall tab, wait for the chart animation to finish, then save as `docs/img/waterfall.png`. For a GIF, record the tab switching Overview -> Waterfall -> Funnel -> Growth OS (about 10 seconds) with ScreenToGif at 12 fps.
 
-| Capability | What the platform does | Why it matters |
-|:---|:---|:---|
-| **Numerical reasoning** | 3-factor sequential substitution bridge decomposing a $48.02 cost gap into CPM (-$3.74), CTR (+$4.66), and conversion effect (+$47.10) with zero reconciliation residual | Shows ability to isolate causation, not just correlation |
-| **Funnel analysis** | Multi-stage funnel (Impression → Click → Enquiry → Approved) with stage-level conversion rates and 92.6% post-click drop-off identified | Precisely locates where the acquisition funnel breaks |
-| **Audience segmentation** | Interest-group analysis with sensitivity classification at 10, 25, and 50-click thresholds — distinguishing stable segments from sample-fragile noise | Prevents budget misallocation to statistically unreliable segments |
-| **Mix-adjusted analysis** | Direct standardization comparing raw vs. benchmark-weighted campaign performance to isolate demographic confounding from true efficiency gaps | Controls for the audience composition effect that creates apparent-but-false campaign performance differences |
-| **Experimentation thinking** | 5-experiment ICE-prioritized backlog derived directly from real empirical findings — not generic ideas | Demonstrates ability to translate data anomalies into structured, testable hypotheses |
-| **Statistical rigor** | Two-proportion z-test with two-tailed p-values, 95% CIs, sample size planning, and a disciplined decision matrix that distinguishes statistical from practical significance | Shows understanding that p < 0.05 does not automatically mean "ship the variant" |
-| **Market research** | Competitor matrix (Khatabook vs Vyapar vs OkCredit vs BharatPe vs PhonePe), MSME landscape sourced from public reports, app store signal analysis | Demonstrates ability to frame analytical findings in broader business context |
-| **Data quality** | 11-check automated audit flagging missing values, zero-click spend anomalies, funnel logic violations, and sample reliability | Shows attention to data hygiene before any analysis is run |
-| **Growth OS pipeline** | 5-stage workflow (Observe → Diagnose → Hypothesize → Experiment → Learn) mapping each experiment across its full lifecycle | Demonstrates structured growth thinking, not ad hoc decision-making |
-| **Analytical transparency** | Every metric shows formula, data source, confidence level, and honest limitation — via info panels and a searchable Metric Dictionary | Proves understanding of what the data can and cannot prove |
-
----
-
-## Data Integrity Statement
-
-### What we compute (with legitimate basis)
-
-- **CTR** = SUM(Clicks) / SUM(Impressions) — ratio-of-sums, not row-averaging
-- **CPM** = (SUM(Spent) / SUM(Impressions)) × 1000
-- **CPC** = SUM(Spent) / SUM(Clicks)
-- **Cost per Approved Conversion** = SUM(Spent) / SUM(Approved_Conversion)
-- **Click-to-Approved Rate** = SUM(Approved_Conversion) / SUM(Clicks)
-- All efficiency decomposition, mix adjustment, and segment stability metrics derived from the above
-
-### What we explicitly refuse to compute and why
-
-| Metric | Why we don't compute it |
-|:---|:---|
-| **CAC (Customer Acquisition Cost)** | Requires full blended spend (including organic, agency fees), downstream install attribution, and post-activation retention data. This dataset ends at approved conversion. |
-| **ROAS (Return on Ad Spend)** | No transaction revenue exists in this ad dataset. Creating synthetic revenue numbers would be fabrication, not analysis. |
-| **Mobile installs / DAU** | This is a web conversion dataset. No SDK-level mobile attribution exists. |
-| **Real Khatabook internal metrics** | This platform uses 100% public datasets. No confidential company data is implied, inferred, or fabricated. |
-
----
-
-## Analytical Methods
-
-### 1. Three-Factor Efficiency Decomposition Bridge
-
-$$\text{Cost per Approved} = \underbrace{\frac{\text{Spend}}{\text{Impressions}}}_{L_1: \text{CPM}/1000} \times \underbrace{\frac{\text{Impressions}}{\text{Clicks}}}_{L_2: 1/\text{CTR}} \times \underbrace{\frac{\text{Clicks}}{\text{Approved}}}_{L_3: 1/\text{Conv Rate}}$$
-
-Sequential substitution attribution ensures every dollar of cost gap is mathematically accounted for with zero residual. See [`src/diagnostics.py`](src/diagnostics.py) and [`docs/methodology.md`](docs/methodology.md) for full derivation.
-
-### 2. Direct Standardization (Audience Mix Adjustment)
-
-$$\text{AdjCost}_c = \sum_{s \in S} w_s \cdot \text{Cost}_{c, s}, \quad w_s = \frac{\sum_{c} \text{Clicks}_{c,s}}{\sum_{c} \text{Clicks}_c}$$
-
-Answers: "If both campaigns faced identical audience weights, would the efficiency gap persist?" It does — ruling out demographic composition as the confound. See [`src/diagnostics.py`](src/diagnostics.py).
-
-### 3. Two-Proportion Z-Test with Disciplined Decision Matrix
-
-$$z = \frac{p_2 - p_1}{SE_\text{pool}}, \quad SE_\text{pool} = \sqrt{p_\text{pool}(1-p_\text{pool})\left(\frac{1}{n_1}+\frac{1}{n_2}\right)}$$
-
-The decision matrix distinguishes: Run longer (underpowered) / Do not conclude (null) / Investigate (wide CI) / Promote cautiously (significant + practical + CI > 0). See [`src/statistics.py`](src/statistics.py).
-
-### 4. Ratio-of-Sums Aggregation & Demographic Confounding Control
-
-All conversion rates strictly use $\frac{\sum \text{Numerator}}{\sum \text{Denominator}}$ across rows — never unweighted row-level averages. Across all 1,143 ads in the dataset, the true ratio-of-sums CTR is **0.0179%** (38,165 clicks / 213,434,828 impressions), whereas unweighted row-averaging yields **0.0164%** (understating true CTR by -8.2%; in Campaign 1178, row-averaging gives 0.0162% vs 0.0176%). Unweighted row-averaging assigns equal weight to micro-budget ad sets with small impressions and scaled ad sets with millions of impressions. Strict ratio-of-sums and Direct Standardization ensure comparisons control for demographic confounding. See [`src/metrics.py`](src/metrics.py).
-
-### 5. ICE Prioritization
-
-$$\text{ICE Score} = \frac{\text{Impact} + \text{Evidence} + \text{Ease}}{3}, \quad \text{each } \in [1, 10]$$
-
-Used to rank experiment proposals derived from real data findings. Impact is opportunity size, Evidence is empirical support quality, Ease is implementation effort (inverted). See [`src/experiment_engine.py`](src/experiment_engine.py).
-
----
-
-## JD Skills Evidence Map
-
-| Khatabook JD Requirement | How it is demonstrated | Key file |
-|:---|:---|:---|
-| Campaign performance & spend analysis | Ratio-of-sums scorecard: impressions, clicks, spend, CTR, CPC, CPM across 3 campaigns | [`src/metrics.py`](src/metrics.py) / [`sql/03_metrics.sql`](sql/03_metrics.sql) |
-| Investigate why a metric changed | 3-factor waterfall bridge isolating CPM, CTR, and conversion rate contributions | [`src/diagnostics.py`](src/diagnostics.py) / Waterfall tab |
-| Acquisition funnel & drop-off analysis | Multi-stage funnel (Impression→Click→Enquiry→Approved) with stage conversion rates | [`sql/06_funnel.sql`](sql/06_funnel.sql) / Funnel tab |
-| Audience segmentation & stability | Age, gender, interest breakdown with 10/25/50-click threshold sensitivity classification | [`sql/04_audience.sql`](sql/04_audience.sql) / Audience Matrix tab |
-| Audience mix adjustment | Direct standardization isolating composition effect from rate effect | [`sql/05_mix_analysis.sql`](sql/05_mix_analysis.sql) / Mix tab |
-| Growth experimentation & hypothesis | Evidence-to-hypothesis pipeline with ICE scoring, control/variant, KPIs, guardrails | [`src/experiment_engine.py`](src/experiment_engine.py) / Growth OS tab |
-| A/B testing & sample-size planning | Two-proportion z-test with p-values, 95% CIs, power-based sample sizing | [`src/statistics.py`](src/statistics.py) / A/B Lab tab |
-| Dashboard & reporting | Interactive dark-mode Growth Intelligence Platform on Vercel | [`web/index.html`](web/index.html) / [`web/js/dashboard.js`](web/js/dashboard.js) |
-| Data quality & attention to detail | 11-check automated audit: missing values, zero-click spend, funnel logic violations, sample reliability | [`src/validation.py`](src/validation.py) / Audit Daemon tab |
-| Consumer behavior analysis | UCI session diagnostic (visitor type, traffic channel, bounce/exit rates, engagement tiers) | [`src/diagnostics.py`](src/diagnostics.py) / Consumer Sessions tab |
-| Competitor & market research | Competitor matrix (5 companies), MSME landscape, growth loops, app store signals | [`docs/market_intelligence.md`](docs/market_intelligence.md) / Market Intel tab |
-| Google Sheets / Excel deliverable | Formatted multi-tab Excel model with KPI cards, scorecard, charts | [`sheets/growth_dashboard.xlsx`](sheets/growth_dashboard.xlsx) |
-| Cross-functional communication | Experiment briefs with business context, guardrail metrics, and learning objectives | [`docs/experiment_brief.md`](docs/experiment_brief.md) / Growth OS tab |
-| Analytical transparency | Metric Dictionary tab (14 metrics with formulas, confidence, limitations), per-KPI info panels | Metrics tab / Overview info panels |
-
----
-
-## Real Public Data Sources
-
-| Dataset | Source | Records | Analytical role |
-|:---|:---|:---|:---|
-| **KAG_conversion_data.csv** | Kaggle — Sales Conversion Optimization | 1,143 ad sets, 3 campaigns | Campaign scorecard, decomposition, audience analysis, funnel |
-| **online_shoppers_intention.csv** | UCI Machine Learning Repository | 12,330 sessions | Consumer behavior diagnostics, engagement tiers, visitor type analysis |
-
-Both datasets are 100% real public data. No rows have been modified, filtered for convenience, or supplemented with synthetic values.
-
----
-
-## Project Architecture
-
-```text
-e:\Growth Campaign & Funnel Intelligence Lab\
-├── index.html                   # Root: Vercel entry point (auto-synced from web/)
-├── js/dashboard.js              # Root: Vercel JS asset (auto-synced from web/)
-├── data/dashboard_data.json     # Root: Vercel data asset (auto-synced)
-├── vercel.json                  # Vercel deploy config (cleanUrls, CORS headers)
-├── render.yaml                  # Render Blueprint: pip install + uvicorn
-│
-├── web/                         # Source of truth for frontend
-│   ├── index.html               # 1800+ line dark-mode analytics UI (16 interactive tabs)
-│   ├── js/dashboard.js          # 2400+ line Chart.js + Canvas controller (interactive HUDs, radar, donut, modal)
-│   └── data/dashboard_data.json # 15-key analytical payload with 21-field Experiment OS
-│
-├── backend/
-│   ├── main.py                  # FastAPI: 8 endpoints (scorecard, decomposition,
-│   │                            #   ab-test, sample-size, experiments, market-intel,
-│   │                            #   hypothesis-pipeline, metric-dictionary)
-│   └── requirements.txt
-│
-├── src/                         # Python analytical engine
-│   ├── data_loader.py           # Dataset loading and schema validation
-│   ├── metrics.py               # Ratio-of-sums KPI engine
-│   ├── diagnostics.py           # 3-factor bridge, mix adjustment, segment stability
-│   ├── statistics.py            # Z-test, confidence intervals, sample size
-│   ├── experiment_engine.py     # ICE backlog, hypothesis pipeline stages, data provenance
-│   ├── validation.py            # 11-check data quality audit
-│   └── report_generator.py     # Markdown and CSV exports
-│
-├── sql/                         # Analytical SQL transformations
-│   ├── 01_staging.sql
-│   ├── 02_clean.sql
-│   ├── 03_metrics.sql           # CTR, CPC, CPM, conversion rates
-│   ├── 04_audience.sql          # Age, gender, interest segmentation
-│   ├── 05_mix_analysis.sql      # Direct standardization
-│   ├── 06_funnel.sql            # Stage conversion and drop-off rates
-│   └── 07_quality.sql           # Data quality checks
-│
-├── docs/                        # Strategy and methodology documentation
-│   ├── methodology.md           # Mathematical derivations and proofs
-│   ├── market_intelligence.md   # Competitor analysis, MSME landscape
-│   ├── growth_os_framework.md   # Growth OS methodology
-│   ├── growth_playbook.md       # Executive strategy briefing
-│   ├── experiment_brief.md      # Cross-functional experiment template
-│   ├── metric_definitions.md    # Metric availability and boundary table
-│   ├── analytical_dossier.md    # Mathematical proofs and code traceability
-│   ├── limitations.md           # Honest capability boundaries
-│   └── khatabook_growth_strategy.md  # Khatabook product & growth analysis
-│
-├── tests/                       # 44 automated tests
-│   ├── test_metrics.py          # Ratio-of-sums, safe_divide, scorecard
-│   ├── test_diagnostics.py      # Decomposition bridge, mix adjustment
-│   ├── test_statistics.py       # Z-test, CI, sample size
-│   ├── test_funnel.py           # Funnel stage calculations
-│   ├── test_quality.py          # Data quality audit checks
-│   ├── test_backend.py          # FastAPI endpoint integration (10 endpoints)
-│   ├── test_experiment_engine.py # ICE scoring, hypothesis pipeline
-│   └── test_market_data.py      # Market intelligence data structure
-│
-├── scripts/
-│   ├── download_data.py         # Fetch raw datasets with SHA-256 validation
-│   ├── prepare_data.py          # Clean, schema-validate, persist to Parquet/SQLite
-│   ├── run_analysis.py          # Execute full analytical pipeline
-│   ├── export_reports.py        # Generate Markdown + CSV exports
-│   └── export_web_data.py       # Build dashboard_data.json payload
-│
-├── exports/                     # 9 CSV exports (scorecard, funnel, segments, etc.)
-├── reports/                     # 4 Markdown analytical reports
-└── sheets/growth_dashboard.xlsx # Formatted Excel model (10 tabs)
-```
-
----
-
-## Run Locally
+## Quick start
 
 ```bash
 git clone https://github.com/sailwalpranjal/Growth-Campaign-Funnel-Intelligence-Lab.git
 cd Growth-Campaign-Funnel-Intelligence-Lab
+pip install -r requirements.txt -r backend/requirements.txt pytest httpx
 
-pip install -r requirements.txt
+python scripts/export_reports.py      # rebuild exports/ and reports/ from the raw CSVs
+python scripts/export_web_data.py     # rebuild the dashboard payload
+python -m pytest -q                   # 63 tests
 
-# Download and validate real public datasets
-python scripts/download_data.py
-
-# Build analytical pipeline (clean, transform, compute)
-python scripts/prepare_data.py
-python scripts/run_analysis.py
-
-# Export analytical reports and web data payload
-python scripts/export_reports.py
-python scripts/export_web_data.py
-
-# Run full test suite (44 tests)
-python -m pytest -q
-
-# Start backend API
-uvicorn backend.main:app --reload --port 8000
-# API docs: http://localhost:8000/docs
-
-# Serve frontend locally (any static server)
-cd web && python -m http.server 3000
-# Open http://localhost:3000
+uvicorn backend.main:app --reload --port 8000   # API docs at /docs
+python -m http.server 3000                      # dashboard at localhost:3000
 ```
 
----
+The raw data is committed (`data/raw/`, with SHA-256 checksums in `data/raw/provenance_metadata.json`), so there is nothing to download.
 
-## Cloud Deployment
+## How it works
 
-### Vercel (Frontend — zero config)
-1. Fork repository to your GitHub account
-2. Connect to Vercel at [vercel.com](https://vercel.com)
-3. Import the repository — no build settings needed
-4. Deploy. `index.html` at root is the entry point.
+```
+ raw CSV (Kaggle ad sets, UCI sessions)
+        |
+   SQL staging + cleaning (sql/01 .. 07)         src/data_loader.py
+        |
+   metrics, funnel, bridge, stability, mix       src/metrics.py, src/diagnostics.py
+        |
+   experiment backlog (ICE scored)               src/experiment_engine.py
+        |
+   exports/ + reports/ + dashboard_data.json  -> static dashboard (Vercel)
+                                              -> FastAPI (Render)
+```
 
-### Render (Backend API — free tier)
-1. Connect repository at [render.com](https://render.com)
-2. Create a new **Web Service**
-3. Build command: `pip install -r backend/requirements.txt`
-4. Start command: `uvicorn backend.main:app --host 0.0.0.0 --port $PORT`
-5. Or use the included `render.yaml` Blueprint for one-click deploy.
+Every rate is a ratio of sums, never an average of row-level rates. Across all 1,143 ad sets, CTR is 0.0179% (38,165 clicks over 213,434,828 impressions); averaging the rows gives 0.0164%, an 8.2% understatement.
 
----
+## What it found
 
-## What Would Change in Production
+| Finding | Number | How it was checked |
+|---|---|---|
+| Cost per approved conversion, campaign 936 vs 1178 | $15.81 vs $63.83 (4.04x) | recomputed from the raw CSV in `tests/test_headline_numbers.py` |
+| Share of the $48.02 gap that opens after the click | 98.1% by the sequential bridge, 96.8% by a Shapley split | same test file |
+| Clicks in campaign 1178 that never became an enquiry | 92.6% | funnel tab, `exports/funnel_analysis.csv` |
+| Female vs male cost per approved conversion | $69.70 vs $41.44, while female CTR is higher (0.0208% vs 0.0145%) | same test file |
+| New vs returning visitors (UCI sessions) | 24.91% vs 13.93% purchase rate | same test file |
 
-This platform uses static public datasets and a pre-built JSON payload. In a real Khatabook data infrastructure:
+All of this is observational. I describe patterns and propose tests; I do not claim causes.
 
-| Component | Portfolio version | Production version |
-|:---|:---|:---|
-| **Data source** | Static CSV files (Kaggle, UCI) | Snowflake / BigQuery warehouse fed by event streams |
-| **Event collection** | Not applicable | Segment or Snowplow SDK on mobile app |
-| **Mobile attribution** | Not available | AppsFlyer or Branch linking ad click → install → activation |
-| **Funnel stages** | Impression → Click → Enquiry → Approved | Full: Click → Install → OTP → Login → First Entry → D7 Active → QR payment → Loan application |
-| **A/B testing** | Statistical calculator (user-entered data) | Integrated with LaunchDarkly or Statsig for automated assignment and real-time tracking |
-| **CRM signals** | Observational from UCI dataset | Real merchant event stream: last_entry_date, reminder_sent_count, feature_adoption |
-| **Competitor intel** | Manually sourced public data | Automated monitoring via public APIs (App Store ratings, LinkedIn job signals) |
-| **Refresh** | Static payload, manual re-run | Scheduled dbt runs → API cache invalidation → frontend auto-refresh |
+## Limits and known gaps
 
-The analytical architecture (3-factor decomposition, mix adjustment, ICE prioritization, z-test engine) translates directly to production — only the data sources change.
+- **Not an A/B test.** The three campaigns did not run as a concurrent split against one audience. Campaign 1178 may simply be a later, broader phase.
+- **The bridge depends on the order of substitution.** The sequential split (CPM -$3.74, CTR +$4.66, conversion +$47.10) uses the order CPM, CTR, conversion. Across all six orders the conversion share ranges from 70.8% to 128.5%. A Shapley split, which averages over orders, gives CPM -$11.08, CTR +$12.62, conversion +$46.48. Conversion is the largest driver under every ordering that I tried, but the exact percentage is not unique. Roadmap item: show both.
+- **No CAC, no ROAS.** The dataset ends at an approved conversion and has no revenue. I chose not to invent any.
+- **The experiment backlog is a set of proposals.** None has been run.
+- **An earlier version quoted numbers that failed recomputation** (returning visitors "3.5x higher", gender CPA of $68.20 vs $42.10, "12 of 28 interests under 10 clicks"). They are fixed, and `tests/test_headline_numbers.py` now checks published text against the raw data.
+- `docs/khatabook_growth_strategy.md` and `docs/market_intelligence.md` are background research from public sources written for a job application. I have not independently re-verified every figure in them, and the project is not affiliated with that company.
+
+## Product thinking
+
+How I would run this as a product, written down after the fact:
+
+- [PRD](docs/product/PRD.md): problem, user, goals, non-goals, acceptance criteria, risks
+- [Roadmap](docs/product/ROADMAP.md): Now / Next / Later with RICE and ICE arithmetic
+- [Decision log](docs/product/DECISIONS.md): five decisions visible in the code
+- [Metrics plan](docs/product/METRICS.md): events and queries I would add
+- [Changelog](CHANGELOG.md), [project board setup](docs/project-board.md), [issue drafts](docs/issues/)
+
+## Data sources
+
+| Dataset | Source | Rows | Used for |
+|---|---|---|---|
+| `KAG_conversion_data.csv` | Kaggle, Sales Conversion Optimization | 1,143 ad sets, 3 campaigns | scorecard, bridge, audience, funnel |
+| `online_shoppers_intention.csv` | UCI Machine Learning Repository, Online Shoppers Purchasing Intention | 12,330 labelled sessions | visitor and engagement diagnostics |
+
+Licence terms are recorded in [data/README.md](data/README.md). I have not independently confirmed the Kaggle dataset's licence; check it before reusing the data.
+
+## Deploying
+
+The root `index.html` is the Vercel entry point and needs no build step. The API deploys to Render with the included `render.yaml`.
+
+## Licence
+
+MIT, see [LICENSE](LICENSE).
