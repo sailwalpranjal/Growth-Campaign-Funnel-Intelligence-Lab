@@ -71,7 +71,7 @@ All of this is observational. I describe patterns and propose tests; I do not cl
 - **The bridge depends on the order of substitution.** The sequential split (CPM -$3.74, CTR +$4.66, conversion +$47.10) uses the order CPM, CTR, conversion. Across all six orders the conversion share ranges from 70.8% to 128.5%. A Shapley split, which averages over orders, gives CPM -$11.08, CTR +$12.62, conversion +$46.48. Conversion is the largest driver under every ordering that I tried, but the exact percentage is not unique. Roadmap item: show both.
 - **No CAC, no ROAS.** The dataset ends at an approved conversion and has no revenue. I chose not to invent any.
 - **The experiment backlog is a set of proposals.** None has been run.
-- **An earlier version quoted numbers that failed recomputation** (returning visitors "3.5x higher", gender CPA of $68.20 vs $42.10, "12 of 28 interests under 10 clicks"). They are fixed, and `tests/test_headline_numbers.py` now checks published text against the raw data.
+- **An earlier version quoted numbers that failed recomputation** (returning visitors described as converting better than new ones when the opposite is true, a gender cost gap that was off by about $1.50 on each side, and a count of "small" interests that the data does not support). They are fixed, and `tests/test_headline_numbers.py` now checks published text against the raw data.
 - `docs/khatabook_growth_strategy.md` and `docs/market_intelligence.md` are background research from public sources written for a job application. I have not independently re-verified every figure in them, and the project is not affiliated with that company.
 
 ## Product thinking
