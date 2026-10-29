@@ -11,7 +11,7 @@ import pandas as pd
 
 def audit_ad_campaign_data(df: pd.DataFrame) -> pd.DataFrame:
     """
-    Perform a comprehensive audit of the advertising campaign dataset.
+    Audit the advertising campaign dataset.
     Returns a structured DataFrame of all audit checks, counts, and status.
     """
     records = []

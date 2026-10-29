@@ -12,7 +12,7 @@ import pandas as pd
 
 def generate_experiment_proposals() -> List[Dict[str, Any]]:
     """
-    Generate structured, production-grade growth experiment proposals directly derived from
+    Build structured growth experiment proposals derived directly from
     empirical anomalies in the dataset.
     
     IMPORTANT: These are structured growth proposals based on real data;
@@ -92,7 +92,7 @@ def generate_experiment_proposals() -> List[Dict[str, Any]]:
             "ease_score": 7,
             "ice_score": 8.00,
             "priority": "P0 (Immediate Sprint)",
-            "priority_reason": "High leverage on 36,000+ clicks where 92.6% currently bounce without converting.",
+            "priority_reason": "Applies to 36,000+ clicks, 92.6% of which currently drop out before converting.",
             "problem": "92.6% of clicks bounce on landing page before completing enquiry form.",
             "opportunity": "2-step micro-commitment form reduces cognitive load for Kirana merchants.",
             "segment": "All Paid Campaign Post-Click Traffic",

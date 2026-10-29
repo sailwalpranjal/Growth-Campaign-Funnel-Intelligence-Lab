@@ -337,7 +337,7 @@ To diagnose why **Campaign 1178** cost **${c1178['cost_per_approved_conv']:.2f}*
 | **Total Reconciled Gap** | Sum of Levers | ${c936['cost_per_approved_conv']:.2f} | ${c1178['cost_per_approved_conv']:.2f} | **+${decomp_dict['reconciled_sum']:.2f}** | **100.0%** | **Mathematically Exact Identity** (Error: ${decomp_dict['reconciliation_error']:.8f}) |
 
 ### Growth Analyst Takeaway
-Scaling ad budget 19.2x unlocked media buying efficiencies (lower CPM), but generated low-intent clicks that failed downstream. Growth optimization must prioritize post-click relevance and creative qualification over auction bidding optimizations.
+Scaling the ad budget 19.2x lowered CPM, but the extra clicks were low-intent and failed downstream. Growth optimization must prioritize post-click relevance and creative qualification over auction bidding optimizations.
 """
     with open(diag_path, "w", encoding="utf-8") as f:
         f.write(diag_content)

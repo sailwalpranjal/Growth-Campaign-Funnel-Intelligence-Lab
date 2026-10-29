@@ -22,7 +22,7 @@ def two_proportion_z_test(control_conversions: int,
     """
     Perform two-proportion z-test comparing treatment vs control conversion rates.
     
-    Returns comprehensive metrics distinguishing:
+    Returns the metrics, separating:
     - Observed Lift
     - Statistical Evidence (p-value, z-score)
     - Precision / Confidence Intervals
