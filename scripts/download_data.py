@@ -21,9 +21,10 @@ DATA_SOURCES = {
         "primary_url": "https://raw.githubusercontent.com/ychennay/ychennay.github.io/master/KAG_conversion_data.csv",
         "fallback_url": "https://raw.githubusercontent.com/raghav-arora/Kaggle-Facebook-Ad-Campaign/master/KAG_conversion_data.csv",
         "expected_min_bytes": 50000,
+        "expected_sha256": "2ee88488b5229562e8814b08e95e09e675aa939f69fc16f124eefe2bfdfa7cf8",
         "description": "Anonymized social media advertising campaign data across 3 campaigns (916, 936, 1178) with 1,143 ad records.",
         "publisher": "Kaggle / Anonymous Ad Network",
-        "license": "Public Domain / CC0 equivalent open benchmark"
+        "license": "Kaggle: Other (specified in description); no terms stated. Not redistributed."
     },
     "uci_consumer_behavior": {
         "filename": "online_shoppers_intention.csv",
@@ -105,6 +106,13 @@ def main():
             checksum = compute_sha256(dest_path)
             print(f"[+] Successfully downloaded {info['filename']} ({os.path.getsize(dest_path):,} bytes)")
             
+        expected = info.get("expected_sha256")
+        if expected and checksum != expected:
+            print(f"[X] SHA-256 mismatch for {info['filename']}: got {checksum}, expected {expected}. Removing the file.")
+            os.remove(dest_path)
+            all_success = False
+            continue
+
         metadata["datasets"][key] = {
             "filename": info["filename"],
             "path": os.path.relpath(dest_path, os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),

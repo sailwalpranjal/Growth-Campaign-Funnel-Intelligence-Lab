@@ -35,7 +35,7 @@ The secondary analysis on 12,330 e-commerce sessions provides valuable behaviora
 
 ### Association vs. Causation in Web Analytics:
 * **Page Values**: High page values correlate with high purchase conversion ($r > 0.45$). However, visiting high-value pages (such as the cart or checkout review) is an **indicator of high pre-existing purchase intent**, not a marketing lever that automatically causes a passive user to buy.
-* **Product Duration**: Users who spend >600 seconds convert at 28.4% vs 4.8% for users spending <120 seconds. This does not imply that artificially lengthening the merchant onboarding flow will increase conversion; rather, engaged users voluntarily invest time.
+* **Product Duration**: Sessions with more than 600 seconds on product pages and a low bounce rate convert at 22.7%, against 3.9% for sessions under 120 seconds. This does not imply that artificially lengthening the merchant onboarding flow will increase conversion; rather, engaged users voluntarily invest time.
 
 ---
 
@@ -43,4 +43,4 @@ The secondary analysis on 12,330 e-commerce sessions provides valuable behaviora
 
 1. **Do NOT conclude that Campaign 1178 was a failure**: In high-growth startups, scaling spend from \$2,800 to \$55,000 often requires accepting higher unit costs to achieve market share and absolute conversion volume (872 vs 183 approvals).
 2. **Do NOT conclude that older age brackets should be turned off**: Although users aged 45-49 have higher CPCs and higher cost per approved conversion, older business owners frequently exhibit lower churn and higher average balances. Without cohort retention data, turning off segments prematurely damages LTV.
-3. **Do NOT conclude that female business owners are less qualified**: Female segments show higher CTR (0.024% vs 0.016%) but drop off on the landing page form. This points to vertical relevance issues in landing page imagery, not lower intrinsic merchant qualification.
+3. **Do NOT conclude that female business owners are less qualified**: Female segments show higher CTR (0.0208% vs 0.0145%) but drop off on the landing page form. This points to vertical relevance issues in landing page imagery, not lower intrinsic merchant qualification.

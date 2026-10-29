@@ -33,7 +33,7 @@ def main():
     print("[+] Executed sql/01_staging.sql through sql/07_quality.sql successfully.")
     
     # 3. Run Data Quality Audit
-    print("[*] Running comprehensive Data Quality Audit...")
+    print("[*] Running the data quality audit...")
     df_ads = load_raw_ad_campaigns()
     df_uci = load_raw_consumer_behavior()
     audit_df = generate_full_quality_audit(df_ads, df_uci)

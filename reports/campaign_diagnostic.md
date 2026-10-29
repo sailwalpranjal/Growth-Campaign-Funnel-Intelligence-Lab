@@ -26,4 +26,4 @@ $$\text{Cost per Approved} = \underbrace{\frac{\text{Spend}}{\text{Impressions}}
 | **Total Reconciled Gap** | Sum of Levers | $15.81 | $63.83 | **+$48.02** | **100.0%** | **Mathematically Exact Identity** (Error: $0.00000000) |
 
 ### Growth Analyst Takeaway
-Scaling ad budget 19.2x unlocked media buying efficiencies (lower CPM), but generated low-intent clicks that failed downstream. Growth optimization must prioritize post-click relevance and creative qualification over auction bidding optimizations.
+Scaling the ad budget 19.2x lowered CPM, but the extra clicks were low-intent and failed downstream. Growth optimization must prioritize post-click relevance and creative qualification over auction bidding optimizations.

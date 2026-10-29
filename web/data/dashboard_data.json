@@ -4,7 +4,7 @@
     "target_company": "Khatabook",
     "role": "Growth Product Analyst / Merchant Intelligence",
     "author": "Pranjal Sailwal",
-    "generated_at": "2026-09-19 20:50:26 UTC"
+    "generated_at": "2026-10-29 13:11:45 UTC"
   },
   "scorecard": [
     {
@@ -12,17 +12,17 @@
       "total_ads": 54,
       "total_impressions": 482925,
       "total_clicks": 113,
-      "total_spend": 149.710000657,
+      "total_spend": 149.71000065699997,
       "total_conversions": 58,
       "approved_conversions": 24,
       "ctr": 0.00023399078531863125,
-      "cpc": 1.3248672624513274,
-      "cpm": 0.31000673118393124,
+      "cpc": 1.3248672624513271,
+      "cpm": 0.3100067311839312,
       "click_to_total_conv_rate": 0.5132743362831859,
       "click_to_approved_conv_rate": 0.21238938053097345,
-      "cost_per_total_conv": 2.5812069078793103,
-      "cost_per_approved_conv": 6.237916694041666,
-      "cost_per_impression": 0.00031000673118393126,
+      "cost_per_total_conv": 2.58120690787931,
+      "cost_per_approved_conv": 6.237916694041665,
+      "cost_per_impression": 0.0003100067311839312,
       "impressions_per_click": 4273.672566371682,
       "clicks_per_approved": 4.708333333333333
     },
@@ -2702,7 +2702,7 @@
       "ease_score": 7,
       "ice_score": 8.0,
       "priority": "P0 (Immediate Sprint)",
-      "priority_reason": "High leverage on 36,000+ clicks where 92.6% currently bounce without converting.",
+      "priority_reason": "Applies to 36,000+ clicks, 92.6% of which currently drop out before converting.",
       "problem": "92.6% of clicks bounce on landing page before completing enquiry form.",
       "opportunity": "2-step micro-commitment form reduces cognitive load for Kirana merchants.",
       "segment": "All Paid Campaign Post-Click Traffic",
@@ -3249,23 +3249,23 @@
       "priority": "P0 (Immediate Sprint)",
       "stages": {
         "observe": {
-          "content": "12 of 28 interest groups evaluated have < 10 clicks, showing high variance in CPA.",
+          "content": "All 40 interest groups have at least 128 clicks, but 13 have under 10 approved conversions, so their cost per approved conversion is too noisy to rank.",
           "evidence_type": "Real data finding",
           "linked_tab": "audience"
         },
         "diagnose": {
-          "content": "Budget is spread too thin across fragmented segments, causing inefficiency.",
+          "content": "Cost per approved conversion differs widely across interests ($18.69 to $107.97), and the extremes rest on few approved conversions. Why is not established by this data.",
           "evidence_type": "Structural observation",
           "linked_tab": "audience"
         },
         "hypothesize": {
-          "content": "Reallocating 30% of budget to top 5 stable segments will improve overall blended campaign efficiency.",
+          "content": "Reallocating 30% of budget from high-CPA interests that have at least 50 approved conversions to efficient ones will improve blended campaign efficiency.",
           "if_then": "If we concentrate targeting on stable segments, then blended cost will decrease.",
           "linked_tab": "backlog"
         },
         "experiment": {
           "control": "Fragmented broad targeting.",
-          "variant": "Concentrated tier-1 targeting.",
+          "variant": "Concentrated targeting on efficient interests.",
           "primary_kpi": "Blended Cost per Approved Conversion",
           "sample_size_needed": 11369,
           "duration_days": 14
@@ -3284,12 +3284,12 @@
       "priority": "P1 (Next Sprint)",
       "stages": {
         "observe": {
-          "content": "Returning Visitors have a 3.5x higher purchase rate but exit rates are still high on cart pages.",
+          "content": "Returning Visitors convert at 13.93% against 24.91% for New Visitors, and their average exit rate is 0.0465.",
           "evidence_type": "Real data finding",
           "linked_tab": "audience"
         },
         "diagnose": {
-          "content": "High-intent returning users lack a direct continuation path, creating friction.",
+          "content": "Returning visitors are 85.6% of sessions but convert less; a missing continuation path is a hypothesis, not something this data shows.",
           "evidence_type": "Structural observation",
           "linked_tab": "audience"
         },
@@ -3319,7 +3319,7 @@
       "priority": "P1 (Next Sprint)",
       "stages": {
         "observe": {
-          "content": "Female segments generate higher CTR but incur a higher cost per approved conversion due to post-click friction.",
+          "content": "Female segments have higher CTR (0.0208% vs 0.0145%) but a higher cost per approved conversion ($69.70 vs $41.44), consistent with post-click friction.",
           "evidence_type": "Real data finding",
           "linked_tab": "audience"
         },
